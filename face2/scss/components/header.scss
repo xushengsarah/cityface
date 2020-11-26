@@ -1,0 +1,68 @@
+$header-text-color:#74808a;
+$spacer:0.625rem;
+$header-menu-bg:#2d3643;
+$header-menu-width:5rem;
+$header-logo-text-bg:#2e3a4a;
+$header-logo-icon-width:1.75rem;
+$header-logo-icon-height:2rem;
+$header-user-head-width:1.875rem;
+.header-box {
+    position: fixed;
+    top: 0;
+    height: $header-height;
+    width: 100%;
+    padding-right: 4*$spacer;
+    display: flex;
+    z-index: 2;
+    background: $background-color-dark2;
+    color: $header-text-color;
+    .header-menu {
+        display: inline-flex;
+        vertical-align: middle;
+        background: $header-menu-bg;
+        width: $header-menu-width;
+        height: $header-height;
+        line-height: $header-height;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        background: url(../../assets/images/header/header-menu-bg.png);
+        .header-logo-icon {
+            opacity: 1;
+            width: $header-logo-icon-width;
+            height: $header-logo-icon-height;
+            background: url(../../assets/images/header/icon-logo.png) no-repeat center;
+        }
+    }
+    .header-logo-text {
+        display: inline-flex;
+        padding: 0 1.25rem;
+        height: $header-height;
+        align-items: center;
+        justify-content: center;
+        background: $header-logo-text-bg;
+    }
+}
+
+.header-tools {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    .head-user-info {
+        position: relative;
+        border-right: none;
+        .aui-icon-color-default {
+            font-size: 1.25rem;
+        }
+        .user-head {
+            width: $header-user-head-width;
+            height: $header-user-head-width;
+            vertical-align: middle;
+            margin: 0 2*$spacer;
+        }
+        .dropdown {
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+}

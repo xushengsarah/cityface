@@ -1,0 +1,254 @@
+<div>
+    <!-- 子标签管理页面 -->
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.css" />
+
+    <div id="portraitLabelManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">子标签名：</label>
+                        <div class="aui-col-18">
+                            <input id="labelNameVal" type="text" class="aui-input" placeholder="请输入字标签名">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">所属机构：</label>
+                        <div class="aui-col-18">
+                            <input id="orgIdVal" placeholder="请选择所属机构" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly"
+                                name="" />
+                            <!-- <select class="selectpicker" id="orgIdVal" data-live-search="true"></select> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <div class="form-group">
+                        <button type="button" id="searchConfigList" class="btn btn-primary aui-mr-0">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <div class="search-btn-group algo-setting-btn">
+                <button type="button" id="configAddBtn" class="btn btn-primary">新增</button>
+                <button type="button" id="configMultiDeleteBtn" class="btn btn-primary disabled">批量删除</button>
+            </div>
+            <div class="tip-box">
+                <i class="icon aui-icon-information"></i>
+                <span>已选择
+                    <span class="checked-counts" id="configTableCounts">0</span>项</span>
+            </div>
+            <div class="right-list bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="tableListConfig" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="labelName">
+                                            <div class="th-inner">子标签名</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="libName">
+                                            <div class="th-inner ">人像库</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="orgName">
+                                            <div class="th-inner">机构名</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="creator">
+                                            <div class="th-inner">创建人</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="createtime">
+                                            <div class="th-inner">创建时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="modifyTime">
+                                            <div class="th-inner">备注/说明</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="tableConfigListPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 新建/编辑弹窗 -->
+    <div class="modal fade modal-lger" id="ConfigModal" tabindex="-1" role="dialog" aria-labelledby="configLabel">
+        <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+        <link rel="stylesheet" href="assets/css/dynamicface.css">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="configLabel">新增</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row ">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">子标签ID</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="labelId_val" type="text" class="aui-input" placeholder="请输入子标签ID" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入子标签ID</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">人像库</label>
+                                <div class="aui-col-18 control-form">
+                                    <select class="selectpicker" name="libId" id="libId_val" data-change="true" data-live-search="true" size=5></select>
+                                    <!-- <select name="libId" id="libId_val"></select> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">子标签名</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="labelName_val" type="text" class="aui-input" placeholder="请输入子标签名">
+                                    <p class="text-danger mg-top-xs tip hide">请输入子标签名</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">父标签ID</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="parentId" id="parentId_val" class="selectpicker"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12" id="portraitOrg">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">所属机构</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input cursor" id="orgId_val" name="orgId" placeholder="请选择所属机构">
+                                    <!-- <select class="selectpicker" id="orgId_val" data-live-search="true" title="请选择所属机构"></select> -->
+                                    <p class="text-danger mg-top-xs tip hide">请选择所属机构</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="creator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="createtime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="updator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="udpatetime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea name="" id="comments_val" placeholder="请输入备注/说明" cols="30" rows="10" class="control-textarea aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="configModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="configTipModal" tabindex="-1" role="dialog" aria-labelledby="configTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabel">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="configModaldelectSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/portraitLabelManage.js"></script>
+</div>

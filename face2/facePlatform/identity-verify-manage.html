@@ -1,0 +1,122 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div id="identityVerifyManage" class="manages-page">
+        <div class="manages-search-style systemTab">
+            <ul class="nav nav-tabs pd0" id="typeValTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#multi_identity" role="tab" aria-controls="multi_identity" aria-selected="true">一人多证
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#multi_people" role="tab" aria-controls="multi_people" aria-selected="false">一证多人
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户姓名：</label>
+                        <div class="aui-col-18">
+                            <input id="nameVal" type="text" class="aui-input" placeholder="请输入用户姓名">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">身份证号：</label>
+                        <div class="aui-col-18">
+                            <input id="idcardVal" type="text" class="aui-input" placeholder="请输入身份证号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10 hide">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">核验操作人：</label>
+                        <div class="aui-col-18">
+                            <input id="verifyOptName" type="text" class="aui-input" placeholder="请输入核验操作人">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">人像库：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="libIdVal" data-live-search="true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7 hide">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">核验状态：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="verifyStatus">
+                                <option>全部</option>
+                                <option>未处理</option>
+                                <option>正确</option>
+                                <option>错误</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-2">
+                    <div class="form-group">
+                        <button type="button" id="IVMSearchBut" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <!-- <div class="state-btn-group">
+                <button type="button" class="btn btn-sm btn-primary">全部</button>
+                <button type="button" class="btn btn-sm">未处理</button>
+                <button type="button" class="btn btn-sm">正确</button>
+                <button type="button" class="btn btn-sm">错误</button>
+            </div> -->
+            <div class="tab-content" id="multi_all">
+                <div class="card-info-list tab-pane active" id="multi_identity" role="tabpanel" aria-labelledby="multi_identity-tab">
+                    <ul class="verify-overview-item clearfix" id="one-people-identity" style="min-height:30rem">
+                    </ul>
+                </div>
+                <div class="card-info-list tab-pane" id="multi_people" role="tabpanel" aria-labelledby="multi_people-tab">
+                    <ul class="verify-overview-item clearfix" id="one-identity-people" style="min-height:30rem">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="IVMTipModal" tabindex="-1" role="dialog" aria-labelledby="IVMTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认操作</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg">判断该证件正确？</p>
+                    <div class="form-group aui-row hide" style="margin: 1rem 0 0 0;">
+                        <div class="aui-col-24">
+                            <label class="aui-form-label aui-col-6 aui-form-require control-label">驳回原因：</label>
+                            <div class="aui-col-18 control-form">
+                                <textarea name="approvalReason" id="approvalReason_val" placeholder="请输入驳回原因" cols="30" rows="10" class="aui-textarea" maxlength="100"></textarea>
+                                <p class="text-danger tip hide">请输入驳回原因</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="IVMDeleOk">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/identityVerifyManage.js"></script>
+</div>

@@ -1,0 +1,77 @@
+$page-link-height: 1.75rem!default;
+.pagination {
+    align-items: center;
+    justify-content: flex-end;
+    .select-page {
+        width: auto!important;
+        margin: 0 $space 0 $space;
+    }
+    .aui-input {
+        width: 3.125rem;
+        margin: 0 0 0 $space;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        text-align: center;
+        border-color: $border-color-lighter;
+    }
+    .ui-selectmenu-button {
+        border-color: $border-color-lighter;
+    }
+    .page-item {
+        margin-right: $space*.5;
+        &.active,
+        &:focus {
+            .page-link {
+                background: $border-color-focus;
+                border-color: $border-color-focus;
+                color: $color-white;
+            }
+        }
+        &.disabled {
+            .page-link {
+                color: $text-color-lighter;
+                background: $border-color-light;
+                border-color: $border-color-light;
+            }
+        }
+    }
+    .page-link {
+        min-width: $page-link-height;
+        height: $page-link-height;
+        padding: 0 $space*.5;
+        line-height: calc(#{$page-link-height} - 2px);
+        color: $text-color-default;
+        border-color: $border-color-lighter;
+        text-align: center;
+        border-radius: $border-radius;
+        &:hover {
+            border-color: $border-color-focus;
+            background: none;
+        }
+    }
+    .page-icon {
+        font-size: $font-size-small;
+        &-prev {
+            transform: rotate(90deg);
+        }
+        &-next {
+            transform: rotate(-90deg);
+        }
+    }
+    .page-jump-box {
+        font-size: 0;
+    }
+    .page-go {
+        display: inline-block;
+        min-width: 2.25rem;
+        height: $page-link-height;
+        line-height: calc(#{$page-link-height} - 2px);
+        text-align: center;
+        border: 1px solid $border-color-lighter;
+        border-left: 0;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        font-size: $font-size-default;
+        cursor: pointer;
+    }
+}

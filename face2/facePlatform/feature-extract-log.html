@@ -1,0 +1,142 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="featureExtractLog" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">库名称：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="libIdVal" data-live-search="true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">算法厂家：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="factoryIdVal">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">采集起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="FExtractSearchBut" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--特征采集表 开始-->
+        <div class="manages-card-content">
+            <table id="FExtractLogTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="10%">
+                    <col width="5%">
+                    <col width="6%">
+                    <col width="7%">
+                    <col width="8%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="12%">
+                    <col width="12%">
+                    <col width="12%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="libName">库名称</th>
+                        <th data-field="version">版本</th>
+                        <th data-field="factoryName">算法厂家</th>
+                        <th data-field="minNum">最小增量id</th>
+                        <th data-field="maxNum">最大增量id</th>
+                        <th data-field="modelNum">建模总数</th>
+                        <th data-field="successNum">成功数量</th>
+                        <th data-field="failNum">失败数量</th>
+                        <th data-field="minTime">开始时间</th>
+                        <th data-field="maxTime">停止时间</th>
+                        <th data-field="updateTime">记录时间</th>
+                    </tr>
+                </thead>
+                <tbody style="max-height:30rem">
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="FExtractLogPagination"></div>
+        </div>
+        <!-- 特征采集表 结束 -->
+    </div>
+
+    <!-- 查看特征采集失败日志 -->
+    <div class="modal fade modal-lger" id="failFExtractDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">失败日志</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <table id="failFExtractDetailTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="12%">
+                            <col width="7%">
+                            <col width="12%">
+                            <col width="7%">
+                            <col width="8%">
+                            <col width="13%">
+                            <col width="13%">
+                            <col width="7%">
+                            <col width="14%">
+                            <col width="6%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="libName">库名称</th>
+                                <th data-field="failCode">失败编码</th>
+                                <th data-field="failReason">失败事由</th>
+                                <th data-field="tryNum">尝试次数</th>
+                                <th data-field="failType">失败类型</th>
+                                <th data-field="modelTime">建模时间</th>
+                                <th data-field="updateTime">记录时间</th>
+                                <th data-field="name">姓名</th>
+                                <th data-field="idcard">身份证号</th>
+                                <th data-field="picUrl">图片url</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="failFExtractDetailPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看特征采集失败日志 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/featureExtractLog.js"></script>
+</div>

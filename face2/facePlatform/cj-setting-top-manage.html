@@ -1,0 +1,332 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div id="cjSettingPage" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">账号配置类型：</label>
+                        <div class="aui-col-18">
+                            <select name="type" id="typeVal">
+                                <option value="1">融合人像账号配置</option>
+                                <option value="2">城市人像账号配置</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">算法厂家ID：</label>
+                        <div class="aui-col-18">
+                            <!-- <input id="platformIdVal" type="text" class="aui-input" placeholder="请输入"> -->
+                            <select name="platformId" id="platformIdVal"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">对接平台唯一编码：</label>
+                        <div class="aui-col-18">
+                            <input id="dockCodeVal" type="text" class="aui-input" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">对接平台描述：</label>
+                        <div class="aui-col-18">
+                            <input id="dockDescVal" type="text" class="aui-input" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户姓名：</label>
+                        <div class="aui-col-18">
+                            <input id="userNameVal" type="text" class="aui-input" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <button type="button" id="searchBtn" class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+                </div>
+            </form>
+        </div>
+        <!--厂家设置 右边内容 -->
+        <div class="manages-card-content">
+            <div class="search-btn-group cj-setting-top-btn">
+                <button type="button" id="cjTopAddBtn" class="btn btn-primary">添加</button>
+            </div>
+            <div class="right-list bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="cjSettingTopTableList" class="table table-hover">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="platformId">
+                                            <div class="th-inner ">算法厂家ID</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="dockCode">
+                                            <div class="th-inner ">对接平台唯一编码</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="dockDesc">
+                                            <div class="th-inner ">对接平台描述</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="userName">
+                                            <div class="th-inner ">用户姓名</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="password">
+                                            <div class="th-inner ">密码</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="serviceIp">
+                                            <div class="th-inner ">厂家服务地址IP</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="servicePort">
+                                            <div class="th-inner ">厂家服务地址port</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner ">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination cjSettingTopPagination" id="cjSettingTopTableListPagination"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 右边内容结束 -->
+    </div>
+
+    <!-- 厂家配置(上层) 编辑弹框 start -->
+    <div class="modal fade modal-lger" id="cjSettingTopEditModal" tabindex="-1" role="dialog" aria-labelledby="cjSettingTopEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">厂家配置(上层)</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form" id="editForm">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">用户姓名：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="userName_val" name="userName" placeholder="请输入用户姓名">
+                                    <p class="text-danger tip hide">用户姓名不能为空</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">密码：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="password_val" name="password" placeholder="请输入密码">
+                                    <p class="text-danger tip hide">密码不能为空</p>
+                                    <p class="text-danger tip1 hide">密码不能超过32位</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">厂家服务地址IP：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="serviceIp_val" name="serviceIp" placeholder="请输入厂家服务地址IP">
+                                    <p class="text-danger tip hide">厂家服务地址IP不能为空</p>
+                                    <p class="text-danger tip1 hide">请输入合法的IP</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">厂家服务地址port：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="servicePort_val" name="servicePort" placeholder="请输入厂家服务地址port">
+                                    <p class="text-danger tip hide">厂家服务地址端口不能为空</p>
+                                    <p class="text-danger tip1 hide">请输入合法的端口</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台唯一编码：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="dockCode_val" name="dockCode" placeholder="请输入对接平台唯一编码">
+                                    <p class="text-danger tip hide">对接平台唯一编码不能为空</p>
+                                    <p class="text-danger tip1 hide">对接平台唯一编码已存在</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台描述：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="dockDesc_val" name="dockDesc" placeholder="请输入对接平台描述">
+                                    <p class="text-danger tip hide">对接平台描述不能为空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">状态：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="status" id="status_val">
+                                        <option selected value="1">允许</option>
+                                        <option value="2">禁止</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">特征同步最低分：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="minScore_val" name="minScore" placeholder="请输入特征同步最低分" required>
+                                    <p class="text-danger tip hide">特征同步最低分不能为空</p>
+                                    <p class="text-danger tip1 hide">特征同步最低分为1到100整数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">算法厂家ID：</label>
+                                <div class="aui-col-18 control-form">
+                                    <!-- <input type="text" class="aui-input" id="platformId_val" name="platformId" placeholder="请输入算法厂家ID">
+                                    <p class="text-danger tip hide">算法厂家ID不能为空</p> -->
+                                    <select name="platformId" id="platformId_val"></select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库列表数组：</label>
+                                <div class="aui-col-18 control-form">
+                                    <!-- <select name="libIds" id="libIds_val">
+                                    </select> -->
+                                    <select class="selectpicker" id="libIds_val" name="libIds" data-live-search="false" multiple data-change="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台所属机构id：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input cursor" id="orgId_val" name="orgId" placeholder="请输入对接平台所属机构id">
+                                    <p class="text-danger tip hide">对接平台所属机构id不能为空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--以下是查询弹框才有的内容-->
+                        <div class="form-group aui-row form-group-cj-top-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">算法厂家名称：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="platformName" name="platformName" placeholder="请输入算法厂家名称">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台所属机构名：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="orgName" name="orgName" placeholder="请输入对接平台所属机构名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-cj-top-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="creator" name="creator" placeholder="请输入创建人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="createtime" name="createtime" placeholder="请输入创建时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-cj-top-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updator" name="updator" placeholder="请输入更新人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updatetime" name="updatetime" placeholder="请输入更新时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明：</label>
+                                <div class="aui-col-18 control-form">
+                                    <textarea name="comments" id="comments_val" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="cjSettingTopEditModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 厂家配置(上层) 编辑弹框 end -->
+
+    <!-- 厂家配置(上层) 删除提示弹窗 start -->
+    <div class="modal fade modal-sm" id="cjSettingTopModal" tabindex="-1" role="dialog" aria-labelledby="cjSettingTopLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="cjSettingTopLabel">是否确认删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cjSettingTopModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 厂家配置(上层) 删除提示弹窗 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/cjSettingTopManage.js"></script>
+</div>

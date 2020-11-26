@@ -1,0 +1,60 @@
+.image-together-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-together-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 1.875rem;
+    width: calc(16.6667 - 1.5625rem);
+    &:nth-child(6n) {
+        margin-right: 0;
+    }
+}
+
+.image-together-box {
+    position: relative;
+    display: flex;
+}
+
+.image-together-outer {
+    position: relative;
+    padding: 0.125rem;
+    border: 1px solid $border-color-default;
+    background: $background-color-default;
+    z-index: 2;
+}
+
+.image-together-inner {
+    width: 100%;
+    max-width: 100%;
+}
+
+.image-together-outer-number {
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.2rem;
+    color: $color-white;
+    font-size: $font-size-x-large;
+}
+
+.image-together-more {
+    position: absolute;
+    top: 50%;
+    right: -0.875rem;
+    height: 90%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.image-together-more-shadow {
+    height: 100%;
+}
+
+.image-together-text {
+    margin-top: .5rem;
+    font-size: $font-size-medium;
+    font-weight: bold;
+    text-align: center;
+}

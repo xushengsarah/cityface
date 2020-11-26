@@ -1,0 +1,30 @@
+<div class="aui-slider-box">
+    <div class="aui-slider-box-inner">
+        <div class="aui-slider" id="slider"></div>
+        <div class="aui-slider-min" id="sliderMin"></div>
+        <div class="aui-slider-max" id="sliderMax"></div>
+    </div>
+    <input id="sliderInput" type="text" class="aui-input aui-slider-input" value="127">
+</div>
+<script>
+    $(function() {
+        var slider = $("#slider").slider({
+            orientation: "horizontal",
+            range: "min",
+            max: 255,
+            min: 0,
+            value: 127,
+            create: function(event, ui) {
+                $("#sliderMin").text(0);
+                $("#sliderMax").text(255);
+            },
+            slide: function(event, ui) {
+                $("#sliderInput").val(ui.value);
+            }
+        });
+
+        $("#sliderInput").on("change", function() {
+            slider.slider("value", $(this).val());
+        });
+    });
+</script>

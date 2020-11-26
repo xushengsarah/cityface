@@ -1,0 +1,181 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table-fixed-columns.css" />
+    <!-- 权限使用情况 -->
+    <div id="useManage" class="manages-page">
+        <div class="manages-search-style systemTab" id="useManageTab">
+            <ul class="nav nav-tabs pd0" id="useManageNav" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#typeVal1" role="tab" aria-controls="typeVal1"
+                       aria-selected="true">考核报表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2"
+                       aria-selected="false">异常报表
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="useManageOne">
+            <div class="manages-search-style" id="useManageTabOne">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6 snapStatisticOrg">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">机构名称：</label>
+                            <div class="aui-col-18" style="padding-left:0;">
+                                <select class="selectpicker" id="orgIdKH" data-live-search="true"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6 snapRoleType">
+                        <div class="form-group" style="text-align: center;">
+                            <label class="aui-form-label aui-col-6">角色类型：</label>
+                            <div class="aui-col-18" style="padding-left:0;">
+                                <label for="roleTypeKHOne" style="margin-right:0.5rem!important">动静态权限</label>
+                                <input type="radio" name="snapRoleRadioKH" id="roleTypeKHOne" value="1"
+                                       data-role="radio" checked>
+                                <label for="roleTypeKHTwo" style="margin-right:0!important">普通权限</label>
+                                <input type="radio" name="snapRoleRadioKH" id="roleTypeKHTwo" value="2"
+                                       data-role="radio">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8 khData">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">起止时间：</label>
+                            <div class="aui-col-18">
+                                <div class="inline-block v-middle wid-35">
+                                    <label for="useManageDateOne" id="useManageDateMoreOne"
+                                           class="ui-checkboxradio-button mr-smr">日报</label>
+                                    <input type="radio" name="useManageDate" id="useManageDateOne" value="1"
+                                           data-role="radio-button" checked>
+                                    <label for="useManageDateTwo" id="useManageDateMoreOne"
+                                           class="ui-checkboxradio-button mr-smr">自定义</label>
+                                    <input type="radio" name="useManageDate" id="useManageDateTwo" value="2"
+                                           data-role="radio-button">
+                                </div>
+                                <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataDay"
+                                     style="font-size:0.75rem;">
+                                    <input id="useManageOneDateSnap" class="input-text datepicker-input radius Wdate"
+                                           style="width:100%;text-align: left;" type="text"
+                                           onFocus="WdatePicker({maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                                <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataWeek hide"
+                                     style="font-size:0.75rem;padding:0;">
+                                    <input id="useManageOneDateStart" class="input-text datepicker-input radius Wdate"
+                                           type="text" readonly
+                                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'useManageOneDateEnd\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="useManageOneDateEnd" class="input-text datepicker-input radius Wdate"
+                                           type="text" readonly
+                                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'useManageOneDateStart\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'useManageOneDateStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar" style="right:0.25rem;"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-4">
+                        <button type="button" id="useManageOneSearch" class="btn btn-primary"
+                                style="min-width: auto;">搜索</button>
+                        <button type="button" id="useManageOneImport" class="btn" style="min-width: auto;">导出</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <table id="useManageOneTable" class="table-hover"></table>
+                <div class="loadEmpty hide" id="useManageOneEmpty"></div>
+            </div>
+        </div>
+        <div class="useManageTwo hide">
+            <div class="manages-search-style" id="useManageTabTwo">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6 snapStatisticOrg">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">机构名称：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="orgIdYC" data-live-search="true"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6 snapRoleType">
+                        <div class="form-group" style="text-align: center;">
+                            <label class="aui-form-label aui-col-6">角色类型：</label>
+                            <div class="aui-col-18" style="padding-left:0;">
+                                <label for="roleTypeYCOne" style="margin-right:0.5rem!important">动静态权限</label>
+                                <input type="radio" name="snapRoleRadioYC" id="roleTypeYCOne" value="1"
+                                       data-role="radio" checked>
+                                <label for="roleTypeYCTwo" style="margin-right:0!important">普通权限</label>
+                                <input type="radio" name="snapRoleRadioYC" id="roleTypeYCTwo" value="2"
+                                       data-role="radio">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8 otherData">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">起止时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                     style="font-size:0.75rem;" id="useManageTwoDate">
+                                    <!-- <input id="useManageTwoDateStart" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'useManageTwoDateEnd\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="useManageTwoDateEnd" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'useManageTwoDateStart\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-4">
+                        <button type="button" id="useManageTwoSearch" class="btn btn-primary"
+                                style="min-width: auto;">搜索</button>
+                        <button type="button" id="useManageTwoImport" class="btn" style="min-width: auto;">导出</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <table id="useManageTwoTable" class="table-hover"></table>
+                <div class="loadEmpty hide" id="useManageTwoEmpty"></div>
+            </div>
+        </div>
+        <!--考核列表各项点击事件展示弹窗-->
+        <div class="modal modal-lger" id="useManageKHItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <span>
+                            <i aria-hidden="true" class="aui-icon-not-through" id="useManageItemClose"></i>
+                        </span>
+                    </div>
+                    <div class="modal-body" style="height:50rem;"></div>
+                </div>
+            </div>
+        </div>
+        <!--考核列表各项点击事件的点击事件展示弹窗-->
+        <div class="modal modal-lger" id="useManageKHItemChildModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <span data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="aui-icon-not-through"></i>
+                        </span>
+                    </div>
+                    <div class="modal-body" style="height:50rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table-fixed-columns.js"></script>
+    <script type="text/javascript" src="js/use-manage.js"></script>
+</div>

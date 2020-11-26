@@ -1,0 +1,40 @@
+<fieldset>
+    <label for="checkbox-1" class="ui-checkboxradio-checkbox-label">New York</label>
+    <input type="checkbox" name="checkbox-1" id="checkbox-1" data-role="checkbox" checked>
+    <label for="checkbox-2" class="ui-checkboxradio-checkbox-label">Paris</label>
+    <input type="checkbox" name="checkbox-1" id="checkbox-2" data-role="checkbox" disabled>
+    <label for="checkbox-3" class="ui-checkboxradio-checkbox-label">London</label>
+    <input type="checkbox" name="checkbox-1" id="checkbox-3" data-role="checkbox">
+    <label for="checkbox-4" class="ui-checkboxradio-checkbox-label">London</label>
+    <input type="checkbox" name="checkbox-1" id="checkbox-4" data-role="checkbox" checked disabled>
+</fieldset>
+<fieldset style="margin-top:20px">
+    <p>按钮类型：</p>
+    <label for="checkbox-button-1" class="ui-checkboxradio-button">云天</label>
+    <input type="checkbox" name="checkbox-2" id="checkbox-button-1" data-role="checkbox-button" checked>
+    <label for="checkbox-button-2" class="ui-checkboxradio-button">商汤</label>
+    <input type="checkbox" name="checkbox-2" id="checkbox-button-2" data-role="checkbox-button">
+    <label for="checkbox-button-3" class="ui-checkboxradio-button">依图</label>
+    <input type="checkbox" name="checkbox-2" id="checkbox-button-3" data-role="checkbox-button">
+    <label for="checkbox-button-4" class="ui-checkboxradio-button">依图</label>
+    <input type="checkbox" name="checkbox-2" id="checkbox-button-4" data-role="checkbox-button">
+</fieldset>
+<fieldset style="margin-top:20px">
+    <p>tag类型：</p>
+    <label for="checkbox-tag-1" class="ui-checkboxradio-tag">云天</label>
+    <input type="checkbox" name="checkbox-3" id="checkbox-tag-1" data-role="checkbox-button" checked>
+    <label for="checkbox-tag-2" class="ui-checkboxradio-tag">商汤</label>
+    <input type="checkbox" name="checkbox-3" id="checkbox-tag-2" data-role="checkbox-button">
+    <label for="checkbox-tag-3" class="ui-checkboxradio-tag">依图</label>
+    <input type="checkbox" name="checkbox-3" id="checkbox-tag-3" data-role="checkbox-button">
+    <label for="checkbox-tag-4" class="ui-checkboxradio-tag">依图</label>
+    <input type="checkbox" name="checkbox-3" id="checkbox-tag-4" data-role="checkbox-button">
+</fieldset>
+<script>
+    $(function() {
+        $('[data-role="checkbox"]').checkboxradio();
+        $('[data-role="checkbox-button"]').checkboxradio({
+            icon: false
+        });
+    })
+</script>

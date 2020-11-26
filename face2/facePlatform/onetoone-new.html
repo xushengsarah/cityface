@@ -1,0 +1,98 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div class="layout-type2 control-new-card popup" id="onetoonePage" style="z-index:1051">
+        <div class="aui-card">
+            <div class="popup-title">
+                <span class="card-title">图片比对</span>
+                <i class="aui-icon-not-through" id="backPrevPageOne"></i>
+            </div>
+            <div class="popup-body">
+                <div class="card-content onetoone">
+                    <div class="content-title">
+                        <div class="text-lger text-bold">图片比对</div>
+                        <div class="text-xm text-lighter mt-1">One to one search</div>
+                    </div>
+                    <div class="content-box" style="margin-top: 3rem;">
+                        <div class="search-one-box inline-block">
+                            <div class="search-before" id="search-before1">
+                                <div class="search-one-top">
+                                    <div class="img-box">
+                                        <img src="./assets/images/onetoone/filepic.png">
+                                        <input name="txtName" type="file" class="pic" id="pic" onchange="onetoone_loadImage(this)" accept="image/*" />
+                                    </div>
+                                    <div class="search-one-info text-bold text-md">本地上传</div>
+                                </div>
+                                <div class="search-one-center">
+                                    <div class="text-left text-xm text-lighter mb-1">
+                                        或者
+                                    </div>
+                                    <div class="idcard">
+                                        <p class="text-left mb-sm text-bold">输入身份证</p>
+                                        <div class="idcard-search-box">
+                                            <input class="aui-input" type="text" />
+                                            <span class="search-icon noborder">
+                                                <i class="aui-icon-search"></i>
+                                            </span>
+                                        </div>
+                                        <p class="text-danger tip hide">身份证号码有误</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-after none" id="search-after1">
+                                <i class="icon aui-icon-close"></i>
+                                <img src="" id="show" class="after-pic">
+                            </div>
+                        </div>
+                        <div class="search-one-contrast inline-block" id="searchOneContrast">
+                            <div class="search-num mb-2">
+                                <div class="text-xm">相似度</div>
+                                <div class="num-0">
+                                    <span class="num">0</span>
+                                    <span class="num-tip">%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-lg m-0 btn-active" id="imgComparison">对比</button>
+                        </div>
+                        <div class="search-one-box inline-block">
+                            <div class="search-before" id="search-before2">
+                                <div class="search-one-top">
+                                    <div class="img-box">
+                                        <form action="" enctype="multipart/form-data">
+                                            <img src="./assets/images/onetoone/filepic.png">
+                                            <input name="txtName" type="file" class="pic" id="pic2" onchange="onetoone_loadImage2(this)" accept="image/*" />
+                                        </form>
+                                    </div>
+                                    <div class="search-one-info text-bold text-md">本地上传</div>
+                                </div>
+                                <div class="search-one-center">
+                                    <div class="text-left text-xm text-lighter mb-1">
+                                        或者
+                                    </div>
+                                    <div class="idcard">
+                                        <p class="text-left mb-sm text-bold">输入身份证</p>
+                                        <div class="idcard-search-box">
+                                            <input class="aui-input" type="text" />
+                                            <span class="search-icon noborder">
+                                                <i class="aui-icon-search"></i>
+                                            </span>
+                                        </div>
+                                        <p class="text-danger tip hide">身份证号码有误</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-after none" id="search-after2">
+                                <i class="icon aui-icon-close"></i>
+                                <img src="" id="show2" class="after-pic">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <!-- <span class="btn btn-primary" id="">确定</span>
+                <span class="btn" id="">取消</span> -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/m-onetoone.js"></script>
+</div>

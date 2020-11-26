@@ -1,0 +1,103 @@
+<div style="background:#19222d">
+
+    <div id="main" style="width: 800px;height:300px;"></div>
+</div>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var dataAxis = ['常驻', '在逃', '涉恐', '流动', '社保', '嫌疑人', '盗窃汽车', '特定人员', '省厅W2', '机场'];
+    var data = [140, 82, 45, 115, 140, 85, 45, 113, 41, 115];
+    var yMax = 200;
+    var dataShadow = [];
+
+    for (var i = 0; i < data.length; i++) {
+        dataShadow.push(yMax);
+    }
+
+    // 指定图表的配置项和数据
+    var option = {
+        xAxis: {
+            data: dataAxis,
+            axisLabel: {
+                textStyle: {
+                    color: '#7d8a93'
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#0a56ab'
+                }
+            },
+            z: 10
+        },
+        yAxis: {
+            axisLine: {
+                show: false,
+                color: 'red'
+            },
+            axisTick: {
+                show: false,
+                lineStyle: {
+                    type: 'dashed'
+                }
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#999'
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            }
+        },
+        dataZoom: [{
+            type: 'inside'
+        }],
+        series: [{ // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(0,0,0,0.05)'
+                }
+            },
+            barGap: '-100%',
+            barCategoryGap: '40%',
+            animation: false
+        }, {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(55,149,254,0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(55,149,254,0.05)'
+                        }]
+                    ),
+                    borderColor: '#0a56ab'
+                }
+            },
+            data: data
+        }]
+    };
+    var zoomSize = 6;
+    myChart.on('click', function(params) {
+        console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+        myChart.dispatchAction({
+            type: 'dataZoom',
+            startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+            endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+        });
+    });
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>

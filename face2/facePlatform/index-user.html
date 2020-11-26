@@ -1,0 +1,203 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div class="layout-type1 user">
+        <div class="container-hat">
+            <div class="add-user-content">
+                <div class="add-user-img" id="uindexImg" dataid>
+                    <div class="user-img-wrap">
+                        <i class="icon aui-icon-close hide"></i>
+                        <img src="assets/images/user/add-user.png">
+                    </div>
+                    <input class="uploadFile" type="file" name="">
+                    <p class="text">您可以点击上方添加照片</p>
+
+                </div>
+                <div class="search-box big">
+                    <div class="aui-input-affix-wrapper index-user btn-search">
+                        <div class="aui-input-group-inner" id="home-search">
+                            <span class="search-icon noborder">
+                                <i class="aui-icon-idcard"></i>
+                            </span>
+                            <input placeholder="请输入身份证号" id="idcardsearchindex" type="text" class="aui-input">
+                            <span id="home-icon-close" class="noborder hide">
+                                <i class="aui-icon-close"></i>
+                            </span>
+                            </input>
+                            <button type="button" id="uindexsearch" class="btn btn-primary aui-mr-0">开始搜索</button>
+                        </div>
+                    </div>
+                    <button type="button" id="onecompare" class="btn btn-default hide">图片比对</button>
+                    <!-- <button type="button" class="btn btn-default hide">库与库比对</button> -->
+                </div>
+                <div class="idcard-alert alert alert-dismissible text-error" role="alert">身份证号有误.</div>
+                <div class="img-alert  alert  alert-dismissible text-error" role="alert"> 照片不能为空.</div>
+            </div>
+
+        </div>
+        <div class="aui-card user-detail">
+            <div class="user-detail-content aui-row">
+                <div class="aui-col-6 control hide">
+                    <div class="card-title-box">
+                        <span class="card-title">布控统计</span>
+                    </div>
+                    <div class="card-title-content">
+                        <div class="aui-row">
+                            <div class="count-item aui-col-12 cursor" id="bkNumber">
+                                <div class="count-item-content">
+                                    <img src="assets/images/user/count-icon-01.png">
+                                    <span class="name">布控数量</span>
+                                    <span class="num" id="bkFaceCount">2</span>
+                                </div>
+                            </div>
+                            <div class="count-item aui-col-12 cursor" id="gjNumber">
+                                <div class="count-item-content">
+                                    <img src="assets/images/user/count-icon-02.png">
+                                    <span class="name">告警数量</span>
+                                    <span class="num alarm" id="gjCount">18</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-18 waring">
+                    <div class="card-title-box">
+                        <span class="card-title">最新告警</span>
+                    </div>
+                    <div class="warning-list-wrap">
+                        <ul class="card-title-content warning-list" id="warning-list">
+                            <!-- <li class="warning-item">
+                                <div class="warning-item-content">
+                                    <div class="warning-item-img-box">
+                                        <div class="warning-item-img">
+                                            <img src="img/people.jpg" />
+                                            <img src="img/people.jpg" />
+                                        </div>
+                                        <span class="warning-item-percent grade1">94%</span>
+                                    </div>
+                                    <div class="warning-item-name">
+                                        <span>818特大杀人案</span>
+                                        <span class="warning-item-level grade1">紧急</span>
+                                    </div>
+                                    <p class="warning-item-address">
+                                        <span class="warning-item-text">解放路广播电视大学路口A1</span>
+                                    </p>
+                                    <p class="warning-item-time">
+                                        <i class="aui-icon-color-default aui-icon-history"></i>
+                                        <span class="warning-item-text">2018-01-02 05:23:03</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="warning-item">
+                                <div class="warning-item-content">
+                                    <div class="warning-item-img-box">
+                                        <div class="warning-item-img">
+                                            <img src="img/people.jpg" />
+                                            <img src="img/people.jpg" />
+                                        </div>
+                                        <span class="warning-item-percent grade2">94%</span>
+                                    </div>
+                                    <div class="warning-item-name">
+                                        <span>818特大杀人案</span>
+                                        <span class="warning-item-level grade2">紧急</span>
+                                    </div>
+                                    <p class="warning-item-address">
+                                        <span class="warning-item-text">解放路广播电视大学路口A1</span>
+                                    </p>
+                                    <p class="warning-item-time">
+                                        <i class="aui-icon-color-default aui-icon-history"></i>
+                                        <span class="warning-item-text">2018-01-02 05:23:03</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="warning-item">
+                                <div class="warning-item-content">
+                                    <div class="warning-item-img-box">
+                                        <div class="warning-item-img">
+                                            <img src="img/people.jpg" />
+                                            <img src="img/people.jpg" />
+                                        </div>
+                                        <span class="warning-item-percent grade1">94%</span>
+                                    </div>
+                                    <div class="warning-item-name">
+                                        <span>818特大杀人案</span>
+                                        <span class="warning-item-level grade1">紧急</span>
+                                    </div>
+                                    <p class="warning-item-address">
+                                        <span class="warning-item-text">解放路广播电视大学路口A1</span>
+                                    </p>
+                                    <p class="warning-item-time">
+                                        <i class="aui-icon-color-default aui-icon-history"></i>
+                                        <span class="warning-item-text">2018-01-02 05:23:03</span>
+                                    </p>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="aui-col-6 add">
+                    <div class="card-title-box">
+                        <span class="card-title">新建布控</span>
+                    </div>
+                    <div class="card-title-content add-control">
+                        <div class="add-control-content">
+                            <img src="assets/images/managers/add-control-icon.png">
+                        </div>
+                        <button type="button" class="btn text-bold" id="newBukong" prevPageName="index-user">
+                            <i class="aui-icon-add"></i>新建布控</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap mgTopBig">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmOkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">确认后将无法修改，是否确认是同一个人？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 确认告警信息弹窗 end -->
+
+    <!-- 误报告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">误报告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">误报后将无法修改，是否选择误报？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 误报告警信息弹窗 end -->
+
+    <script type="text/javascript" src="js/indexUser.js"></script>
+
+</div>

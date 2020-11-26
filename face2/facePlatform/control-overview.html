@@ -1,0 +1,288 @@
+<div>
+    <div class="layout-type1 user" id="controlOverviewPage" style="height:100%;background:#fff;">
+        <!-- <div class="container-hat container-overview">
+            <p class="text-lg">布控概览</p>
+            <div class="hat-content clearfix hide">
+                <ul class="hat-data-box">
+                    <li class="numerical-box" id="controlOverviewTotal">
+                        <p class="numerical-title">布控任务总数</p>
+                        <div class="numerical-info">
+                            <span class="number">0</span>
+                            <div class="number-sub">
+                                <span class="text">同比上月</span>
+                                <span class="text-prompt text-bold">--</span>
+                                <i class="aui-icon-arrow hide"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="numerical-box" id="controlOverviewAdd">
+                        <p class="numerical-title">今日新增任务数</p>
+                        <div class="numerical-info">
+                            <span class="number">0</span>
+                            <div class="number-sub">
+                                <span class="text">同比上月</span>
+                                <span class="text-prompt text-bold">--</span>
+                                <i class="aui-icon-arrow hide"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="circle-chart-box dot-card-body" id="controlOverviewCircle">
+                    <div class="circle-chart"></div>
+                    <div class="chart-legend">
+                        <ul class="legend-list">
+                            <li class="legend-item">
+                                <i class="legend-icon warning"></i>
+                                <span class="legend-name">待开始</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                            <li class="legend-item">
+                                <i class="legend-icon online"></i>
+                                <span class="legend-name">进行中</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                            <li class="legend-item">
+                                <i class="legend-icon end"></i>
+                                <span class="legend-name">已结束</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="line-chart-box">
+                    <p class="text-lg">各单位布控数量统计</p>
+                    <div class="lineChart" id="controlOverviewBar"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="content content-hat"> -->
+        <div class="content-hat">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative">
+                <div class="card-title-box">
+                    <div class="card-title">
+                        <ul class="nav nav-tabs" id="controlOverviewTabHeader" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active fz18" data-toggle="tab" href="#allBk" role="tab" aria-controls="all" aria-selected="false">全部任务
+                                    <span class="control-total hide">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fz18" data-toggle="tab" href="#profileBk" role="tab" aria-controls="profile" aria-selected="true">我的任务
+                                    <span class="control-total hide">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-operate-box float-right">
+                        <div class="operate">
+                            <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                <div class="aui-input-group-inner" id="controlOverviewSearchBox">
+                                    <input placeholder="请输入任务名称搜索" type="text" class="aui-input" id="controlOverviewKeyWordInput">
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="tag-list">
+                                <li class="tag hide">
+                                    <span>任务状态：</span>
+                                    <span>待开始</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>任务类型：</span>
+                                    <span>重大事件</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>所属机构：</span>
+                                    <span>龙岗分局</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>任务时间：</span>
+                                    <span>近一天</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                            </ul>
+                            <span class="btn btn-sm btn-filter" data-role="expandFilter">
+                                <span>显示筛选</span>
+                                <i class="aui-icon-drop-down-2"></i>
+                            </span>
+                            <button type="button" class="btn btn-primary btn-sm float-right" id="newBukong" prevPageName="control">
+                                <i class="aui-icon-add-circle"></i> 新建布控</button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="filter-box">
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">任务状态:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">待开始</li>
+                                    <li class="tag">进行中</li>
+                                    <li class="tag">已结束</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">任务类型:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">重大事件</li>
+                                    <li class="tag">场景安保</li>
+                                    <li class="tag">常规布控</li>
+                                    <li class="tag">巡逻布控</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">所属机构:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">罗湖分局</li>
+                                    <li class="tag">福田分局</li>
+                                    <li class="tag">龙岗分局</li>
+                                    <li class="tag">宝安分局</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">任务时间:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">近一天</li>
+                                    <li class="tag">近三天</li>
+                                    <li class="tag">近七天</li>
+                                    <li class="tag">近半个月</li>
+                                    <li class="tag">自定义时间</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-content tab-content" id="controlOverviewTabContent">
+                    <div class="tab-pane fade show active" id="allBk" role="tabpanel" aria-labelledby="all-tab">
+                        <ul class="card-info-list card-info-list2 clearfix">
+                        </ul>
+                        <div id="controlAllPage"></div>
+                    </div>
+                    <div class="tab-pane fade" id="profileBk" role="tabpanel" isRefreshData="true" aria-labelledby="profile-tab">
+                        <div class="list-title-box">
+                            <div class="list-title clearfix">
+                                <div class="float-left">
+                                    <i class="aui-icon-open-app icon"></i>
+                                    <span class="aui-inline-block v-middle">我创建的</span>
+                                    <span class="tag grade3">0</span>
+                                </div>
+                                <span class="text-link float-right">查看更多</span>
+                            </div>
+                            <ul class="card-info-list card-info-list2 clearfix">
+                            </ul>
+                            <div class="page-container" id="controlMyCreatePage"></div>
+                        </div>
+                        <div class="list-title-box aui-mt-sm">
+                            <div class="list-title clearfix">
+                                <div class="float-left">
+                                    <i class="aui-icon-news icon"></i>
+                                    <span class="aui-inline-block v-middle">通知我的</span>
+                                    <span class="tag grade3">0</span>
+                                </div>
+                                <span class="text-link float-right">查看更多</span>
+                            </div>
+                            <ul class="card-info-list card-info-list2 clearfix">
+                            </ul>
+                            <div class="page-container" id="controlNotifyMePage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+
+
+    </div>
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs" id="customPopup_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" autocomplete="off" placeholder="开始时间" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" autocomplete="off" placeholder="结束时间" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/controlOverview.js"></script>
+</div>

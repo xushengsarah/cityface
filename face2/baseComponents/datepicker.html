@@ -1,0 +1,28 @@
+<h2 class="subTitle">单个日历选择</h2>
+<div class="datepicker-box date aui-input" id="datepicker-trigger1">
+    <input type="text" class="datepicker-input" placeholder="请选择日期"><span class="input-group-addon"><i class="datepicker-icon aui-icon-calendar"></i></span>
+</div>
+
+<h2 class="subTitle">日历时间段选择</h2>
+<div class="input-daterange datepicker-box aui-input" id="datepicker-trigger2">
+    <input type="text" class="datepicker-input" name="start" placeholder="开始时间"/>
+    <span class="input-group-addon">~</span>
+    <input type="text" class="datepicker-input" name="end" placeholder="结束时间"/>
+    <span class="input-group-addon"><i class="datepicker-icon aui-icon-calendar"></i>
+</div>
+
+<script>
+    $('#datepicker-trigger1').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        todayBtn: true,
+        language: "zh-CN",
+        format: 'yyyy-mm-dd'
+    });
+    $('#datepicker-trigger2').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        language: "zh-CN",
+        format: 'yyyy-mm-dd'
+    });
+</script>

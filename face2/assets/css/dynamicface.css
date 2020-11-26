@@ -1,0 +1,884 @@
+.css-body ::-webkit-scrollbar{width:8px;height:8px}
+.css-body ::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 3px #fff;border-radius:5px}
+.css-body ::-webkit-scrollbar-thumb{position:relative;padding:5px 0;border-radius:5px;background-color:#ccc}
+/*.css-body ::-webkit-scrollbar-thumb:hover{background-color:#666}*/
+.css-body ::-webkit-scrollbar-track-piece{background-color:#fff}
+.css-body ::-webkit-scrollbar-thumb:window-inactive{background:#ccc}
+.blank{
+	clear: both;
+	width: 100%;
+	height: 1px;
+}
+.css-cont-left{
+	float: left;
+	padding: 0;
+	height: 100%;
+	overflow: auto;
+}
+.css-search_card{
+	border-bottom: 1px solid #ccc;
+	line-height: 55px;
+	padding-left: 10%;
+}
+.css-search_card input{
+	width: 80%;
+}
+.css-search_card span{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	font-size: 27px;
+	vertical-align: sub;
+	font-weight: lighter;
+	cursor: pointer;
+	color: #666;
+}
+.css-add_pic{
+	text-align: center;
+	color: #666;
+	overflow: hidden;
+}
+.css-show-morepic{}
+.css-show-morepic li{
+	display: inline-block;
+	position: relative;
+	margin: 3px;
+	border: 1px solid #dedede;
+}
+.css-show-morepic li input{
+	position: absolute;
+	right: 0px;
+	top: -3px;
+	z-index: 2;
+}
+.css-show-morepic .css-mc{
+	position: absolute;
+	width: 114px;
+	height: 114px;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: .5;
+	text-align: center;
+}
+.css-show-morepic .css-mc span{
+	display: inline-block !important;
+	width: 30px !important;
+	height: 20px !important;
+	background: initial !important;
+	margin-top: 50px !important;
+	cursor: pointer;
+}
+.css-add_pic .css-hostory{
+	position: absolute;
+	top: 7px;
+	right: 2%;
+	cursor: pointer;
+}
+.css-add_pic .css-ts{
+	display: inline-block;
+	line-height: 48px;
+}
+.css-add_pic .css-updata_p{
+	position: relative;
+	margin: 0 auto;
+}
+.css-add_pic .css-updata_p images{
+	width: 112px;
+	height: 112px;
+}
+.css-add_pic .css-updata{
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+.css-add_pic .css-updata_p span{
+	display: inline-block;
+	width: 100%;
+	color: #fff;
+	background: #CDD2D7;
+}
+.css-gj{
+	margin-top: 10px;
+	overflow: hidden;
+}
+.css-gj .css-more{
+	overflow: hidden;
+}
+.css-gj .css-more span{
+	float: right;
+	cursor: pointer;
+}
+.css-submint{
+	text-align: center;
+	margin: 40px 0;
+}
+.css-submint button{
+	margin: 0 10px;
+}
+.css-every{
+	margin-top: 5px;
+}
+.css-every span.css-change-one{
+	display: inline-block;
+	text-align: center;
+	float: right;
+	border: 1px solid #ededed;
+	padding: 2px 7px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+	border-radius: 3px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.css-every span.css-change-one.on{
+	background: #00AAFF;
+	border: 1px solid #00AAFF;
+	color: #fff;
+}
+.css-every .form-group{
+	display: block;
+	width: 100%;
+}
+.css-ts_title{
+	margin: 10px 0;
+}
+.css-match_list p{
+	border: 1px solid #dedede;
+	overflow: hidden;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.css-match_list p input:hover{
+	color: #333;
+}
+.css-match_list input{
+	border: none;
+	width: 100%;
+	float: left;
+	background: #eee;
+	cursor: pointer;
+	color: #999;
+}
+.css-match_list p span{
+	float: left;
+	margin-top: 13px;
+	display: inline-block;
+	cursor: pointer;
+}
+.css-match_list{
+	overflow: hidden;
+}
+.css-match_totle{
+    float: inherit;
+    margin: 0 auto;
+}
+.css-border{
+	height: 3px;
+	background: #DADDE1;
+	position: relative;
+	padding: 0;
+}
+.css-jd{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 3px;
+	background: #2193FE;
+	width: 80%;
+}
+.css-lun{
+	position: absolute;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: #2193FE;
+	top: -4px;
+	left: 80%;
+	z-index: 2;
+	cursor: pointer;
+}
+.css-show_sz{
+	float: right;
+    margin-top: -8px;
+}
+
+.css-cont-right{
+	float: right;
+	width: 73%;
+	height: 100%;
+	overflow: auto;
+}
+.css-cont-right .css-top_title{
+	font-size: 16px;
+}
+.css-cont-right .css-track-title{
+	overflow: hidden;
+	margin-top: 10px;
+}
+.css-cont-right .css-right-track{
+	float: right;
+	font-size: 15px;
+	cursor: pointer;
+}
+.css-cont-right .css-right-track .css-icon{
+	display: inline-block;
+	background: url(../images/track_icon.png) no-repeat;
+	background-position: -250px -1px;
+	vertical-align: text-top;
+	margin-right: 5px;
+	width: 20px;
+	height: 20px;
+}
+.css-search_rlist{
+	position: relative;
+}
+.css-cont-right .css-right{
+	float: right;
+}
+.css-cont-right .css-right:nth-of-type(4):after,.css-cont-right .css-right:nth-of-type(3):after{
+	content: '|';
+	margin: 0 15px;
+}
+/*.css-cont-right .css-right:nth-of-type(2):after{
+	content: '';
+	margin: 0 15px;
+}*/
+.css-cont-right .css-right:nth-of-type(1) font{
+	width: 42px;
+	height: 22px;
+	display: inline-block;
+	background: url(../images/all_icon.png) no-repeat;
+	background-position: -85px -308px;
+	vertical-align: text-top;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.css-cont-right .css-right:nth-of-type(2) font.active{
+	background-position: -37px -308px;
+}
+.css-cont-right span.on{
+	color: #2193FE;
+}
+.css-no-search{
+	text-align: center;
+	margin-top: 100px;
+}
+.css-search_list{
+	overflow: hidden;
+}
+.css-ku-search_list li{
+	float: left;
+	margin-right: 1.2%;
+	margin-top: 15px;
+	position: relative;
+	width: 145px;
+	border: 1px solid #dedede;
+}
+.css-ku-search_list li images{
+	width: 143px;
+	height: 135px;
+}
+.css-ku-search_list li span.css-nub{
+	position: absolute;
+	display: inline-block;
+	width: 50px;
+	height: 28px;
+	left: 0;
+	top: 105px;
+	line-height: 28px;
+	text-align: center;
+	background: #F5A623;
+	font-size: 12px;
+}
+.css-ku-search_list li span.css-mark{
+	background: #2193FE;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    z-index: 5;
+    padding: 1px;
+}
+.css-ku-search_list li p{
+	background: #eee;
+}
+.css-ku-search_list li p span{
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	background: #F5A623;
+	font-size: 12px;
+	text-align: left;
+	padding: 3px;
+}
+.css-ku-search_list li p span font.cameraname{
+	overflow: hidden;
+	display: inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+.css-ku_name{
+	margin-top: 15px;
+}
+.css-ku_name i{
+	cursor: pointer;
+}
+.css-form_date{
+	border: 1px solid #dedede;
+}
+.css-form_date .form-control{
+	border: none;
+	width: 48%;
+	text-align: center;
+}
+.css-form_date .css-jg{
+	float:left;
+	padding:10px 0;
+	background:#eee;
+	display: inline-block;
+	width: 4%;
+}
+.css-form_date .css-sj-title{
+	float: left;
+}
+.css-hostery_pic{
+	overflow: hidden;
+    width: 300px;
+    min-height: 300px;
+    position: fixed;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    top: 92px;
+    left: 35%;
+    z-index: 1;
+}
+.css-hostery_pic li{
+	float: left;
+	margin-right: 10px;
+	border: 1px solid #dedede;
+	position: relative;
+	overflow: hidden;
+}
+.css-hostery_pic li span{
+	position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    top: -1px;
+    right: -1px;
+    border-radius: 50%;
+    background: #F5222D;
+    color: #fff;
+    font-size: 12px;
+    line-height: 10px;
+    text-align: center;
+    margin: 0;
+}
+.css-hostery_pic li:nth-of-type(4n){
+	margin-right: 0;
+}
+.css-hostery_pic li images{
+	width: 60px;
+	height: 60px;
+}
+.css-hostery_pic span,.css-heard p span{
+	float: right;
+	font-size: 24px;
+	margin-top: -7px;
+	cursor: pointer;
+}
+.css-hostery_pic p,.css-heard p{
+	overflow: hidden;
+	padding: 10px 15px 5px 15px;
+	border-bottom: 1px solid #dedede;
+}
+.css-hostery_pic ul{
+	padding: 5px 15px 15px 15px;
+	overflow: hidden;
+}
+
+
+.css-track-list{
+	width: 495px;
+	overflow: hidden;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 0 22px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 22px rgba(0, 0, 0, .8);
+    box-shadow: 0 0 22px rgba(0, 0, 0, .8);
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    z-index: 10;
+}
+.css-track-list .css-track-head{
+	border-bottom: 1px solid #dedede;
+	padding: 5px 10px;
+}
+.css-track-list .css-track-head .css-title{
+	font-size: 18px;
+}
+.css-track-list .css-track-head .icon font{
+	background: url(../images/track_icon.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: 5px;
+}
+.css-track-list .css-track-head span,.css-track-list .css-track-head span font{
+	display: inline-block;
+}
+.css-track-list .css-track-head .css-title{
+
+}
+.css-track-list .css-track-head .css-down{
+	margin-left: 20px;
+	cursor: pointer;
+	color: #1890FF;
+}
+.css-track-list .css-track-head .css-down font{
+	background-position: -209px -1px;
+}
+.css-track-list .css-track-head .css-way{
+	margin-left: 20px;
+	cursor: pointer;
+	color: #1890FF;
+}
+.css-track-list .css-track-head .css-way font{
+	background-position: -250px -1px;
+}
+.css-track-list .css-track-head .css-evryone{
+	margin-left: 20px;
+	cursor: pointer;
+	color: #1890FF;
+}
+.css-track-list .css-track-head .css-evryone font{
+	background-position: -300px -1px;
+}
+.css-track-list .css-track-head .css-title font{
+	background-position: ;
+}
+.css-track-list .css-track-head .css-close{
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+}
+.css-people p{
+	font-size: 12px;
+	margin-bottom: 7px;
+}
+.css-people ul:nth-of-type(1){
+	margin-top: 10px;
+}
+.css-people ul:last-child{
+	margin-bottom: 15px;
+}
+.css-people ul{
+    border-left: 1px solid #65B4FE;
+    position: relative;
+    padding-left: 20px;
+    margin-left: 20px;
+}
+.css-people ul .css-bj{
+	position: absolute;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/all_icon.png) no-repeat;
+    background-position: -167px -348px;
+    top: -4px;
+    left: -12px;
+
+}
+.css-people li{
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+.css-people li images{
+	width: 60px;
+	height: 60px;
+}
+.css-people li span{
+	display: inline-block;
+	background: #FE0A2F;
+	color: #fff;
+	width: 14px;
+	height: 14px;
+	text-align: center;
+	line-height: 14px;
+	border-radius: 50%;
+	cursor: pointer;
+	position: absolute;
+	top: -7px;
+	right: -7px;
+}
+.css-kuname_show .css-mc{
+	position: absolute;
+	width: 143px;
+	height: 177px;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: .5;
+	text-align: center;
+}
+.css-kuname_show .css-mc span{
+	display: inline-block !important;
+	margin: 75px 3px 0 3px;
+	cursor: pointer;
+	line-height: 177px;
+	background: url(../images/track_icon.png) no-repeat;
+	width: 22px;
+	height: 20px;
+	vertical-align: middle;
+}
+.css-kuname_show .css-mc span.css-add{
+	background-position: -4px -2px;
+}
+.css-kuname_show .css-mc span.css-big{
+	background-position: -57px -2px;
+}
+.css-kuname_show .css-mc span.css-xq{
+	background-position: -113px -2px;
+}
+.css-kuname_show .css-mc span.css-dt{
+	background-position: -165px -2px;
+}
+.js-big-images{
+	width: 100%;
+	max-height: 100%;
+}
+
+.css-cont{
+	overflow: hidden;
+	padding: 20px;
+}
+.css-list-left{
+	padding: 0;
+	float: left;
+}
+.css-list-left,.css-list-right{
+	border: 1px solid #DFDEDC;
+	height: 100%;
+}
+#kx_camera_list .css-list-left{
+	position: relative;
+}
+.css-orgcam-list,.css-list-right{
+	overflow: auto;
+}
+#kx_camera_list .css-list-right{
+	float: right;
+	width: 40%;
+}
+.css-list-left .css-title{
+	text-align: left;
+	border-bottom: 1px solid #DFDEDC;
+	padding: 10px 15px;
+}
+#kx_camera_list .css-title{
+	border: none;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1;
+	background: #fff;
+	cursor: pointer;
+}
+.css-list-left .css-title span{
+	float: right;
+	display: inline-block;
+	cursor: pointer;
+}
+.css-list-left .css-title span font{
+	display: inline-block;
+	background: url(../images/control/map_icon.png) no-repeat;
+	width: 20px;
+	height: 20px;
+    vertical-align: text-bottom;
+    margin-right: 3px;
+}
+.css-list-left .css-search{
+	border: 1px solid #eee;
+	text-align: left;
+	margin: 10px 20px 0 20px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.17);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.17);
+}
+.css-list-left .css-search input{
+	border: none;
+	width: 85%;
+	height: 30px;
+	padding: 0 10px;
+}
+.css-list-left .css-search span{
+	font-size: 18px;
+	font-weight: lighter;
+	border-left:1px solid #DFDEDC;
+	padding-left: 15px;
+	color: #BFBFBF;
+	vertical-align: sub;
+	cursor: pointer;
+}
+.css-orgcam-list{
+	text-align: left;
+	margin-top: 10px;
+	height: 335px;
+	padding: 0 15px;
+}
+.css-orgcam-list .css-icon{
+	position: relative;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+}
+.css-orgcam-list .css-icon::before{
+	content: '';
+	position: absolute;
+    display: inline-block;
+    border: 7px solid transparent;
+}
+.css-orgcam-list .css-icon.glyphicon-triangle-right::before{
+	border-left-color: #939598;
+	left: 50%;
+}
+.css-orgcam-list .css-icon.glyphicon-triangle-bottom::before{
+	border-top-color: #939598;
+	top: 20%;
+}
+.css-orgcam-list ul{
+	padding-left: 18px;
+}
+.css-orgcam-list ul li{
+	line-height: 26px;
+}
+.css-orgcam-list .css-icon{
+	color: #939598;
+	cursor: pointer;
+}
+.css-orgcam-list .css-icon-big font{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	background: url(../images/control/camera-icon.png) no-repeat;
+	background-position: -8px -8px;
+}
+.css-orgcam-list .css-icon-name font{
+	display: inline-block;
+	width: 16px;
+	height: 20px;
+	vertical-align: middle;
+	background: url(../images/control/camera-icon.png) no-repeat;
+	background-position: -8px -51px;
+}
+.css-orgcam-list .css-icon-pcs font{
+	display: inline-block;
+	width: 16px;
+	height: 20px;
+	vertical-align: middle;
+	background: url(../images/control/camera-icon.png) no-repeat;
+	background-position: -8px -90px;
+	margin-right: 2px;
+}
+.css-orgcam-list .css-icon-camera font,.css-list-right .css-icon-camera font{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	background: url(../images/control/camera-icon.png) no-repeat;
+	background-position: -5px -125px;
+}
+.css-orgcam-list .css-icon-camera{
+	display: inline-block;
+	width: calc(100% - 20px);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: text-bottom;
+}
+.css-orgcam-list .css-icon-camera.on{
+	color: #2193FE;
+}
+.css-orgcam-list .css-icon-camera.on font{
+	background-position: -64px -125px;
+}
+
+.css-cont ::-webkit-scrollbar{width:8px;height:8px}
+.css-cont ::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 3px #fff;border-radius:5px}
+.css-cont ::-webkit-scrollbar-thumb{position:relative;padding:5px 0;border-radius:5px;background-color:#ccc}
+.css-cont ::-webkit-scrollbar-thumb:hover{background-color:#666}
+.css-cont ::-webkit-scrollbar-track-piece{background-color:#fff}
+.css-cont ::-webkit-scrollbar-thumb:window-inactive{background:#ccc}
+
+.css-list-right{
+	padding: 0;
+	float: right;
+}
+.css-list-right ul{
+	margin-top: 5px;
+	height: 366px;
+	overflow: auto;
+}
+.css-list-right li{
+	line-height: 30px;
+	text-align: left;
+	padding: 0 15px;
+}
+
+.css-list-right li span.css-icon-camera{
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 95%;
+	vertical-align: middle;
+}
+.css-list-right li:hover{
+	background: #e4e4e4;
+}
+.css-list-right li .css-remove{
+	float: right;
+	cursor: pointer;
+}
+.css-list-right .css-header{
+	text-align: left;
+	padding: 10px 15px;
+	border-bottom: 1px solid #DFDEDC;
+}
+.css-list-right .css-header button{
+	padding: 0 10px;
+	margin-left: 10%;
+}
+.css-list-right .css-tj{
+	float: right;
+}
+#map_iframe{
+	border: none;
+}
+.css-gj-cont{
+	padding-left: 0;
+	padding-right: 0;
+	height: 100%;
+	overflow: auto;
+}
+.css-gj-cont ul{
+	border-left: 1px solid #E9EAEB;
+}
+.css-gj-cont ul .css-bj{
+	background-position: -196px -348px;
+}
+.css-gj-cont ul .css-bj{
+	cursor: pointer;
+}
+.css-gj-cont ul li span{
+	display: none !important;
+}
+.css-gj-cont ul.active{
+    border-left: 1px solid #65B4FE;
+}
+.css-gj-cont ul.active .css-bj{
+	background-position: -167px -348px;
+}
+.css-zs-map{
+	border: 1px solid #dedede;
+	float: right;
+	width: 73%;
+	height: 100%;
+	padding-bottom: 15px;
+}
+.css-map-cz{
+	border-bottom: 1px solid #E0E5E9;
+	padding: 0 15px 10px 15px;
+}
+.css-map-cz button{
+	padding: 3px 15px;
+}
+.css-map-cz button>span{
+	display: inline-block;
+    width: 17px;
+    height: 21px;
+    background: url(../images/all_icon.png) no-repeat;
+    background-position: -321px -386px;
+    transform: rotate(90deg);
+    vertical-align: bottom;
+    margin-right: 7px;
+}
+.css-save{
+	float: right;
+}
+.css-save font{
+	margin-right: 5px;
+}
+
+.css-pic-details{
+	display: flex;
+	margin-top: 10px;
+}
+.css-pic-details p{
+	flex: 1;
+	text-align: center;
+}
+.css-pic-details .css-pic-title{
+	margin-right: 5px;
+}
+.css-big-look{
+	position: relative;
+}
+.css-look-camera{
+	position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1;
+}
+.css-look-camera span{
+	display: inline-block;
+    float: right;
+    width: 100%;
+    text-align: right;
+
+}
+.css-look-camera span images{
+	width: 35px;
+	cursor: pointer;
+}
+.css-look-camera ul{
+	overflow: hidden;
+	border: 1px solid #dedede;
+	background: #fff;
+	padding: 10px 0;
+	border-radius: 3px;
+}
+.css-look-camera li{
+	line-height: 2;
+	padding: 0 10px;
+	cursor: pointer;
+}
+.css-look-camera li.on{
+	color: #fff;
+	background: #2193FE;
+}

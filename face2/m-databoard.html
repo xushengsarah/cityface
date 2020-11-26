@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基础样式</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-ui/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper/css/swiper.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor-reset.min.css" />
+    <link rel="stylesheet" href="assets/css/components.min.css" />
+    <link rel="stylesheet" href="assets/css/pages.min.css" />
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        body {
+            min-width: 1280px;
+        }
+    </style>
+</head>
+
+<body class="databoard">
+    <div class="layout">
+        <div class="gis-map-layer">
+            <div class="layer-top"></div>
+            <div class="layer-left"></div>
+            <div class="layer-bottom"></div>
+            <div class="layer-right"></div>
+        </div>
+        <div class="header">
+            <div class="header-tool">
+                <i class="aui-icon-color-default aui-icon-minus"></i>
+                <i class="aui-icon-color-default aui-icon-fullScreen"></i>
+                <i class="aui-icon-color-default aui-icon-not-through"></i>
+
+            </div>
+            <div class="header-title">城市人像
+                <span class="header-title-primary">数据看板</span>
+                </span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="map-container">
+                <div class="map">
+                    <div class="camera-map">
+                        <div id="mapSvg"></div>
+                        <div id="mapSvg-layer"></div>
+                        <div id="longgangSvg"></div>
+                    </div>
+                    <div class="poluation-map  none">
+                        <div id="mapSvg"></div>
+                        <div id="mapSvg-layer"></div>
+                        <div id="longgangSvg"></div>
+                    </div>
+
+                </div>
+                <div class="tab-title">
+                    <ul class="tab-list">
+                        <li class="tab-item camera-item  active">
+                            <i class="aui-icon-color-default aui-icon-tree-camera"></i>
+                        </li>
+                        <li class="tab-item poluation-item">
+                            <i class="aui-icon-color-default aui-icon-crowd"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-details">
+                    <div class="dot-card bBooder">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                        </div>
+                        <div class="dot-card-content gis-kpi to-bottom">
+                            <div class="kpi-data">
+                                <span class="title">总抓拍数</span>
+                                <p class="number">
+                                    <span>261.22</span>
+                                    <span class="unit">亿</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-card bBooder">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                        </div>
+                        <div class="dot-card-content gis-kpi to-bottom">
+                            <div class="kpi-data">
+                                <span class="title">今日抓拍</span>
+                                <p class="number">
+                                    <span>261.22</span>
+                                    <span class="unit">亿</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-card bBooder">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                        </div>
+                        <div class="dot-card-content gis-kpi to-bottom">
+                            <div class="kpi-data">
+                                <span class="title">预警总数</span>
+                                <p class="number">
+                                    <span>261.22</span>
+                                    <span class="unit">亿</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-sidebar">
+                    <div class="dot-card">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                            <div class="mark-border-dot" pos="rb"></div>
+                            <div class="mark-border-dot" pos="lb"></div>
+                        </div>
+                        <div class="dot-card-content to-right">
+                            <div class="dot-card-title">镜头概况</div>
+                            <div class="dot-card-body">
+                                <div id="camera" class="chart chart-col"></div>
+                                <div class="chart-legend">
+                                    <ul class="legend-list">
+                                        <li class="legend-item">
+                                            <i class="legend-icon"></i>
+                                            <span class="legend-name">镜头总数</span>
+                                            <span class="legend-num">1280</span>
+                                        </li>
+                                        <li class="legend-item">
+                                            <i class="legend-icon online"></i>
+                                            <span class="legend-name">在线镜头</span>
+                                            <span class="legend-num">860</span>
+                                        </li>
+                                        <li class="legend-item">
+                                            <i class="legend-icon snap"></i>
+                                            <span class="legend-name">抓怕机数</span>
+                                            <span class="legend-num">450</span>
+                                        </li>
+                                        <li class="legend-item">
+                                            <i class="legend-icon subscribe "></i>
+                                            <span class="legend-name">订阅镜头</span>
+                                            <span class="legend-num">220</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-card">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                            <div class="mark-border-dot" pos="rb"></div>
+                            <div class="mark-border-dot" pos="lb"></div>
+                        </div>
+                        <div class="dot-card-content to-right">
+                            <div class="dot-card-title">任务状态</div>
+                            <div class="dot-card-body">
+                                <div id="task" class="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-sidebar content-sidebar-right">
+                    <div class="dot-card">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                            <div class="mark-border-dot" pos="rb"></div>
+                            <div class="mark-border-dot" pos="lb"></div>
+                        </div>
+                        <div class="dot-card-content to-left">
+                            <div class="dot-card-title right">Top5预警任务</div>
+                            <div class="dot-card-body">
+                                <ul class="task-list">
+                                    <li class="task-list-item top">
+                                        <sppn class="name">920重点区域
+                                            <i class="num">1</i>
+                                        </sppn>
+                                        <span class="total">105</span>
+                                    </li>
+                                    <li class="task-list-item top">
+                                        <sppn class="name">王海被盗窃案
+                                            <i class="num">2</i>
+                                        </sppn>
+                                        <span class="total">5</span>
+                                    </li>
+                                    <li class="task-list-item top">
+                                        <sppn class="name">在逃人员布控
+                                            <i class="num">3</i>
+                                        </sppn>
+                                        <span class="total">2</span>
+                                    </li>
+                                    <li class="task-list-item">
+                                        <sppn class="name">李四被盗案
+                                            <i class="num">4</i>
+                                        </sppn>
+                                        <span class="total">100</span>
+                                    </li>
+                                    <li class="task-list-item">
+                                        <sppn class="name">王五被盗案
+                                            <i class="num">5</i>
+                                        </sppn>
+                                        <span class="total">1</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="dot-card">
+                        <div class="mark-border">
+                            <div class="mark-border-dot" pos="lt"></div>
+                            <div class="mark-border-dot" pos="rt"></div>
+                            <div class="mark-border-dot" pos="rb"></div>
+                            <div class="mark-border-dot" pos="lb"></div>
+                        </div>
+                        <div class="dot-card-content to-left">
+                            <div class="dot-card-title right">重点预警</div>
+                            <div class="dot-card-body">
+                                <div id="scene" class="chart chart-col"></div>
+                                <div id="emergency" class="chart chart-col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts-container">
+                <div class="dot-card">
+                    <div class="mark-border">
+                        <div class="mark-border-dot" pos="lt"></div>
+                        <div class="mark-border-dot" pos="rt"></div>
+                        <div class="mark-border-dot" pos="rb"></div>
+                        <div class="mark-border-dot" pos="lb"></div>
+                    </div>
+                    <div class="dot-card-content full">
+                        <div class="dot-card-title">
+                            <span>静态人脸数</span>
+                            <div class="title-left-content">
+                                <span>(共
+                                    <span class="num">1268</span>张)</span>
+                            </div>
+                            <div class="title-right-content">
+                                <select name="static-year" id="static-year">
+                                    <option>2019</option>
+                                    <option selected>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                </select>
+                                <select name="static-month" id="static-month">
+                                    <option>08</option>
+                                    <option selected>07</option>
+                                    <option>06</option>
+                                    <option>05</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dot-card-body">
+                            <div id="static" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="mark-border">
+                        <div class="mark-border-dot" pos="lt"></div>
+                        <div class="mark-border-dot" pos="rt"></div>
+                        <div class="mark-border-dot" pos="rb"></div>
+                        <div class="mark-border-dot" pos="lb"></div>
+                    </div>
+                    <div class="dot-card-content full">
+                        <div class="dot-card-title">
+                            <span>布控人脸数</span>
+                            <div class="title-left-content">
+                                <span>(共
+                                    <span class="num">1854</span>张)</span>
+                            </div>
+                            <div class="title-right-content">
+                                <select name="control-year" id="control-year">
+                                    <option>2019</option>
+                                    <option selected>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                </select>
+                                <select name="control-month" id="control-month">
+                                    <option>08</option>
+                                    <option selected>07</option>
+                                    <option>06</option>
+                                    <option>05</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dot-card-body">
+                            <div id="control" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/vendor/jQuery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/vendor/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="assets/js/base.js"></script>
+    <script>
+    </script>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script>
+        //地图加载
+
+        $(".poluation-map #mapSvg").load("assets/images/managers/map.svg").addClass("map-color-2");
+        $(".camera-map #mapSvg").load("assets/images/managers/map.svg").addClass("map-color-1");
+        setTimeout(function () {
+            $(".map").addClass("show");
+        }, 400)
+        $('.poluation-item').on('click', function () {
+            $('.poluation-map').removeClass('none').siblings('.camera-map').addClass('none')
+
+        })
+        $('.camera-item').on('click', function () {
+            $('.camera-map').removeClass('none').siblings('.poluation-map').addClass('none')
+        })
+
+        $('.tab-item').on('click', function () {
+            $(this).addClass('active').siblings('.tab-item').removeClass('active');
+        })
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul, item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {
+                        text: item.label
+                    });
+
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                })
+                    .appendTo(wrapper);
+
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+        $("#static-year").selectmenu();
+        $("#static-month").selectmenu();
+        $("#control-year").selectmenu();
+        $("#control-month").selectmenu();
+    </script>
+    <script>
+        // 基于准备好的dom，初始化echarts实例
+        var cameraChart = echarts.init(document.getElementById('camera'));
+        var taskChart = echarts.init(document.getElementById('task'));
+        var sceneChart = echarts.init(document.getElementById('scene'));
+        var emergencyChart = echarts.init(document.getElementById('emergency'));
+        var staticChart = echarts.init(document.getElementById('static'));
+        var controlChart = echarts.init(document.getElementById('control'));
+
+        var dataAxis = ['常驻', '在逃', '涉恐', '流动', '社保', '嫌疑人', '盗窃汽车', '特定人员', '省厅W2', '机场'];
+        var data = [140, 82, 45, 115, 140, 85, 45, 113, 41, 115];
+        var yMax = 200;
+        var dataShadow = [];
+        var pieCenterText = [];
+        var dataScene = 40
+        var nameScene = '场景布控'
+        var dataEmergency = 60
+        var nameEmergency = '应急布控'
+        for (var i = 0; i < data.length; i++) {
+            dataShadow.push(yMax);
+        }
+
+        //镜头概况图表配置信息
+        var cameraOption = {
+            graphic: [{
+                type: 'text',
+                left: 'center',
+                top: '40%',
+                style: {
+                    text: '76%',
+                    textAlign: 'center',
+                    fill: '#fff',
+                    fontSize: 30
+                }
+            }, {
+                type: 'text',
+                left: 'center',
+                top: '58%',
+                style: {
+                    text: '任务处理率',
+                    textAlign: 'center',
+                    fill: '#bac5cc',
+                    padding: '10',
+                    width: 30,
+                    height: 30,
+                    fontSize: 12,
+                }
+            }],
+            series: [{
+                type: 'pie',
+                hoverAnimation: false,
+                radius: ['50%', '57%'],
+                data: [{
+                    value: 220,
+                    name: '订阅镜头',
+                    legendHoverLink: false,
+                    itemStyle: {
+                        normal: {
+                            color: '#1ef1ff'
+                        },
+                        emphasis: {
+                            color: '#1ef1ff'
+                        }
+                    }
+                }, {
+                    value: 1060,
+                    itemStyle: {
+                        opacity: 0
+                    }
+                }],
+                labelLine: {
+                    show: false,
+                },
+                label: {
+                    show: false,
+                }
+            }, {
+                type: 'pie',
+                hoverAnimation: false,
+                radius: ['60%', '67%'],
+                data: [{
+                    value: 450,
+                    name: '抓拍机数',
+                    itemStyle: {
+                        normal: {
+                            color: '#6c7dff'
+                        },
+                        emphasis: {
+                            color: '#6c7dff'
+                        }
+                    }
+                }, {
+                    value: 830,
+                    itemStyle: {
+                        opacity: 0
+                    }
+                }],
+                label: {
+                    normal: {
+                        show: false
+                    }
+                },
+            }, {
+                type: 'pie',
+                hoverAnimation: false,
+                radius: ['70%', '77%'],
+                data: [{
+                    value: 860,
+                    name: '在线镜头',
+                    itemStyle: {
+                        normal: {
+                            color: '#2392fd'
+                        },
+                        emphasis: {
+                            color: '#2392fd'
+                        }
+                    }
+                }, {
+                    value: 420,
+                    itemStyle: {
+                        normal: {
+                            color: '#303a43'
+                        },
+                        emphasis: {
+                            color: '#303a43'
+                        }
+                    }
+                }],
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: false,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+            }]
+        };;
+
+        //任务状态图表配置信息
+        var taskOption = {
+            graphic: [{
+                type: 'text',
+                left: 'center',
+                top: '40%',
+                style: {
+                    text: '40%',
+                    textAlign: 'center',
+                    fill: '#fff',
+                    padding: '10',
+                    fontSize: '30',
+                }
+            }, {
+                type: 'text',
+                left: 'center',
+                top: '58%',
+                style: {
+                    text: '任务处理率',
+                    textAlign: 'center',
+                    fill: '#bac5cc',
+                    fontSize: 12,
+                }
+            }],
+            series: [{
+                color: ['#2193fe', '#313b45'],
+                name: '任务处理率',
+                type: 'pie',
+                center: ['50%', '50%'],
+                radius: ['55%', '70%'],
+                silent: false,
+                hoverAnimation: true,
+                hoverOffset: 5,
+                itemStyle: {
+                    borderWidth: 2,
+                    borderType: 'solid',
+                    borderColor: '#19222d'
+                },
+                data: [{
+                    value: 120,
+                    name: '正在处理'
+                }, {
+                    value: 80,
+                    name: '已经处理'
+                }],
+                label: {
+                    normal: {
+                        formatter: '{a|{c}}\n{per|{b}}',
+                        rich: {
+                            a: {
+                                color: '#ffffff',
+                                fontSize: 16,
+                                lineHeight: 30,
+                                align: 'center',
+                            },
+                            per: {
+                                color: '#ffffff',
+                                align: 'center',
+                                fontSize: 16,
+                            }
+                        }
+                    }
+                }
+            }]
+        }
+
+        //布控场景图表配置信息
+        var sceneOption = {
+            series: [{
+                color: ['#2193fe', '#313b45'],
+                name: 'valueOfMarket',
+                type: 'pie',
+                center: ['50%', '50%'],
+                radius: ['55%', '70%'],
+                avoidLabelOverlap: false,
+                hoverAnimation: true,
+                hoverOffset: 5,
+                itemStyle: {
+                    borderWidth: 2,
+                    borderType: 'solid',
+                    borderColor: '#15212d'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'center',
+                        formatter: '{a|{c}}\n{per|{b}}',
+                        rich: {
+                            a: {
+                                color: '#ffffff',
+                                fontSize: 30,
+                                align: 'center',
+                            },
+                            per: {
+                                color: '#bac5cc',
+                                align: 'center',
+                                fontSize: 12,
+                            }
+                        }
+                    }
+                },
+                data: [{
+                    value: dataScene,
+                    name: nameScene,
+                    label: {
+                        normal: {
+                            show: true
+                        }
+                    }
+                }, {
+                    value: 100 - dataScene,
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    }
+                }]
+            }]
+        }
+
+        //应急场景图表配置信息
+        var emergencyOption = {
+            series: [{
+                color: ['#6c7dff', '#313b45'],
+                name: 'valueOfMarket',
+                type: 'pie',
+                center: ['50%', '50%'],
+                radius: ['55%', '70%'],
+                avoidLabelOverlap: false,
+                hoverAnimation: true,
+                hoverOffset: 5,
+                itemStyle: {
+                    borderWidth: 2,
+                    borderType: 'solid',
+                    borderColor: '#15212d'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'center',
+                        formatter: '{a|{c}}\n{per|{b}}',
+                        rich: {
+                            a: {
+                                color: '#ffffff',
+                                fontSize: 30,
+                                align: 'center',
+                            },
+                            per: {
+                                color: '#bac5cc',
+                                align: 'center',
+                                fontSize: 12,
+                            }
+                        }
+                    }
+                },
+                data: [{
+                    value: dataEmergency,
+                    name: nameEmergency,
+                    label: {
+                        normal: {
+                            show: true
+                        }
+                    }
+                }, {
+                    value: 100 - dataEmergency,
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    }
+                }]
+            }]
+        }
+
+        //静态人脸数图表配置信息
+        var staticOption = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        formatter: function (params) {
+                            if (params.seriesData.length === 0) {
+                                window.mouseCurValue = params.value;
+                            }
+                        }
+                    }
+                },
+                formatter: function (params) {
+                    var res = '', sum = 0;
+                    for (var i = 0; i < params.length; i++) {
+                        var series = params[i];
+                        sum += Number(series.data);
+                        if (sum >= window.mouseCurValue) {
+                            res = series.axisValue + '<br/>' + series.marker + series.seriesName + ':' + series.data + '<br/>';
+                            break;
+                        }
+                    }
+                    return res;
+                }
+            },
+            xAxis: {
+                data: dataAxis,
+                axisLabel: {
+                    textStyle: {
+                        color: '#7b8084',
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        color: '#0a56ab',
+                    }
+                },
+                z: 10
+            },
+            yAxis: {
+                axisLine: {
+                    show: false,
+                    color: 'red'
+                },
+                axisTick: {
+                    show: false,
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#7b8084'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        type: 'dash',
+                        color: '#535962'
+                    }
+                }
+            },
+            grid: {
+                top: '6%',
+                left: 30,
+                bottom: 20,
+                right: 30
+            },
+            dataZoom: [{
+                type: 'inside'
+            }],
+            series: [{ // For shadow
+                type: 'bar',
+                barWidth: 4, //柱图宽度
+                barMaxWidth: 4,
+                itemStyle: {
+                    normal: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                barGap: '-100%',
+                barCategoryGap: '40%',
+                animation: false
+            }, {
+                type: 'bar',
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(55,149,254,0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(55,149,254,0.05)'
+                            }]
+                        ),
+                        borderWidth: 2,
+                        borderColor: '#3794fc'
+                    }
+                },
+                data: data
+            }]
+        };
+
+        //布控人脸数图表配置信息
+        var controlOption = {
+            xAxis: {
+                data: dataAxis,
+                axisLabel: {
+                    textStyle: {
+                        color: '#7b8084',
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        color: '#4b59ab',
+                    }
+                },
+                z: 10
+            },
+            yAxis: {
+                axisLine: {
+                    show: false,
+                    color: 'red'
+                },
+                axisTick: {
+                    show: false,
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#7b8084',
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        type: 'dash',
+                        color: '#535962'
+                    }
+                }
+            },
+            grid: {
+                top: '6%',
+                left: 30,
+                bottom: 20,
+                right: 30
+            },
+            dataZoom: [{
+                type: 'inside'
+            }],
+            series: [{ // For shadow
+                type: 'bar',
+                barWidth: 4, //柱图宽度
+                barMaxWidth: 4,
+                itemStyle: {
+                    normal: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                barGap: '-100%',
+                barCategoryGap: '40%',
+                animation: false
+            }, {
+                type: 'bar',
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(108, 125, 254, 0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(108, 125, 254, 0.05)'
+                            }]
+                        ),
+                        borderWidth: 2,
+                        borderColor: '#6c7dfe'
+                    }
+                },
+                data: data
+            }]
+        };
+
+
+        var zoomSize = 6;
+        staticChart.on('click', function (params) {
+            console.log(staticAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+            myChart.dispatchAction({
+                type: 'dataZoom',
+                startValue: staticAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+                endValue: staticAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+            });
+        });
+
+        // 使用刚指定的配置项和数据显示图表
+        cameraChart.setOption(cameraOption, true);
+        staticChart.setOption(staticOption);
+        controlChart.setOption(controlOption);
+        taskChart.setOption(taskOption);
+        emergencyChart.setOption(emergencyOption);
+        sceneChart.setOption(sceneOption);
+        taskChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: 0,
+            dataIndex: 0,
+            name: '正在处理'
+        })
+        sceneChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: 0,
+            dataIndex: 0,
+            name: '正在处理'
+        })
+        emergencyChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: 0,
+            dataIndex: 0,
+            name: '正在处理'
+        })
+        taskChart.on('mouseover', function (e) {
+            if (e.dataIndex == 1) {
+                taskChart.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 1,
+                }, {
+                        type: 'highlight',
+                        seriesIndex: 0,
+                    });
+            }
+        });
+        taskChart.on('mouseout', function (e) {
+            taskChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0,
+            });
+        });
+        sceneChart.on('mouseover', function (e) {
+            if (e.dataIndex == 1) {
+                sceneChart.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 1,
+                }, {
+                        type: 'highlight',
+                        seriesIndex: 0,
+                    });
+            }
+        });
+        sceneChart.on('mouseout', function (e) {
+            if (e.dataIndex == 0) {
+                sceneChart.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: 0,
+                });
+            }
+        });
+        emergencyChart.on('mouseover', function (e) {
+            if (e.dataIndex == 1) {
+                emergencyChart.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 1,
+                }, {
+                        type: 'highlight',
+                        seriesIndex: 0,
+                    });
+            }
+        });
+        emergencyChart.on('mouseout', function (e) {
+            emergencyChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0,
+            });
+        });
+        $(window).resize(function () {
+            cameraChart.resize();
+            staticChart.resize();
+            controlChart.resize();
+            taskChart.resize();
+            sceneChart.resize();
+            emergencyChart.resize();
+            taskChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0,
+                name: '正在处理'
+            })
+            sceneChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0,
+                name: '场景布控'
+            })
+            emergencyChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0,
+                name: '应急布控'
+            })
+        });
+    </script>
+</body>
+
+</html>

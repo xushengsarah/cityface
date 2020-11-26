@@ -1,0 +1,180 @@
+.onetoone {
+    padding: 5rem !important;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    .content-box {
+        padding: 0;
+        background: #fff;
+        margin-top: 6rem;
+        .search-one-box {
+            vertical-align: middle;
+            .search-before {
+                width: 19rem;
+                border: 1px solid $theme-color-disabled;
+                border-radius: 4px;
+            }
+            .search-one-top {
+                background: #f4f6fa;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 13.375rem;
+                border-bottom: 1px solid $theme-color-disabled;
+                .img-box {
+                    position: relative;
+                    width: 8rem;
+                    height: 8rem;
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 1;
+                        cursor: pointer;
+                    }
+                    .pic {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 2;
+                        opacity: 0;
+                        font-size: 0;
+                        cursor: pointer;
+                    }
+                }
+                .search-one-info {
+                    margin-top: 1rem;
+                }
+            }
+            .search-one-center {
+                height: 8rem;
+                background: #fff;
+                padding: 0.8rem 1.875rem;
+                .mb-sm {
+                    margin-bottom: 5px !important;
+                }
+                .text-left {
+                    text-align: left;
+                }
+            }
+        }
+        .search-one-contrast {
+            width: 20rem;
+            background: #fff;
+            height: 21.2rem;
+            vertical-align: middle;
+            padding: 6.25rem 0;
+            .mb-2 {
+                margin-bottom: 1.56rem !important;
+            }
+            .search-num {
+                width: 11.125rem;
+                background: url(../../assets/images/onetoone/bg-before.png) no-repeat center;
+                background-size: cover;
+                text-align: center;
+                height: 4.375rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                &.search-active {
+                    background: url(../../assets/images/onetoone/bg-after.png) no-repeat center;
+                    color: #fff !important;
+                    .num-0 {
+                        color: #fff !important;
+                    }
+                }
+                .num-0 {
+                    position: relative;
+                    font-size: 2rem;
+                    line-height: 2rem;
+                    color: #666666;
+                    .num-tip {
+                        position: absolute;
+                        right: -9px;
+                        top: 3px;
+                        font-size: 0.75rem;
+                        line-height: initial;
+                    }
+                }
+            }
+        }
+        .search-after {
+            height: 16.125rem;
+            border: 1px solid $theme-color-disabled;
+            padding: 8px;
+            background: #fff;
+            position: relative;
+            z-index: 1;
+            border-radius: 4px;
+            width: 16rem;
+            .aui-icon-close {
+                position: absolute;
+                right: -12px;
+                top: -12px;
+                z-index: 2;
+                color: $theme-color-disabled;
+                font-size: 2rem;
+                background: #fff;
+                border-radius: 100%;
+            }
+            .after-pic {
+                width: 100%;
+                height: 100%;
+            }
+        } // 新添加样式代码
+        .idcard-search-box {
+            position: relative;
+            .aui-input {
+                padding-right: 2rem;
+            }
+            .search-icon {
+                position: absolute;
+                right: 0.6rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .company-box {
+            width: 15rem;
+            margin: 0 auto;
+            &>.aui-col-12 {
+                padding: 0;
+                display: flex;
+                .name {
+                    width: 35%;
+                    text-align: left;
+                    color: #7b8084;
+                }
+                .num {
+                    width: 65%;
+                }
+            }
+        }
+    }
+}
+
+.layer.tip {
+    min-width: 300px;
+    background: #fff;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, .3);
+    color: $text-color-default;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    padding: 10px 8px 10px 15px;
+    z-index: 100000000;
+    & p {
+        padding: 2rem 0 0.5rem 0;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,282 @@
+html {
+    font-size: 16px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //user-select: none;
+}
+
+body {
+    font: 0.875rem/1.5 "Roboto", "Helvetica", "Arial", "微软雅黑", "Microsoft Yahei", "华文细黑", sans-serif, ITCAvantGardeProDemi;
+    color: $text-color-default;
+    margin: 0;
+    padding: 0;
+    background: $background-color-gray;
+}
+
+html,
+body {
+    // min-height: 800px;
+    min-width: 1280px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+div,
+input,
+p,
+ul,
+li,
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+textarea,
+input {
+    outline: none;
+}
+
+ul,
+li,
+dd,
+dl {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    text-decoration: none;
+    color: $theme-color;
+}
+
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dd,
+a {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    transform: translateX(-10px);
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-button:vertical {
+    display: none;
+}
+
+::-webkit-scrollbar-track:vertical {
+    background-color: none;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-color: rgba(209, 209, 209, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 0 0 3px inset #fff;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(209, 209, 209, 0.9);
+}
+
+::-webkit-scrollbar-corner:vertical {
+    background-color: rgba(209, 209, 209, 0.9);
+}
+
+::-webkit-scrollbar-button:horizontal {
+    display: none;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background-color: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: rgba(209, 209, 209, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 0 0 3px inset #fff;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgba(209, 209, 209, 0.9);
+}
+
+::-webkit-scrollbar-corner:horizontal {
+    background-color: rgba(209, 209, 209, 0.9);
+}
+
+table {
+    width: 100%;
+}
+
+/*文本溢出*/
+
+.ellipsis {
+    vertical-align: middle;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.mui-ellipsis-2 {
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mui-ellipsis-4 {
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+[class^="icon-"],
+[class*="icon-"] {
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    &.disabled {
+        cursor: $cursor-disabled;
+    }
+}
+
+@media screen and (min-width: 1681px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (min-width: 1501px) and (max-width: 1680px) {
+    html {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (min-width: 1401px) and (max-width: 1500px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+//
+.wid-50 {
+    width: 50% !important;
+}
+
+.wid-75 {
+    width: 75% !important;
+}
+
+.wid-70 {
+    width: 70% !important;
+}
+
+.wid-35 {
+    width: 35% !important;
+}
+
+.wid-40 {
+    width: 40% !important;
+}
+
+.wid-45 {
+    width: 45% !important;
+}
+
+.wid-55 {
+    width: 55% !important;
+}
+
+.wid-60 {
+    width: 60% !important;
+}
+
+.wid-65 {
+    width: 65% !important;
+}
+
+.mr-smr {
+    margin-right: 0.1rem;
+}
+
+.mt-sm {
+    margin-top: 0.3rem;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.v-middle {
+    vertical-align: middle !important;
+}
+
+.o-hidden {
+    overflow: hidden !important;
+}
+
+.relative {
+    position: relative;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.wid-100 {
+    width: 100% !important;
+}
+
+.ml-sm {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.none {
+    display: none;
+}

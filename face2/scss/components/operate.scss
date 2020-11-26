@@ -1,0 +1,25 @@
+.operate {
+    @include clearfix();
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.5;
+    &-item {
+        float: left;
+        padding: 0 $space;
+        border-left: 1px solid $border-color-default;
+        &:first-child {
+            border: 0;
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+    .ui-checkboxradio-label:not(.ui-checkboxradio-button):not(.ui-checkboxradio-tag) {
+        margin: 0!important;
+    }
+    .nav-tabs {
+        margin-top: 1px;
+        font-size: $font-size-small;
+    }
+}

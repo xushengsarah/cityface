@@ -1,0 +1,196 @@
+.ui-checkboxradio {
+    &-label {
+        // color: $text-color-default!important;
+        color: #2a2d44!important;
+        &:not(.ui-checkboxradio-button, .ui-checkboxradio-tag) {
+            padding: 0!important;
+            margin: 0 1.5rem 0 0!important;
+            border: 0!important;
+            background: none!important;
+            border-radius: 0!important;
+            box-shadow: none!important;
+            transition: all $default-animation;
+            .ui-checkboxradio {
+                &-icon {
+                    position: relative;
+                    width: 1rem!important;
+                    height: 1rem!important;
+                    margin-right: .5rem;
+                    box-shadow: none;
+                    border: 1px solid $border-color-default;
+                    background-image: none;
+                    &:before{
+                        top: 50%;
+                        left: 50%;
+                        -webkit-transform:translate(-50%,-70%) rotate(45deg); 
+                        -ms-transform:translate(-50%,-70%) rotate(45deg);
+                        transform: translate(-50%,-70%) rotate(45deg);
+                    }
+                }
+            }
+        }
+    }
+    &-label:hover,
+    &-label:active {
+        .ui-checkboxradio-icon {
+            border-color: $theme-color!important;
+            border-width: 1px!important;
+        }
+    }
+    &-radio-label {
+        .ui-checkboxradio-icon {
+            border-radius: 50%;
+            &:before {
+                content: '';
+                display: block;
+                width: .375rem;
+                height: .375rem;
+                margin: .2rem 0 0 .2rem;
+                border-radius: 50%;
+                background: $theme-color;
+                opacity: 0;
+                transition: all $default-animation;
+            }
+        }
+    }
+    &-checkbox-label {
+        .ui-checkboxradio-icon {
+            position: relative;
+            border-radius: $border-radius;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: block;
+                width: .2rem;
+                height: .45rem;
+                border: 2px solid $color-white;
+                border-top: 0;
+                border-left: 0;
+                transform: translate(-50%,-70%) rotate(45deg);
+                transition: all ease 0.3s;
+                box-sizing: content-box;
+                opacity: 0;
+            }
+        }
+    }
+    &-checked {
+        &.ui-checkboxradio {
+            &-label {
+                .ui-checkboxradio-icon,
+                .ui-checkboxradio-icon:hover {
+                    border-color: $theme-color!important;
+                    border-width: 1px!important;
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+            &-checkbox-label {
+                .ui-checkboxradio-icon,
+                .ui-checkboxradio-icon:hover {
+                    background: $theme-color;
+                }
+            }
+        }
+    }
+    &-half.ui-checkboxradio-label {
+        .ui-checkboxradio-icon,
+        .ui-checkboxradio-icon:hover {
+            border-color: $theme-color!important;
+            border-width: 1px!important;
+            background: $theme-color;
+            &:before {
+                width: 80%;
+                height: 0;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+    }
+    &-disabled {
+        opacity: 1;
+        color: $text-color-disabled!important;
+        &.ui-checkboxradio-label {
+            .ui-checkboxradio-icon {
+                background: $background-color-disabled!important;
+                border-color: $border-color-disabled!important;
+            }
+        }
+        &.ui-checkboxradio {
+            &-radio-label {
+                .ui-checkboxradio-icon {
+                    background: $background-color-x-gray!important;
+                    &:before {
+                        background: $background-color-disabled;
+                    }
+                }
+            }
+        }
+    }
+    &-button,
+    &-tag {
+        @extend .btn;
+        position: relative;
+        min-width: 3.75rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        margin-right: .625rem;
+        box-shadow: none;
+        background: $background-color-x-gray;
+        &:hover,
+        &:focus,
+        &:active,
+        &.ui-checkboxradio-checked,
+        &.ui-checkboxradio-checked:hover,
+        &.ui-checkboxradio-checked:focus {
+            color: $button-color-hover!important;
+            border-color: $button-color-hover!important;
+            background: $button-background-color-default!important;
+        }
+    }
+    &-tag {
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 3px;
+            display: block;
+            width: 2px;
+            height: 4px;
+            border: 2px solid #fff;
+            border-top: 0;
+            border-left: 0;
+            box-sizing: content-box;
+            z-index: 2;
+            opacity: 0;
+            transform: rotate(45deg);
+            transition: all $default-animation;
+        }
+        &:after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-width: 8px;
+            border-style: solid;
+            border-color: $theme-color $theme-color transparent transparent;
+            opacity: 0;
+            transition: all $default-animation;
+        }
+        &:focus,
+        &:active,
+        &.ui-checkboxradio-checked,
+        &.ui-checkboxradio-checked:hover,
+        &.ui-checkboxradio-checked:focus {
+            &:before,
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}

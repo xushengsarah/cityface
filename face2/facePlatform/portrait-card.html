@@ -1,0 +1,969 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <!-- content -->
+    <div class="layout-type3" id="portraitCardPage">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side small">
+            <!-- <div class="card-side-header-box">
+                <div class="card-title-box">
+                    <span class="card-title">人员库列表</span>
+                </div>
+            </div> -->
+            <div class="card-side-header-box">
+                <!-- <div class="card-side-title text-0" id="portraitBut">
+                    <span id="createDefeatLib" data-toggle="modal" data-target="#createDefeatLibModal"></span>
+                    <span id="deleteDefeatLib" data-toggle="modal" data-target="#deleteDefeatLibModal"></span>
+                    <span id="createPerson" data-toggle="modal" data-target="#createPersonModal"></span>
+                </div> -->
+                <!--<div class="card-side-section">-->
+                <!-- <div class="aui-input-affix-wrapper btn-search">
+                        <div class="aui-input-group-inner">
+                            <span class="search-icon noborder">
+                                <i class="aui-icon-idcard"></i>
+                            </span>
+                            <div class="aui-input">
+                                <input class="" type="text" id="libNameSearch" placeholder="请输入库名称搜索">
+                            </div>
+                            <i class="aui-icon-not-through" id="clearSearch"></i>
+                            <span class="aui-input-suffix">
+                                <i class="aui-icon-search"></i>
+                            </span>
+                        </div>
+                    </div> -->
+                <!-- <i class="aui-icon-personnel card-title-icon"></i>
+                    <span class="card-title">对象列表</span> -->
+                <!--</div>-->
+            </div>
+            <div class="card-side-content-box">
+                <div class="portrait-search-result display-none" id="portraitSearchResult">
+                    <div class="search-result-none aui-ml-lg">无搜索结果&nbsp;...</div>
+                    <ul class="search-result-list" id="search-result-list"></ul>
+                </div>
+                <ul class="portrait-tree-list" id="portrait-tree-list">
+
+                </ul>
+
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 control-new swiper-scroll-view hide" id="portraitContentOne">
+            <div class="portraitContentLabel">
+                <span class="toggleTip" id="showMorePortraitLabels">查看更多</span>
+                <div class="portraitLableTotal active">
+                    <p>全部</p>
+                    <p class="portraitLableTotalNum" id="portraitLableTotalNum">0</p>
+                </div>
+                <div class="portraitLableShowDetail showMoreLables"></div>
+            </div>
+            <!-- 人员库默认内容 -->
+            <div class="aui-card aui-card-cover flex-direction" id="portraitContainer"
+                 style="margin-bottom: 0;display:block;">
+                <div class="card-title-box">
+                    <!-- <span class="card-title">
+                        <span class="text-prompt portrait-name aui-mr-xs"></span>
+                        共有
+                        <span class="title-count">0</span>
+                        个对象
+                    </span> -->
+                    <div class="float-left btn-gutter-sm" id="createImportBut">
+                        <button type="button" class="btn btn-sm hide" id="portraitCancel">撤控</button>
+                        <span class="bootstrap-table hide" id="portraitCancelCheck">
+                            <div class="table-checkbox">
+                                <input type="checkbox" class="table-checkbox-input table-checkbox-all-cameraDetail"
+                                       id="portraitCancelCheckAll">
+                                <label class="table-checkbox-label"></label>
+                            </div>
+                            <label for="portraitCancelCheckAll">全选</label>
+                        </span>
+                        <button type="button" class="btn btn-primary btn-sm hide" id="createCard">新建</button>
+                        <button type="button" class="btn btn-sm hide" id="importLibraryBtn"
+                                data-toggle="modal">导入</button>
+                    </div>
+                    <div class="AlarmOptPortrait" id="AlarmOptPortrait">
+                        <button type="button" id="AllalarmOptPortrait" class="btn btn-primary btn-sm">全部</button>
+                        <button type="button" id="NalarmOptPortrait" class="btn btn-sm">布控中</button>
+                        <button type="button" id="CalarmOptPortrait" class="btn btn-sm">未布控</button>
+                        <button type="button" id="RalarmOptPortrait" class="btn btn-sm">已撤控</button>
+                        <button type="button" id="WalarmOptPortrait" class="btn btn-sm">已删除</button>
+                    </div>
+                    <div class="float-right">
+                        <p class="text-error inline-block aui-mr-xs display-none">输入信息有误</p>
+                        <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                            <div class="aui-input-group-inner">
+                                <input class="aui-input" id="personSearch" type="text" placeholder="请输入姓名/身份证号进行搜索">
+                                <span class="aui-input-suffix" id="personSearchIcon">
+                                    <i class="aui-icon-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                            <button type="button" class="btn" id="showList">
+                                <i class="aui-icon-list"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="showCard">
+                                <i class="aui-icon-card"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content flex-direction">
+                    <!-- <div class="card-section clearfix">
+                        <div class="float-right" id="advancedSearch">
+                            <select name="alarmFilter" id="ageSearch">
+                                <option disabled selected>年龄</option>
+                                <option>20-30</option>
+                                <option>30-40</option>
+                                <option>自定义</option>
+                                <option>全部</option>
+                            </select>
+                           
+                            <select name="alarmFilter" id="sexSearch">
+                                <option disabled selected>性别</option>
+                                <option>男</option>
+                                <option>女</option>
+                                <option>全部</option>
+                            </select>
+
+                            <select name="alarmFilter" id="timeSearch">
+                                <option disabled selected>采集时间</option>
+                                <option data-date="-7">一周内</option>
+                                <option data-date="-30">一个月内</option>
+                                <option data-date="-183">半年内</option>
+                                <option data-date="-365">一年内</option>
+                                <option data-date="">自定义</option>
+                                <option>全部</option>
+                            </select>
+
+                            <div class="dropdown dropdown-text aui-inline-block aui-ml-md" id="regSearch">
+                                <span class="dropdown-toggle" id="place" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    户籍地
+                                </span>
+                                <div class="dropdown-menu" aria-labelledby="place">
+                                    <ul class="dropdown-section">
+                                        <li class="text-link default">北京</li>
+                                        <li class="text-link default">上海</li>
+                                        <li class="text-link default">广州</li>
+                                        <li class="text-link default">深圳</li>
+                                        <li class="text-link default">杭州</li>
+                                        <li class="text-link default">南京</li>
+                                    </ul>
+                                    <ul class="dropdown-section">
+                                        <li class="text-link default">北京</li>
+                                        <li class="text-link default">上海</li>
+                                        <li class="text-link default">广州</li>
+                                        <li class="text-link default">深圳</li>
+                                        <li class="text-link default">杭州</li>
+                                        <li class="text-link default">南京</li>
+                                        <li class="text-link default">北京</li>
+                                        <li class="text-link default">上海</li>
+                                        <li class="text-link default">广州</li>
+                                        <li class="text-link default">深圳</li>
+                                        <li class="text-link default">杭州</li>
+                                        <li class="text-link default">南京</li>
+                                    </ul>
+                                    <div class="dropdown-inner">
+                                        <input type="text" class="aui-input aui-input-small">
+                                        <button class="btn btn-primary btn-sm aui-ml-xs">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="aui-inline-block aui-ml-md">
+                                <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget"
+                                    id="checkAllPersonPerPage">
+                                    <span class="ui-checkboxradio-icon ui-icon ui-icon-background ui-icon-blank"></span>
+                                    <span>全选</span>
+                                </label>
+                            </div>
+                            <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                <span class="dropdown-toggle" id="ageSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="年龄">年龄</span>
+                                <div class="dropdown-menu" aria-labelledby="ageSearch">
+                                    <a class="dropdown-item active" value="不限年龄">不限年龄</a>
+                                    <a class="dropdown-item" value="20-30">20-30岁</a>
+                                    <a class="dropdown-item" value="30-40">30-40岁</a>
+                                    <a class="dropdown-item" value="40-50">40-50岁</a>
+                                    <a class="dropdown-item">自定义年龄</a>
+                                </div>
+                            </div>
+                            <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                <span class="dropdown-toggle" id="sexSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="性别">性别</span>
+                                <div class="dropdown-menu" aria-labelledby="sexSearch">
+                                    <a class="dropdown-item active" value="不限">不限</a>
+                                    <a class="dropdown-item" value="1">男</a>
+                                    <a class="dropdown-item" value="2">女</a>
+                                </div>
+                            </div>
+                            <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                <span class="dropdown-toggle" id="timeSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="创建时间">创建时间</span>
+                                <div class="dropdown-menu" aria-labelledby="timeSearch">
+                                    <a class="dropdown-item active" data-date="不限时间">不限时间</a>
+                                    <a class="dropdown-item" data-date="-1">近1天</a>
+                                    <a class="dropdown-item" data-date="-7">近7天</a>
+                                    <a class="dropdown-item" data-date="-30">近30天</a>
+                                    <a class="dropdown-item" >自定义时间</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- 图片展示 -->
+                    <div class="flex-direction" id="portraitResultContainer" style="min-height: 30rem">
+                        <ul class="image-info-list aui-mb-md" id="cardInfoList">
+                        </ul>
+                        <!-- 表格展示 -->
+                        <div class="table-page-box aui-mt-md display-none" id="listContainerWrap">
+                            <table class="table-collapse-check" id="portraitTableList" data-toggle="table"
+                                   data-detail-view="true" data-detail-formatter="detailFormatter"
+                                   data-pagination="false">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="5%">
+                                    <col width="15%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="15%">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="pre5">照片</th>
+                                        <th>姓名</th>
+                                        <th>证件类型</th>
+                                        <th class="pre20">证件号码</th>
+                                        <th>性别</th>
+                                        <th>民族</th>
+                                        <th>户籍</th>
+                                        <th>标签</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 表格展示 end-->
+                        <div id="portraitPagination"></div>
+                    </div>
+                    <!-- 图片展示 end -->
+                    <!-- <div class="swiper-container search-detail-box" id="cardDetail">
+                        <div class="swiper-wrapper">
+
+                        </div>
+                        <i class="card-side-close aui-icon-not-through"></i>
+                        <div class="swiper-button-next btn-next">
+                            <i class="aui-icon aui-icon-drop-right"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-prev">
+                            <i class="aui-icon aui-icon-drop-left"></i>
+                        </div>
+                    </div> -->
+                    <div class="search-detail-box hide" id="cardDetail">
+                        <div class="panel-heading" role="tab">
+                            <div class="panel-toggle">
+                                <span class="card-title static">人员信息</span>
+                            </div>
+                        </div>
+                        <div class="search-detail-box-item">
+
+                        </div>
+                    </div>
+                    <div class="flex-direction justify-content hide" id="portraitEmptyContainer"
+                         style="margin-top: 20px"></div>
+                </div>
+            </div>
+            <!-- 新建人员内容 -->
+            <div class="modal fade" id="createContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">新建人员</h4>
+                            <span data-dismiss="modal" aria-label="Close">
+                                <i aria-hidden="true" class="aui-icon-not-through"></i>
+                            </span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="aui-col-8">
+                                <div class="aui-row">
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-7 control-label aui-form-require">照片：</label>
+                                            <div class="aui-col-17 control-form pic-add-box">
+                                                <div class="upload-box" id="addUploadImg">
+                                                    <div class="upload pic-add">
+                                                        <i class="aui-icon-add"></i>
+                                                        <input class="uploadFile" type="file">
+                                                        <img class="pic-add-img hide" src="" alt="">
+                                                    </div>
+                                                </div>
+                                                <p class="text-danger mg-top-xs hide">请上传图片</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="aui-col-24">
+                                                    <div class="form-group">
+                                                        <label class="aui-form-label aui-col-6 control-label">标签：</label>
+                                                        <div id="tagContent" class="aui-col-18 control-form control-form-new">
+                                                            <i class="aui-icon-add tag-add" data-toggle="modal" data-target="#tagModal"></i>
+                                                            <i class="aui-icon-minus tag-minus" data-role="tag-minus"></i>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                </div>
+                            </div>
+                            <div class="aui-col-16">
+                                <div class=" aui-row">
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-5 control-label aui-form-require">姓名：</label>
+                                            <div class="aui-col-19">
+                                                <input type="text" class="aui-input name" placeholder="如姓名未知请填未知"
+                                                       id="creatPortrait_name">
+                                                <p class="text-danger mg-top-xs tip hide">请填写姓名，如姓名未知请填写未知</p>
+                                                <p class="text-danger moreLength mg-top-xs tip hide">姓名不能超过32个字符</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-5 control-label aui-form-require">性别：</label>
+                                            <div class="aui-col-19">
+                                                <div class="radio-group-wrap" id="sexGroup">
+                                                    <input type="radio" name="radio-msg" id="radio-a1" value="1"
+                                                           data-role="radio" checked>
+                                                    <label for="radio-a1" type="1">男</label>
+                                                    <input type="radio" name="radio-msg" id="radio-a2" value="2"
+                                                           data-role="radio">
+                                                    <label for="radio-a2" type="2">女</label>
+                                                    <input type="radio" name="radio-msg" id="radio-a3" value="-1"
+                                                           data-role="radio">
+                                                    <label for="radio-a3" type="-1">未知</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-5 control-label aui-form-require">国籍：</label>
+                                            <div class="aui-col-19">
+                                                <input type="text" class="aui-input" placeholder="如国籍未知请填写未知"
+                                                       id="creatPortrait_nation" maxlength="15">
+                                                <p class="text-danger mg-top-xs tip hide">请输入国籍,如国籍未知请填写未知</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-5 control-label aui-form-require">证件号码：</label>
+                                            <div class="aui-col-19">
+                                                <div class="aui-col-10" style="padding-left:0">
+                                                    <select class="selectpicker" id="creatPortrait_cardType"
+                                                            data-change="true" data-live-search="true"></select>
+                                                </div>
+                                                <div class="aui-col-14" style="padding-left:0">
+                                                    <input type="text" class="aui-input" placeholder="如证件号未知请填未知"
+                                                           id="creatPortrait_idcard" maxlength="50">
+                                                </div>
+                                                <p class="text-danger mg-top-xs tip hide" style="margin-top:2.25rem">
+                                                    请输入证件号,如证件号未知请填写未知</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-5 control-label">户籍所在地：</label>
+                                            <div class="aui-col-19">
+                                                <input type="text" class="aui-input" placeholder="请填写户籍所在地"
+                                                       id="creatPortrait_regaddress">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-5 control-label">当前居住地：</label>
+                                            <div class="aui-col-19">
+                                                <input type="text" class="aui-input" placeholder="请填写当前居住地"
+                                                       id="creatPortrait_curaddress">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24 labelType">
+                                        <div class="form-group">
+                                            <label
+                                                   class="aui-form-label aui-col-5 control-label aui-form-require">标签：</label>
+                                            <div class="aui-col-19">
+                                                <div class="aui-col-11" style="padding-left:0">
+                                                    <input id="creatPortrait_libName" type="text" class="aui-input"
+                                                           disabled>
+                                                </div>
+                                                <label class="aui-form-label aui-col-2 text-center">—</label>
+                                                <div class="aui-col-11" style="padding-left:0">
+                                                    <select name="labelId" id="creatPortrait_labelId"
+                                                            class="selectpicker">
+                                                    </select>
+                                                    <p class="text-danger mg-top-xs tip hide">请选择标签</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="addPersonSave">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--一人一档内容开始-->
+        <div class="flex-container p-0 control-new swiper-scroll-view hide" id="portraitContentTwo">
+        </div>
+        <!--动态库内容开始-->
+        <div class="flex-container control-new swiper-scroll-view hide" id="portraitContentThree">
+            <div class="aui-card aui-card-cover flex-direction">
+                <div class="card-title-box">
+                    <div class="float-right">
+                        <label class="aui-form-label float-left">起止时间：</label>
+                        <div class="input-daterange datepicker-box aui-input wid-30 v-middle float-left"
+                             style="font-size:0.75rem;" id="portraitThreeTime">
+                            <input id="startTimePortrait" class="input-text datepicker-input radius Wdate" type="text"
+                                   onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimePortrait\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})">
+                            <span class="input-group-addon">~</span>
+                            <input id="endTimePortrait" class="input-text datepicker-input radius Wdate" type="text"
+                                   onfocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimePortrait\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})">
+                            <span class="input-group-addon">
+                                <i class="datepicker-icon aui-icon-calendar"></i>
+                            </span>
+                        </div>
+                        <button type="button" id="searchPortraitThree" class="btn btn-primary">搜索</button>
+                        <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                            <button type="button" class="btn" id="showCardportraitThree"
+                                    style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                <i class="aui-icon-card"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="showListportraitThree"
+                                    style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                <i class="aui-icon-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="image-card-list-wrap wrap-empty-center" id="portraitContentThreeImg"></ul>
+                <div class="flex-direction justify-content hide" id="portraitEmptyContainerThree"></div>
+            </div>
+        </div>
+
+        <div class="flex-direction justify-content" id="portraitEmptyContainerAll" style="height: 100%;"></div>
+        <!-- 内容区结束 -->
+    </div>
+
+    <!-- 撤控布控任务弹窗 -->
+    <div class="modal modal-sm" id="portraitCardEndModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">撤控</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- <h2 class="modal-content-title">是否终止布控任务？</h2> -->
+                    <div class="aui-mt-md aui-ml-md aui-mr-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">撤控原因：</label>
+                                <div class="aui-col-18">
+                                    <textarea name="" id="portraitCard_stop" placeholder="请填写撤控终止原因" cols="20" rows="10"
+                                              class="control-textarea"></textarea>
+                                    <div class="wordNum warning-item-text hide">剩余
+                                        <span></span>个字</div>
+                                    <p class="text-danger tip hide">请填写撤控原因</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--整库布控单个人员弹窗-->
+    <div class="modal fade modal-sm" id="BKPersonModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">布控</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 class="modal-content-title">是否确定布控该人员？</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 人员 删除弹窗 -->
+    <div class="modal fade modal-sm" id="deletePersonModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">人员删除</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 class="modal-content-title">是否确定删除该人员？</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">删除</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 人员 恢复弹窗 -->
+    <div class="modal fade modal-sm" id="recoverPersonModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">人员恢复</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 class="modal-content-title">是否确定恢复该人员？</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">恢复</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 人员库 导入弹窗 -->
+    <div class="modal fade" id="importLibrary" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">导入</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <!-- <div class="upload-box" id="exportUploadImg">
+                        <div class="upload">
+                            <i class="aui-icon-upload"></i>
+                            <button type="button" class="btn btn-default" id="uploadFileBtn">选择上传文件</button>
+                            <form id="formFile" method="POST" name="fileinfo" enctype="multipart/form-data" class="hide">
+                                <input name="zipFile" id="uploadFileZip" type="file">
+                            </form>
+                        </div>
+                    </div> -->
+                    <div class="upload-box" id="exportUploadImg">
+                        <div class="upload uploadOne">
+                            <i class="aui-icon-upload"></i>
+                            <button type="button" class="btn btn-default" id="uploadFileBtn">选择上传Zip文件</button>
+                            <form id="formFile" method="POST" name="fileinfo" enctype="multipart/form-data"
+                                  class="hide">
+                                <input name="zipFile" id="uploadFileZip" type="file">
+                                <input name="excelFile" id="uploadFileZipThree" type="file">
+                            </form>
+                        </div>
+                        <div class="upload uploadTwo hide">
+                            <i class="aui-icon-upload"></i>
+                            <button type="button" class="btn btn-default" id="uploadFileBtnThree">选择上传Excel文件</button>
+                            <!-- <form id="formFileThree" method="POST" name="fileinfo" enctype="multipart/form-data" class="hide">
+                                <input name="zipFile" id="uploadFileZipThree" type="file">
+                            </form> -->
+                        </div>
+                    </div>
+                    <div id="uploadResult" class="">
+                        <span class="result-name text-prompt"></span>
+                        <i class="aui-icon-not-through"></i>
+                    </div>
+                    <div id="uploadResultTwo" class="">
+                        <span class="result-name text-prompt"></span>
+                        <i class="aui-icon-not-through"></i>
+                    </div>
+                    <div id="uploadResultThree" class="">
+                        <span class="result-name text-prompt"></span>
+                        <i class="aui-icon-not-through"></i>
+                    </div>
+                    <p class="text-danger mg-top-xs hide" id="uploadWarning"></p>
+                    <div class="aui-mt-sm text-light">
+                        <div class="aui-col-25 mt-sm">
+                            <div class="form-group">
+                                <label class="aui-form-label aui-col-3 control-label">标签：</label>
+                                <div class="aui-col-20">
+                                    <div class="aui-col-11" style="padding-left:0">
+                                        <input id="uploadPortrait_libName" type="text" class="aui-input" disabled>
+                                    </div>
+                                    <label class="aui-form-label aui-col-2 text-center">—</label>
+                                    <div class="aui-col-11" style="padding-left:0">
+                                        <select id="uploadPortrait_labelId" class="selectpicker">
+                                        </select>
+                                        <p class="text-danger mg-top-xs tip hide">请选择标签</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-light" id="uploadeRadio">
+                        <div class="aui-col-25 mt-sm">
+                            <label for="pc-radio-level-1">压缩包格式文件里面的图片以
+                                <span class="text-danger">姓名_身份证</span>命名,压缩包格式必须为
+                                <span class="text-danger">zip</span>格式且不能有二级目录</p>
+                            </label>
+                            <input type="radio" name="radio-1" id="pc-radio-level-1" value="1" data-role="radio"
+                                   checked>
+                        </div>
+                        <div class="aui-col-25 mt-sm">
+                            <label for="pc-radio-level-2">压缩包格式文件里面的图片以
+                                <span class="text-danger">身份证号</span>命名,压缩包格式必须为
+                                <span class="text-danger">zip</span>格式且不能有二级目录</p>
+                            </label>
+                            <input type="radio" name="radio-1" id="pc-radio-level-2" value="2" data-role="radio">
+                        </div>
+                        <div class="aui-col-25 mt-sm">
+                            <label for="pc-radio-level-3">压缩包格式文件里面的图片以
+                                <span class="text-danger">非身份证号</span>命名,压缩包格式必须为
+                                <span class="text-danger">zip</span>格式且不能有二级目录</p>
+                            </label>
+                            <input type="radio" name="radio-1" id="pc-radio-level-3" value="3" data-role="radio">
+                        </div>
+                        <div class="aui-col-25 mt-sm">
+                            <label for="pc-radio-level-4">Excel文件请按照模板填写，
+                                <a href="./assets/file/importTemplate.xls" download="人员信息导入模板.xls" class="text-link"
+                                   style="color: #3b9ef3!important;">点击下载模板</a>
+                            </label>
+                            <input type="radio" name="radio-1" id="pc-radio-level-4" value="4" data-role="radio">
+                        </div>
+                        <div class="aui-col-25 mt-sm">
+                            <label for="pc-radio-level-5">Excel文件和图片以
+                                <span class="text-danger">身份证号</span>命名的zip文件，
+                                <a href="./assets/file/importTemplate.xls" download="人员信息导入模板.xls" class="text-link"
+                                   style="color: #3b9ef3!important;">点击下载模板</a>
+                            </label>
+                            <input type="radio" name="radio-1" id="pc-radio-level-5" value="5" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="uploadSubmit" class="btn btn-primary">提交</button>
+                    <button type="button" id="cancelUpload" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 人员库 导入确认弹窗 -->
+    <div class="modal fade modal-sm" id="importLibraryInfo" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">文件上传信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div id="uploadResultInfo">
+                        <span class="result-name text-prompt"></span>
+                        <div class="aui-spin aui-spin-spinning">
+                            <span class="aui-spin-icon aui-spin-icon-spin"></span>
+                        </div>
+                        <i class="aui-icon-approval hide"></i>
+                        <i class="aui-icon-warning hide"></i>
+                    </div>
+                    <div class="aui-row">
+                        <div class="aui-col-12">
+                            <span class="name">上传文件总数：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">合并总数：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">上传成功数量：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">上传未知异常数量：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">图片格式异常数量：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">图片大于500k数量：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">命名不规则总数：</span>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="aui-col-12">
+                            <span class="name">身份证异常数量：</span>
+                            <span class="num">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="uploadSubmitInfo" class="btn btn-primary" data-dismiss="modal">确认</button>
+                    <button type="button" id="cancelUploadInfo" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自定义年龄弹窗 -->
+    <div class="modal fade modal-sm" id="ageModal" tabindex="-1" role="dialog" aria-labelledby="ageLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ageLabel">自定义年龄段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md aui-mr-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入年龄段：</label>
+                                <div class="aui-col-18">
+                                    <div class="number-to-wrap">
+                                        <input class="number-to-input" type="text" id="ageStart">
+                                        <span class="number-to-text">至</span>
+                                        <input class="number-to-input" type="text" id="ageEnd">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="ageModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义年龄弹窗 end -->
+
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md aui-mr-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input" id="timeModalDatepicker">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate"
+                                               type="text"
+                                               onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text"
+                                               onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" id="timeModalStart" autocomplete="off" />
+                                        <span class="input-group-addon">至</span>
+                                        <input type="text" class="datepicker-input" name="end" placeholder="结束时间" id="timeModalEnd" autocomplete="off" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义时间弹窗 end -->
+
+    <!--布控次数详情弹窗 -->
+    <div class="modal fade" id="bkModal" tabindex="-1" role="dialog" aria-labelledby="bkLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="bkLabel">布控任务
+                        <span class="bukong-count"></span>
+                    </h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <table id="bkTable" data-toggle="table" data-detail-view="true"
+                           data-detail-formatter="detailFormatter" data-pagination="false">
+                        <colgroup>
+                            <col>
+                            <col width="19%">
+                            <col width="27%">
+                            <col width="27%">
+                            <col width="27%">
+                        </colgroup>
+                        <thead>
+                            <th>布控名称</th>
+                            <th>布控时间</th>
+                            <th>布控地点</th>
+                            <th>布控人</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="bkListPage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义年龄弹窗 end -->
+
+    <!-- 告警次数详情弹窗 -->
+    <div class="modal fade" id="alarmModal" tabindex="-1" role="dialog" aria-labelledby="alarmLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ageLabel">告警信息
+                        <span class="alarm-count"></span>
+                    </h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义年龄弹窗 end -->
+
+    <!--查看图片弹窗-->
+    <div class="modal fade modal-lger" id="portraitCardModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">查看图片</h4>
+                    <span class="modal-info" style="font-size:12px"></span>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script class="js-addVersion" src="assets/js/jquery.ztree.exhide.js" charset="utf-8"></script>
+    <script src="js/portrait.js"></script>
+
+    <script>
+        $(function () {
+            //多选
+            $('[data-role="checkbox"]').checkboxradio();
+            $('[data-role="checkbox-image"]').checkboxradio();
+            //radio
+            $('[ data-role="radio"]').checkboxradio();
+            //下拉
+            $('[data-role="select2"]').select2();
+            //高级搜索
+            $('[data-role="search-advanced"]').click(function () {
+                $('#search-detail').slideToggle();
+                $(this).toggleClass('active');
+            });
+            // 新建人员标签
+            $('[data-role="tag-minus"]').click(function () {
+                $(this).parent().find('.tag').toggleClass('icon-show');
+            });
+            $('[data-role="portrait-tag"]').click(function () {
+                $(this).parent().remove();
+            });
+
+            // $("#ageSearch").selectmenu().selectmenu("widget").addClass("ui-selectmenu-noborder");
+            // $("#ageSearch").selectmenu().selectmenu("menuWidget").addClass("ui-selectmenu-noborder-menu");
+            // $("#sexSearch").selectmenu().selectmenu("widget").addClass("ui-selectmenu-noborder");
+            // $("#sexSearch").selectmenu().selectmenu("menuWidget").addClass("ui-selectmenu-noborder-menu");
+            // $("#timeSearch").selectmenu().selectmenu("widget").addClass("ui-selectmenu-noborder");
+            // $("#timeSearch").selectmenu().selectmenu("menuWidget").addClass("ui-selectmenu-noborder-menu");
+
+
+            // $("#createLibType").select2({
+            //     placeholder: "选择人员库类型",
+            //     allowClear: true
+            // });
+            // $("#createLibScope").select2({
+            //     placeholder: "可见范围",
+            //     allowClear: true
+            // });
+            // $("#createOrgId").select2({
+            //     placeholder: "请选择所属机构",
+            //     allowClear: true
+            // });
+
+            $('[data-role="radio-button"]').checkboxradio({
+                icon: false
+            });
+        });
+
+        // function detailFormatter(index, row) {
+        //     var html = `<p>表格详情</p>`;
+        //     return html;
+        // }
+    </script>
+
+</div>

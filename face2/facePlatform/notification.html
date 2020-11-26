@@ -1,0 +1,159 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="notification" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建人警号：</label>
+                        <div class="aui-col-18">
+                            <input id="notificationUserId" type="text" class="aui-input" placeholder="请输入创建人警号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">是否有效：</label>
+                        <div class="aui-col-18" style="padding: .4rem 0!important;">
+                            <label for="notificationShowOne" style="margin-right:1rem!important">全部</label>
+                            <input type="radio" name="notificationShow" id="notificationShowOne" value="0" data-role="radio" checked>
+                            <label for="notificationShowTwo" style="margin-right:1rem!important">生效</label>
+                            <input type="radio" name="notificationShow" id="notificationShowTwo" value="1" data-role="radio">
+                            <label for="notificationShowThree" style="margin-right:0!important">失效</label>
+                            <input type="radio" name="notificationShow" id="notificationShowThree" value="2" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input v-middle float-right" style="font-size:0.75rem;">
+                                <input id="notificationStartTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'notificationEndTime\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="notificationEndTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'notificationStartTime\')}',maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="notificationSearchBtn" class="btn btn-primary">搜索</button>
+                        <button type="button" id="notificationAddBtn" class="btn">新增通知</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--配置表 开始-->
+        <div class="manages-card-content">
+            <table id="notificationTable" class="table-hover" data-toggle="table" data-pagination="false">
+                <colgroup>
+                    <col width="10%">
+                    <!-- <col width="10%"> -->
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="item1">发布人警号</th>
+                        <!-- <th data-field="item1">发布人</th> -->
+                        <th data-field="item2">通告标题</th>
+                        <th data-field="item3">通告内容</th>
+                        <th data-field="item5">发布时间</th>
+                        <th data-field="item5">通告开始时间</th>
+                        <th data-field="item5">通告结束时间</th>
+                        <th data-field="item5">是否生效</th>
+                        <th data-field="item5">操作</th>
+                    </tr>
+                </thead>
+                <tbody style="max-height:30rem">
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="notificationPagination"></div>
+        </div>
+        <!-- 配置表 结束 -->
+    </div>
+    <!--新增公告信息-->
+    <div class="modal fade" id="notificationAddModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">新增公告</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-from-horizontal aui-row">
+                        <!--证明材料-->
+                        <div class="aui-col-24">
+                            <div class="form-group">
+                                <label class="aui-form-label aui-col-4 control-label aui-form-require">公告标题</label>
+                                <div class="aui-col-20 control-form">
+                                    <input id="notification_title" type="text" class="aui-input" maxlength="50" placeholder="请输入公告标题">
+                                    <p class="text-danger mg-top-xs tip hide">请输入公告标题</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-col-24">
+                            <div class="form-group">
+                                <label class="aui-form-label aui-col-4 control-label aui-form-require">公告内容</label>
+                                <div class="aui-col-20 control-form">
+                                    <textarea name="" id="attachArchivingAdd_reason" placeholder="请填写公告内容" cols="30" rows="10" class="control-textarea" maxlength="200"></textarea>
+                                    <p class="text-danger tip hide">请填写公告内容</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-col-24">
+                            <div class="form-group">
+                                <label class="aui-form-label aui-col-4 control-label aui-form-require">公告起止时间</label>
+                                <div class="aui-col-20 control-form">
+                                    <div class="input-daterange datepicker-box aui-input v-middle float-right" style="font-size:0.75rem;" id="notificationModalTime">
+                                        <input id="notificationModalStartTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'notificationModalEndTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="notificationModalEndTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'notificationModalStartTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                    <p class="text-danger tip hide">请选择起止时间</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-col-24">
+                            <div class="form-group">
+                                <label class="aui-form-label aui-col-4 control-label aui-form-require">公告开关</label>
+                                <div class="aui-col-20 control-form" style="padding: .4rem 0!important;">
+                                    <label for="notificationModalShowOne" style="margin-right:1rem!important">开启</label>
+                                    <input type="radio" name="notificationModalShow" id="notificationModalShowOne" value="1" data-role="radio" checked>
+                                    <label for="notificationModalShowTwo" style="margin-right:0!important">暂停</label>
+                                    <input type="radio" name="notificationModalShow" id="notificationModalShowTwo" value="0" data-role="radio">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="btn btn-primary" id="notificationAddSure">确定</span>
+                    <span class="btn" id="notificationAddCanel">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/notification.js"></script>
+</div>

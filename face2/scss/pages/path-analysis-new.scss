@@ -1,0 +1,120 @@
+.path-box {
+    .card-side-header-box {
+        border-bottom: 1px solid $text-color-disabled;
+        .title-wrap {
+            margin: 1.5rem 1.875rem 0.75rem;
+            overflow: hidden;
+            .btn {
+                width: auto;
+                margin: 0;
+            }
+            .aui-return {
+                width: 1.375rem;
+                height: 1rem;
+                vertical-align: middle;
+            }
+        }
+    }
+    .card-side-content-box {
+        padding: 2rem 1.75rem;
+        max-height: calc(100vh - 8rem);
+        .aui-timeline {
+            .image-box {
+                float: left;
+                padding: 1px;
+                border: 2px solid transparent;
+                position: relative;
+                cursor: pointer;
+                margin: 4px;
+                &.select {
+                    .border-box {
+                        display: block;
+                    }
+                    .aui-path-delect {
+                        display: block;
+                        cursor: default;
+                    }
+                }
+                .path-img {
+                    display: inline-block;
+                    width: 4rem;
+                    height: 4rem;
+                }
+                .border-box {
+                    position: absolute;
+                    left: -4px;
+                    top: -4px;
+                    right: -4px;
+                    bottom: -4px;
+                    border: 2px solid $theme-color;
+                    display: none;
+                    z-index: 2;
+                }
+                .img-info {
+                    background: $background-color-gray;
+                    height: 1.125rem;
+                    text-align: center;
+                    line-height: 1.125rem;
+                    font-size: 0.75rem;
+                    overflow: hidden;
+                    color: $text-color-light;
+                }
+                .aui-path-delect {
+                    position: absolute;
+                    display: inline-block;
+                    top: 4px;
+                    right: 4px;
+                    display: none;
+                    background: url("./../images/path-analysis/delect-red.png") no-repeat;
+                    width: 1.125rem;
+                    height: 1.125rem;
+                    background-size: cover;
+                    z-index: 3;
+                }
+            }
+        }
+    }
+    .card-side-footer-box {
+        .aui-path-move {
+            display: inline-block;
+            width: 0.875rem;
+            height: 0.875rem;
+            background: url('./../images/path-analysis/icon-trail-white.png') no-repeat center;
+            background-size: contain;
+            margin-right: 5px;
+        }
+    }
+}
+
+//告警轨迹分析 布控告警轨迹分析
+#currentAlarmPath,
+#currentAlarmPathNew {
+    .path-box {
+        .card-side-content-box {
+            max-height: calc(100% - 5rem);
+        }
+    }
+}
+
+.map-container {
+    background: url('./../images/path-analysis/path-map1.png') no-repeat center;
+    background-size: cover;
+    &.line-show {
+        background: url('./../images/path-analysis/path-map2.png') no-repeat center;
+        background-size: cover;
+    }
+    .switch-map {
+        position: absolute;
+        right: 2.5rem;
+        top: 2rem;
+        .map-label {
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+    }
+    .map-tool {
+        position: absolute;
+        right: 2.5rem;
+        bottom: 4rem;
+    }
+}

@@ -1,0 +1,192 @@
+<div>
+    <!--专项工作管理-->
+    <div id="specialCaseManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">案件编号：</label>
+                        <div class="aui-col-18">
+                            <input id="specialCaseNumber" type="text" class="aui-input" placeholder="案件编号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">事件名称：</label>
+                        <div class="aui-col-18">
+                            <input id="specialCaseName" type="text" class="aui-input" placeholder="事件名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10" id="timeSpecialCase">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">申请起止时间:</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input v-middle float-right" style="font-size:0.75rem;" id="searchManageTime">
+                                <input id="startTimeSpecialCase" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSpecialCase\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTimeSpecialCase" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSpecialCase\')}',maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="searchSpecialCase" class="btn btn-primary aui-mr-0">搜索</button>
+                        <button type="button" id="addSpecialCase" class="btn aui-mr-0">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <table id="specialCaseTableList" class="table-hover" data-toggle="table">
+                <colgroup>
+                    <col width="15%">
+                    <col width="12%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="15%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>专项工作编号</th>
+                        <th>事件名称</th>
+                        <th>事件详情</th>
+                        <th>起止时间</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="specialCaseTablePagination"></div>
+        </div>
+    </div>
+    <!-- 新增专项工作弹窗 -->
+    <div class="modal fade" id="specialCaseModal" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">新增专项工作</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-col-24">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6 aui-form-require">专项工作编号</label>
+                            <div class="aui-col-18">
+                                <input id="specialCaseAdd_code" type="text" class="aui-input" placeholder="专项工作编号" maxlength="15">
+                                <p class="text-danger mg-top-xs tip error hide">请输入专项工作编号</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-24">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6 aui-form-require">事件名称</label>
+                            <div class="aui-col-18">
+                                <input id="specialCaseAdd_eventName" type="text" class="aui-input" placeholder="事件名称">
+                                <p class="text-danger mg-top-xs tip hide">请输入事件名称</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-24">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6 aui-form-require">事件详情</label>
+                            <div class="aui-col-18">
+                                <textarea id="specialCaseAdd_comments" placeholder="请填写事件详情" cols="30" rows="5" class="control-textarea" maxlength="500"></textarea>
+                                <p class="text-danger mg-top-xs tip hide">请输入事件详情</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-24">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6 aui-form-require">可使用期限</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input v-middle float-right" style="font-size:0.75rem;" id="specialCaseAdd_date">
+                                    <input id="specialCaseAdd_startTime" class="aui-input input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'specialCaseAdd_endTime\')|| \'%y-%M-%d\'}',minDate:'#F{$dp.$D(\'specialCaseAdd_endTime\',{d:-365})}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="specialCaseAdd_endTime" class="aui-input input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'specialCaseAdd_startTime\')}',maxDate:'#F{$dp.$D(\'specialCaseAdd_startTime\',{d:365})}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                    <p class="text-danger mg-top-xs tip hide">请选择开始和结束日期</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-24">
+                        <div class="form-group" id="specialCaseLevelRadio">
+                            <label class="aui-form-label aui-col-6 aui-form-require">保密程度</label>
+                            <div class="aui-col-6 mt-sm">
+                                <label for="specialCaseLevel1" id="specialCaseLevelLabel1">低</label>
+                                <input type="radio" name="specialCaseLevel" id="specialCaseLevel1" value="1" data-role="radio">
+                            </div>
+                            <div class="aui-col-6 mt-sm">
+                                <label for="specialCaseLevel2" id="specialCaseLevelLabel2">中</label>
+                                <input type="radio" name="specialCaseLevel" id="specialCaseLevel2" value="2" data-role="radio">
+                            </div>
+                            <div class="aui-col-6 mt-sm">
+                                <label for="specialCaseLevel3" id="specialCaseLevelLabel3">高</label>
+                                <input type="radio" name="specialCaseLevel" id="specialCaseLevel3" value="3" data-role="radio" checked>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-24">
+                        <div class="form-group" id="specialCaseView">
+                            <label class="aui-form-label aui-col-6 aui-form-require control-label">公开范围</label>
+                            <div class="aui-col-8 mt-sm aui-mb-xs">
+                                <label for="specialCaseView1" id="specialCaseViewLabel">按机构</label>
+                                <input type="radio" name="specialCaseRadio" id="specialCaseView1" value="1" data-role="radio" checked>
+                            </div>
+                            <div class="aui-col-8 mt-sm aui-mb-xs">
+                                <label for="specialCaseView2" id="specialCaseViewLabe2">按人</label>
+                                <input type="radio" name="specialCaseRadio" id="specialCaseView2" value="2" data-role="radio">
+                            </div>
+                            <div class="aui-col-18 control-form" style="float:right;">
+                                <div class="aui-input-affix-wrapper" id="specialCaseViewList">
+                                    <div class="aui-input-group-inner cursor">
+                                        <input placeholder="请选择可见机构" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name=""
+                                            id="specialCase_viewList" />
+                                        <span class="aui-input-suffix">
+                                            <i class="aui-icon-delete-line"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="aui-input-affix-wrapper hide" id="specialCaseViewPerson">
+                                    <div class="aui-input-group-inner cursor">
+                                        <input placeholder="请选择可见人" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name="" id="specialCase_viewUserList"
+                                        />
+                                        <span class="aui-input-suffix">
+                                            <i class="aui-icon-delete-line"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="text-danger mg-top-xs tip hide">请选择公开范围</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/specialCaseManage.js"></script>
+</div>

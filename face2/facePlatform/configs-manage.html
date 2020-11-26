@@ -1,0 +1,240 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.css" />
+    <div id="configsPage" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">机构名：</label>
+                        <div class="aui-col-18">
+                            <input id="configsOrgName" class="aui-input cursor" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <button id="configsSearchBut" type="button" class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+                </div>
+            </form>
+        </div>
+        <div class="manages-card-content" id="configsContent">
+            <!--列表内容区 -->
+            <div class="search-btn-group">
+                <button id="configsAddBtn" type="button" class="btn btn-primary">添加</button>
+            </div>
+            <div class="right-list bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="configsContentTable" class="table table-hover">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="15%">
+                                    <col width="25%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="orgName">
+                                            <div class="th-inner ">机构名</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="maxLibs">
+                                            <div class="th-inner">最大建库数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="maxCounts">
+                                            <div class="th-inner">单库最大数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="allCounts">
+                                            <div class="th-inner ">总数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="createtime">
+                                            <div class="th-inner">创建时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="udpatetime">
+                                            <div class="th-inner">更新时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination" id="configsContentTablePagination"></div>
+                </div>
+            </div>
+            <!-- 列表内容区 -->
+        </div>
+    </div>
+
+    <!-- 布控库配置管理 新建查看 编辑弹框 start -->
+    <div class="modal fade modal-lger" id="configsEditModal" tabindex="-1" role="dialog" aria-labelledby="configsEditModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务分享</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">机构名：</label>
+                                <div class="aui-col-18 control-form" id="configsOrg">
+                                    <input type="text" class="aui-input cursor" id="config_orgName" name="orgName" placeholder="请输入单库最大数">
+                                    <p class="text-danger mg-top-xs tip hide">请输入机构名</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">最大建库数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_maxLibs" name="maxLibs" placeholder="请输入最大建库数" oninput="value=value.replace(/[^0-9]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入最大建库数</p>
+                                    <p class="text-danger mg-top-xs tip1 hide">最大建库数不超过3位</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12" id="configsRadio">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">建库类型选择：</label>
+                                <div class="aui-col-8 mt-sm">
+                                    <label for="configsRadio1">单库</label>
+                                    <input type="radio" name="camera-radio-1" id="configsRadio1" value="1" data-role="radio" checked>
+                                </div>
+                                <div class="aui-col-8 mt-sm">
+                                    <label for="configsRadio2">总数</label>
+                                    <input type="radio" name="camera-radio-1" id="configsRadio2" value="2" data-role="radio">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">单库最大数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_maxCounts" name="maxCounts" placeholder="请输入单库最大数" oninput="value=value.replace(/[^0-9]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入单库最大数</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12 hide">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">总数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_allCounts" name="allCounts" placeholder="请输入总数" oninput="value=value.replace(/[^0-9]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入总数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-configs-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="creator" name="creator" placeholder="请输入创建人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="createtime" name="createtime" placeholder="请输入创建时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-configs-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updator" name="updator" placeholder="请输入更新人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="udpatetime" name="udpatetime" placeholder="无更新">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明：</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea name="comments" id="config_comments" placeholder="请输入备注/说明" cols="30" rows="10" class="control-textarea aui-textarea"></textarea>
+                                    <p class="text-danger mg-top-xs tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="configsOkBut">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 布控库配置管理 编辑弹框 end -->
+
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="configsTipModal" tabindex="-1" role="dialog" aria-labelledby="configsTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg">是否删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="configsDeleOk">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/configsManage.js"></script>
+</div>

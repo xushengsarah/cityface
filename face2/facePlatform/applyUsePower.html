@@ -1,0 +1,534 @@
+<div>
+    <div class="layout-type2 control-new-card popup" id="applyUsePowerPage">
+        <div class="aui-card">
+            <div class="popup-title">
+                <span class="card-title">申请权限
+                    <span style="color:red;font-size:14px;">(案件、警情权限申请请到深警平台在办案件、已分流警情处发起警种文书申请)</span>
+                </span>
+                <i class="aui-icon-not-through" id="closeApplyPage"></i>
+            </div>
+            <div class="popup-body">
+                <div class="card-content">
+                    <div class="type-content security show">
+                        <div class="aui-from-horizontal aui-row">
+                            <!--申请人-->
+                            <div class="aui-col-12 hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label">申请人</label>
+                                    <div class="aui-col-20 control-form">
+                                        <div class="aui-form-label" id="applyPeople"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--申请类型-->
+                            <div class="aui-col-24 applyType">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">申请类型</label>
+                                    <div class="aui-col-20 control-form">
+                                        <div class="btn-group" role="group" style="margin-top:0.2rem;"
+                                            id="applyTypeBtn">
+                                        </div>
+                                        <p class="text-describe"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--主办单位-->
+                            <div class="aui-col-12 zbdw hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label aui-form-require">主办单位</label>
+                                    <div class="aui-col-20 control-form abdwForm" style="position:relative">
+                                        <select class="selectpicker" id="applyMyPower_zbdw" data-live-search="true"
+                                            title="请选择主办单位"></select>
+                                        <p class="text-danger mg-top-xs tip hide">请选择主办单位</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--紧急类型-->
+                            <div class="aui-col-12 criticalType hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">紧急程度</label>
+                                    <div class="aui-col-20 control-form">
+                                        <div class="criticalTypeRadio" style="padding: 0.5rem 0;">
+                                            <label for="criticalTypeOne" title="申请权限后审批通过方可检索">一般</label>
+                                            <input type="radio" name="criticalType" id="criticalTypeOne" value="1"
+                                                data-role="radio" checked>
+                                            <label for="criticalTypeTwo" title="申请权限后不用等待审批直接可检索">紧急</label>
+                                            <input type="radio" name="criticalType" id="criticalTypeTwo" value="2"
+                                                data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--警情已立案-->
+                            <div class="aui-col-12 commonType hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">类型</label>
+                                    <div class="aui-col-20 control-form" id="commonTypeSelect">
+                                        <div class="commonTypeRadio" style="padding: 0.5rem 0;">
+                                            <label for="commonTypeOne">警情</label>
+                                            <input type="radio" name="commonType" id="commonTypeOne" value="2"
+                                                data-role="radio" checked>
+                                            <label for="commonTypeTwo">已立案</label>
+                                            <input type="radio" name="commonType" id="commonTypeTwo" value="3"
+                                                data-role="radio">
+                                            <label for="commonTypeThree">在逃人员</label>
+                                            <input type="radio" name="commonType" id="commonTypeThree" value="10"
+                                                data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--紧急下面的类型-->
+                            <div class="aui-col-12 applyChose criticalTypeSelect hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">类型</label>
+                                    <!-- <div class="aui-col-20 control-form">
+                                        <select name="type" id="criticalTypeSelect">
+                                            <option value="2">警情</option>
+                                            <option value="3">已立案</option>
+                                            <option value="4">专项工作</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="aui-col-20 control-form">
+                                        <div class="criticalTypeSelectRadio" id="criticalTypeSelect"
+                                            style="padding: 0.5rem 0;">
+                                            <label for="criticalTypeSelectOne">警情</label>
+                                            <input type="radio" name="criticalTypeSelect" id="criticalTypeSelectOne"
+                                                value="2" data-role="radio" checked>
+                                            <label for="criticalTypeSelectTwo">已立案</label>
+                                            <input type="radio" name="criticalTypeSelect" id="criticalTypeSelectTwo"
+                                                value="3" data-role="radio">
+                                            <label for="criticalTypeSelectThree">专项工作</label>
+                                            <input type="radio" name="criticalTypeSelect" id="criticalTypeSelectThree"
+                                                value="4" data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--协办人-->
+                            <div class="aui-col-12 assistantType">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label">协办人</label>
+                                    <div class="aui-col-20 control-form assistantTypeForm">
+                                        <div class="aui-input-affix-wrapper">
+                                            <div class="aui-input-group-inner cursor">
+                                                <input id="applyMyPower_assistant" placeholder="请选择协办人" type="text"
+                                                    class="aui-input js-change-cames" data-state="list"
+                                                    readonly="readonly" />
+                                                <span class="aui-input-suffix">
+                                                    <i class="aui-icon-delete-line"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--工作类型-->
+                            <div class="aui-col-24 applyChose applyWorkType">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">工作内容</label>
+                                    <div class="aui-col-20 control-form">
+                                        <div id="applyTypeRadio" style="padding: 0.5rem 0;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--立案编号-->
+                            <div class="aui-col-24 applyChose applyWorkType applylabh">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">警情编号</label>
+                                    <div class="aui-col-20 control-form">
+                                        <input id="applyMyPower_dynamicNumber" type="text" class="aui-input"
+                                            placeholder="请输入警情编号" maxlength="50">
+                                        <p class="text-danger mg-top-xs tip labh hide">编号不正确</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--待查人身份证-->
+                            <div class="aui-col-12 applyChose applyIdCard hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">待查人身份</label>
+                                    <div class="aui-col-20 control-form">
+                                        <div class="aui-col-16" style="padding-left:0;">
+                                            <input id="applyMyPower_idCard" type="text" class="aui-input"
+                                                placeholder="请输入身份证号码" maxlength="50">
+                                            <p class="text-danger mg-top-xs tip noinfo hide">请上传图片或填写身份信息</p>
+                                        </div>
+                                        <label class="aui-form-label aui-col-2 text-center">—</label>
+                                        <div class="aui-col-6" style="padding-left:0;">
+                                            <input id="applyMyPower_name" type="text" class="aui-input"
+                                                placeholder="待查人姓名" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--待查人照片-->
+                            <div class="aui-col-12 applyChose applyPhoto hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-9 aui-form-require control-label">待查人照片</label>
+                                    <div class="aui-col-15 control-form pic-add-box">
+                                        <div class="upload-box" id="specialPhoto">
+                                            <div class="upload pic-add">
+                                                <i class="aui-icon-add"></i>
+                                                <form method="POST" name="fileinfo" enctype="multipart/form-data">
+                                                    <input class="uploadFile" type="file" name="specialPhotoOne">
+                                                </form>
+                                                <img class="pic-add-img hide" src="" alt="">
+                                                <i class="aui-icon-delete-line hide"></i>
+                                            </div>
+                                        </div>
+                                        <p id="specialPhotoOneWarning" class="text-danger mg-top-xs tip hide">图片大于10M
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--使用人警察证-->
+                            <div class="aui-col-24 applyChose applyOtherPlaces hide">
+                                <div class="form-group">
+                                    <label
+                                        class="aui-form-label aui-col-4 aui-form-require control-label">使用人警察证</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="face-card mg-top-xs">
+                                            <div class="add-image-wrap add-type-3 center" id="applyMyPower_warrantCard">
+                                                <div class="add-image-icon add-image-new">
+                                                    <i class="aui-icon-add"></i>
+                                                    <p class="add-image-box-text">请添加2张以上警察证(图片大小小于
+                                                        <span class="text-danger">10M</span>)</p>
+                                                    <form id="formFileOtherPlace" method="POST" name="fileinfo"
+                                                        enctype="multipart/form-data">
+                                                        <input type="file" class="uploadFile" name="wordFile">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p id="addImgWarningApplyMyPower" class="text-danger mg-top-xs hide">
+                                            图片过大,请上传小于10M的图片</p>
+                                        <p class="text-danger mg-top-xs tip hide">请上传2张以上图片</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--任务名称-->
+                            <div class="aui-col-24 applyName hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">任务名称</label>
+                                    <div class="aui-col-20 control-form">
+                                        <input id="applyMyPower_event" type="text" class="aui-input"
+                                            placeholder="请输入任务名称" maxlength="30">
+                                        <p class="text-danger mg-top-xs tip hide">请输入任务名称</p>
+                                        <p class="text-danger mg-top-xs tip repeat hide">任务名称已存在</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--任务详情-->
+                            <div class="aui-col-24 applyComment hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 aui-form-require control-label">任务详情</label>
+                                    <div class="aui-col-20 control-form">
+                                        <textarea name="" id="applyMyPower_reason" placeholder="请填写任务详情" cols="30"
+                                            rows="5" class="control-textarea" maxlength="500"></textarea>
+                                        <p class="text-danger mg-top-xs tip hide">请输入任务详情</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--被查人身份证-->
+                            <div class="aui-col-24 applyChose applySearchIdCard">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label">被检索人身份证</label>
+                                    <div class="aui-col-20 control-form">
+                                        <textarea name="" id="applyMyPower_idcards"
+                                            placeholder="检索人身份证和检索人图片总共不能超过30个，身份证之间用','间隔'" cols="30" rows="5"
+                                            class="control-textarea" maxlength="500"></textarea>
+                                        <p class="text-danger mg-top-xs tip hide"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--附件上传-->
+                            <div class="aui-col-24 applyChose applyOtherFile">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label">被检索人图片</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="face-card mg-top-xs" style="height:auto">
+                                            <div class="add-image-wrap add-type-3 center" id="applyMyPower_otherFile">
+                                                <div class="add-image-icon add-image-new">
+                                                    <i class="aui-icon-add"></i>
+                                                    <p class="add-image-box-text">此处可上传检索人图片（每张图片小于1M），且需在“图片说明”中填写说明
+                                                    </p>
+                                                    <form id="formFileOtherFile" method="POST" name="fileinfo"
+                                                        enctype="multipart/form-data">
+                                                        <input type="file" class="uploadFile" name="wordFile">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p id="addImgWarningApplyOtherFile" class="text-danger mg-top-xs hide">
+                                            请上传小于1M的图片</p>
+                                        <p class="text-danger mg-top-xs more hide">被检索人图片和身份证总共不能超过30张</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--附件说明-->
+                            <div class="aui-col-24 applyOtherFileComment">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label">图片说明</label>
+                                    <div class="aui-col-20 control-form">
+                                        <textarea name="" id="applyMyPower_OtherFileComment"
+                                            placeholder="格式为：图片1是嫌疑人**出现在**的地铁口视频截图；..." cols="30" rows="5"
+                                            class="control-textarea" maxlength="500"></textarea>
+                                        <p class="text-danger mg-top-xs tip hide">如有被检索人图片上传请输入对应的图片说明</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--证明材料-->
+                            <div class="aui-col-12 applyFile">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-5 control-label aui-form-require">证明材料</label>
+                                    <div class="aui-col-19 control-form">
+                                        <div id="applyMyPower_dynamicAnnex">
+                                            <button type="button" class="btn" style="width:100%;">
+                                                <i class="aui-icon-add"></i>
+                                                <span>上传附件(支持pdf以及图片格式)</span>
+                                            </button>
+                                            <form id="formFileApplyPower" method="POST" name="fileinfo"
+                                                enctype="multipart/form-data" class="hide">
+                                                <input class="hide uploadFile" type="file" name="wordFile"
+                                                    id="uploadFileApplyPower">
+                                            </form>
+                                        </div>
+                                        <div id="uploadResultApply" class="aui-form-label hide"
+                                            style="position:relative;">
+                                            <span class="result-name text-prompt"></span>
+                                            <i class="aui-icon-not-through"></i>
+                                        </div>
+                                        <p class="earmarkTip" style="font-size:0.75rem;color:red;"></p>
+                                        <p class="text-danger mg-top-xs hide" id="uploadWarningApply"></p>
+                                        <p class="text-danger mg-top-xs tip hide">请上传立案文书</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--审批人-->
+                            <div class="aui-col-12">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-4 control-label aui-form-require">审批人</label>
+                                    <div class="aui-col-20 control-form" style="position:relative"
+                                        id="applyMyPower_approveDiv">
+                                        <!-- <select class="selectpicker" id="applyMyPower_approve" data-live-search="true" title="请选择审批人"></select> -->
+                                        <i class="aui-icon-not-through"></i>
+                                        <input id="applyMyPower_approveValue" type="text" class="aui-input hide"
+                                            maxlength="50" />
+                                        <p class="text-danger mg-top-xs tip hide">请选择审批人</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal aui-row static hide">
+                            <div class="aui-col-24">
+                                <div class="panel-heading">
+                                    <a class="panel-toggle hide" role="button" data-toggle="collapse"
+                                        href="#staticUseApply" aria-expanded="true" aria-controls="staticUseApply"
+                                        id="staticCollapse">
+                                        <i class="aui-icon-drop-down-2"></i>
+                                        <span>静态权限</span>
+                                    </a>
+                                    <!-- <label for="useCondition1" class="ui-checkboxradio-checkbox-label">静态权限</label>
+                                    <input type="checkbox" name="useCondition" id="useCondition1" data-role="checkbox" value="1"> -->
+                                    <span>静态权限</span>
+                                    <span class="control-total hide" id="staticUsedTimes"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal static panel-collapse collapse in show hide" id="staticUseApply"
+                            aria-labelledby="staticCollapse">
+                            <div class="aui-col-12">
+                                <div class="form-group">
+                                    <label class="aui-form-label control-label aui-col-5">
+                                        可使用日期
+                                        <!-- <label for="staticUseCondition1" class="ui-checkboxradio-checkbox-label">可使用日期</label>
+                                        <input type="checkbox" name="staticUseCondition" id="staticUseCondition1" data-role="checkbox"> -->
+                                    </label>
+                                    <div class="aui-col-19 control-form">
+                                        <div class="input-daterange datepicker-box aui-input v-middle float-right"
+                                            style="font-size:0.75rem;" id="applyMyPower_staticDate">
+                                            <input id="applyStaticStart"
+                                                class="aui-input input-text datepicker-input radius Wdate"
+                                                type="text" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="applyStaticEnd"
+                                                class="aui-input input-text datepicker-input radius Wdate"
+                                                type="text" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                            <p class="text-danger text-danger-one mg-top-xs tip hide">请选择开始和结束日期</p>
+                                            <p class="text-danger text-danger-all mg-top-xs tip hide">日期次数最少填写一个</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-12 hide" style="padding-left: .75rem;">
+                                <div class="form-group">
+                                    <label class="aui-form-label control-label aui-col-5">
+                                        可使用次数
+                                        <!-- <label for="staticUseCondition2" class="ui-checkboxradio-checkbox-label">可使用次数</label>
+                                        <input type="checkbox" name="staticUseCondition" id="staticUseCondition2" data-role="checkbox"> -->
+                                    </label>
+                                    <div class="aui-col-19 control-form">
+                                        <input id="applyMyPower_staticCount" type="text"
+                                            class="aui-input applyMyPowerCount" placeholder="请输入可使用次数"
+                                            oninput="value=value.replace(/[^0-9]/g,'')">
+                                        <p class="text-danger mg-top-xs tip hide">请输入可使用次数</p>
+                                        <p class="text-danger mg-top-xs tip1 hide">请输入可使用次数</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal aui-row dynamic">
+                            <div class="aui-col-24">
+                                <div class="panel-heading">
+                                    <a class="panel-toggle hide" role="button" data-toggle="collapse"
+                                        href="#dynamicUseApply" aria-expanded="true" aria-controls="dynamicUseApply"
+                                        id="dynamicCollapse">
+                                        <i class="aui-icon-drop-down-2"></i>
+                                        <!-- <span>动态权限</span> -->
+                                    </a>
+                                    <!-- <label for="useCondition2" class="ui-checkboxradio-checkbox-label">动态权限</label>
+                                    <input type="checkbox" name="useCondition" id="useCondition2" data-role="checkbox" value="2"> -->
+                                    <span>动态权限</span>
+                                    <span class="control-total hide" id="dynamicUsedTimes"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal dynamic panel-collapse collapse in show" id="dynamicUseApply"
+                            aria-labelledby="dynamicCollapse">
+                            <div class="aui-col-12">
+                                <div class="form-group">
+                                    <label class="aui-form-label control-label aui-col-5">
+                                        可使用日期
+                                        <!-- <label for="dynamicUseCondition1" class="ui-checkboxradio-checkbox-label">可使用日期</label>
+                                        <input type="checkbox" name="dynamicUseCondition" id="dynamicUseCondition1" data-role="checkbox"> -->
+                                    </label>
+                                    <div class="aui-col-19 control-form">
+                                        <div class="input-daterange datepicker-box aui-input v-middle float-right"
+                                            style="font-size:0.75rem;" id="applyMyPower_dynamicDate">
+                                            <!-- <input id="applyDynamicStart" class="aui-input input-text datepicker-input radius Wdate" type="text" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="applyDynamicEnd" class="aui-input input-text datepicker-input radius Wdate" type="text" /> -->
+                                            <!-- <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span> -->
+                                        </div>
+                                        <p class="text-danger text-danger-one mg-top-xs tip hide"
+                                            style="margin-top:2rem">请选择开始和结束日期</p>
+                                        <p class="text-danger text-danger-all mg-top-xs tip hide"
+                                            style="margin-top:2rem">日期次数最少填写一个</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-12 hide" style="padding-left: .75rem;">
+                                <div class="form-group">
+                                    <label class="aui-form-label control-label aui-col-5">
+                                        可使用次数
+                                        <!-- <label for="dynamicUseCondition2" class="ui-checkboxradio-checkbox-label">可使用次数</label>
+                                        <input type="checkbox" name="dynamicUseCondition" id="dynamicUseCondition2" data-role="checkbox"> -->
+                                    </label>
+                                    <div class="aui-col-19 control-form">
+                                        <input id="applyMyPower_dynamicCount" type="text"
+                                            class="aui-input applyMyPowerCount" placeholder="请输入可使用次数"
+                                            oninput="value=value.replace(/[^0-9]/g,'')">
+                                        <p class="text-danger mg-top-xs tip hide">请输入可使用次数</p>
+                                        <p class="text-danger mg-top-xs tip1 hide">请输入可使用次数</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal aui-row hide">
+                            <div class="aui-col-24">
+                                <div class="panel-heading">
+                                    <a class="panel-toggle hide" role="button" data-toggle="collapse" href="#bkUseApply"
+                                        aria-expanded="true" aria-controls="bkUseApply" id="bkCollapse">
+                                        <i class="aui-icon-drop-down-2"></i>
+                                        <!-- <span>布控权限</span> -->
+                                    </a>
+                                    <label for="useCondition3" class="ui-checkboxradio-checkbox-label">布控权限</label>
+                                    <input type="checkbox" name="useCondition" id="useCondition3" data-role="checkbox"
+                                        value="3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal panel-collapse collapse in hide" id="bkUseApply"
+                            aria-labelledby="bkCollapse">
+                            <div class="aui-col-12">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">可使用日期</label>
+                                    <div class="aui-col-18">
+                                        <div class="input-daterange datepicker-box aui-input v-middle float-right"
+                                            style="font-size:0.75rem;" id="applyMyPower_bkDate">
+                                            <input id="applyBKStart"
+                                                class="aui-input input-text datepicker-input radius Wdate" type="text"
+                                                onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'applyBKEnd\')}',minDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="applyBKEnd"
+                                                class="aui-input input-text datepicker-input radius Wdate" type="text"
+                                                onFocus="WdatePicker({minDate:'#F{$dp.$D(\'applyBKStart\')||\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                            <p class="text-danger mg-top-xs tip hide">请选择开始和结束日期</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal aui-row hide">
+                            <div class="aui-col-24">
+                                <div class="panel-heading">
+                                    <a class="panel-toggle hide" role="button" data-toggle="collapse" href="#dyUseApply"
+                                        aria-expanded="true" aria-controls="dyUseApply" id="dyCollapse">
+                                        <i class="aui-icon-drop-down-2"></i>
+                                        <!-- <span>订阅权限</span> -->
+                                    </a>
+                                    <label for="useCondition4" class="ui-checkboxradio-checkbox-label">订阅权限</label>
+                                    <input type="checkbox" name="useCondition" id="useCondition4" data-role="checkbox"
+                                        value="4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal panel-collapse collapse in hide" id="dyUseApply"
+                            aria-labelledby="dyCollapse">
+                            <div class="aui-col-12">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">可使用日期</label>
+                                    <div class="aui-col-18">
+                                        <div class="input-daterange datepicker-box aui-input v-middle float-right"
+                                            style="font-size:0.75rem;" id="applyMyPower_dyDate">
+                                            <input id="applyDYStart"
+                                                class="aui-input input-text datepicker-input radius Wdate" type="text"
+                                                onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'applyDYEnd\')}',minDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="applyDYEnd"
+                                                class="aui-input input-text datepicker-input radius Wdate" type="text"
+                                                onFocus="WdatePicker({minDate:'#F{$dp.$D(\'applyDYStart\')||\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                            <p class="text-danger mg-top-xs tip hide">请选择开始和结束日期</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-from-horizontal aui-row hide applyUseTypeTip">
+                            <div class="aui-col-24">
+                                <p class="text-danger mg-top-xs tip other">请至少填写一个权限类型</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <span class="btn btn-primary" id="applySure">确定</span>
+                <span class="btn" id="applyCanel">取消</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/applyUsePower.js"></script>
+</div>

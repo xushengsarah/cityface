@@ -1,0 +1,58 @@
+<div class="add-image-wrap add-type-1 col-3">
+    <div class="add-image-box">
+        <i class="aui-icon-add"></i>
+        <p class="add-image-box-text">添加一张或多张照片检索</p>
+    </div>
+</div>
+
+<h2 class="subTitle">添加单张照片</h2>
+<div class="add-image-wrap add-type-2 col-3">
+    <div class="add-image-box">
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+    </div>
+</div>
+
+<h2 class="subTitle">添加多张照片</h2>
+<div class="add-image-wrap add-type-3 col-6">
+    <div class="add-image-item active">
+        <label for="checkbox-1" class="ui-checkboxradio-checkbox-label"></label>
+        <input type="checkbox" name="checkbox-1" id="checkbox-1" data-role="checkbox" checked>
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+        <i class="aui-icon-delete-line"></i>
+    </div>
+    <div class="add-image-item">
+        <label for="checkbox-2" class="ui-checkboxradio-checkbox-label"></label>
+        <input type="checkbox" name="checkbox-1" id="checkbox-2" data-role="checkbox">
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+        <i class="aui-icon-delete-line"></i>
+    </div>
+    <div class="add-image-item">
+        <label for="checkbox-3" class="ui-checkboxradio-checkbox-label"></label>
+        <input type="checkbox" name="checkbox-1" id="checkbox-3" data-role="checkbox">
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+        <i class="aui-icon-delete-line"></i>
+    </div>
+    <div class="add-image-item">
+        <label for="checkbox-4" class="ui-checkboxradio-checkbox-label"></label>
+        <input type="checkbox" name="checkbox-1" id="checkbox-4" data-role="checkbox">
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+        <i class="aui-icon-delete-line"></i>
+    </div>
+    <div class="add-image-item">
+        <label for="checkbox-5" class="ui-checkboxradio-checkbox-label"></label>
+        <input type="checkbox" name="checkbox-1" id="checkbox-5" data-role="checkbox">
+        <img class="add-image-img" src="./assets/images/search/search-img01.png" alt="">
+        <i class="aui-icon-delete-line"></i>
+    </div>
+    <div class="add-image-item add-image-icon">
+        <i class="aui-icon-add"></i>
+    </div>
+</div>
+<script>
+    $(function() {
+        $('[data-role="checkbox"]').checkboxradio();
+        $('[data-role="checkbox-button"]').checkboxradio({
+            icon: false
+        });
+    })
+</script>

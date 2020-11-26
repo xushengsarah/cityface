@@ -1,0 +1,105 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div class="layout-type1 user" id="alarmOverviewSuspect" style="height:100%;background:#fff;">
+        <div class="content-hat" id="alarmOverviewSuspectBox">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative">
+                <div class="card-title-box">
+                    <div class="card-title">
+                        <span class="card-title" id="all-alarm-title-sus" style="cursor: pointer">全部告警</span>
+                        <span class="tool-back btn btn-sm">
+                            <i class="aui-icon-back"></i>
+                            <p class="inline-block v-middle text-md">返回</p>
+                        </span>
+                    </div>
+                    <div class="card-operate-box float-right">
+                        <div class="operate">
+                            <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                <div class="aui-input-group-inner" title="支持以“,”拼接查询">
+                                    <input placeholder="请输入姓名或者身份证号" type="text" class="aui-input" id="alarm-overview-sus-search">
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content tab-content aui-mb-sm" id="sliderShowSuspectContent">
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-primary">全部</button>
+                        <button type="button" class="btn">未处理</button>
+                        <button type="button" class="btn">正确</button>
+                        <button type="button" class="btn">误报</button>
+                    </div>
+                    <div class="alarm-info-box alarm-info-css1">
+                        <ul class="card-title-content warning-list alarm-overview-time clearfix" id="all-alarm-time-sus">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sliderContent" id="sliderContentSus">
+            <div class="timeSlider" id="timeSliderSus"></div>
+            <div class="choseTime">
+                <div class="input-daterange datepicker-box aui-input aui-mt-xs" style="font-size:0.75rem;">
+                    <input id="startTimeSliderSus" class="input-text datepicker-input radius Wdate" readonly type="text">
+                    <span class="input-group-addon">~</span>
+                    <input id="endTimeSliderSus" class="input-text datepicker-input radius Wdate" readonly type="text">
+                    <span class="input-group-addon">
+                        <i class="datepicker-icon aui-icon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-wrap-flex" id="sliderShowSuspect" show="1">
+            <i class="aui-icon-drop-down-2"></i>
+        </div>
+    </div>
+
+
+    <!-- 确认告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmOkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">确认后将无法修改，是否确认是同一个人？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 确认告警信息弹窗 end -->
+
+    <!-- 误报告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">误报告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">误报后将无法修改，是否选择误报？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 误报告警信息弹窗 end -->
+
+    <script type="text/javascript" src="js/alarmOverviewSuspect.js"></script>
+</div>

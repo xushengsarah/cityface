@@ -1,0 +1,285 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="./assets/vendor/paginator/css/paginator.css" />
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <div class="layout-type3 small search-result searchTemperature" id="current-page-temperature">
+        <div class="aui-card side side-left">
+            <div class="card-side-content-box no-tabs">
+                <form class="search-result-side-form">
+                    <div class="form-group">
+                        <div class="aui-form-label-wrap">
+                            <label class="aui-form-label">时间段</label>
+                            <div class="btn-group btn-group-capsule" role="group" aria-label="Basic example" id="mergeTimeTemperature">
+                                <button type="button" class="btn btn-sm" data-date="3">近3天</button>
+                                <button type="button" class="btn btn-sm" data-date="7">近7天</button>
+                                <button type="button" class="btn btn-sm btn-primary" data-date="30">近30天</button>
+                            </div>
+                        </div>
+                        <div class="input-daterange datepicker-box aui-input" id="searchMerge_Temperature" style="font-size:0.75rem;">
+                            <input id="timeStartTemperature" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timeEndTemperature\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                            />
+                            <span class="input-group-addon">~</span>
+                            <input id="timeEndTemperature" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timeStartTemperature\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                            />
+                            <span class="input-group-addon">
+                                <i class="datepicker-icon aui-icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="aui-form-label">温度(℃)</label>
+                        <div class="input-daterange datepicker-box aui-input" id="mergeTemperature">
+                            <input id="startTemperature" class="input-text datepicker-input" type="text" value="37.2" />
+                            <span class="input-group-addon">~</span>
+                            <input id="endTemperature" class="input-text datepicker-input" type="text" value="40.0" />
+                        </div>
+                    </div>
+                    <div class="form-group" id="selMergeCameraIDTemperature">
+                        <div class="btn-group searchTab" role="group" style="margin:0.5rem 0;">
+                            <button type="button" class="btn btn-sm btn-primary" id="searchSelectTemperature">区域</button>
+                            <button type="button" class="btn btn-sm" id="searchMapTemperature">地图</button>
+                        </div>
+                        <div class="searchSelect searchArea">
+                            <div class="cameraTypeSearch" style="padding: 0.5rem 0;">
+                                <label for="temperatureCameraTypeAll" style="margin-right:1rem!important">全部</label>
+                                <input type="radio" name="temperatureCameraType" id="temperatureCameraTypeAll" value="" data-role="radio" checked>
+                                <label for="temperatureCameraTypeOne" style="margin-right:1rem!important">一类点</label>
+                                <input type="radio" name="temperatureCameraType" id="temperatureCameraTypeOne" value="2" data-role="radio">
+                                <label for="temperatureCameraTypeTwo" style="margin-right:0!important">二三类点</label>
+                                <input type="radio" name="temperatureCameraType" id="temperatureCameraTypeTwo" value="3" data-role="radio">
+                            </div>
+                            <div class="aui-form-item camera-drop-select">
+                                <select class="selectpicker" id="sidebarOrgSelectTemperature" data-live-search="true" title="请选择分局">
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    分局
+                                    <span>
+                            </div>
+                            <div class="aui-form-item camera-drop-select">
+                                <select class="selectpicker" id="sidebarPoliceSelectTemperature" data-live-search="true" title="请选择派出所" disabled>
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    派出所
+                                    <span>
+                            </div>
+                            <div class="aui-form-item select-multiple-container camera-drop-select">
+                                <select class="selectpicker" id="sidebarCameraSelectTemperature" multiple data-live-search="true" title="请选择摄像机" disabled
+                                    data-selected-text-format="count">
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    摄像机
+                                    <span>
+                            </div>
+                        </div>
+                        <div class="searchMap">
+                            <div class="multiPickerSelect">
+                                <div class="multiPickerSelect_title">
+                                    <div class="right-count aui-inline-block">
+                                        <span class="">已选镜头</span>
+                                        (共
+                                        <span class="js-camera-totle">0</span>条)
+                                    </div>
+                                    <div class="js-remove-all">清空全部</div>
+                                </div>
+                                <div class="multiPickerSelect_cnt">
+                                    <div class="js_right_col">
+                                        <ul id="saveNodeSearchTemperature">
+                                        </ul>
+                                    </div>
+                                    <div class="multiPickerDlg_no_result">
+                                        <i></i>未选择镜头
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-side-footer-box">
+                <button type="button" class="btn btn-primary" id="dynamicsearchTemperature">搜索</button>
+                <button type="button" class="btn" id="resetBtnTemperature">重置</button>
+            </div>
+        </div>
+        <div class="flex-container p-0 search searchTemperatureOnly">
+            <div class="aui-card aui-card-cover result-wrap" id="snappingWrapTemperature">
+                <div class="card-title-box">
+                    <i class="aui-icon-camera card-title-icon"></i>
+                    <span class="card-title">动态库</span>
+                    <span class="card-subtitle text-theme" id="sortTotalTemperature"></span>
+                    <span class="card-subtitle text-theme hide" id="sortByTimeTotalTemperature"></span>
+                    <span class="card-subtitle text-theme hide" id="timeTogetherTotalTemperature"></span>
+                    <span class="card-subtitle text-theme hide" id="positionTogetherTotalTemperature"></span>
+                    <div class="card-operate-box float-right">
+                        <div class="operate text-xm">
+                            <div class="operate-item">
+                                <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                    <span class="dropdown-toggle" id="sortListTemperature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        name="按温度排序">按温度排序</span>
+                                    <div class="dropdown-menu" aria-labelledby="sortListTemperature">
+                                        <a class="dropdown-item active" id="sortByScoreTemperature">按温度排序</a>
+                                        <a class="dropdown-item" id="sortByTimeTemperature">按时间排序</a>
+                                        <a class="dropdown-item hide" id="timeTogetherTemperature">按时间聚合</a>
+                                        <a class="dropdown-item hide" id="placeTogetherTemperature">按地点聚合</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="operate-item">
+                                <span id="selectAllSnappingTemperature">
+                                    <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                        <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                        <span>全选</span>
+                                    </label>
+                                </span>
+                                <span class="text-link default aui-ml-mmd" id="aui-icon-importTemperature">
+                                    <i class="icon aui-icon-import"></i>
+                                    <span class="text">导出</span>
+                                </span>
+                                <span class="text-link default aui-ml-mmd" id="refreshBtnTemperature">
+                                    <i class="icon aui-icon-restart"></i>
+                                    <span class="text">刷新</span>
+                                </span>
+                                <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" id="showCardSearchTemperature" style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                        <i class="aui-icon-card"></i>
+                                    </button>
+                                    <button type="button" class="btn" id="showListSearchTemperature" style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                        <i class="aui-icon-list"></i>
+                                    </button>
+                                </div>
+                                <button id="courseAnalyseTemperature" type="button" class="btn btn-primary disabled">轨迹分析</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="card-tip text-lighter hide">*鼠标
+                        <span class="btn-link-tip">点击空白区域左键按住</span>即可进行框选
+                    </p>
+                    <div class="image-card-list no-bottom-border">
+                        <ul class="image-card-list-wrap showBigImgDynamic wrap-empty-center" id="search-infoTemperature"></ul>
+                        <ul class="image-card-list-wrap display-none showBigImgDynamic wrap-empty-center" id="sortByTimeWrapperTemperature"></ul>
+                        <div class="display-none showBigImgDynamic wrap-empty-center" id="timeTogetherWrapperTemperature"></div>
+                        <div class="display-none showBigImgDynamic wrap-empty-center" id="positionTogetherWrapperTemperature"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="searchResultFlexTemperature" class="result-wrap-flex">
+                <i class="aui-icon-drop-left"></i>
+            </div>
+            <div class="search-map-frame">
+                <!-- <iframe class="map-iframe" id="search_map_iframeTemperature" value="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframeTemperature"
+                    src="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframeTemperature"></iframe> -->
+                <iframe class="map-iframe" id="search_map_iframeTemperature"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="layout-type3 search-result display-none search-path" id="currentPagePathTemperature">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left path-box control-left-box">
+            <div class="card-side-header-box">
+                <div class="title-wrap">
+                    <button class="float-left btn" id="backToSearchTemperature">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span class="v-middle">返回</span>
+                    </button>
+                    <button class="float-right btn btn-primary hide">
+                        保存轨迹图片
+                    </button>
+                </div>
+            </div>
+            <div id="coursePageSelectAllTemperature" class="card-content">
+                <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget ui-checkboxradio-checked">
+                    <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                    <span>全选</span>
+                </label>
+            </div>
+            <div class="card-side-content-box bdTop0">
+                <div class="aui-timeline" id="auiTimeLineTemperature">
+                </div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 relative" style="height:100%; width: 100%;">
+            <!-- <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_pathTemperature" style="height:100%; width: 100%;" value="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_pathTemperature"
+                src="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_pathTemperature"></iframe> -->
+            <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_pathTemperature" style="height:100%; width: 100%;"></iframe>
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+    <iframe id="exportIframeTemperature" src="" style="display: none;border: 0px;"></iframe>
+    <script class="js-addVersion" src="./assets/vendor/paginator/js/jqPaginator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/searchCommon.js"></script>
+    <script type="text/javascript" src="js/searchTemperature.js"></script>
+    <script src="js/pathAnalysis.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script>
+        // 时间轴 删除图片
+        $(".aui-timeline").find(".image-box").hover(function () {
+            $(this).addClass('select');
+            $('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }, function () {
+            $(this).removeClass('select');
+        });
+
+        if ($('.image-box').hasClass('select')) {
+            $(this).find('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }
+
+        $('.switch').on('click', function () {
+            $('.map-container').toggleClass('line-show')
+        })
+
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul, item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {
+                        text: item.label
+                    });
+
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                }).appendTo(wrapper);
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+
+        $("#startTemperature").on("blur", function () {
+            var startTemperature = parseFloat($.trim($(this).val())),
+                testReg = /^[1-9][0-9]?(\.\d)?$/;
+            if (!testReg.test(startTemperature) || startTemperature > parseFloat($("#endTemperature").val()) || startTemperature < 30) {
+                $(this).val(37.2);
+            }
+        });
+
+        $("#endTemperature").on("blur", function () {
+            var endTemperature = parseFloat($.trim($(this).val())),
+                testReg = /^[1-9][0-9]?(\.\d)?$/;
+            if (!testReg.test(endTemperature) || endTemperature < parseFloat($("#startTemperature").val()) || endTemperature > 50) {
+                $(this).val(40.0);
+            }
+        });
+
+        // 单选框 多选框
+        $(function () {
+            $('[ data-role="checkbox"]').checkboxradio();
+            $('[ data-role="checkbox-button"]').checkboxradio({
+                icon: false
+            });
+            $('[ data-role="radio"]').checkboxradio();
+            $('[ data-role="radio-button"]').checkboxradio({
+                icon: false
+            });
+        })
+    </script>
+</div>

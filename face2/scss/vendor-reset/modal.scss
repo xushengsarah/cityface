@@ -1,0 +1,134 @@
+$modal-dialog-width:45rem !default;
+$modal-dialog-width-sm:33.75rem !default;
+$modal-dialog-width-lg:67.5rem !default;
+$modal-dialog-width-lger:80rem !default;
+$modal-header-height:3.375rem !default;
+.modal {
+    max-width: inherit;
+    &-dialog {
+        display: flex;
+        align-items: center;
+        width: $modal-dialog-width;
+        max-width: $modal-dialog-width;
+        height: 100%;
+        margin: 0 auto;
+    }
+    &-content {
+        display: block;
+        border-radius: $border-radius;
+        border: 0;
+    }
+    &-header {
+        min-height: $modal-header-height;
+        padding: .75rem 1.5rem;
+        font-size: $font-size-large;
+        font-weight: bold;
+    }
+    &-body {
+        max-height: calc(80vh - 5.375rem);
+        padding: 1.25rem 1.5rem;
+        overflow-y: scroll;
+        &-head {
+            height: 4rem;
+        }
+        &-content {
+            .table {
+                table-layout: inherit;
+                thead tr,
+                tbody tr {
+                    display: table;
+                    table-layout: fixed;
+                    width: 100%;
+                    & th:first-child {
+                        width: auto;
+                        min-width: auto;
+                    }
+                } // tbody {
+                //     display: block;
+                //     max-height: 28rem;
+                //     overflow-y: auto;
+                // }
+            }
+        }
+    }
+    &-footer {
+        padding-bottom: 2rem;
+        border: 0;
+        justify-content: center;
+        .btn {
+            min-width: 7.5rem;
+        }
+    } //小尺寸
+    &.modal-sm {
+        max-width: inherit;
+        .modal-dialog {
+            width: $modal-dialog-width-sm;
+            max-width: $modal-dialog-width-sm;
+        }
+    } //大尺寸
+    &.modal-lg {
+        max-width: inherit;
+        .modal-dialog {
+            width: $modal-dialog-width-lg;
+            max-width: $modal-dialog-width-lg;
+        }
+    } //超大
+    &.modal-lger {
+        max-width: inherit;
+        .modal-dialog {
+            width: $modal-dialog-width-lger;
+            max-width: $modal-dialog-width-lger;
+        }
+    }
+    .modal-content-title {
+        font-size: 1.25rem;
+        margin: 2rem 0 1rem;
+    }
+    &.modal-cover {
+        max-width: inherit;
+        .modal-dialog {
+            width: 95%;
+            max-width: 95%;
+        }
+        .modal-content {
+            box-shadow: 0 0 50px 10px rgba($color-black, .2);
+        }
+        .modal-body {
+            padding: 0;
+            max-height: 48rem;
+            height: 48rem;
+        }
+        .mask-camera-list {
+            color: #2a2d44;
+            overflow: hidden;
+            border: 1px solid #dedede;
+            background: #fff;
+            padding: 10px 0;
+            border-radius: 3px;
+            position: absolute;
+            width: 10rem;
+            text-align: center;
+            font-size: 1rem;
+            top: -10.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            & .mask-camera-item {
+                line-height: 2;
+                padding: 0 10px;
+                cursor: pointer;
+                &.active,
+                &:hover {
+                    color: #fff;
+                    background: #3b9ef3;
+                }
+            }
+        }
+        .modal-close-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            z-index: 2;
+            color: #333;
+        }
+    }
+}

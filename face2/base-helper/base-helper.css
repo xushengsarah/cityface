@@ -1,0 +1,42 @@
+.btn-code-toggle{
+	margin: 10px 0 10px;
+    padding: 10px 15px 10px 15px;
+    border: none;
+    color: red;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+pre {
+	position: relative;
+	tab-size: 4;
+	-o-tab-size: 4; 
+	-moz-tab-size: 4;
+}
+code{
+	position: relative;
+	font-family: cursive!important;
+}
+
+.btn-code.btn-copy{
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding:3px 10px 3px 10px;
+	color: white ;
+	background:#345;
+	cursor: pointer;
+	border-radius: 4px;
+	/*transform: skew(-30deg);*/
+}
+.shadow-scale{
+	animation: shaowScale ease .5s;
+}
+@keyframes shaowScale{
+	0%,100%{
+		text-shadow: 0 0 0 #fff;
+	}
+	50%{
+		text-shadow: 0 0 4px #fff;
+	}
+}

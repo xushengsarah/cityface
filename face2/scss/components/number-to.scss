@@ -1,0 +1,20 @@
+.number-to-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 1.25rem;
+    border: 1px solid $border-color-default;
+}
+
+.number-to-input {
+    flex: 1;
+    text-align: center;
+    width: 100%;
+    border: none;
+}
+
+.number-to-text {
+    font-size: $font-size-small;
+    color: $text-color-lighter;
+    margin: 0 .5rem;
+}

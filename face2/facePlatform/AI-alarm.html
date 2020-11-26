@@ -1,0 +1,514 @@
+<div>
+    <!-- content -->
+    <div class="layout-type3 layout-control" id="AI-alarmPage">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left visible">
+            <div class="card-side-title text-0">
+                <span class="tool-back btn btn-sm">
+                    <i class="aui-icon-back"></i>
+                    <p class="inline-block v-middle text-md">返回</p>
+                </span>
+            </div>
+            <div class="card-side-header-box">
+                <div class="btn-new-box clearfix">
+                    <button type="button" class="btn btn-primary btn-sm float-right" id="newBukongAI" prevPageName="control">
+                        <i class="aui-icon-add-circle"></i> 新建AI告警
+                    </button>
+                    <div class="control-title" id="controlDetailTitleAI">
+                        <span>AI告警任务数</span>
+                        <span class="control-total" id="controlListTotalAI">0</span>
+                    </div>
+                </div>
+                <div class="search-box" id="controlSearchBoxAI">
+                    <input placeholder="搜索AI告警关键词" type="text" class="search-input" id="controlKeyWordInputAI">
+                    <span class="search-icon noborder" id="startSearchControlAI">
+                        <i class="aui-icon-search"></i>
+                    </span>
+                    <span class="search-icon search-more" data-role="search-more" id="searchMoreFilterAI">
+                        <i class="aui-icon-filter"></i>
+                    </span>
+                    <div class="search-more-box" id="searchMoreConditionsAI">
+                        <ul class="search-more-inner">
+                            <li class="text-item" id="controlStatusConditionAI">
+                                <p class="text-label">状态：</p>
+                                <span class="text text-btn">全部</span>
+                                <div class="text-content">
+                                    <span class="text text-btn">待开始</span>
+                                    <span class="text text-link text-btn">进行中</span>
+                                    <span class="text text-btn">暂停</span>
+                                    <span class="text text-btn">已结束</span>
+                                </div>
+                                <span class="text-link right display-none" data-role="search-more-toggle">
+                                    <span class="text">更多</span>
+                                    <i class="icon aui-icon-drop-down-2"></i>
+                                </span>
+                            </li>
+                            <li class="text-item" id="controlTimeConditionAI">
+                                <p class="text-label">时间：</p>
+                                <span class="text text-link text-btn">全部</span>
+                                <div class="text-content">
+                                    <span class="text text-btn">近一周</span>
+                                    <span class="text text-btn">近一个月</span>
+                                    <span class="text text-btn">近三个月</span>
+                                    <span class="text text-btn">近一年</span>
+                                    <span class="text text-btn" id="showTimeModalAI">自定义时间</span>
+                                </div>
+                                <span class="text-link right display-none" data-role="search-more-toggle">
+                                    <span class="text">更多</span>
+                                    <i class="icon aui-icon-drop-down-2"></i>
+                                </span>
+                            </li>
+                            <li class="text-item" id="controlGradeConditionAI">
+                                <p class="text-label">任务等级：</p>
+                                <span class="text text-link text-btn">全部</span>
+                                <div class="text-content">
+                                    <span class="text text-btn">紧急</span>
+                                    <span class="text text-btn">重要</span>
+                                    <span class="text text-btn">一般</span>
+                                </div>
+                                <span class="text-link right display-none" data-role="search-more-toggle">
+                                    <span class="text">更多</span>
+                                    <i class="icon aui-icon-drop-down-2"></i>
+                                </span>
+                            </li>
+                            <li class="text-item" id="createOrgConditionAI">
+                                <p class="text-label">创建机构：</p>
+                                <span class="text text-link text-btn">全部</span>
+                                <div class="text-content">
+                                    <span class="text text-btn">罗湖分局</span>
+                                    <span class="text text-btn">福田分局</span>
+                                </div>
+                                <span class="text-link right display-none" data-role="search-more-toggle">
+                                    <span class="text">更多</span>
+                                    <i class="icon aui-icon-drop-down-2"></i>
+                                </span>
+                            </li>
+                            <li class="text-item" id="controlLibConditionAI">
+                                <p class="text-label">比对库：</p>
+                                <span class="text text-link text-btn">全部</span>
+                                <div class="text-content">
+                                    <span class="text text-btn">在逃人员</span>
+                                    <span class="text text-btn">涉毒人员</span>
+                                </div>
+                                <span class="text-link right display-none" data-role="search-more-toggle">
+                                    <span class="text">更多</span>
+                                    <i class="icon aui-icon-drop-down-2"></i>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-side-content-box control">
+                <div class="tab-content" id="controlTabContentAI">
+                    <ul class="tab-container"></ul>
+                    <div class="aui-spin aui-spin-spinning bottom-loading-box display-none" id="bottomLoadingBoxAI">
+                        <span class="aui-spin-icon aui-spin-icon-spin"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+
+        <!-- 内容区开始 -->
+        <div class="flex-container control layout-type1 user p-0" id="controlContentContainerAI">
+            <!-- AI告警详情 -->
+            <div class="container-hat container-overview" id="controlItemDetailContainerAI">
+            </div>
+
+            <div class="content content-hat alarm">
+                <!-- AI告警 -->
+                <div class="aui-card flex-container overflow-hidden">
+                    <div class="aui-row display-none" id="alarmOuterContainerAI">
+                        <div class="aui-col-14 card-content-wrap">
+                            <div class="card-title-box" style="background:#fff;">
+                                <span class="card-title">全部告警 (
+                                    <span id="allAlarmCountAI">0</span> )</span>
+                                <span class="float-right">
+                                    <!-- <select name="alarmFilter" id="alarmFilterDateAI">
+                                        <option disabled selected>告警时间</option>
+                                        <option>全部</option>
+                                        <option>近1天</option>
+                                        <option>近7天</option>
+                                        <option>近30天</option>
+                                        <option>自定义</option>
+                                    </select>
+                                    <select name="alarmFilter" id="alarmFilterStatusAI">
+                                        <option disabled selected>告警状态</option>
+                                        <option>全部</option>
+                                        <option>未处理</option>
+                                        <option>已命中</option>
+                                        <option>已误报</option>
+                                    </select> -->
+                                    <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                        <span class="dropdown-toggle" id="alarmFilterDateAI" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="告警时间">告警时间</span>
+                                        <div class="dropdown-menu" aria-labelledby="alarmFilterDateAI">
+                                            <a class="dropdown-item active">不限</a>
+                                            <a class="dropdown-item">近1天</a>
+                                            <a class="dropdown-item">近7天</a>
+                                            <a class="dropdown-item">近30天</a>
+                                            <a class="dropdown-item">自定义时间</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                        <span class="dropdown-toggle active" id="alarmFilterStatusAI" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            name="告警状态">未处理</span>
+                                        <div class="dropdown-menu" aria-labelledby="alarmFilterStatusAI">
+                                            <a class="dropdown-item">全部状态</a>
+                                            <a class="dropdown-item active">未处理</a>
+                                            <a class="dropdown-item">已命中</a>
+                                            <a class="dropdown-item">已误报</a>
+                                        </div>
+                                    </div>
+                                    <span style="margin-left:20px;">
+                                        <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget" id="checkAllPerPageAI">
+                                            <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                            <span>全选</span>
+                                        </label>
+                                    </span>
+                                    <span class="text-link default text-disabled" id="courseAnalyseControlAI">
+                                        <i class="icon aui-icon-trajectory"></i>
+                                        <span class="text">
+                                            轨迹分析
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="loading-box" id="pathLoadingAI">
+                                <div class="aui-spin aui-spin-spinning">
+                                    <span class="aui-spin-icon aui-spin-icon-spin"></span>
+                                </div>
+                            </div>
+                            <div class="card-content p-0 overflow-auto" id="alarmListContainerAI">
+                            </div>
+                            <div class="aui-mt-md" id="alarmListPageAI"></div>
+                        </div>
+                        <div class="aui-col-10 card-map-wrap" id="mapIframeContainerAI">
+                            <div class="card-map-box">
+                                <!-- <iframe class="map-iframe" width="100%" height="100%" style="min-height:700px;" id="map_iframe_alarmAI" value="http://190.168.17.2:6081/peopleCity.html"
+                                    src="http://190.168.17.2:6081/peopleCity.html"></iframe> -->
+                                <iframe class="map-iframe" width="100%" height="100%" style="min-height:700px;" id="map_iframe_alarmAI"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="height:100%;" id="alarmEmptyContainerAI"></div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap positionBottom">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+        <div class="flex-container display-none" id="controlEmptyContainerAI">
+
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+    <div class="layout-type3 search-result display-none search-path" id="currentPageControlPathAI">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left path-box alarm-overview-list">
+            <div class="card-side-header-box">
+                <div class="title-wrap">
+                    <button class="float-left btn" id="backToSearchControlAI">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span class="v-middle">返回</span>
+                    </button>
+                    <button class="float-right btn btn-primary hide">
+                        保存轨迹图片
+                    </button>
+                </div>
+            </div>
+            <div class="card-side-content-box bdTop0">
+                <div class="aui-timeline" id="auiTimeLineControlAI"></div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 relative" style="height:100%; width: 100%;">
+            <!-- <iframe class="map-iframe" width="100%" height="100%" id="control_iframe_pathAI" style="height:100%; width: 100%;" value="http://190.168.17.2:6081/peopleCity.html"
+                src="http://190.168.17.2:6081/peopleCity.html"></iframe> -->
+            <iframe class="map-iframe" width="100%" height="100%" id="control_iframe_pathAI" style="height:100%; width: 100%;"></iframe>
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+
+    <!-- 终止AI告警任务弹窗 -->
+    <div class="modal fade modal-sm" id="controlItemEndModalAI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">终止AI告警任务</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">是否终止AI告警任务？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 终止AI告警任务弹窗 end -->
+
+    <!-- 删除AI告警任务弹窗 -->
+    <div class="modal fade modal-sm" id="controlItemDelModalAI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">删除AI告警任务</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">是否删除AI告警任务？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 终止AI告警任务弹窗 end -->
+
+    <!-- 延期AI告警任务弹窗 -->
+    <div class="modal fade modal-sm" id="controlPostponeModalAI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">AI告警期限</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">延期至：</label>
+                                <div class="aui-col-18">
+                                    <div class="input-daterange datepicker-box aui-input v-middle float-right" id="restartAiAlarm_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" autocomplete="off" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" autocomplete="off" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 延期AI告警任务弹窗 end -->
+
+    <!-- 确认告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmOkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">确认后将无法修改，是否确认是同一个人？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 确认告警信息弹窗 end -->
+
+    <!-- 误报告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">误报告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">误报后将无法修改，是否选择误报？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 误报告警信息弹窗 end -->
+
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="customDateModalAI" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input" id="customAiAlarm_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" autocomplete="off" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" placeholder="结束时间" autocomplete="off" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义时间弹窗 end -->
+
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="filterTimeModalAI" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs" id="filterAiAlarm_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" autocomplete="off" placeholder="开始时间" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" autocomplete="off" placeholder="结束时间" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeModalSureAI">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义时间弹窗 end -->
+
+    <!-- 布控人员告警大图弹框信息 -->
+    <div class="modal fade modal-cover modal-control mask-container-fixed" id="alarmBigPicModalAI" tabindex="-1" role="dialog"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <span data-dismiss="modal" aria-label="Close" class="modal-close-icon">
+                    <i aria-hidden="true" class="aui-icon-not-through"></i>
+                </span>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 布控人员信息 end -->
+    <script src="js/AI-alarm.js"></script>
+    <script src="js/AI-alarmControl.js"></script>
+    <script>
+        $(function () {
+            $('[ data-role="checkbox"]').checkboxradio();
+            $('[ data-role="checkbox-button"]').checkboxradio({
+                icon: false
+            });
+
+            $(".card-item").on("click", function () {
+                $(this).addClass("card-item-active").siblings().removeClass("card-item-active")
+            })
+
+            $('#searchMoreConditionsAI').click(function (e) {
+                e.stopPropagation();
+            });
+            $(document).click(function (e) {
+                if (e.target.closest(".modal")) {
+                    return;
+                }
+                $('#searchMoreConditionsAI').hide();
+                $('#searchMoreFilterAI').removeClass('active');
+            });
+
+            $('#searchMoreConditionsAI').on('click', '[data-role="search-more-toggle"]', function () {
+                var $this = $(this),
+                    $text = $(this).find('.text');
+                $this.prev('.text-content').toggleClass('text-content-more');
+                $this.find('.icon').toggleClass('rotate-180');
+                if ($text.text() == '收起') {
+                    $text.text('更多');
+                } else {
+                    $text.text('收起');
+                }
+            });
+        })
+    </script>
+</div>

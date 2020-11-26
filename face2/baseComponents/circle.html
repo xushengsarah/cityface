@@ -1,0 +1,21 @@
+<div class="circle-box" style="margin-top:20px;">
+    <div class="circle">
+        <div class="inspect-tip-img-bg"></div>
+        <div class="canvas">
+            <canvas id="myCanvas1" width="200" height="200">
+                    您的浏览器不支持canvas！
+                </canvas>
+            <canvas width="200" height="200"></canvas>
+        </div>
+
+        <p class="value none">
+            <span class="canvas-num canvas-num1">0</span>%
+        </p>
+    </div>
+    <p class="label">
+        相似度
+    </p>
+</div>
+<script>
+    canvasPercent(document.getElementById("myCanvas1"), 95, $(".canvas-num1").text(), $(".canvas-num1"));
+</script>

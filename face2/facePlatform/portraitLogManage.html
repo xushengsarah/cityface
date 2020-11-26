@@ -1,0 +1,169 @@
+<div>
+    <!-- 人像库日志页面 -->
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.css" />
+
+    <div id="portrairLogManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户警号：</label>
+                        <div class="aui-col-18">
+                            <input id="portrairLogName" type="text" class="aui-input" placeholder="请输入用户警号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">操作类型：</label>
+                        <div class="aui-col-18">
+                            <select name="type" id="portrairLogType">
+                                <option value="">全部</option>
+                                <option value="1">新增</option>
+                                <option value="2">修改</option>
+                                <option value="3">删除</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">ip地址：</label>
+                        <div class="aui-col-18">
+                            <input id="portrairLogIP" type="text" class="aui-input" placeholder="请输入ip地址">
+                            <p class="text-danger mg-top-xs tip hide">请输入正确的ip地址</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">分局：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="portrairLogOrg" data-live-search="true" title="请选择分局"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">派出所：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="portrairLogPolice" data-live-search="true" title="请选择派出所"></select>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">业务操作类型：</label>
+                        <div class="aui-col-18">
+                            <select id="portrairLogOpType" title="请选择业务类型">
+                                <option value="">全部</option>
+                                <option value="1">布控</option>
+                                <option value="2">撤控</option>
+                                <option value="3">关注</option>
+                                <option value="4">取消关注</option>
+                                <option value="5">导入</option>
+                                <option value="6">1：1检索</option>
+                                <option value="7">1：N检索</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">人像库：</label>
+                        <div class="aui-col-18" id="portrairLogLib">
+                            <select class="selectpicker" id="portrairLogLibId" data-live-search="true"></select>
+                            <!-- <input id="portrairLogLibId" type="text" class="aui-input" placeholder="请输入库id"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10" id="timeSearchLogItem">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">操作起止时间:</label>
+                        <div class="aui-col-18">
+                            <div class="inline-block v-middle wid-40">
+                                <label for="portrairLog-three" id="portrairLog-daysOne" class="ui-checkboxradio-button mr-smr">一天</label>
+                                <input type="radio" name="portrairLog-time-radio" id="portrairLog-three" value="1" data-role="radio-button" checked>
+                                <label for="portrairLog-oneweek" id="portrairLog-daysTwo" class="ui-checkboxradio-button mr-smr">三天</label>
+                                <input type="radio" name="portrairLog-time-radio" id="portrairLog-oneweek" value="3" data-role="radio-button">
+                                <label for="portrairLog-halfmonth" id="portrairLog-daysThree" class="ui-checkboxradio-button mr-smr">一周</label>
+                                <input type="radio" name="portrairLog-time-radio" id="portrairLog-halfmonth" value="7" data-role="radio-button">
+                            </div>
+                            <div class="input-daterange datepicker-box aui-input wid-60 v-middle float-right" style="font-size:0.75rem;" id="portrairLogTime">
+                                <input id="startTimePortrairLog" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimePortrairLog\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTimePortrairLog" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimePortrairLog\')}',maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                            <p class="text-danger mg-top-xs tip hide"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">身份证号码：</label>
+                        <div class="aui-col-18">
+                            <input id="portrairLogIdCard" type="text" class="aui-input" placeholder="请输入要查询的身份证号码">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <button type="button" id="searchLogList" class="btn btn-primary">搜索</button>
+                        <button type="button" id="revertLogList" class="btn">重置</button>
+                        <button type="button" id="importLogList" class="btn">导出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <table id="portrairLogTableList" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="12%">
+                    <col width="12%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="item1">照片</th>
+                        <th data-field="item2">姓名</th>
+                        <th data-field="item3">身份证号</th>
+                        <th data-field="item4">库名称</th>
+                        <th data-field="item5">标签名称</th>
+                        <th data-field="item6">用户姓名</th>
+                        <th data-field="item7">用户警号</th>
+                        <th data-field="item8">操作人ip</th>
+                        <th data-field="item9">操作类型</th>
+                        <th data-field="item10">业务操作类型</th>
+                        <th data-field="item11">记录时间</th>
+                        <th data-field="item12">平台编码</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="portrairLogTablePagination"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script src="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/portraitLogManage.js"></script>
+</div>

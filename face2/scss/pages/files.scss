@@ -1,0 +1,345 @@
+//hat区域样式
+.container-hat-left{
+    padding-top: 2rem;
+    .image-card-box{
+        float: left;
+        width: 12.5rem;
+        margin: 0 4rem 0 2rem;
+        background: $color-white;
+        .img{
+            border-radius: $border-radius-medium;
+        }
+    }
+    .hat-detail{
+        float: left;
+        width: calc(100% - 18.5rem);
+    }
+    .title-box{
+        line-height: 1;
+    }
+    .title-box .tag{
+        margin: 0 0 0 $space*2;
+    }
+    .operate{
+        float: right;
+        height: 2.25rem;
+        padding: 0 1rem;
+        line-height: 2.25rem;
+        background: rgba($color-white, .1);
+        border-radius: 3px;
+        cursor: pointer;
+        &.active{
+            .aui-icon-collection{
+                color: $color-warning;
+            }
+        }
+    }
+    .aui-icon-collection{
+        margin-right: 4px;
+    }
+    .form-info{
+        margin-top: $space;
+        .aui-col-12{
+            min-height: auto;
+        }
+    }
+    .form-group{
+        margin-top: $space * .5;
+    }
+    .aui-form-label{
+        color: rgba($color-white,.5);
+    }
+    .form-text{
+        color: $color-white;
+    }
+}
+.container-hat-right{
+    padding: 1rem 1.5rem;
+    .tag-box{
+        float: right;
+    }
+    .status-item{
+        display: inline-block;
+        margin-left: $space*3;
+    }
+}
+
+//内容区域样式
+.anchor-nav{
+    .item{
+        float: left;
+        min-width: 10.25rem;
+        height: 3rem;
+        padding: 0 $space;
+        line-height: 3rem;
+        text-align: center;
+        font-size: $font-size-large;
+        color: $color-white;
+        border-top: 4px solid transparent;
+        cursor: pointer;
+        &.active,&:hover{
+            color: $theme-color;
+            background: rgba($color-white, .1);
+            border-top-color:  $theme-color;
+        }
+    }
+}
+.files-detail{
+    .map-box{
+        position: relative;
+        height: 33.75rem;
+        border-top: 1px solid $theme-color;
+        margin: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    .map-title-box{
+        position: absolute;
+        left: $space*4;
+        top: $space;
+        right: $space*4;
+        line-height: 1.875rem;
+        .btn-group{
+            margin-left: $space;
+        }
+        .select2{
+            float: right;
+        }
+        .operate{
+            float: right;
+            height: 1.875rem; 
+            padding: $space*.5 $space*2 0;
+            margin-right: $space * 2.4;
+            background: $color-white;
+            border-radius: $border-radius;
+            box-shadow: 0 3px 10px 0 rgba($color-black, 0.30);
+        }
+        .checkbox{
+            display: inline-block;
+            margin-left: 1.5rem;
+        }
+    }
+    .aui-card{
+        margin-top: $space*2;
+        margin-bottom: 0;
+        border-radius: 0;
+        .card-title-box{
+            height: 3.625rem;
+            line-height: 3.625rem;
+        }
+        &.type-1{
+            height: 21.75rem;
+            margin-top: 0;
+        }
+        &.type-2 {
+            height: 30.75rem;
+            margin-top: 1.25rem;
+            .middle-box{
+                display: flex;
+                align-items: center;
+                height: 27.125rem;
+            }
+        }
+        .aui-input-affix-wrapper{
+            display: inline-block;
+            width: 12rem;
+            margin-left: $space*2;
+        }
+    }
+    .map-img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .map-legend{
+        position: absolute;
+        right:  1.5rem;
+        bottom: 1.25rem;
+    }
+    .map-people{
+        position: absolute;
+        top: 140px;
+        left: 23.5%;
+    }
+    .map-timeline{
+        position: absolute;
+        left: 50%;
+        bottom: 1.25rem;
+        transform: translateX(-50%);
+    }
+    .map-thermal{
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 30%;
+    }
+    .aui-timeline-item{
+        &-wrap{
+            padding-right: 0;
+            padding-left: 1.6rem;
+        }
+        &-title{
+            padding-left: 1rem;
+        }
+        .image-card-list{
+            margin-top: -1rem;
+        }
+        .text-link{
+            float: right;
+            line-height: 1;
+            font-size: $font-size-medium;
+        }
+    }
+    .block-title{
+        font-size: 1.25rem;
+        margin: $space*2 0 $space*1.4;
+        line-height: 1;
+    }
+    .files-detail-img{
+        float: left;
+        width: 6.875rem;
+        height: 4.125rem;
+        margin-right: $space*2;
+    }
+    .tabs-btn{
+        margin-top: $space*1.6;
+        .tab-content{
+            padding-left: 2.625rem;
+        }
+        .img-lg{
+            float: left;
+            width: 4rem;
+            margin-right:3.75rem;
+        }
+        .image-info-list3{
+            width: calc(100% - 7.75rem);
+            float: left;
+        }
+    }
+    .aui-row{
+        margin-left: -$space;
+        margin-right: -$space;
+    }
+    .aui-col-8,.aui-col-16{
+        padding-left: $space;
+        padding-right: $space;
+    }
+    .card-title-tabs{
+        float: left;
+        line-height: 2.1;
+        border-bottom: 0;
+    }
+    
+}
+
+.layout-type5 .container-hat{
+    &.large{
+        height: 42.375rem;
+        .search-eapand-box{
+            margin: 17.35rem auto 0;
+        }
+    }
+    &.small{
+        height: 21.375rem;
+        .search-eapand-box{
+            margin: 6.625rem auto 0;
+        }
+    }
+    &.nobg{
+        background: none;
+    }
+}
+
+.files-index{
+    .text-list{
+        margin-top: $space;
+        color: rgba($color-white,.3);
+        .text{
+            display: inline-block;
+            margin-left: 1.25rem;
+            font-size: $font-size-medium;
+        }
+    }
+    .search-eapand-box{
+        width: 58.5rem;
+    }
+    .content{
+        // background: $color-white;
+        margin: -3.25rem 3rem;
+        padding: 0;
+    }
+    .aui-card{
+        border-radius: 0;
+        margin-bottom: 1.5rem;
+        &.type-3{
+            height: 21rem;
+            .middle-box{
+                display: flex;
+                align-items: center;
+                height: 27.125rem;
+            }
+        }
+        .card-title-box{
+            height: 3.625rem;
+            line-height: 3.625rem;
+        }
+    }
+    .card-title-noborder .card-title-box{
+        height: 3.25rem;
+        line-height: 3.25rem;
+        border-bottom: 0;
+    }
+    .card-title-noborder .card-content{
+        padding-top: 0;
+    }
+    .card-operate-box{
+        line-height: 1;
+        padding-top: $space;
+    }
+    .numerical-icon-list{
+        margin: 1.75rem 0;
+    }
+    .chart-box{
+        height: 16.25rem;
+    }
+}
+.layout-type6{
+    min-height: 100%;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+    .search-eapand-box{
+        width: 58.5rem;
+        margin: 2.5rem auto;
+    }
+    .image-info-list4{
+        margin-top: 0; 
+    }
+    .operate-box{
+        .float-right{
+            padding-top: 4px;
+        }
+    }
+}
+.map-info-box{
+    position: absolute;
+    left: 2rem;
+    top: 5.875rem;
+    width: 31.25rem;
+    height: 23.125rem;
+    background: $color-white;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    .map-info-title-box{
+        height: 3.625rem;
+        line-height: 3.625rem;
+        padding: 0 $space*3;
+        border-bottom: 1px solid $border-color-default;
+    }
+    .btn-group{
+        margin-top: $space*1.5;
+    }
+    .map-info{
+        padding: $space*2;
+    }
+}

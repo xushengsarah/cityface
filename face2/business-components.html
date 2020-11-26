@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>业务组件</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-ui/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor-reset.min.css" />
+    <link rel="stylesheet" href="assets/css/components.min.css" />
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        body {
+            min-width: 1280px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+            padding: 0 0 5px;
+            margin: 15px 0 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .section {
+            padding: 10px 50px;
+            min-height: auto !important;
+            background: #fff;
+        }
+        
+        .section-content {
+            max-width: inherit;
+            margin-bottom: 20px;
+            padding: 0 30px 0 40px;
+        }
+        
+        .subTitle {
+            margin: 18px 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="container" style="max-width:100%;">
+            <h1 class="text-center" style="font-size:28px; font-weight:bold; margin:30px 0 20px;">Business Components</h1>
+            <section class="section" data-template="businessComponents/operate.html">
+                <p class="section-title">标题操作项</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/flex-middle.html">
+                <p class="section-title">内容水平垂直居中</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/card.html" style="background-color: #dee4ec;">
+                <p class="section-title">卡片容器</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/form-info.html">
+                <p class="section-title">信息展示</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/info-card.html">
+                <p class="section-title">信息卡片</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/add-image.html">
+                <p class="section-title">添加照片</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/image-card.html">
+                <p class="section-title">照片卡片</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/image-card-list.html">
+                <p class="section-title">照片卡片列表</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/image-together-group.html">
+                <p class="section-title">照片聚合组</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="businessComponents/search-detail.html">
+                <p class="section-title">搜索详情</p>
+                <div class="section-content"></div>
+            </section>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/vendor/jQuery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="base-helper/base-helper.js"></script>
+    <script type="text/javascript" src="assets/js/base.js"></script>
+    <script>
+        $(".section").each(function() {
+            var $this = $(this);
+            var tpl = $this.attr("data-template");
+            $this.find(".section-content").load(tpl, function() {
+                helper.init();
+            });
+            $this.append($('<a class="text-link inline-block mt-3" target="_blank">下载代码</a>').attr({
+                "href": tpl,
+                "download": tpl
+            }));
+        });
+    </script>
+</body>
+
+</html>

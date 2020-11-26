@@ -1,0 +1,153 @@
+<div>
+        <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+        <link rel="stylesheet" href="assets/css/dynamicface.css">
+        <div class="popup-panel hide"></div>
+        <div class="layout-type2 control-new-card">
+            <div class="aui-card">
+                <div class="card-title-box">
+                    <span class="card-title">卡口信息</span>
+                    <i class="aui-icon-not-through" id="closeBayonetPop"></i>
+                </div>
+                <div class="card-content">
+                    <div class="tab-content">
+                        <div class="type-content security show">
+                            <div class="content-wrap">
+                                <form class="aui-from-horizontal aui-row">
+                                    <div class="aui-col-14">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-6 aui-form-require control-label ">布控类型</label>
+                                            <div class="aui-col-18 control-form">
+                                                <select name="speed" id="speed9">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="aui-from-horizontal aui-row">
+                                    <div class="aui-col-10">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-6 aui-form-require control-label">布控区域</label>
+                                            <div class="aui-col-18 control-form">
+                                                <div class="aui-input-affix-wrapper">
+                                                    <div class="aui-input-group-inner cursor">
+                                                        <input placeholder="请选择布控区域" type="text" class="aui-input js-change-cames"
+                                                            data-state="list" readonly="readonly" name="" id="control_orgList"/>
+                                                        <span class="aui-input-suffix">
+                                                            <i class="aui-icon-delete-line"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <p class="text-danger mg-top-xs tip hide">请选择布控区域</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="aui-from-horizontal aui-row">
+                                    <div class="aui-col-10">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-6 aui-form-require control-label">可见范围</label>
+                                            <div class="aui-col-18 control-form">
+                                                <div class="aui-input-affix-wrapper">
+                                                    <div class="aui-input-group-inner cursor">
+                                                        <input placeholder="请选择可见范围" type="text" class="aui-input js-change-cames"
+                                                            data-state="list" readonly="readonly" name="" id="bayonet_viewOrgList"/>
+                                                        <span class="aui-input-suffix">
+                                                            <i class="aui-icon-delete-line"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <p class="text-danger mg-top-xs tip hide">请选择可见范围</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-input js-change-cames" id="control_viewOrgList"></div>
+                <div class="card-title-box">
+                    <span class="card-title">镜头信息</span>
+                </div>
+                <div class="card-content">
+                    <div class="tab-content">
+                        <div class="type-content event">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label ">通知范围</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入通知范围">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label ">告警接收人</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入告警接收人">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8 control-label ">是否推送警务云</label>
+                                        <div class="aui-col-18 control-form">
+                                            <select name="speed" id="speed7">
+                                                <option>是</option>
+                                                <option selected>否</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label ">申请原因</label>
+                                        <div class="aui-col-18 control-form">
+                                            <textarea type="text" class="aui-textarea" placeholder="请输入申请原因"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="type-content security show">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-10">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 aui-form-require control-label ">告警接收人</label>
+                                        <div class="aui-col-18 control-form">
+                                            <div class="aui-input-affix-wrapper">
+                                                <div class="aui-input-group-inner cursor">
+                                                    <input placeholder="请选择告警接收人" type="text" class="aui-input js-change-cames"
+                                                        data-state="list" readonly="readonly" name="" id="control_noticeUserList"/>
+                                                    <span class="aui-input-suffix">
+                                                        <i class="aui-icon-delete-line"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="text-danger text-normal mg-top-xs tip hide">请选择告警接收人</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-footer">
+                    <span class="btn btn-primary" id="onNewBukong">确定</span>
+                    <span class="btn" id="cancelEdit">取消</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <script src="assets/vendor/select2/js/select2.min.js"></script> -->
+        <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/control-new.js"></script>
+        <!-- <script type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script> -->
+        <!-- <script type="text/javascript">
+            $('.form_datetime').datetimepicker({format:'yyyy-mm-dd hh:ii'});
+        </script> -->
+    </div>

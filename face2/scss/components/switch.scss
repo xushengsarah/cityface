@@ -1,0 +1,138 @@
+$switch-min-width: 1.75rem!default;
+$switch-text-min-width: 2.5rem!default;
+$switch-duration: .36s !default;
+$switch-text-disabled:$text-color-disabled !default;
+$switch-bg-disabled:$border-color-light !default;
+$switch-height: 1.125rem!default;
+$switch-button-height: 1.875rem!default;
+$switch-icon-size: .75rem!default;
+.switch {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: $switch-min-width;
+    height: $switch-height;
+    line-height: $switch-height;
+    vertical-align: middle;
+    border-radius: $switch-height;
+    background-color: $switch-bg-disabled;
+    cursor: pointer;
+    transition: all $switch-duration;
+    user-select: none;
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: $switch-icon-size;
+        height: $switch-icon-size;
+        left: .1875rem;
+        top: .1875rem;
+        border-radius: 50%;
+        background-color: $color-white;
+        cursor: pointer;
+        transition: all $switch-duration;
+    }
+    &.deep-gray {
+        background: $text-color-lighter;
+    }
+    &-text {
+        min-width: $switch-text-min-width;
+        &-on,
+        &-off {
+            font-size: $font-size-small;
+        }
+        &-on {
+            float: left;
+            color: $color-white;
+            padding-left: 0.375rem;
+        }
+        &-off {
+            float: right;
+            color: $text-color-light;
+            padding-right: 0.375rem;
+        }
+    }
+    &-button {
+        min-width: 10.375rem;
+        height: $switch-button-height;
+        padding: ($switch-button-height - 1.25rem)/2;
+        background: none;
+        border: 1px solid $border-color-default;
+        &:before {
+            display: none;
+        }
+        .switch-text {
+            &-on,
+            &-off {
+                min-width: 4.5rem;
+                line-height: 1.25rem;
+                color: $text-color-default;
+                border-radius: 1.25rem;
+                text-align: center;
+            }
+        }
+        &:not(.on) {
+            .switch-text-off {
+                background: $color-error;
+                color: $color-white;
+            }
+        }
+    }
+    &.on {
+        &:not(.switch-button) {
+            background: $theme-color;
+            &:before {
+                left: 100%;
+                margin-left: -1rem;
+            }
+        }
+        &.switch-button {
+            .switch-text-on {
+                background: $theme-color;
+                color: $color-white;
+            }
+        }
+    }
+    &.disabled {
+        background: $background-color-disabled!important;
+        cursor: $cursor-disabled;
+        &:before {
+            background-color: $text-color-disabled;
+            cursor: $cursor-disabled;
+        }
+        .switch-text {
+            &-on,
+            &-off {
+                color: $text-color-disabled;
+            }
+        }
+        &.switch-button {
+            background: $background-color-gray;
+            &:not(.on) {
+                .switch-text-off {
+                    background: $background-color-disabled!important;
+                    color: $text-color-default!important;
+                }
+            }
+            &.on {
+                .switch-text {
+                    &-on {
+                        background: $background-color-disabled!important;
+                        color: $text-color-default!important;
+                    }
+                }
+            }
+        }
+    }
+    &-box {
+        display: inline-block;
+        .switch,
+        .switch-label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .switch-label {
+            margin-left: calc(#{$space} - 2px);
+        }
+    }
+}

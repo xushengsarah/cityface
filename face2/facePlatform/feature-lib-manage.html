@@ -1,0 +1,297 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="featureLibManage" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">厂家类型：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="cjType">
+                                <option value="1">融合人像厂家配置</option>
+                                <option value="2">城市人像厂家配置</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建人：</label>
+                        <div class="aui-col-18">
+                            <input id="platform" type="text" class="aui-input" placeholder="请输入创建人">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">对接平台类型：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="platType">
+                                <option value="">全部</option>
+                                <option value="1">内部平台</option>
+                                <option value="2">外部平台</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">算法厂家：</label>
+                        <div class="aui-col-18 show">
+                            <select name="platformId" id="platformIdVal"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">对接平台唯一编码：</label>
+                        <div class="aui-col-18 show">
+                            <select name="dockCode" id="dockCodeVal"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <button type="button" id="searchConfigList" class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+                </div>
+            </form>
+        </div>
+        <!--厂家特征库 开始-->
+        <div class="manages-card-content">
+            <div class="search-btn-group algo-setting-btn">
+                <button type="button" id="configAddBtn" class="btn btn-primary">新增</button>
+                <!-- <button type="button" id="configMultiDeleteBtn" class="btn btn-primary disabled">批量删除</button> -->
+            </div>
+            <!-- <div class="tip-box">
+                <i class="icon aui-icon-information"></i>
+                <span>已选择<span class="checked-counts" id="configTableCounts">0</span>项</span>
+            </div> -->
+            <div>
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="tableListConfig" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                                <div class="th-inner ">
+                                                    <div class="table-checkbox">
+                                                        <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all">
+                                                        <label class="table-checkbox-label"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="fht-cell"></div>
+                                            </th> -->
+                                            <th data-field="status">
+                                                <div class="th-inner ">库名称</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="modifyTime">
+                                                <div class="th-inner ">库描述</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="status">
+                                                <div class="th-inner ">算法厂家</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="modifyTime">
+                                                <div class="th-inner ">对接平台类型</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="functionName">
+                                                <div class="th-inner ">创建人</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="modifyTime">
+                                                <div class="th-inner ">创建时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="modifyTime">
+                                                <div class="th-inner ">更新人</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="modifyTime">
+                                                <div class="th-inner ">更新时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner ">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination bayonetCameralPagination" id="tableConfigListPagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 配置表 结束 -->
+    </div>
+    <!-- 新建/编辑弹窗 -->
+    <div class="modal fade modal-lger" id="featureLibModal" tabindex="-1" role="dialog" aria-labelledby="featureLibLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="featureLibLabel">新增</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">厂家配置类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="type_val">
+                                        <option value="1">融合人像厂家配置</option>
+                                        <option value="2">城市人像厂家配置</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库ID</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="libId_val" type="text" class="aui-input" placeholder="请输入库ID">
+                                    <p class="text-danger mg-top-xs tip hide">请输入库ID</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库名称</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="libName_val" type="text" class="aui-input" placeholder="请输入库名称">
+                                    <p class="text-danger mg-top-xs tip hide">请输入库名称</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库描述</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="libDesc_val" type="text" class="aui-input" placeholder="请输入库描述">
+                                    <p class="text-danger mg-top-xs tip hide">请输入库描述</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <!-- <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">厂家配置类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="type_val">
+                                        <option value="1">融合人像厂家配置</option>
+                                        <option value="2">城市人像厂家配置</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="platType_val">
+                                        <option value="1">内部平台</option>
+                                        <option value="2">外部平台</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">对接平台唯一编码</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="dockCode" id="dockCode_val"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row IDType">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">算法厂家ID</label>
+                                <div class="aui-col-18 control-form">
+                                    <select class="selectpicker" id="platformId_val"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="creator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="createtime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="updator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="udpatetime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea name="" id="comments_val" placeholder="请输入备注/说明" cols="30" rows="10" class="control-textarea aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="configModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="featureLibTipModal" tabindex="-1" role="dialog" aria-labelledby="configTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabel">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="configModaldelectSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/featureLibManage.js"></script>
+</div>

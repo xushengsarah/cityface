@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基础样式</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-ui/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper/css/swiper.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor-reset.min.css" />
+    <link rel="stylesheet" href="assets/css/components.min.css" />
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        body {
+            min-width: 1280px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+            padding: 0 0 5px;
+            margin: 15px 0 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .section {
+            background-color: #fff;
+            padding: 10px 50px;
+            min-height: auto !important;
+            margin-right: 150px;
+        }
+        
+        .section-content {
+            max-width: inherit;
+            margin-bottom: 20px;
+            padding: 0 30px 0 40px;
+        }
+        
+        .subTitle {
+            margin: 18px 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="container" style="max-width:100%;">
+            <h1 class="text-center" style="font-size:28px; font-weight:bold; margin:30px 0 20px;">Base Widgets</h1>
+            <section class="section" data-template="baseComponents/common.html">
+                <p class="section-title">常用类名</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/text.html">
+                <p class="section-title">文本(基类:text,扩展:text-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/crumb.html">
+                <p class="section-title">crumb面包屑</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/link.html">
+                <p class="section-title">链接 link (基类:link,扩展:link-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/button.html">
+                <p class="section-title">按钮 btn (基类:btn,扩展:btn-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/checkbox.html">
+                <p class="section-title">多选 checkbox(checkbox-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/radio.html">
+                <p class="section-title">单选radio(radio-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/status.html">
+                <p class="section-title">状态status</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/spinner.html">
+                <p class="section-title">数字微调器 spinner(spinner-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/input.html">
+                <p class="section-title">表单input,textarea(input-,textarea-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/search.html">
+                <p class="section-title">搜索(search)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/form.html">
+                <p class="section-title">表单(form-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/datepicker.html">
+                <p class="section-title">时间选择 datepicker(datepicker-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/moment.html">
+                <p class="section-title">moment时间公共方法 moment(moment-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/selectmenu.html">
+                <p class="section-title">下拉选择(selectmenu-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/dropdown.html">
+                <p class="section-title">下拉(dropdown-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/pagination.html">
+                <p class="section-title">pagination(pagination-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/slider.html">
+                <p class="section-title">滑动条(slider-)</p>
+                <div class="section-content" style="width:35%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/tabs.html">
+                <p class="section-title">tabs 页签切换(tabs-)</p>
+                <div class="section-content" style="width:50%;"></div>
+            </section>
+            <section class="section" data-template="baseComponents/circle.html">
+                <p class="section-title">环形进度条</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/switch.html">
+                <p class="section-title">开关(switch-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/table.html">
+                <p class="section-title">表格(table-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/timeline.html">
+                <p class="section-title">时间轴(timeline-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/swiper.html">
+                <p class="section-title">图片切换(swiper-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/tag.html">
+                <p class="section-title">标签(tag-)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/number-to.html">
+                <p class="section-title">数字到数字</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/messageicon.html">
+                <p class="section-title">信息描述图标</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/column.html">
+                <p class="section-title">柱状图</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/circle-new.html">
+                <p class="section-title">圆环图(堆叠)</p>
+                <div class="section-content"></div>
+            </section>
+            <section class="section" data-template="baseComponents/loading.html">
+                <p class="section-title">loading(加载)</p>
+                <div class="section-content"></div>
+            </section>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/vendor/jQuery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/vendor/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="base-helper/base-helper.js"></script>
+    <script type="text/javascript" src="assets/js/base.js"></script>
+    <script type="text/javascript" src="assets/vendor/moment/moment.min.js"></script>
+    <script>
+        $(".section").each(function() {
+            var $this = $(this);
+            var tpl = $this.attr("data-template");
+            $this.find(".section-content").load(tpl, function() {
+                helper.init();
+            });
+            $this.append($('<a class="text-link inline-block mt-3" target="_blank">下载代码</a>').attr({
+                "href": tpl,
+                "download": tpl
+            }));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+.show-more-algorigtm-list .tag{
+    margin-bottom: 0;
+}
+
+.btn-absolute .image-card-list-title{
+    position: relative;
+    margin-top: 1rem;
+}
+.btn-absolute .image-card-list-title .btn{
+    position: absolute;
+    right: 0;
+}
+.btn-absolute .image-card-list,.btn-absolute .image-card-list-wrap{
+    margin-bottom: 0;
+}
+.form-control-type1 .datepicker-box{
+    width: calc(100% - 18.55rem);
+}
+.page-u-p{
+    .card-side-header-box .card-side-title{
+        display: none;
+    }
+    // #js-page-p-new{
+    //     display: none;
+    // }
+}
+.path-switch-map{
+    position: absolute;
+    top: 40px;
+    right: 2.5rem;
+    z-index: 2;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+}
+@media screen and (max-width: 1440px){
+    .form-control-type1 .datepicker-box{
+        margin-left: .35rem;
+    }
+    .image-info-list .image-info .form-info .form-group{
+        margin-top: .4rem;
+    }
+}

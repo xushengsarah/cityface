@@ -1,0 +1,140 @@
+////
+/// This is a poster comment.
+/// It will apply annotations to all items from file.
+/// @group utils
+///
+////
+
+/// px转em
+///
+///@name pxToEm
+///@param {Measure} $px[] - 要转换的px值
+///@param {Measure} $base[16] - 父元素font-size值
+@function pxToEm($px, $base: 16) {
+  @return ($px / $base) * 1em;
+}
+
+/// px转rem
+///
+///@name pxToRem
+///@param {Measure} $px[] - 要转换的px值
+///@param {Measure} $base[16] - html font-size值
+
+@function pxToRem($px, $base: $html-font-base) {
+  @return ($px / $base) * 1rem;
+}
+
+/// 检查某个或多个值是否在列表中
+/// 
+/// @argument {list} $list
+///   待检测的列表
+///
+/// @argument {list} $values
+///   待检测值
+///
+/// @return {boolean}
+
+@function contains(
+  $list,
+  $values...
+) {
+  @each $value in $values {
+    @if type-of(index($list, $value)) != "number" {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+/// 验证某个值是否是数字
+/// 
+/// @argument {number} $value 待检测值
+///
+/// @require {function} contains
+///
+/// @return {boolean}
+///
+
+@function is-number($value) {
+  @return contains("0" "1" "2" "3" "4" "5" "6" "7" "8" "9" 0 1 2 3 4 5 6 7 8 9, $value);
+}
+
+/// 获取 CSS 长度值属性（例如：margin，padding，border-width 等）在某个方向的值
+///
+/// @name getLengthDirectionValue
+/// @param {String} $property - 记录着长度值的 SASS 变量
+/// @param {String} $direction - 需要获取的方向，可选值为 top，right，bottom，left，horizontal，vertical，
+///                  其中 horizontal 和 vertical 分别需要长度值的左右或上下方向值相等
+/// @example
+///   // UI 界面的一致性往往要求相似外观的组件保持距离、颜色等元素统一，例如：
+///   // 搜索框和普通输入框分开两种结构处理，但希望搜索框的搜索 icon 距离左边的空白与
+///   // 普通输入框光标距离左边的空白保持一致，就需要获取普通输入框的 padding-left
+///   $textField_padding: 4px 5px;
+///   .dm_textField {
+///     padding: $textField_padding;
+///   }
+///   .dm_searchInput {
+///     position: relative;
+///     ...
+///   }
+///   .dm_searchInput_icon {
+///     position: absolute;
+///     left: getLengthDirectionValue($textField_padding, left);
+///     ...
+///   }
+@function getLengthDirectionValue($property, $direction) {
+  // 声明变量
+  $top: 0;
+  $right: 0;
+  $bottom: 0;
+  $left: 0;
+  // 获取 $property 列表值中值的个数，从而判断是哪种 CSS length 的写法
+  $propertyLength: length($property);
+  @if $propertyLength == 1 {
+    $top: $property;
+    $right: $property;
+    $bottom: $property;
+    $left: $property;
+  } @else if $propertyLength == 2 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 1);
+    $left: nth($property, 2);
+  } @else if $propertyLength == 3 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 3);
+    $left: nth($property, 2);
+  } @else if $propertyLength == 4 {
+    $top: nth($property, 1);
+    $right: nth($property, 2);
+    $bottom: nth($property, 3);
+    $left: nth($property, 4);
+  } @else {
+    @return 0;
+  }
+
+  // 根据参数中的方向值输出需要的结果
+  @if $direction == top {
+    @return $top;
+  } @else if $direction == right {
+    @return $right;
+  } @else if $direction == bottom {
+    @return $bottom;
+  } @else if $direction == left {
+    @return $left;
+  } @else if $direction == horizontal {
+    @if $left != $right {
+      @warn "左边（#{$left}）与右边（#{$right}）的值并不相等，不应该直接使用 horizontal 这个方向";
+    }
+    @return $left;
+  } @else if $direction == vertical {
+    @if $top != $bottom {
+      @warn "上边（#{$top}）与下边（#{$bottom}）的值并不相等，不应该直接使用 vertical 这个方向";
+    }
+    @return $top;
+  } @else {
+    @return 0;
+  }
+}

@@ -1,0 +1,88 @@
+.add-image-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    border: 1px dotted $border-color-default;
+}
+
+.add-image-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    overflow: hidden;
+    [class*=aui-icon-],
+    [class^=aui-icon-] {
+        color: $theme-color;
+        font-size: $font-size-x-largest;
+    }
+    &-text {
+        margin-top: 0.5rem;
+        font-size: $font-size-small;
+        color: $text-color-lighter;
+    }
+}
+
+.add-image-item {
+    position: relative;
+    width: calc(33.3333% - 0.3333rem);
+    margin-right: 0.25rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: border $default-animation;
+    &.active,
+    &:hover {
+        border-color: $border-color-focus;
+        box-shadow: 0 2px 2.5rem rgba($border-color-focus, .2), 0 0 0 1px $border-color-focus;
+    }
+    &:nth-child(3n) {
+        margin-right: 0;
+    }
+    &:lt(3) {
+        margin-bottom: 0;
+    }
+    .ui-checkboxradio-label {
+        position: absolute;
+        top: 0.125rem;
+        left: 0.125rem;
+    }
+    .aui-icon-delete-line {
+        position: absolute;
+        right: 0.125rem;
+        bottom: 0.125rem;
+        color: $color-white;
+        background: $background-color-dark;
+    }
+    .add-image-img {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.add-image-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $border-color-default;
+    color: $text-color-disabled;
+    [class*=aui-icon-],
+    [class^=aui-icon-] {
+        font-size: $font-size-x-larger;
+    }
+}
+
+.add-type-3 .add-image-box {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 90%;
+    overflow: hidden;
+    .add-image-item {
+        flex: 1;
+        margin-right: 0.5rem;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

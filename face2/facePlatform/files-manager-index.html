@@ -1,0 +1,378 @@
+<div>
+    <div class="layout-type5 files-index">
+        <div class="container-hat small">
+            <div class="search-eapand-box">
+                <div class="aui-input-affix-wrapper search-expand">
+                    <div class="aui-input-group-inner">
+                        <input placeholder="请输入姓名、身份证号、特性等信息" type="text" class="aui-input">
+                        <i class="search-icon aui-icon-pic" data-role="upload-icon"></i>
+                        <button type="button" class="btn btn-primary" id="managerFilesSearch">档案查询</button>
+                    </div>
+                    <div class="search-dropdown">
+                        <div class="search-dropdown-inner">
+                            <i class="aui-icon-not-through" data-role="upload-close"></i>
+                            <p class="text-lighter text-md">将图片拖拽至此处</p>
+                            <p class="text-lighter text-xm">或</p>
+                            <span class="btn btn-primary">本地上传</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="text-list">
+                    <li class="text">张某</li>
+                    <li class="text">涉毒</li>
+                    <li class="text">白帽子</li>
+                    <li class="text">涉恐</li>
+                    <li class="text">昼伏夜出</li>
+                    <li class="text">高危</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="aui-card card-title-noborder">
+                <div class="card-title-box">
+                    <span class="card-title">档案数据统计</span>
+                </div>
+                <div class="card-content">
+                    <ul class="numerical-icon-list clearfix">
+                        <li class="numerical-icon">
+                            <img class="icon" src="./assets/images/files/icon1.png" alt="" srcset="">
+                            <div class="info">
+                                <p class="number">123,345</p>
+                                <p class="subtitle">总档案数</p>
+                            </div>
+                        </li>
+                        <li class="numerical-icon">
+                            <img class="icon" src="./assets/images/files/icon2.png" alt="" srcset="">
+                            <div class="info">
+                                <p class="number">65,343</p>
+                                <p class="subtitle">确认身份数</p>
+                            </div>
+                        </li>
+                        <li class="numerical-icon">
+                            <img class="icon" src="./assets/images/files/icon3.png" alt="" srcset="">
+                            <div class="info">
+                                <p class="number">35,213</p>
+                                <p class="subtitle">未实名数</p>
+                            </div>
+                        </li>
+                        <li class="numerical-icon">
+                            <img class="icon" src="./assets/images/files/icon4.png" alt="" srcset="">
+                            <div class="info">
+                                <p class="number">506</p>
+                                <p class="subtitle">今日新增</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aui-row">
+                <div class="aui-col-6">
+                    <div class="aui-card type-3">
+                        <div class="card-title-box">
+                            <span class="card-title">档案图片统计</span>
+                        </div>
+                        <div class="card-content">
+                            <div id="circle" class="chart-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-18">
+                    <div class="aui-card type-3">
+                        <div class="card-title-box">
+                            <span class="card-title">近一月数据趋势图</span>
+                            <div class="card-operate-box float-right">
+                                <div class="input-daterange datepicker-box aui-input">
+                                    <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                    <!-- <input type="text" class="datepicker-input" name="start" placeholder="请选择开始日期" />
+                                    <span class="input-group-addon">~</span>
+                                    <input type="text" class="datepicker-input" name="end" placeholder="请选择结束日期" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div id="line" class="chart-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/filesManagerIndex.js"></script>
+    <script>
+        $(function () {
+            //upload-icon
+            $('[data-role="upload-icon"]').click(function () {
+                $('.search-dropdown').slideToggle();
+                $(this).toggleClass('active')
+            });
+            $('[data-role="upload-close"]').click(function () {
+                $('.search-dropdown').slideUp();
+                $(this).removeClass('active')
+            });
+            $('.search-eapand-box').click(function (e) {
+                e.stopPropagation();
+            });
+            $(document).click(function () {
+                $('.search-dropdown').slideUp();
+                $(this).removeClass('active')
+            });
+
+            //圆环图
+            var circleChartData = [{
+                value: 11542,
+                name: '已实名数'
+            }, {
+                value: 6542,
+                name: '未实名数'
+            }];
+            var circleChartOption = {
+                color: ['#4B97ED', '#DDE4EC'],
+                graphic: [{
+                    type: 'text',
+                    left: 'center',
+                    top: '30%',
+                    style: {
+                        text: '71%',
+                        textAlign: 'center',
+                        fill: '#333',
+                        fontSize: 28
+                    }
+                }, {
+                    type: 'text',
+                    left: 'center',
+                    top: '45%',
+                    style: {
+                        text: '已实名比例',
+                        textAlign: 'center',
+                        fill: '#333',
+                        padding: '10',
+                        width: 30,
+                        height: 30,
+                        fontSize: 12,
+                    }
+                }],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                legend: {
+                    bottom: 15,
+                    itemWidth: 12,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: '#333'
+                    },
+                    formatter: function (name) {
+                        var tar
+                        for (var i = 0, l = circleChartData.length; i < l; i++) {
+                            if (circleChartData[i].name == name) {
+                                target = circleChartData[i].value;
+                            }
+                        }
+                        return name + ' ' + target;
+                    }
+                },
+                series: [{
+                    name: '档案图片统计',
+                    type: 'pie',
+                    center: ['50%', '38%'],
+                    radius: ['55%', '70%'],
+                    avoidLabelOverlap: false,
+                    hoverOffset: 3,
+                    itemStyle: {
+                        borderWidth: 2,
+                        borderType: 'solid',
+                        borderColor: '#fff'
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: circleChartData
+                }]
+            }
+
+            //折线图
+            var dataAxis = ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06', '08-07', '08-08', '08-09 ',
+                '08-10'
+            ];
+            var lineChartData = ['14400', '11110', '13600', '12400', '16700', '13200', '15600', '13400',
+                '11800', '13600'
+            ];
+            var lineChartData2 = ['12400', '14110', '15600', '11400', '14700', '15200', '13600', '15400',
+                '13800', '11600'
+            ];
+            var lineOption = {
+                legend: {
+                    data: ['总档案数', '确认身份数'],
+                    left: 0,
+                    textStyle: {
+                        color: '#7D8A93'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line'
+                    },
+                    formatter: "{b}: {c}"
+                },
+                xAxis: {
+                    data: dataAxis,
+                    axisLabel: {
+                        textStyle: {
+                            color: '#7b8084',
+                        },
+                        interval: 0,
+                        formatter: function (params) {
+                            var newParamsName = "",
+                                paramsNameNumber = params.length,
+                                provideNumber = 5,
+                                rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+                            if (paramsNameNumber > provideNumber) {
+                                for (var p = 0; p < rowNumber; p++) {
+                                    var tempStr = "",
+                                        start = p * provideNumber,
+                                        end = start + provideNumber;
+                                    if (p === rowNumber - 1) {
+                                        tempStr = params.substring(start, paramsNameNumber);
+                                    } else {
+                                        tempStr = params.substring(start, end) + "\n";
+                                    }
+                                    newParamsName += tempStr;
+                                }
+                            } else {
+                                newParamsName = params;
+                            }
+                            return newParamsName;
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            width: 2,
+                            color: '#E0E5E9',
+                        }
+                    },
+                    z: 10
+                },
+                yAxis: {
+                    axisLine: {
+                        show: false,
+                        color: 'red'
+                    },
+                    axisTick: {
+                        show: false,
+                        lineStyle: {
+                            type: 'dash'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#7b8084'
+                        },
+                        formatter: function (value) {
+                            if (value >= 10000 && value < 10000000) {
+                                value = value / 10000 + '万';
+                            } else if (value >= 10000000) {
+                                value = value / 10000000 + '千万';
+                            }
+                            return value;
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            type: 'dash',
+                            color: '#E0E5E9'
+                        }
+                    }
+                },
+                grid: {
+                    top: '15%',
+                    left: 50,
+                    bottom: 35,
+                    right: 10
+                },
+                dataZoom: [{
+                    type: 'inside'
+                }],
+                series: [{
+                    name: '总档案数',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    itemStyle: {
+                        normal: {
+                            color: '#01B9D3',
+                            borderColor: '#01B9D3'
+                        }
+                    },
+                    lineStyle: {
+                        color: '#01B9D3'
+                    },
+                    data: lineChartData
+                }, {
+                    name: '确认身份数',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    itemStyle: {
+                        normal: {
+                            color: '#4b97ed',
+                            borderColor: '#4b97ed'
+                        }
+                    },
+                    lineStyle: {
+                        color: '#4b97ed'
+                    },
+                    data: lineChartData2
+                }]
+            };
+
+            var circleChart, lineChart;
+            window.setTimeout(function () {
+                circleChart = echarts.init($('#circle')[0]);
+                circleChart.setOption(circleChartOption);
+                circleChart.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: 0,
+                    name: '已实名数'
+                });
+
+                lineChart = echarts.init($('#line')[0]);
+                lineChart.setOption(lineOption);
+            }, 0);
+
+            $(window).resize(function () {
+                circleChart.resize();
+                lineChart.resize();
+            });
+        });
+    </script>
+</div>

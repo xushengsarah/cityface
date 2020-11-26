@@ -1,0 +1,187 @@
+<p>普通表格：</p>
+<table id="table"></table>
+<p class="aui-mt-md">折叠表格：</p>
+<table id="table-collapse"></table>
+<p class="aui-mt-md">可多选表格：</p>
+<table id="table-check"></table>
+<p class="aui-mt-md">可单选表格：</p>
+<table id="table-radio"></table>
+<p class="aui-mt-md">分页表格：</p>
+<div class="table-page-box">
+    <table id="table-page"></table>
+    <div class="page-jump"><span class="text-lighter">跳转至</span>
+        <span class="page-jump-box">
+            <input type="text" class="aui-input aui-input-small" id="page">
+            <span class="page-go" id="jump">GO</span>
+        </span>
+    </div>
+</div>
+<script>
+    $(function() {
+        var $table = $("#table"),
+            $tableCollapse = $("#table-collapse"),
+            $tableCheck = $("#table-check"),
+            $tableRadio = $("#table-radio");
+        $tablePage = $("#table-page");
+        $table.bootstrapTable({
+            url: 'json/data1.json',
+            idField: 'id',
+            columns: [{
+                field: 'name',
+                title: '布控任务'
+            }, {
+                field: 'type',
+                title: '布控类型',
+            }, {
+                field: 'person',
+                title: '布控对象'
+            }, {
+                field: 'founder',
+                title: '创建人'
+            }, {
+                field: 'time',
+                title: '创建时间'
+            }]
+        });
+
+        $tableCollapse.bootstrapTable({
+            url: 'json/data1.json',
+            idField: 'id',
+            columns: [{
+                field: 'name',
+                title: '布控任务'
+            }, {
+                field: 'type',
+                title: '布控类型',
+            }, {
+                field: 'person',
+                title: '布控对象'
+            }, {
+                field: 'founder',
+                title: '创建人'
+            }, {
+                field: 'time',
+                title: '创建时间'
+            }],
+            detailView: true,
+            detailFormatter: detailFormatter,
+            icons: {
+                detailOpen: 'aui-icon aui-icon-drop-right',
+                detailClose: 'aui-icon aui-icon-drop-down-2'
+            }
+        });
+
+        $tableCheck.bootstrapTable({
+            url: '../json/data1.json',
+            idField: 'id',
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                align: 'center'
+            }, {
+                field: 'name',
+                title: '布控任务'
+            }, {
+                field: 'type',
+                title: '布控类型',
+            }, {
+                field: 'person',
+                title: '布控对象'
+            }, {
+                field: 'founder',
+                title: '创建人'
+            }, {
+                field: 'time',
+                title: '创建时间'
+            }],
+            onPostBody: function() {
+                $tableCheck.find("input:checkbox").each(function(i) {
+                    var $check = $(this);
+                    if ($check.attr("id") && $check.next("label")) {
+                        return;
+                    }
+                    var name = $check.attr("name");
+                    var id = name + "-" + i;
+                    var $label = $('<label class="table-checkbox-label" for="' + id + '"></label>');
+                    $check.attr({
+                        "id": id,
+                        'class': 'table-checkbox-input'
+                    }).wrap('<div class="table-checkbox"></div>').after($label);
+                });
+            }
+        });
+        $tableRadio.bootstrapTable({
+            url: 'json/data1.json',
+            idField: 'id',
+            columns: [{
+                field: 'state',
+                radio: true
+            }, {
+                field: 'name',
+                title: '布控任务'
+            }, {
+                field: 'type',
+                title: '布控类型',
+            }, {
+                field: 'person',
+                title: '布控对象'
+            }, {
+                field: 'founder',
+                title: '创建人'
+            }, {
+                field: 'time',
+                title: '创建时间'
+            }],
+            onPostBody: function() {
+                $tableRadio.find("input:radio").each(function(i) {
+                    var $radio = $(this);
+                    if ($radio.attr("id") && $radio.next("label")) {
+                        return;
+                    }
+                    var name = $radio.attr("name");
+                    var id = name + "-" + i;
+                    var $label = $('<label class="table-radio-label" for="' + id + '"></label>');
+                    $radio.attr({
+                        "id": id,
+                        'class': 'table-radio-input'
+                    }).wrap('<div class="table-radio"></div>').after($label);
+                });
+            }
+        });
+
+        $tablePage.bootstrapTable({
+            url: 'json/data2.json',
+            idField: 'id',
+            pagination: true,
+            pageSize: 5,
+            pageList: [5, 10, 15],
+            columns: [{
+                field: 'name',
+                title: '布控任务'
+            }, {
+                field: 'type',
+                title: '布控类型',
+            }, {
+                field: 'person',
+                title: '布控对象'
+            }, {
+                field: 'founder',
+                title: '创建人'
+            }, {
+                field: 'time',
+                title: '创建时间'
+            }]
+        });
+        $('#jump').click(function() {
+            $tablePage.bootstrapTable('selectPage', +$('#page').val());
+        });
+    });
+
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function(key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+</script>

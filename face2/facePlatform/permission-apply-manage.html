@@ -1,0 +1,330 @@
+<div>
+    <!-- 权限申请页面 -->
+    <meta name="referrer" content="no-referrer">
+    <div id="permissionApplyManage" class="manages-page">
+        <div class="manages-search-style systemTab" id="permissionApplyTab">
+            <ul class="nav nav-tabs pd0" id="typeValBut" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#typeVal1" role="tab" aria-controls="typeVal1"
+                       aria-selected="true">权限申请
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2"
+                       aria-selected="false">紧急警务
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="permissionApplyOne">
+            <!-- 搜索区域 -->
+            <div class="manages-search-style" id="permissionApplyOneTab">
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">任务名称：</label>
+                            <div class="aui-col-18">
+                                <input id="incidentVal" type="text" class="aui-input" placeholder="请输入任务名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">申请人警号：</label>
+                            <div class="aui-col-18">
+                                <input id="userNameVal" type="text" class="aui-input" placeholder="请输入申请人警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">申请时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                     style="font-size:0.75rem;">
+                                    <input id="startTimePAM" class="input-text datepicker-input radius Wdate"
+                                           type="text"
+                                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimePAM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="endTimePAM" class="input-text datepicker-input radius Wdate" type="text"
+                                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimePAM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">申请类型：</label>
+                            <div class="aui-col-18">
+                                <select name="speed" id="applicationTypeVal">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">审批状态：</label>
+                            <div class="aui-col-18">
+                                <select name="speed" id="approveStatus">
+                                    <option value="">全部</option>
+                                    <option value="0">待审批</option>
+                                    <option value="1">已通过</option>
+                                    <option value="2">已驳回</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">协办人：</label>
+                            <div class="aui-col-18">
+                                <input id="xbUserNameVal" type="text" class="aui-input" placeholder="请输入协办人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">分局：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="permissionApplyOrg" data-live-search="true"
+                                        title="请选择分局"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">派出所：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="permissionApplyPolice" data-live-search="true"
+                                        title="请选择派出所"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">角色类型：</label>
+                            <div class="aui-col-18">
+                                <select name="type" id="permissionApplyRoleType">
+                                    <option value="">全部</option>
+                                    <option value="1">动静态权限</option>
+                                    <option value="2">普通权限</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">案件编号：</label>
+                            <div class="aui-col-18">
+                                <input id="permissionApplyAj" type="text" class="aui-input" placeholder="请输入案件编号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <button type="button" id="searchPAMListBut" class="btn btn-primary">搜索</button>
+                            <button type="button" id="searchPAMListUpload" class="btn hide">导出</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 列表区域 -->
+            <div class="manages-card-content">
+                <!-- 表格展示 -->
+                <table id="AllPermApplyTable" class="table-hover" data-toggle="table" data-detail-view="true"
+                       data-detail-formatter="detailFormatter" data-pagination="false">
+                    <colgroup>
+                        <col width="1%">
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="6%">
+                        <col width="8%">
+                        <col width="12%">
+                        <col width="18%">
+                        <col width="7%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th data-field="unit0">序号</th>
+                            <th data-field="unit1">案件编号</th>
+                            <th data-field="unit2">任务名称</th>
+                            <th data-field="unit3">申请人</th>
+                            <th data-field="unit4">用户警号</th>
+                            <th data-field="unit5">协办人</th>
+                            <th data-field="unit7">申请时间</th>
+                            <th data-field="unit8">申请事由</th>
+                            <th data-field="unit9">审批状态</th>
+                        </tr>
+                    </thead>
+                    <tbody style="max-height:30rem">
+                    </tbody>
+                </table>
+                <div id="AllPermApplyPagination" class="fixed-table-pagination"></div>
+                <!-- 表格展示 end-->
+            </div>
+        </div>
+        <div class="permissionApplyTwo hide">
+            <!-- 搜索区域 -->
+            <div class="manages-search-style" id="permissionApplyTwoTab">
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">任务名称：</label>
+                            <div class="aui-col-18">
+                                <input id="incidentValTwo" type="text" class="aui-input" placeholder="请输入任务名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">申请人警号：</label>
+                            <div class="aui-col-18">
+                                <input id="approverValTwo" type="text" class="aui-input" placeholder="请输入申请人警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">申请时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                     style="font-size:0.75rem;">
+                                    <input id="startTimePAMTwo" class="input-text datepicker-input radius Wdate"
+                                           type="text"
+                                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimePAM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="endTimePAMTwo" class="input-text datepicker-input radius Wdate"
+                                           type="text"
+                                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimePAM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">类型：</label>
+                            <div class="aui-col-18">
+                                <select name="speed" id="applicationTypeValTwo">
+                                    <option value="">全部</option>
+                                    <option value="2">警情</option>
+                                    <option value="3">已立案</option>
+                                    <option value="4">专项工作</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">是否补办：</label>
+                            <div class="aui-col-18">
+                                <select name="speed" id="applicationTypeLinkTwo">
+                                    <option value="">全部</option>
+                                    <option value="0">未补办</option>
+                                    <option value="1">已补办</option>
+                                    <option value="2">超时补办</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">协办人：</label>
+                            <div class="aui-col-18">
+                                <input id="xbUserNameValTwo" type="text" class="aui-input" placeholder="请输入协办人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">分局：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="permissionApplyOrgTwo" data-live-search="true"
+                                        title="请选择分局"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">派出所：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="permissionApplyPoliceTwo" data-live-search="true"
+                                        title="请选择派出所"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">角色类型：</label>
+                            <div class="aui-col-18">
+                                <select name="type" id="permissionApplyRoleTypeTwo">
+                                    <option value="">全部</option>
+                                    <option value="1">动静态权限</option>
+                                    <option value="2">普通权限</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">案件编号：</label>
+                            <div class="aui-col-18">
+                                <input id="permissionApplyAjTwo" type="text" class="aui-input" placeholder="请输入案件编号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-2">
+                        <div class="form-group">
+                            <button type="button" id="searchPAMListButTwo" class="btn btn-primary">搜索</button>
+                            <button type="button" id="searchPAMListUploadTwo" class="btn btn-primary hide">导出</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 列表区域 -->
+            <div class="manages-card-content">
+                <!-- 表格展示 -->
+                <table id="AllPermApplyTableTwo" class="table-hover" data-toggle="table" data-detail-view="true"
+                       data-detail-formatter="detailFormatter" data-pagination="false">
+                    <colgroup>
+                        <col width="1%">
+                        <col width="5%">
+                        <col width="13%">
+                        <col width="13%">
+                        <col width="10%">
+                        <col width="7%">
+                        <col width="10%">
+                        <col width="11%">
+                        <col width="7%">
+                        <col width="16%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th data-field="unit0">序号</th>
+                            <th data-field="unit1">案件编号</th>
+                            <th data-field="unit2">任务名称</th>
+                            <th data-field="unit3">申请人</th>
+                            <th data-field="unit4">用户警号</th>
+                            <th data-field="unit5">协办人</th>
+                            <th data-field="unit7">申请时间</th>
+                            <th data-field="unit8">是否已补办</th>
+                            <th data-field="unit9">申请事由</th>
+                        </tr>
+                    </thead>
+                    <tbody style="max-height:30rem">
+                    </tbody>
+                </table>
+                <div id="AllPermApplyPaginationTwo" class="fixed-table-pagination"></div>
+                <!-- 表格展示 end-->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/permissionApplyManage.js"></script>
+</div>

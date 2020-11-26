@@ -1,0 +1,19 @@
+.tagcloud{
+    height: calc(100% - 3rem);
+}
+
+div.jqcloud span.c1 { color: $color-sub1 }
+div.jqcloud span.c2 { color: $color-sub2}
+div.jqcloud span.c3 { color: $color-sub3 }
+
+/* colors */
+
+div.jqcloud { color: #09f; }
+div.jqcloud a { color: inherit; }
+div.jqcloud span.w1 { font-size: $font-size-small}  //12px
+div.jqcloud span.w2 { font-size: $font-size-default} //14px
+div.jqcloud span.w3 { font-size: $font-size-large} //18px
+div.jqcloud span.w4 { font-size: $font-size-x-large} //24px
+div.jqcloud span.w5 { font-size: 1.875rem} //30px
+div.jqcloud span.w6 { font-size: 2.125rem} //34px
+div.jqcloud span.w7 { font-size: 2.25rem} //36px

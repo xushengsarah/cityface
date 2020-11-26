@@ -1,0 +1,49 @@
+<select name="speed" id="speed">
+    <option>Slower</option>
+    <option>Slow</option>
+    <option selected>Medium</option>
+    <option>Fast</option>
+    <option disabled>Faster</option>
+</select>
+<p style="margin-top:20px;">小尺寸:</p>
+<select name="speed" id="speed-small" disabled>
+    <option>Slower</option>
+    <option>Slow</option>
+    <option selected>Medium</option>
+    <option>Fast</option>
+    <option>Faster</option>
+</select>
+<p style="margin-top:20px;">下拉内容自定义:</p>
+<select name="speed" id="select-custom">
+    <option data-class="aui-icon-history">Slower</option>
+    <option data-class="aui-icon-history">Slow</option>
+    <option data-class="aui-icon-history" selected>Medium</option>
+    <option data-class="aui-icon-history">Fast</option>
+    <option data-class="aui-icon-history" disabled>Faster</option>
+</select>
+<script>
+    $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+        _renderItem: function(ul, item) {
+            var li = $("<li>"),
+                wrapper = $("<div>", {
+                    text: item.label
+                });
+
+            if (item.disabled) {
+                li.addClass("ui-state-disabled");
+            }
+
+            $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                })
+                .appendTo(wrapper);
+
+            return li.append(wrapper).appendTo(ul);
+        }
+    });
+    $("#speed").selectmenu();
+    $("#speed-small").selectmenu().selectmenu("widget").addClass("ui-selectmenu-small");
+    $("#speed-small").selectmenu().selectmenu("menuWidget").addClass("ui-selectmenu-small-menu");
+    $("#select-custom").iconselectmenu().iconselectmenu("menuWidget").addClass("ui-menu-icons");
+</script>

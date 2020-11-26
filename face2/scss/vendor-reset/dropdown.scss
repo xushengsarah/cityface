@@ -1,0 +1,174 @@
+.dropdown {
+    &-toggle {
+        &:after {
+            line-height: 2.25rem;
+        }
+        &:active,
+        &:hover,
+        &:focus {
+            background: none;
+            border-color: $border-color-focus;
+            color: $text-color-default;
+        }
+    }
+    &-text {
+        .dropdown {
+            &-menu {
+                margin-top: $space;
+                border: none;
+                box-shadow: 0 0.25rem 0.75rem rgba($color-black, .15);
+            }
+        }
+        .dropdown-toggle{
+            cursor: pointer;
+        }
+    }
+    &-item {
+        cursor: pointer;
+        &.active,
+        &:hover,
+        &:active,
+        &:focus {
+            background: $background-color-x-gray;
+            color: $text-color-default;
+        }
+    }
+}
+
+.show .btn.dropdown-toggle {
+    background: none;
+    color: $text-color-default;
+    border-color: $border-color-focus;
+}
+
+.dropup {
+    .dropdown-toggle::after {
+        color: $text-color-lighter;
+        transform: rotate(180deg);
+    }
+    &:hover {
+        .dropdown-toggle::after {
+            color: $text-color-default;
+        }
+    }
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 100%;
+}
+
+.dropdown-section{
+    width: 15rem;
+    padding: 1rem 0;
+    margin: 0 1.5rem;
+    border-bottom: 1px dashed $border-color-default;
+    .text-link{
+        display: inline-block;
+        margin-right: .5rem;
+    }
+}
+.dropdown-inner{
+    padding: 1rem 0;
+    margin: 0 1.5rem;
+    .aui-input{
+        width: 8rem;
+        vertical-align: middle;
+    }
+}
+.dropdown-select{
+    display: inline-block;
+    margin-left: $space*2;
+    .dropdown-toggle{
+        cursor: pointer;
+        &:after{
+            color: $text-color-lighter;
+            margin-left: $space;
+        }
+        &.active{
+            color: $theme-color;
+            font-weight: bold;
+            &:after{
+                color: $text-color-lighter;
+                font-weight: normal;
+            }
+            &:hover{
+                color: $theme-color!important;
+                &:after{
+                    color: $text-color-default;
+                }
+            }
+        }
+    }
+    .dropdown-menu{
+        font-size: $font-size-default;
+        min-width: 7rem;
+        margin-left: -2rem;
+        border: 1px solid $border-color-default;
+        border-radius: 0;
+    }
+    .dropdown-item{
+        position: relative;
+        padding-left: 2rem;
+        line-height: 1.5;
+        &:before{
+            display: none;
+            position: absolute;
+            left: $space;
+            font-family: 'iconFont';
+            @extend .aui-icon-approval;
+        }
+        &.active{
+            &:before{
+                display: inline-block;
+            }
+        }
+    }
+}
+
+//selectpicker
+.dropdown.bootstrap-select{
+    .dropdown-menu.show{
+        max-width: 20rem !important;
+        margin-bottom: 0 !important;
+    }
+    .dropdown-menu .option-item span.text{
+        margin-right: 0;
+    }
+    .dropdown-menu .option-item.selected span.text{
+        margin-right: 2rem;
+    }
+    .aui-icon-not-through{
+        position: absolute;
+        right: 0.375rem;
+        top: 0.625rem;
+        background: #aaa;
+        border-radius: 100%;
+        color: #ddd;
+        width: $font-size-default;
+        height: $font-size-default;
+        line-height: $font-size-default;
+        text-align: center;
+        font-size: $font-size-small;
+        z-index: 1;
+    }
+    &.show{
+        .dropdown-toggle:after{
+            border-top: 0;
+            border-bottom: .3em solid;
+        }
+    }
+    .dropdown-toggle.bs-placeholder{
+        .aui-icon-not-through{
+            display: none;
+        }
+    }
+}
+
+.show .bootstrap-select .btn.dropdown-toggle{
+    border-color: $border-color-default;
+    z-index: unset;
+}
+
+.dropdown-item{
+    font-size: 0.875rem;
+}

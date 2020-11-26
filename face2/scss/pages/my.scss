@@ -1,0 +1,58 @@
+.timeline-image-list{
+    .image-card-item{
+        float: left;
+        width: 5.625rem;
+        margin: 0 $space $space 0;
+        .image-card-wrap.image-card-wrap2{
+            margin: 0;
+            &:hover{
+                .image-card-outer{
+                    opacity: 1;
+                }
+            }
+        }
+        .image-card-outer{
+           opacity: 0;
+           transition: opacity $default-animation;
+        }
+    }
+    .image-card-text{
+        font-size: $font-size-default;
+        text-align: center;
+        color: $text-color-lighter;
+        margin-top: .5rem;
+    }
+}
+
+.aui-timeline-item.aui-timeline-item-hide{
+    margin-bottom: 1.25rem;
+}
+.manages .table-detail-content form.aui-row .form-text{
+    margin: inherit;
+    line-height: inherit;
+}
+
+.aui-caption .float-right .aui-input-affix-wrapper{
+    width: 18rem;
+}
+.news-list{
+    .news-item{
+        padding: $space*.8 $space*2;
+        margin-top: $space*.5;
+        background: $background-color-x-gray; 
+        color: $text-color-lighter;
+        font-size: $font-size-default;
+    }
+}
+.collapse-type2 .aui-timeline-toggle{
+    margin-left: 1rem;
+}
+.collapse-type2 .panel-heading{
+    position: relative;
+    .content-extend{
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-right: 0;
+    }   
+}

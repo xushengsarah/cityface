@@ -1,0 +1,206 @@
+<div>
+    <!-- 布控管理页面 -->
+    <meta name="referrer" content="no-referrer">
+    <div id="controlManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">关键词：</label>
+                        <div class="aui-col-18">
+                            <input id="keywordsVal" type="text" class="aui-input" placeholder="请输入库关键词">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户警号：</label>
+                        <div class="aui-col-18">
+                            <input id="userIdCM" type="text" class="aui-input" placeholder="请输入用户警号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                 style="font-size:0.75rem;">
+                                <input id="startTimeCM" class="input-text datepicker-input radius Wdate" type="text"
+                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeCM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTimeCM" class="input-text datepicker-input radius Wdate" type="text"
+                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeCM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">任务状态：</label>
+                        <div class="aui-col-18" style="padding-top: .4rem;padding-bottom:.4rem;">
+                            <label for="taskStatusOne" style="margin-right:0.15rem!important">全部</label>
+                            <input type="radio" name="taskStatusManage" id="taskStatusOne" value="0" data-role="radio"
+                                   checked>
+                            <label for="taskStatusTwo" style="margin-right:0.15rem!important">待运行</label>
+                            <input type="radio" name="taskStatusManage" id="taskStatusTwo" value="1" data-role="radio">
+                            <label for="taskStatusThree" style="margin-right:0.15rem!important">运行中</label>
+                            <input type="radio" name="taskStatusManage" id="taskStatusThree" value="2"
+                                   data-role="radio">
+                            <label for="taskStatusFour" style="margin-right:0!important">已结束</label>
+                            <input type="radio" name="taskStatusManage" id="taskStatusFour" value="3" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-2">
+                    <div class="form-group">
+                        <button type="button" id="searchControlListBut" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <!-- 表格展示 -->
+            <table id="AllControlTable" class="table-hover" data-toggle="table" data-detail-view="true"
+                   data-detail-formatter="detailFormatter" data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="12%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="10%">
+                    <col width="12%">
+                    <col width="12%">
+                    <col width="5%">
+                    <col width="6%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="6%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="libName">任务名称</th>
+                        <th data-field="libID">库标签</th>
+                        <th data-field="libDesc">创建人</th>
+                        <th data-field="creatorId">用户警号</th>
+                        <th data-field="creator">创建时间</th>
+                        <th data-field="createtime">布控期限</th>
+                        <th data-field="comments">阈值</th>
+                        <th data-field="apply">审批状态</th>
+                        <th data-field="apply">审批人</th>
+                        <th data-field="apply">审批人警号</th>
+                        <th data-field="task">任务状态</th>
+                    </tr>
+                </thead>
+                <tbody style="max-height:30rem">
+                </tbody>
+            </table>
+            <div id="AllControlPagination" class="fixed-table-pagination"></div>
+            <!-- 表格展示 end-->
+        </div>
+    </div>
+
+    <!-- 查看布控任务详情弹窗 -->
+    <div class="modal fade modal-lger" id="controlManageDetailModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <ul class="nav nav-tabs pd0" id="controlDetailMHeader" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#controlDetailManage" role="tab"
+                                   aria-controls="controlDetailManage" aria-selected="true">布控详情
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#subscribeDetailManage" role="tab"
+                                   aria-controls="subscribeDetailManage" aria-selected="false">订阅详情
+                                </a>
+                            </li>
+                        </ul>
+                    </h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <ul class="tab-pane active" id="controlDetailManage" role="tabpanel"
+                            aria-labelledby="controlDetailManage-tab">
+                            <!-- 布控详情 -->
+                            <div class="container-hat" id="controlDetailContent">
+                            </div>
+                            <!-- 布控对象 -->
+                            <div class="container-img">
+                                <div class="card-item-title">
+                                    <span class="card-title">布控对象:
+                                        <span class="text-theme"></span>
+                                    </span>
+                                </div>
+                                <div class="face-card" id="imgDetailContent">
+                                    <ul class="add-image-wrap add-type-3">
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="tab-pane" id="subscribeDetailManage" role="tabpanel"
+                            aria-labelledby="subscribeDetailManage-tab">
+                            <!-- 订阅详情 -->
+                            <div class="aui-col-6 aui-mb-md aui-ml-sm">
+                                <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                    <div class="aui-input-group-inner">
+                                        <input placeholder="请输入订阅者搜索" type="text" class="aui-input"
+                                               id="subscribeDetailMS">
+                                        <span class="aui-input-suffix">
+                                            <i class="aui-icon-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="subscribeDetailMT" class="table-hover" data-toggle="table"
+                                   data-detail-view="true" data-detail-formatter="detailFormatter"
+                                   data-pagination="false">
+                                <colgroup>
+                                    <col width="2%">
+                                    <col width="20%">
+                                    <col width="16%">
+                                    <col width="16%">
+                                    <col width="20%">
+                                    <col width="10%">
+                                    <col width="16%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="nickname">订阅人</th>
+                                        <th data-field="userOrgName">用户警号</th>
+                                        <th data-field="subTime">订阅时间</th>
+                                        <th data-field="orgName">订阅区域</th>
+                                        <th data-field="threshold">阈值</th>
+                                        <th data-field="noticeWays">订阅方式</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="fixed-table-pagination bayonetCameralPagination"
+                                 id="subscribeDetailMTPagination"></div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer hide">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看布控任务弹窗 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/controlManage.js"></script>
+</div>

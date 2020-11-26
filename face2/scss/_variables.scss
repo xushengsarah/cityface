@@ -1,0 +1,158 @@
+$prefix: aui;
+$prefixB: bui;
+$color-white: #fff;
+$color-black: #000;
+//colors
+$theme-color:#3b9ef3 !default; //主题色 *****
+$theme-color-hover: #50adfd !default; //主题色hover状态 *****
+$theme-color-active: #238be4 !default; //主题色active\focus状态 *****
+$theme-color-disabled: #d5dadf !default; //禁用色 *****
+//功能提示色
+$color-success:#4dcc72 !default; //成功
+$color-error:#ff5558 !default; //出错
+$color-warning:#f2a20c !default; //告警
+$color-danger:#ff5558 !default; //危险
+$color-prompt:$theme-color !default; //提示
+$color-active: #26BFCE !default; //激活
+$color-sub1: #3B9EF3 !default; //标签色1
+$color-sub2: #26BFCE !default; //标签色1
+$color-sub3: #6A74D8 !default; //标签色1
+//背景色
+$background-color-default: $color-white !default; //卡片等背景色 *****
+$background-color-dark: #151935 !default; //深色背景 *****
+$background-color-gray: #dee4ec !default; //页面底色 *****
+$background-color-x-gray: #f2f4fa !default; //各类控件底色 *****
+$background-color-disabled: $theme-color-disabled !default; //*****
+$background-color-dark2: #242839 !default; // 深色较浅背景，用于头部等非大面积的地方
+$background-color-dark3: #3B587E !default; //搜索详情
+$background-color-dark4: #43556E !default; //搜索详情
+$background-menu-dark: #171f26 !default; //左侧菜单深色背景色 *****
+$background-menu-dark-submenu: #10161c !default; //左侧菜单深色背景submenu激活 *****
+$background-menu-dark-item: #070a0d !default; //左侧菜单深色背景item激活 *****
+$background-menu-light: #1A2E48 !default; //我的模块左侧背景色
+//字体色
+$text-color-default: #2a2d44 !default; //默认 *****
+$text-color-light: #4e5973 !default; //label，表格默认字、下拉未选等文字颜色 *****
+$text-color-lighter: #7b8084 !default; //提示、说明、未选择等文字颜色 *****
+$text-color-inverse: $color-white !default; // 反白，深色背景下的字体颜色 *****
+$text-color-link: $theme-color !default; // 链接 *****
+$text-color-emphasize: $theme-color !default; //强调 *****
+$text-color-disabled: #bcc6dd !default; //禁用 *****
+$text-color-success: $color-success !default; //成功
+$text-color-error: $color-error !default; //出错
+$text-color-warning: $color-warning !default; //告警
+$text-color-danger: $color-danger !default; //危险
+$text-color-prompt: $color-prompt !default; //提示
+//边框颜色
+$border-color-default: #bcc6dd !default; //按钮，输入框，下拉框，日期等控件边框色 *****
+$border-color-light: #e0e5e9 !default; //页面标题的边线等 *****
+$border-color-lighter: #e5e5e5 !default; //表格，分页，弹出框等边线颜色 *****
+$border-color-disabled: $theme-color-disabled !default; // *****
+$border-color-focus: $theme-color !default; // 聚焦边框颜色  *****
+//图表色
+$color-chart: #01b9d1 #1eb5e5 #a26ae0 #dadde1 #89ce45;
+//字体大小
+$font-size-default: 0.875rem !default; //14px *****
+$font-size-small: 0.75rem !default; //12px *****
+$font-size-medium: 1rem !default; //16px
+$font-size-large: 1.125rem !default; //18px
+$font-size-x-large: 1.5rem !default; //24px
+$font-size-x-larger: 2.25rem !default; //36px
+$font-size-x-largest: 3rem !default; //48px
+//列表颜色
+$table-thead-bg: $border-color-light !default;
+$table-tr-even:$background-color-x-gray !default;
+//行间距
+$line-height-default: 1.5rem !default;
+$line-height-reset: 1rem !default;
+//圆角大小
+$border-radius: 2px !default; // *****
+$border-radius-medium: 5px !default; // *****
+//阴影
+$box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.1); //默认阴影样式，tooltip，日期下拉面板的默认阴影样式
+//禁用状态时鼠标指示
+$cursor-disabled: default !default; // *****
+//margin /padding 间距基准值定义
+$space: 0.625rem !default; //10px
+// z-index list
+$zindex-affix: 10 !default;
+$zindex-back-top: 10 !default;
+$zindex-modal-mask: 1000 !default;
+$zindex-modal: 1000 !default;
+$zindex-notification: 1010 !default;
+$zindex-message: 1010 !default;
+$zindex-popover: 1030 !default;
+$zindex-picker: 1050 !default;
+$zindex-dropdown: 1050 !default;
+$zindex-tooltip: 1060 !default;
+// Media queries breakpoints
+// Extra small screen / phone
+$screen-xs: 480px !default;
+$screen-xs-min: $screen-xs !default;
+// Small screen / tablet
+$screen-sm: 576px !default;
+$screen-sm-min: $screen-sm !default;
+// Medium screen / desktop
+$screen-md: 768px !default;
+$screen-md-min: $screen-md !default;
+// Large screen / wide desktop
+$screen-lg: 992px !default;
+$screen-lg-min: $screen-lg !default;
+// Extra large screen / full hd
+$screen-xl: 1366 !default;
+$screen-xl-min: $screen-xl !default;
+// Extra extra large screen / large descktop
+$screen-xxl: 1680 !default;
+$screen-xxl-min: $screen-xxl !default;
+// provide a maximum
+$screen-xs-max: ($screen-sm-min - 1px) !default;
+$screen-sm-max: ($screen-md-min - 1px) !default;
+$screen-md-max: ($screen-lg-min - 1px) !default;
+$screen-lg-max: ($screen-xl-min - 1px) !default;
+$screen-xl-max: ($screen-xxl-min - 1px) !default;
+//animation
+$default-animation: ease .3s !default;
+$ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+$ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+$ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+$ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+$ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+$ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+$animation-duration-slow: .3s; // Modal
+$animation-duration-base: .2s;
+$animation-duration-fast: .1s; // Tooltip
+//icon
+$icon-size-default: 1rem;
+$icon-color-default: $text-color-lighter;
+$icon-color-hover: $theme-color;
+$icon-color-active: $theme-color-hover;
+//form
+$form-width-default: 100%;
+/*
+input component variables
+*/
+
+$input-width: $form-width-default;
+$input-height: 2.25rem !default;
+$input-height-small: 1.875rem !default;
+$input-height-large: 3.75rem !default;
+$input-padding:0 0.625rem !default;
+$input-bg: $color-white !default;
+$input-icon-size: 2.25rem !default;
+$input-icon-size-small: $input-height-small !default;
+$input-icon-font:1rem !default;
+$input-icon-prefix-padding: 0 2.875rem !default;
+$input-icon-suffix-padding: 0 2.875rem 0 $input-padding !default;
+$input-addon-padding: 0 0.625rem !default;
+//framework 相关的
+$header-height: 0rem;
+$siderbar-width: 5rem;
+$siderbar-expand-width: 15rem;
+$card-sidebar-width: 25rem;
+$card-list-width: 18rem;

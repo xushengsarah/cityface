@@ -1,0 +1,381 @@
+$table-td-hover-bgcolor: #f1f6fd !default;
+$table-checkbox-icon-size:.875rem !default;
+@mixin customize-table-width() {
+    @for $i from 0 through 100 {
+        .t-col-#{$i} {
+            width: percentage($i/100) !important;
+        }
+    }
+}
+
+.fixed-table-container,
+.fixed-table-container .table {
+    border: none;
+}
+
+.bootstrap-table .table {
+    border-radius: 0;
+    table-layout: fixed;
+    thead,
+    tbody {
+        @include customize-table-width();
+    }
+    thead th,
+    tbody td {
+        border-left: none;
+        border-top: none;
+    }
+    thead {
+        tr th {
+            position: relative;
+            min-width: 3.5rem;
+            height: 2rem;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid $border-color-lighter;
+            background: $table-thead-bg;
+            border-radius: 0 !important;
+            font-weight: normal;
+            font-size: $font-size-default;
+            color: $text-color-lighter;
+            &:before {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                content: '';
+                display: inline-block;
+                width: 1px;
+                height: .75rem;
+                margin-top: -.375rem;
+                background: $border-color-default;
+            }
+            &:first-child {
+                width: 3rem;
+                min-width: 3rem;
+                &:before {
+                    display: none;
+                }
+            }
+            .th-inner {
+                padding: 0;
+            }
+        }
+    }
+    tbody {
+        &>tr {
+            &:nth-of-type(odd) {
+                background: $table-tr-even !important;
+            }
+            &:hover {
+                background: $table-td-hover-bgcolor;
+            }
+            &>td {
+                height: 3.25rem;
+                padding: 0.5rem 0.75rem !important;
+                border-bottom: 1px solid $border-color-lighter;
+            }
+        }
+        .detail-icon {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+        }
+        .aui-icon-drop-down-2 {
+            color: $theme-color;
+        }
+    } //折叠容器
+    thead th.detail {
+        width: 3rem;
+    } //多选容器
+    .bs-checkbox {
+        width: 3rem;
+        vertical-align: middle !important;
+        &:before {
+            display: none;
+        }
+    }
+    &-checkbox {
+        position: relative;
+        display: inline-block;
+        width: $table-checkbox-icon-size;
+        height: $table-checkbox-icon-size;
+        font-size: 0;
+        vertical-align: middle;
+        &:hover {
+            cursor: pointer;
+            .table-checkbox-label {
+                border-color: $border-color-focus;
+            }
+        }
+        .table-checkbox-label {
+            display: inline-block;
+            width: $table-checkbox-icon-size;
+            height: $table-checkbox-icon-size;
+            border: 1px solid $border-color-default;
+            border-radius: $border-radius;
+            margin: 0;
+            transition: all $default-animation;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 1px;
+                left: 4px;
+                display: block;
+                width: .2rem;
+                height: .45rem;
+                border: 2px solid $color-white;
+                border-top: 0;
+                border-left: 0;
+                opacity: 0;
+                transform: rotate(45deg);
+                transition: all $default-animation;
+                box-sizing: content-box;
+            }
+        }
+        .table-checkbox-input {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            &:checked {
+                &+.table-checkbox-label {
+                    background: $border-color-focus;
+                    border-color: $border-color-focus;
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &-radio {
+        position: relative;
+        display: inline-block;
+        width: $table-checkbox-icon-size;
+        height: $table-checkbox-icon-size;
+        font-size: 0;
+        vertical-align: middle;
+        &:hover {
+            cursor: pointer;
+            .table-radio-label {
+                border-color: $border-color-focus;
+            }
+        }
+        .table-radio-label {
+            display: inline-block;
+            width: $table-checkbox-icon-size;
+            height: $table-checkbox-icon-size;
+            line-height: calc(#{$table-checkbox-icon-size} - 2px);
+            margin: 0;
+            border: 1px solid $border-color-default;
+            border-radius: 50%;
+            text-align: center;
+            transition: all $default-animation;
+            &:before {
+                content: '';
+                display: inline-block;
+                width: .375rem;
+                height: .375rem;
+                border-radius: 50%;
+                background: $border-color-focus;
+                opacity: 0;
+                vertical-align: middle;
+                transition: all $default-animation;
+            }
+        }
+        .table-radio-input {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            &:checked {
+                &+.table-radio-label {
+                    border-color: $border-color-focus;
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .fa-plus {
+        font-family: 'iconFont';
+        font-style: normal;
+        @extend .aui-icon-drop-right;
+    }
+    .fa-minus {
+        font-family: 'iconFont';
+        font-style: normal;
+        @extend .aui-icon-drop-down-2;
+    }
+}
+
+.fixed-table-pagination {
+    color: $text-color-lighter;
+    margin-top: 1rem;
+    padding-right: 2rem;
+    text-align: right;
+    .btn {
+        min-width: auto;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        margin: 0 .625rem;
+        border-color: $border-color-lighter;
+    }
+    .pagination {
+        .page-link {
+            padding: 0 .3125rem;
+            line-height: 1.75rem;
+            &:focus,
+            &:active {
+                box-shadow: none;
+            }
+        }
+    }
+    .page-pre {
+        .page-link {
+            font-family: 'iconFont';
+            font-size: 0;
+            @extend .aui-icon-drop-down-2;
+            transform: rotate(90deg);
+            &:before {
+                font-size: $font-size-small;
+            }
+        }
+    }
+    .page-next {
+        .page-link {
+            font-family: 'iconFont';
+            font-size: 0;
+            @extend .aui-icon-drop-down-2;
+            transform: rotate(-90deg);
+            &:before {
+                font-size: $font-size-small;
+            }
+        }
+    }
+    &>.pagination-detail,
+    &>.pagination {
+        display: inline-block;
+        float: none !important;
+        vertical-align: top;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .page-list {
+        margin-right: 1.5rem;
+        vertical-align: top;
+    }
+    .dropdown-menu {
+        min-width: 4rem;
+    }
+    .dropdown-item {
+        padding: 0 .625rem;
+    }
+    .pagination-info {
+        line-height: 1.75rem;
+    }
+}
+
+.table-page-box {
+    position: relative;
+    .page-jump {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: none;
+    }
+    .page-jump-box {
+        font-size: 0;
+        .aui-input {
+            width: 3.125rem;
+            margin: 0 0 0 $space;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            text-align: center;
+            border-color: $border-color-lighter;
+            &-small {
+                height: 1.75rem;
+            }
+        }
+    }
+    .page-go {
+        display: inline-block;
+        min-width: 2.25rem;
+        height: 1.75rem;
+        line-height: calc(1.75rem - 2px);
+        text-align: center;
+        border: 1px solid $border-color-lighter;
+        border-left: 0;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        font-size: $font-size-default;
+        cursor: pointer;
+    }
+}
+
+.bootstrap-table .table.deep {
+    thead {
+        th {
+            background: rgba($color-white, .1);
+            border: 0 !important;
+            color: rgba($color-white, .5);
+            &:before {
+                background: rgba($color-white, .1);
+            }
+        }
+    }
+    tbody {
+        tr {
+            background: none !important;
+        }
+        td {
+            border-color: rgba($color-white, .1);
+        }
+    }
+}
+
+.bootstrap-table .table.table-sm {
+    thead {
+        tr th {
+            &:first-child {
+                min-width: 1.5rem;
+                width: 1.5rem;
+            }
+            height: 1.875rem;
+            .th-inner {
+                line-height: 1;
+            }
+        }
+    }
+    tbody {
+        td {
+            height: 2.25rem;
+        }
+    }
+}
+
+.table.table-collapse-check {
+    .bs-checkbox {
+        width: 2.25rem !important;
+        min-width: 2.25rem !important;
+        padding: 0 !important;
+        text-align: left !important;
+        .th-inner {
+            padding: 0 !important;
+        }
+    }
+}
+
+.table-footer-btn {
+    margin: .5rem 0 0 3.75rem;
+}
+
+.table-sm-footer-btn {
+    margin: .5rem 0 0 2.25rem;
+}

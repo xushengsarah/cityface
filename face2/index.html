@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>index</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-ui/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-select-1.13.2/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper/css/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-iviewer/jquery-iviewer.css" />
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/vendor/jqueryPagination/css/pagination.css">
+    <link rel="stylesheet" href="assets/css/vendor-reset.min.css" />
+    <link rel="stylesheet" href="assets/css/pages.min.css" />
+    <link rel="stylesheet" href="assets/css/star-fire.min.css">
+
+    <link rel="stylesheet" href="assets/vendor/My97DatePicker/skin/WdatePicker.css">
+    <link rel="stylesheet" href="assets/vendor/jquery-slider/css/jslider.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker-1.6.4/css/bootstrapValidator.css" />
+
+    <!-- <link rel="stylesheet" href="assets/css/star-fire.min.css"> -->
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <!--[if lt IE 9]>
+    <script src="js/vendors/respond.min.js"></script>
+    <script src="js/vendors/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!--<header class="header-box" include="facePlatform/common/header.html" select="1"></header>-->
+    <!--右键菜单全局-->
+    <div id="rightMouseImgMenuTWY"></div>
+
+    <div class="sidebar-box show" select="2"></div>
+
+    <input type="hide" id="imgBase64" />
+    <!-- 新建布控 -->
+    <div class="control-new-popup hide"></div>
+    <!-- 权限申请事件详情 -->
+    <div class="incident-new-popup hide"></div>
+    <!-- 新建人员库整库布控 -->
+    <div class="portraitCard-new-popup hide"></div>
+    <!--新建申请权限-->
+    <div class="applyUse-new-popup hide"></div>
+    <!-- 新建AI告警 -->
+    <div class="AI-new-popup hide"></div>
+    <!-- 1:1识别 -->
+    <div class="one-to-one-popup hide"></div>
+    <!-- 全部告警 -->
+    <div class="all-alarm-popup hide"></div>
+    <!-- 新建卡口 -->
+    <div class="bayonet-new-popup hide"></div>
+    <!-- 视频和抓拍图 -->
+    <div class="map-new-popup hide"></div>
+
+    <!--暂存架-->
+    <div class="temporaryShelfIcon">
+        <div class="temporaryShelfNum">0</div>
+    </div>
+    <div class="temporaryShelf hide">
+        <div class="title">
+            <span class="titlename">临时相册(
+                <span class="titlenameNum">0</span>)</span>
+            <span class="titleicon"></span>
+        </div>
+        <div class="temporaryShelfSelect">
+            <span class="bootstrap-table">
+                <div class="table-checkbox">
+                    <input name="btSelectAll" type="checkbox"
+                           class="table-checkbox-input table-checkbox-all-cameraDetail" id="temporaryShelfSelectAll">
+                    <label class="table-checkbox-label"></label>
+                </div>
+                <label for="temporaryShelfSelectAll">全选</label>
+            </span>
+            <span class="text-link default aui-ml-mmd deleteTemporary">
+                <i class="icon aui-icon-delete-line"></i>
+                <span class="text">删除</span>
+            </span>
+        </div>
+        <div class="temporaryShelfContent">
+            <ul class="image-card-list-wrap showBigImg wrap-empty-center merge loading-position"></ul>
+        </div>
+        <div class="temporaryShelfFooter">
+            <button class="btn btn-primary aui-mr-0 disabled" id="temporarySearch">人像检索</button>
+            <button class="btn btn-primary aui-mr-0 disabled" id="temporaryBK">新建布控</button>
+            <button class="btn btn-primary aui-mr-0 disabled" id="temporaryOnetoone">图片比对</button>
+            <button class="btn btn-primary aui-mr-0 disabled" id="temporaryPeer">同行人</button>
+        </div>
+    </div>
+
+    <ul class="content-box" id="content-box"></ul>
+    <div class="feedback-container">
+        <div class="feedback-item split-line" href="#" data-toggle="tooltip" data-placement="top" data-html="true"
+             title="">
+            <i class="aui-icon-phone"></i>
+        </div>
+        <div class="feedback-item split-line" href="#" data-toggle="tooltip" data-placement="top" title="意见反馈">
+            <i class="aui-icon-edit"></i>
+        </div>
+        <div class="feedback-item split-line" href="#" data-toggle="tooltip" data-placement="top" title="问题解答">
+            <i class="aui-icon-help"></i>
+        </div>
+        <div class="feedback-item split-line" href="#" title="操作指引下载" data-toggle="popover" data-placement="left"
+             data-html="true">
+            <i class="aui-icon-Preview"></i>
+        </div>
+        <div class="feedback-item" href="#" data-toggle="tooltip" data-placement="top" title="消息提醒">
+            <i class="aui-icon-message"></i>
+        </div>
+    </div>
+    <!--消息提醒-->
+    <div class="feedback-tips">
+    </div>
+
+    <!--消息提醒-->
+    <div class="feedback-allTips hide">
+        <div class="feedback-allTips-itemTitle">
+            <span class="titlename">通知</span>
+            <i class="aui-icon-not-through"></i>
+        </div>
+        <div class=""></div>
+        <div class="feedback-allTips-itemContent">
+        </div>
+    </div>
+
+    <!--新手指引首页-->
+    <div class="mask-container-fixed system-guide-index show hide" id="system-guide-index">
+        <div class="mask-crop-panel"></div>
+        <div class="sidebar-tip-box">
+            <div class="system-guide-box"></div>
+        </div>
+        <div class="system-guide-border hide"></div>
+        <div class="system-guide-panel"></div>
+        <!--导航使用，气泡弹框,除了我的-->
+        <div class="wind-item">
+            <span class="item-icon-drop-down"></span>
+            <div class="window-cont">
+                <div class="item-header">
+                    <h4 class="item-title font16">导航使用</h4>
+                    <span class="close-btn aui-icon-not-through"></span>
+                </div>
+                <div class="item-body">
+                    <p class="iot-black">你可以点击导航名称进行功能模块的快速切换</p>
+                    <div class="dot-icon-box">
+                        <span class="dot-icon active"></span>
+                        <span class="dot-icon"></span>
+                    </div>
+                </div>
+                <div class="item-footer">
+                    <button class="btn btn-primary min">下一条</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--新手指引检索-->
+    <div class="mask-container-fixed system-guide-search show hide" id="system-guide-search">
+        <div class="mask-crop-panel"></div>
+        <div class="sidebar-tip-box">
+            <div class="system-guide-box"></div>
+        </div>
+        <div class="system-guide-border hide"></div>
+        <div class="system-guide-panel"></div>
+        <!--导航使用，气泡弹框,除了我的-->
+        <div class="wind-item">
+            <span class="item-icon-drop-down"></span>
+            <div class="window-cont">
+                <div class="item-header">
+                    <h4 class="item-title font16">导航使用</h4>
+                    <span class="close-btn aui-icon-not-through"></span>
+                </div>
+                <div class="item-body">
+                    <p class="iot-black">你可以点击导航名称进行功能模块的快速切换</p>
+                    <div class="dot-icon-box">
+                        <span class="dot-icon active"></span>
+                        <span class="dot-icon"></span>
+                        <span class="dot-icon"></span>
+                        <span class="dot-icon"></span>
+                        <span class="dot-icon"></span>
+                    </div>
+                </div>
+                <div class="item-footer">
+                    <button class="btn btn-primary min">下一条</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 意见反馈信息弹窗 -->
+    <div class="modal fade modal-sm" id="adviceFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">意见反馈</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="new-container">
+                    感谢您使用深目·视综系统！请告诉我们您对系统的意见和建议，我们会参考您的反馈，不断优化我们的产品和服务。
+                </div>
+                <div class="modal-body">
+                    <div class="aui-from-horizontal aui-ml-md aui-mr-xs" role="form">
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">标题：</label>
+                            <div class="aui-col-18">
+                                <input id="subject_val" type="text" class="aui-input" placeholder="请输入标题"
+                                       maxlength="30">
+                                <p class="text-danger mg-top-xs tip hide">请输入标题</p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">反馈类型：</label>
+                            <div class="aui-col-18">
+                                <div class="btn-group" role="group" id="feedbackTypeBtn">
+                                    <!-- <button type="button" class="btn btn-sm btn-primary" value="1">建议</button>
+                                    <button type="button" class="btn btn-sm " value="2">需求</button>
+                                    <button type="button" class="btn btn-sm " value="3">异常</button>
+                                    <button type="button" class="btn btn-sm " value="4">其他</button> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row hide">
+                            <label class="aui-form-label aui-col-6 aui-form-require">异常类型：</label>
+                            <div class="aui-col-18">
+                                <select id="errorType_val" title="请选择异常类型">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">详细描述：</label>
+                            <div class="aui-col-18 comment-form">
+                                <textarea id="topicContent_val" placeholder="请输入详细描述" cols="30" rows="10"
+                                          class="control-textarea" maxlength="120"></textarea>
+                                <div class="wordNum hide">剩余
+                                    <span></span>个字</div>
+                                <p class="text-danger tip hide">请输入详细描述</p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row aui-mb-0">
+                            <label class="aui-form-label aui-col-6 aui-form-require">添加图片：</label>
+                            <div class="face-card aui-col-18 comment-form"
+                                 style="width:75%;padding:0 0.75rem;border:none;height:auto;">
+                                <div class="add-image-wrap add-type-3" id="feedbackImgs"
+                                     style="border: 1px solid #bcc6dd;padding: 0.625rem;">
+                                    <div class="add-image-icon add-image-new">
+                                        <i class="aui-icon-add"></i>
+                                        <p class="add-image-box-text">请添加图片，不超过8张(图片大小小于
+                                            <span class="text-danger">10M</span>)</p>
+                                        <form method="POST" name="fileInfo" enctype="multipart/form-data">
+                                            <input type="file" class="uploadFile" name="imgFiles">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-danger mg-top-xs tip hide">图片过大,请上传小于10M的图片</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="feedbackOk">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 意见反馈信息弹窗 end -->
+
+    <!-- 问题解答弹窗 -->
+    <div class="modal fade" id="askModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">问题解答</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <ul class="askModalList">
+                        <li>
+                            <h2>原来可以直接使用人像系统办理案件，现在为什么要增加申请、审批等前置流程？</h2>
+                            <div>
+                                按照市局党委要求，我局城市人像系统将以手段方式进行统一管理，因为城市人像系统查询人员身份和轨迹落地快，不加管控的使用会导致公民个人信息和隐私随时可能受到侵犯（尤其是敏感人员）。同时，手段管理也是保护基层民警，通过技术管控和手段管理可以主动提醒大家，减少犯错误的几率，比如在查询过程中让查询人和审批人双向提醒监督，希望能够引导大家规范、合理、安全使用。另外，市局通过建立奖励机制，比如上传战果及相关视频侦察技战法到深目系统·案件视频库奖励使用次数，反哺系统建设，还可以进一步提升全局视频侦察水平。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>如何申请使用城市人像系统</h2>
+                            <div>
+                                主要有三种申请审批方式（详见系统操作说明黄色字体链接进入）
+                                <p>1、（执法闭环管理系统发起）一般情况下，对于处置警情、案件的使用申请，由接处警单位或受理案件的主办人，在执法闭环管理系统依据警情或案件编号发起申请，并提交被查询对象的来源依据和相关材料，副处级以上警官（含副处级）最终审批同意后，指派有城市人像系统使用权限的人员开展人像查询工作，被指派人员进入城市人像系统选择该警情或案件进行操作。
+                                </p>
+                                <p>2、（城市人像系统发起）对于专项工作、维稳工作、涉密案件、情报立线等特殊警务工作的使用申请，办理经市局分管局领导审批同意后，由具有城市人像系统权限的人员在城市人像系统中发起申请，按要求提交被查询对象来源依据，系统将自动生成事件编号，由该项工作负责人（副处级以上警官（含副处级））审批同意后，申请人在系统中选择该事件进行操作。
+                                </p>
+                                <p>3、（城市人像系统发起）对于办理紧急警务工作的使用申请（涉及突发八类暴力案件、涉恐维稳事件、领导交办等情况（查询敏感人员信息不适用紧急情况）），经本单位审批人（副处级以上警官（含副处级））同意后，由具有城市人像系统权限的人员在系统中填写《先行使用城市人像系统登记表》，录入被查询对象依据来源（包括领导交办要求和其他紧急情况依据）后，系统自动生成紧急事件编号，申请人在系统中选择该事件，获得系统使用权限。查询完成后，申请人必须在2个工作日内按照一般程序或特别程序在系统内补办审批手续。
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <h2>基层单位视频专网电脑较少，城市人像系统审批和使用不方便，影响工作效率。</h2>
+                            <div>
+                                从4月7日开始，城市人像系统与深警平台系统实现了对接，针对警情和案件，可以通过深警平台进行申请和审批（包括电脑端和手机云终端）。4月底，手机云终端城市人像APP也将上线，针对专案和专项行动类的审批在移动端也可以操作，人像手段申请将实现全业务移动审批。另外，视频警察支队正在推进公安网深目城市人像系统的开发，让民警在使用中减少网络的切换，提高工作效率。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>龙岗分中心动态人像系统与市局主中心城市人像系统数据不通，同一个案事件需要分开使用两个平台操作查询很不方便，目前龙岗分中心也没有对接执法闭环系统，存在管理的漏洞。</h2>
+                            <div>
+                                由于龙岗分中心平台建设在市局主中心平台之前，根据市局城市人像系统总体规划，龙岗作为市局的备份中心保留入口，通过市局主中心平台进行统一管理。由于两个系统的平台架构标准不同，龙岗的人像前端需要经过平台改造才能接入市局城市人像系统，市局就该工作已向龙岗分局提出督办要求，龙岗分局尽快完成系统对接改造，改造期间龙岗分局负责加强分中心平台的规范使用和安全管理。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>在办理地铁内部和跨界案事件等工作中无法通过市局城市人像系统查询到地铁内部人像抓拍信息，深运平台的人像前端何时能接入系统。</h2>
+                            <div>
+                                深运平台人像前端正逐步接入城市人像系统，截止4月7日已接入1000多路人像前端。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>城市人像系统的案件审批时限最长是1个月，时限太短。</h2>
+                            <div>
+                                一般案件办理依据《刑事诉讼法》要求，侦查期限通常为一个月，目前每次审批使用时限最长1个月，可延长使用期限，但延长也需要审批。同时，市局已将专案类时限延长至3个月。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>城市人像系统输入身份证有时候会直接显示无照片，有时候无法出现照片。</h2>
+                            <div>
+                                目前城市人像系统部署在视频专网，只能对接本地库（不是全量库），下一步在公安网深目城人像系统上线后，则可以通过对接公安部接口解决该问题。
+                            </div>
+                        </li>
+                        <li>
+                            <h2>有些警种大队及分局大队单位为正科级，但城市人像系统最终要经副处级及以上警官审批比较麻烦，能否改为正科级及以上警官审批？</h2>
+                            <div>
+                                根据局领导要求，城市人像系统以手段方式进行统一管理，使用系统最终要经副处级及以上警官审批，相关管理使用办法及细则也已经下发，城市人像也已经对接深警平台，领导可通过云终端手机在移动端审批，与审批办案执法手续一样便捷。
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 问题解答弹窗 end -->
+
+    <!--告警弹框-->
+    <div class="pop-warning hide" id="time-alarm-pop">
+        <div class="pop-warning-title">
+            <i class="aui-icon-information text-lg text-danger"></i>
+            <div class="title-text">
+                <p>紧急告警</p>
+            </div>
+            <i class="aui-icon-not-through"></i>
+        </div>
+        <div class="pop-warning-content">
+            <div class="warning-content-title">
+                <p></p>
+            </div>
+            <div class="warning-content-img">
+                <div class="img-left">
+                    <span class="img-tag img-left-tag">布控原图</span>
+                    <img class="img" src="" alt="">
+                </div>
+                <div class="img-right">
+                    <span class="img-tag img-right-tag">告警图片</span>
+                    <img class="img" src="" alt="">
+                </div>
+                <span class="image-similarity">
+                    <span class="image-danger"></span>
+                </span>
+            </div>
+        </div>
+        <div class="pop-warning-text">
+            <div class="camera-text">
+                <i class="aui-icon-tree-camera"></i>
+                <div class="camera-text-detail">
+                    <p></p>
+                </div>
+            </div>
+            <div class="time-text">
+                <i class="aui-icon-pending"></i>
+                <div class="time-text-detail">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 布控详情 页面 -->
+    <div class="content-box display-none" id="controlDetailPage"></div>
+    <div class="content-box display-none" id="filesDetailPage"></div>
+
+    <!--告警提示音-->
+    <div id="warningTone" style="display:none"></div>
+
+    <!--暂存架移动透明层-->
+    <div class="temporaryShelfMove hide"></div>
+    <!--弹窗-->
+    <!-- 关联时间自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="timeLinkModal" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLinkLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <div class="aui-col-24" style="margin-bottom:0.5rem;">
+                                    <label class="aui-form-label aui-col-6 control-label">抓拍时间：</label>
+                                    <div class="aui-col-18 aui-form-label" id="timeLinkModalTime"></div>
+                                </div>
+                                <!-- <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs" id="indexLinkTime">
+                                        <input id="startIndexLinkTime" class="input-text datepicker-input radius Wdate"
+                                            type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endIndexLinkTime\') || \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endIndexLinkTime" class="input-text datepicker-input radius Wdate"
+                                            type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startIndexLinkTime\')}',maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p> 
+                                </div>-->
+                                <div class="aui-col-24" style="margin-bottom:0.5rem;">
+                                    <label class="aui-form-label aui-col-6 control-label">前(分钟)：</label>
+                                    <div class="aui-col-18">
+                                        <input id="timeLinkModalTime-prev" type="text" class="aui-input"
+                                               placeholder="请输入分钟数" oninput="value=value.replace(/[^0-9]/g,'')"
+                                               maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <label class="aui-form-label aui-col-6 control-label">后(分钟)：</label>
+                                    <div class="aui-col-18">
+                                        <input id="timeLinkModalTime-after" type="text" class="aui-input"
+                                               placeholder="请输入分钟数" oninput="value=value.replace(/[^0-9]/g,'')"
+                                               maxlength="4">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeLinkModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--动态检索事由弹窗-->
+    <div class="modal fade modal-sm" id="dynamicSearchModal" role="dialog" aria-labelledby="dynamicSearchModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">检索事由</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <div>
+                            <div class="form-group aui-row">
+                                <div class="aui-col-24" style="margin-bottom:0.5rem;">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">业务类型：</label>
+                                    <div class="aui-col-18">
+                                        <select class="selectpicker" id="dynamicModalType" data-change="true"
+                                                title="请选择业务类型"></select>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24" style="margin-bottom:0.5rem;">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">检索事由</label>
+                                    <div class="aui-col-18">
+                                        <textarea name="" id="dynamicModalReason" class="control-textarea"
+                                                  placeholder="请填写检索事由，不少于10个字" cols="30" rows="10"
+                                                  maxlength="100"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="dynamicModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--镜头信息弹窗-->
+    <div class="modal fade" id="cameraInfoMask" role="dialog" aria-labelledby="cameraInfoMask">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="card-title">镜头信息</span>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i class="aui-icon-not-through closeMask"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="card-content">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="btn" data-dismiss="modal">关闭</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="exportIframeIndex" src="" style="display: none;border: 0px;"></iframe>
+    <script type="text/javascript" src="assets/vendor/jQuery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript"
+            src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/vendor/bootstrap-datetimepicker-1.6.4/js/bootstrap-datetimepicker.min.js"></script> -->
+    <script type="text/javascript"
+            src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-select-1.13.2/js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-select-1.13.2/js/i18n/defaults-zh_CN.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/select2/js/select2.js"></script>
+    <script type="text/javascript" src="assets/vendor/jqueryPagination/js/pagination.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/vendor/moment/moment.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="assets/vendor/jqcloud/js/jqcloud.js"></script>
+    <script type="text/javascript" src="assets/vendor/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-iviewer/jquery-iviewer.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-slider/js/jquery-miggrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-slider/js/jquery.dependClass.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery-slider/js/jquery.slider.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/waterMark.js"></script>
+    <script type="text/javascript" src="js/commonEvent.js"></script>
+    <script type="text/javascript" src="js/ajaxFilter.js"></script>
+    <script type="text/javascript" src="js/webSocket.js"></script>
+    <script type="text/javascript" src="assets/vendor/jQuery/wresize.js"></script>
+    <script type="text/javascript" src="assets/vendor/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-datepicker-1.6.4/js/bootstrapValidator.js"></script>
+    <!-- <script type="text/javascript" src="js/createBigImgPop.js"></script> -->
+
+    <script>
+        // $(document).ready(function (e) {
+        //     // 菜单栏展开收缩
+        //     $('.sidebar-box').on('mouseover', function () {
+        //         time = setTimeout(function () {
+        //             $('.sidebar-box').addClass('show');
+        //             $('.sidebar-box').find('.sidebar-inner').removeClass('hide');
+        //         }, 300);
+        //     });
+        //     $('.sidebar-box').on('mouseout', function () {
+        //         time = setTimeout(function () {
+        //             $('.sidebar-box').removeClass('show');
+        //             $('.sidebar-box').find('.sidebar-inner').addClass('hide');
+        //         }, 300);
+        //     })
+        // })
+        document.oncontextmenu = function () {
+            return false;
+        }
+
+        getClientInfo();
+
+        //修改弹窗内img相对路径
+        $('[include]').on('loaded', function () {
+            $(this).find('img').each(function (v, i) {
+                $(this).attr('src', $(this).attr('src').replace(/^\.\.\//i, ''));
+            });
+            helper.init();
+        });
+
+        $(".map-item").click(function () {
+            var tpl = $(this).attr("page-template");
+            if (tpl) {
+                $("#content-box").load(tpl, function () {
+                    helper.init();
+                });
+            }
+        });
+
+        indexLoad();
+
+        // 告警webscoket服务连接
+        // 全局告警弹窗动画时间
+        function createAlarmItem(result) {
+            var statusName = result.status == '0' && '未处理' || result.status == '1' && '已命中' || result.status == '2' && '已误报' || '未处理';
+            var threshold = 0;
+            if (result.threshold) {
+                threshold = parseFloat(result.threshold);
+            }
+            var item =
+                `<li class="warning-item">
+                <div class="warning-item-content">
+                    <div class="warning-item-img-box">
+                        <div class="warning-item-img">
+                            <img src="${result.url || './assets/images/control/person.png'}" />
+                            <img src="${result.smallHttpUrl || './assets/images/control/person.png'}" />
+                        </div>
+                        <span class="warning-item-percent grade1">${threshold}%</span>
+                    </div>
+                    <div class="warning-item-name"><span>${result.comments ? result.comments : '未知'}</span><span class="warning-item-level grade${result.status ? Number(result.status) + 1 : 1}">${statusName}</span></div>
+                    <p class="warning-item-address">
+                        <span class="warning-item-text" title="${result.cameraName || '未知'}">${result.cameraName || '未知'}</span>
+                    </p>
+                    <p class="warning-item-time">
+                        <i class="aui-icon-color-default aui-icon-history"></i>
+                        <span class="warning-item-text">${result.alarmTime || '未知'}</span>
+                    </p>
+                </div>
+            </li>`;
+            return item;
+        }
+        window.popAlarmTime = false;
+
+        if ($.cookie('xh_token')) {
+            setAlarmWebSocket();
+        }
+
+        // 首页加载判断用户角色及动静态权限
+        function indexLoad() {
+            var port = 'v2/user/getUserModuleAuthorty',
+                successFunc = function (info) {
+                    if (info.code === '200') {
+                        var result = info.data;
+                        if (result.length == 0) {
+                            return;
+                        } else {
+                            $('.sidebar-box').html(createSidebar(result));
+                            var saveHtml = '';
+                            for (var i = 0; i < result.length; i++) {
+                                saveHtml += `<li class="content-save-item"></li>`;
+                            }
+                            $('#content-box').append(saveHtml);
+                            $(document).on('click', '#pageSidebarMenu .sidebar-item', function () {
+                                var thisCls = $(this).hasClass('active'),
+                                    thisIndex = $(this).index();
+                                var $saveItem = $('#content-box').find('.content-save-item').eq(thisIndex);
+
+                                if (thisCls) {
+                                    return;
+                                }
+
+                                //关闭视频和抓拍图弹窗
+                                $("#closeMapVideoPage").click();
+
+                                // 清除所有页面缓存的地图
+                                var $mapIframe = $('.map-iframe');
+                                for (var i = 0; i < $mapIframe.length; i++) {
+                                    $mapIframe.eq(i).attr('src', '');
+                                }
+
+                                if (!$(this).find("a").attr("lc")) {
+                                    warningTip.say("该功能暂未开发！");
+                                    return;
+                                }
+
+                                if ($(this).find('.aui-icon-home-2').length > 0) {
+                                    if ($('#time-alarm-pop').length > 0) {
+                                        $('#time-alarm-pop').addClass('hide');
+                                    }
+                                }
+                                $(this).addClass('active').siblings().removeClass('active');
+                                $('#content-box').data('modulecode', $(this).attr('id'));
+
+                                var url = $(this).find("a").attr("lc") + "?dynamic=" + Global.dynamic;
+                                if (url.indexOf('search-static.html') !== -1 && $("#staticSearch").length > 0) { //纯静态态页面
+                                    getSelectComments($("#commentSelectStatic"), $("#commentSelectStatic").find(".selectpicker").val());
+                                }
+                                if (url.indexOf('search-dynamic.html') !== -1 && $("#dynamicsearchDynamic").length >
+                                    0) { //纯动态页面
+                                    getSelectComments($("#commentSelectDynamic"), $("#commentSelectDynamic").find(".selectpicker").val());
+                                }
+                                if (url.indexOf('search-merge.html') !== -1 && $("#mergeSearch").length > 0) { //综合页面
+                                    getSelectComments($("#commentSelectMerge"), $("#commentSelectMerge").find(".selectpicker").val());
+                                }
+                                if (url.indexOf('control-detail.html') !== -1 && $("#current-page-control").length > 0) { //布控页面
+                                    getControlUsePower($(this).attr("id"));
+                                }
+                                // loadPage($('#content-box'), url);
+                                // 给缓存节点添加节点缓存当面加载页面
+                                if ($saveItem.children().length === 0) {
+                                    loadPage($saveItem, url);
+                                }
+
+                                if ($(this).find(".sidebar-item-title").text() === '一人一档') {
+                                    $saveItem.empty();
+                                    loadPage($saveItem, url);
+                                }
+
+                                // 本页地图赋值
+                                var $mapIframe = $saveItem.find('.map-iframe');
+                                for (var i = 0; i < $mapIframe.length; i++) {
+                                    $mapIframe.eq(i).attr('value', mapUrl + 'peopleCity.html?rxModule=' + $mapIframe.attr("id"));
+                                    $mapIframe.eq(i).attr('src', $mapIframe.eq(i).attr('value'));
+                                }
+
+                                $('#content-box').removeClass('display-none');
+                                $('#controlDetailPage').addClass('display-none');
+                                $('#filesDetailPage').addClass('display-none');
+                                if ($('#controlOverviewPage').length == 0) {
+                                    $('#current-page-control').removeClass('display-none');
+                                }
+                                // 检索界面点击导航返回主页面
+                                $('#current-page').removeClass('display-none');
+                                $('#currentPagePath').addClass('display-none');
+                                $('#current-page-dynamic').removeClass('display-none');
+                                $('#currentPagePathDynamic').addClass('display-none');
+                                $('#current-page-temperature').removeClass('display-none');
+                                $('#currentPagePathTemperature').addClass('display-none');
+                                //全部告警弹窗关闭
+                                $(".all-alarm-popup").addClass("hide").html("");
+                                // // 布控界面点击导航默认界面
+                                // $('#currentPageControlPath').addClass('display-none');
+
+                                $('#alarmOverviewPage').removeClass('hide');
+                                $('#currentAlarmPath').addClass('hide');
+
+                                $('#contentPageTool').removeClass('hide');
+                                $('#toolPage').addClass('hide');
+
+                                $saveItem.removeClass('hide').siblings().addClass('hide');
+                                // 判定是否为融合算法页面,给添加新手指引代码
+                                if (url.indexOf('search-merge.html') !== -1) {
+                                    var guideData = $(this).data('guide');
+                                    if (!guideData) {
+                                        $(this).data('guide', true);
+                                        window.setTimeout(function () {
+                                            systemGuide(2);
+                                        }, 300);
+                                    }
+                                }
+                                // 点击左侧导航栏模块，所有的页面红点清空
+                                $('#myControlTabContent').find('.img-red-circle').addClass('hide')
+                                $('#controlTabConten').find('.img-red-circle').addClass('hide')
+
+                                if ($(this).find(".aui-icon-setting-2").length > 0 && $("#sysManagePage").length > 0 && $("#sysManageContentPage").html() == '') {
+                                    $("#sys-manage-tree-list").find("li.active a").click();
+                                }
+
+                                // if($(".popover[role='tooltip']").hasClass("show")){
+
+                                // }
+                                $('.feedback-container').find('.feedback-item').eq(3).popover('hide');
+
+                                //每次点击导航栏都请求后台接口刷新token
+                                window.loadData('v2/face/updateTokenAging', true, {
+                                    staticId: guid
+                                }, function (data) { }, undefined, 'GET');
+                            }).on('click', '.sidebar-watermask', function () {
+                                window.location.reload();
+                            })
+                            // 进行数据的判定
+                            locationUrl = window.location.href;
+                            if (locationUrl.indexOf('type') > 0) {
+                                // var guidIndex = locationUrl.indexOf('guid') + 5,
+                                //     guid = locationUrl.substr(guidIndex);
+                                var guid = '',
+                                    type = '',
+                                    immedia = '';
+                                infoStr = locationUrl.split("?")[1],
+                                    infoArr = infoStr.split("&");
+
+                                infoArr.forEach(element => {
+                                    if (element.indexOf("guid") >= 0) {
+                                        guid = element.split("=")[1];
+                                    } else if (element.indexOf("type") >= 0) {
+                                        type = element.split("=")[1];
+                                    } else if (element.indexOf("immedia") >= 0) {
+                                        immedia = element.split("=")[1];
+                                    }
+                                });
+                                window.loadData('v2/face/getImgByStaticId', true, {
+                                    staticId: guid
+                                }, function (data) {
+                                    if (data.code === '200') {
+                                        $("#imgBase64").data('base64', 'data:image/jpeg;base64,' + data.base64);
+                                        var $search = $('#pageSidebarMenu .aui-icon-carsearch2').closest('.sidebar-item'),
+                                            $manager = $('#pageSidebarMenu .aui-icon-file').closest('.sidebar-item'),
+                                            searchIndex = $search.index(),
+                                            managerIndex = $manager.index(),
+                                            $saveSearch = $('#content-box').children().eq(searchIndex),
+                                            $saveManager = $('#content-box').children().eq(managerIndex),
+                                            searchHref = $('#pageSidebarMenu .aui-icon-carsearch2').parent("a").attr("lc") + "?dynamic=" + Global.dynamic,
+                                            managerHref = $('#pageSidebarMenu .aui-icon-file').parent("a").attr("lc") + "?dynamic=" + Global.dynamic;
+                                        // 判断需要加载那个页面
+                                        if (type === '1') {
+                                            $search.addClass('active').siblings().removeClass('active');
+                                            $saveSearch.removeClass('hide').siblings().addClass('hide');
+                                            loadPage($saveSearch, searchHref);
+                                        } else {
+                                            $manager.addClass('active').siblings().removeClass('active');
+                                            $saveManager.removeClass('hide').siblings().addClass('hide');
+                                            loadPage($saveManager, managerHref);
+                                        }
+                                        // 判断是否需要立即进行检索
+                                        if (immedia === '1') {
+                                            // 自动搜索图片
+                                            $("#imgBase64").data('searchAlarm', true);
+                                        }
+                                    } else {
+                                        for (var i = 0; i < $("#pageSidebarMenu .sidebar-item").length; i++) {
+                                            if (!$("#pageSidebarMenu .sidebar-item:eq(" + i + ")").hasClass("disp-n")) {
+                                                // $("#pageSidebarMenu li:eq(" + i + ")").addClass("active");
+                                                $("#pageSidebarMenu .sidebar-item:eq(" + i + ")").click();
+                                                systemGuide(1)
+                                                break;
+                                            }
+                                        }
+                                    }
+                                });
+                            } else {
+                                for (var i = 0; i < $("#pageSidebarMenu .sidebar-item").length; i++) {
+                                    if (!$("#pageSidebarMenu .sidebar-item:eq(" + i + ")").hasClass("disp-n")) {
+                                        // $("#pageSidebarMenu li:eq(" + i + ")").addClass("active");
+                                        $("#pageSidebarMenu .sidebar-item:eq(" + i + ")").click();
+                                        systemGuide(1)
+                                        break;
+                                    }
+                                }
+                            }
+
+                            //请求我的审批数量
+                            window.loadData('v3/myApplication/getMyNotApproveCount', true, {}, function (data) {
+                                if (data.code === '200') {
+                                    var result = data.data,
+                                        count = 0;
+                                    if (result) {
+                                        result.forEach((val) => {
+                                            count += val.count;
+                                        });
+
+                                        if (count > 0) {
+                                            if (count < 100) {
+                                                $("#pageSidebarMenu").find(".aui-icon-customers2").parent().find(".redNum").removeClass("hide").html(count);
+                                            } else {
+                                                $("#pageSidebarMenu").find(".aui-icon-customers2").parent().find(".redNum").removeClass("hide").html('99+');
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    warningTip.say(data.message);
+                                }
+                            });
+                        }
+                    } else {
+                        warning.say("数据请求失败，请稍后再试");
+                    }
+                };
+            loadData(port, true, null, successFunc, undefined, 'GET');
+        }
+        getSearchCommentsType();
+        //检索事由业务类型获取
+        function getSearchCommentsType() {
+            var infoPort = 'v2/dic/dictionaryInfo',
+                infoData1 = {
+                    "kind": "RX_YW_TYPE"
+                },
+                infoPortSuccessFunc1 = function (data) {
+                    if (data.code === '200') {
+                        var RX_ID_TYPE = '';
+                        data.data.forEach(function (item) {
+                            RX_ID_TYPE += `<option value="${item.id}">${item.name}</option>`
+                        })
+                        $("#dynamicModalType").html(RX_ID_TYPE);
+                        if (data.data.length > 0) {
+                            $('#dynamicModalType').val(null);
+                            $('#dynamicModalType').removeAttr("disabled");
+                        } else {
+                            $('#dynamicModalType').val(null);
+                            $('#dynamicModalType').attr("disabled", "disabled");
+                        }
+                        $("#dynamicModalType").selectpicker('refresh');
+                    } else {
+                        $('#dynamicModalType').val(null);
+                        $('#dynamicModalType').attr("disabled", "disabled");
+                        $("#dynamicModalType").selectpicker('refresh');
+                    }
+                };
+            loadData(infoPort, true, infoData1, infoPortSuccessFunc1, '', 'GET');
+        };
+
+        /****暂存架****/
+        //暂存架icon点击事件显示暂存架
+        $(".temporaryShelfIcon").click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            if (parseInt($(".temporaryShelfNum").html()) != 0 && !$(".temporaryShelfIcon").hasClass("noclick")) {
+                $(".temporaryShelf").removeClass("hide");
+                $(".temporaryShelfIcon").addClass("hide");
+            }
+        });
+
+        $(".temporaryShelf").on("click", function (e) {
+            e.stopPropagation();
+        });
+
+        //暂存架关闭icon点击事件隐藏暂存架
+        $(".temporaryShelf").on("click", ".titleicon", function () {
+            $(".temporaryShelf").addClass("hide");
+            $(".temporaryShelfIcon").removeClass("hide");
+            $(".temporaryShelfSelect").find(".table-checkbox-input").removeAttr("checked");
+            for (var i = 0; i < $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").length; i++) {
+                if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).hasClass("ui-checkboxradio-checked")) {
+                    $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).removeClass("ui-checkboxradio-checked");
+                }
+            }
+
+            $("#temporarySearch").addClass("disabled");
+            $("#temporaryBK").addClass("disabled");
+            $("#temporaryOnetoone").addClass("disabled");
+            $("#temporaryPeer").addClass("disabled");
+        });
+
+        //暂存架全选按钮点击事件
+        $(".temporaryShelfSelect").on("click", ".table-checkbox-input", function (e) {
+            if ($(this).is(":checked")) {
+                for (var i = 0; i < $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").length; i++) {
+                    $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).addClass("ui-checkboxradio-checked");
+                }
+            } else {
+                for (var i = 0; i < $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").length; i++) {
+                    $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).removeClass("ui-checkboxradio-checked");
+                }
+            }
+
+            $("#temporarySearch").addClass("disabled");
+            $("#temporaryBK").addClass("disabled");
+            $("#temporaryOnetoone").addClass("disabled");
+            $("#temporaryPeer").addClass("disabled");
+            if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length > 0) {
+                $("#temporarySearch").removeClass("disabled");
+                $("#temporaryBK").removeClass("disabled");
+                if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length == 2) { //选中两个个可以图片比对和同行人
+                    $("#temporaryOnetoone").removeClass("disabled");
+                    $("#temporaryPeer").removeClass("disabled");
+                } else if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length > 8) {
+                    $("#temporaryBK").addClass("disabled");
+                }
+            }
+        });
+
+        //暂存架单个按钮点击事件
+        $(".temporaryShelfContent").on("click", ".image-card-box", function () {
+            if ($(this).find(".ui-checkboxradio-checkbox-label").hasClass("ui-checkboxradio-checked")) {
+                $(this).find(".ui-checkboxradio-checkbox-label").removeClass("ui-checkboxradio-checked");
+            } else {
+                $(this).find(".ui-checkboxradio-checkbox-label").addClass("ui-checkboxradio-checked");
+            }
+
+            $("#temporarySearch").addClass("disabled");
+            $("#temporaryBK").addClass("disabled");
+            $("#temporaryOnetoone").addClass("disabled");
+            $("#temporaryPeer").addClass("disabled");
+            if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length > 0) {
+                $("#temporarySearch").removeClass("disabled");
+                $("#temporaryBK").removeClass("disabled");
+                if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length == 2) { //选中两个个可以图片比对和同行人
+                    $("#temporaryOnetoone").removeClass("disabled");
+                    $("#temporaryPeer").removeClass("disabled");
+                } else if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").length > 8) {
+                    $("#temporaryBK").addClass("disabled");
+                }
+            }
+
+            for (var i = 0; i < $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").length; i++) {
+                if (!$(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).hasClass("ui-checkboxradio-checked")) {
+                    $(".temporaryShelfSelect").find(".table-checkbox-input").removeAttr("checked");
+                    return;
+                }
+            }
+            $(".temporaryShelfSelect").find(".table-checkbox-input").prop("checked", "checked");
+        });
+
+        //暂存架删除按钮点击事件
+        $(".deleteTemporary").on("click", function () {
+            $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").parents("li").remove();
+            $(".temporaryShelfNum").html($(".temporaryShelfContent").find("li").length);
+            $(".temporaryShelf .titlenameNum").html($(".temporaryShelfContent").find("li").length);
+            $(".temporaryShelfSelect").find(".table-checkbox-input").removeAttr("checked");
+
+            $("#temporarySearch").addClass("disabled");
+            $("#temporaryBK").addClass("disabled");
+            $("#temporaryOnetoone").addClass("disabled");
+            $("#temporaryPeer").addClass("disabled");
+        });
+
+        //暂存架按钮点击事件
+        $(".temporaryShelfFooter").on("click", "button", function () {
+            if ($(this).hasClass("disabled")) {
+                return;
+            }
+            var $id = $(this).attr("id"),
+                imgArr = [];
+            for (var i = 0; i < $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").length; i++) {
+                if ($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).hasClass("ui-checkboxradio-checked")) {
+                    imgArr.push($(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label").eq(i).parents("li").find("img").attr("src"));
+                }
+            }
+            switch ($id) {
+                //人像检索
+                case 'temporarySearch':
+                    var $sideBar = $('#pageSidebarMenu').find('.aui-icon-carsearch2'),
+                        $sideItem = $sideBar.closest('.sidebar-item'),
+                        sideIndex = $sideItem.index(),
+                        $contentItem = $('#content-box').find('.content-save-item').eq(sideIndex),
+                        $contentUserImg = $contentItem.find('#usearchImg'),
+                        $addImg = $contentUserImg.find('.add-image-item'),
+                        $addImgIcon = $contentUserImg.find('.add-image-icon'),
+                        url = $sideBar.parent("a").attr("lc") + "?dynamic=" + Global.dynamic;
+                    if ($sideBar.parents("li").hasClass("active")) { //当前在检索功能的情况
+                        var callBackInfo = [];
+                        if ($addImg.length === 0) {
+                            imgArr.forEach((val, index) => {
+                                callBackInfo.push(val);
+                                addSearchImg(val, true);
+                                $contentUserImg.removeClass('center');
+                                $addImgIcon.removeClass('add-image-new');
+                                $addImgIcon.find('.add-image-box-text').addClass('hide');
+
+                                if (callBackInfo.length == imgArr.length) {
+                                    // 自动搜索图片
+                                    window.setTimeout(function () {
+                                        imgDom(callBackInfo[callBackInfo.length - 1], $('#mergeSearch'), $("#usearchImg"));
+                                    }, 100)
+                                }
+                            });
+                        } else {
+                            imgArr.forEach((val, index) => {
+                                callBackInfo.push(val);
+                                addSearchImg(val, true);
+
+                                if (callBackInfo.length == imgArr.length) {
+                                    // 自动搜索图片
+                                    window.setTimeout(function () {
+                                        imgDom(callBackInfo[callBackInfo.length - 1], $('#mergeSearch'), $("#usearchImg"));
+                                    }, 100)
+                                }
+                            });
+                        }
+                    } else { //当前不在检索功能的情况
+                        var noneUserImgArr = [];
+                        if ($contentUserImg.length === 0) {
+                            imgArr.forEach((val, index) => {
+                                noneUserImgArr.push(val);
+
+                                if (noneUserImgArr.length == imgArr.length) {
+                                    if (noneUserImgArr.length == 1) {
+                                        $('#imgBase64').data({
+                                            'base64': noneUserImgArr[0],
+                                            'searchAlarm': true
+                                        });
+                                    } else {
+                                        $('#imgBase64').data({
+                                            'base64': noneUserImgArr[0],
+                                            'searchAlarm': false
+                                        });
+                                    }
+
+                                    $contentItem.empty();
+                                    //loadPage($contentItem, url);
+                                    $sideItem.click();
+
+                                    noneUserImgArr.forEach((valNone, indexNone) => {
+                                        if (indexNone != 0) {
+                                            addSearchImg(valNone, true);
+                                        }
+                                    });
+                                    imgDom(noneUserImgArr[noneUserImgArr.length - 1], $('#mergeSearch'), $("#usearchImg"));
+                                }
+                            });
+                        } else {
+                            if ($addImg.length === 0) {
+                                imgArr.forEach((val, index) => {
+                                    noneUserImgArr.push(val);
+
+                                    if (noneUserImgArr.length == imgArr.length) {
+                                        if (noneUserImgArr.length == 1) {
+                                            $('#imgBase64').data({
+                                                'base64': noneUserImgArr[0],
+                                                'searchAlarm': true
+                                            });
+                                        } else {
+                                            $('#imgBase64').data({
+                                                'base64': noneUserImgArr[0],
+                                                'searchAlarm': false
+                                            });
+                                        }
+
+                                        $contentItem.empty();
+                                        loadPage($contentItem, url);
+                                        $sideItem.click();
+
+                                        noneUserImgArr.forEach((val, index) => {
+                                            if (index != 0) {
+                                                addSearchImg(val, true);
+                                            }
+                                        });
+
+                                        if ($('#mergeSearch').length > 0) {
+                                            imgDom(noneUserImgArr[noneUserImgArr.length - 1], $('#mergeSearch'), $("#usearchImg"));
+                                        } else {
+                                            imgDom(noneUserImgArr[noneUserImgArr.length - 1], $('#dynamicsearch'), $("#usearchImg"));
+                                        }
+                                    }
+                                });
+                            } else {
+                                imgArr.forEach((val, index) => {
+                                    noneUserImgArr.push(val);
+                                    $sideItem.click();
+                                    addSearchImg(val, true);
+
+                                    if (noneUserImgArr.length == imgArr.length) {
+                                        imgDom(noneUserImgArr[noneUserImgArr.length - 1], $('#mergeSearch'), $("#usearchImg"));
+                                    }
+                                });
+                            }
+                        }
+                    }
+                    break;
+                //新建布控
+                case 'temporaryBK':
+                    var $sideBar = $('#pageSidebarMenu').find('.aui-icon-monitor2');
+                    $sideItem = $sideBar.closest('.sidebar-item'),
+                        sideIndex = $sideItem.index(),
+                        $contentItem = $('#content-box').find('.content-save-item').eq(sideIndex),
+                        $contentUserImg = $contentItem.find('#newBukong'),
+                        url = $sideBar.parent("a").attr("lc") + "?dynamic=" + Global.dynamic;
+
+                    if (!$sideBar.parents("li").hasClass("active")) {
+                        $sideItem.click();
+                        if ($("#newBukong").length == 0) {
+                            loadPage($contentItem, url);
+                        }
+                    } else {
+                        // if ($("#backToSearchControl").length > 0 && !$("#currentPageControlPath").hasClass(
+                        //         "display-none")) {
+                        //     $("#backToSearchControl").click();
+                        // }
+                        if ($("#backToControlOverview").length > 0 && !$("#controlDetailPage").hasClass("display-none")) {
+                            $("#backToControlOverview").click();
+                        }
+                    }
+                    setTimeout(function () {
+                        $("#newBukong").click();
+                        $('#selectObject').removeClass('hide');
+                        $('#selectControl').addClass('hide');
+                        imgArr.forEach((val, index) => {
+                            var html =
+                                `<div class="add-image-item">
+                                                <img class="add-image-img" src="${val}" alt="">
+                                                <i class="aui-icon-delete-line"></i>
+                                            </div>`;
+                            $('#control_imgList').find('.add-image-icon').before(html);
+                        });
+
+                        if (imgArr.length == 8) {
+                            $('#control_imgList .add-image-icon').addClass('hide');
+                        }
+                        $('#control_imgList').removeClass('center');
+                        $('#control_imgList').find('.add-image-icon').removeClass('add-image-new');
+                        $('#control_imgList').find('.add-image-box-text').addClass('hide');
+                        $("#control_imgList .add-image-icon").siblings('.add-image-item').removeClass('active');
+                        $('#addImgWarning').addClass('hide');
+                    }, 100);
+                    break;
+                //图片比对
+                case 'temporaryOnetoone':
+                    var $sideBar = $('#pageSidebarMenu').find('.aui-icon-toolbox'),
+                        $sideItem = $sideBar.closest('.sidebar-item'),
+                        sideIndex = $sideItem.index(),
+                        url = "./facePlatform/onetoone-new.html?dynamic=" + Global.dynamic;
+                    if (!($sideItem.hasClass('active') && $('#onetoone').hasClass('act'))) {
+                        loadPage($('.one-to-one-popup'), url);
+                        $('.one-to-one-popup').removeClass('hide');
+                    }
+
+                    $("#search-before1").addClass("none");
+                    $("#search-after1").removeClass("none");
+                    $("#search-before2").addClass("none");
+                    $("#search-after2").removeClass("none");
+                    $("#search-after1").find("img").attr("src", imgArr[0]);
+                    $("#search-after2").find("img").attr("src", imgArr[1]);
+
+                    $('#imgComparison').click();
+                    break;
+                //同行人
+                case 'temporaryPeer':
+                    var $sideBar = $('#pageSidebarMenu').find('.aui-icon-toolbox'),
+                        $sideItem = $sideBar.closest('.sidebar-item'),
+                        sideIndex = $sideItem.index(),
+                        url = "./facePlatform/peerAnalysis.html?dynamic=" + Global.dynamic;
+
+                    $sideItem.click();
+                    $('#contentPageTool').addClass('hide');
+                    $('#peerAnalysis').removeClass('hide');
+                    $('#peerAnalysis').addClass('act').siblings().removeClass('act').addClass("hide");
+                    $('#toolPage').removeClass('hide');
+
+                    if ($("#peerAddSearchImg").length == 0) { //没有点击过同行人
+                        loadPage($('#peerAnalysis'), url);
+                    }
+
+                    imgArr.forEach((val, index) => {
+                        var html = createAddImagesItem(val);
+                        $("#peerAddSearchImg").find('.add-image-icon').before(html);
+                    });
+                    var $imgItem = $('#peerAddSearchImg').find('.add-image-item');
+                    if ($imgItem.length > 5) {
+                        $('#peerAddSearchImg').removeClass('scroll');
+                        var clientH = $('#peerAddSearchImg')[0].clientHeight;
+                        $('#peerAddSearchImg').addClass('scroll');
+                        $('#peerAddSearchImg').animate({
+                            'scrollTop': clientH
+                        }, 500);
+                    }
+
+                    $('#peerAddSearchImg').find('.ui-checkboxradio-label').removeClass('ui-checkboxradio-checked').closest('.add-image-item').removeClass('active');
+                    $('#peerAddSearchImg').find('.ui-checkboxradio-label').eq(-1).click();
+                    $('#peerAddSearchImg').find('.ui-checkboxradio-label').eq(-2).click();
+
+                    $('#peerAddSearchImg').removeClass('center');
+                    $('#peerAddSearchImg').find('.add-image-icon').removeClass('add-image-new');
+                    $('#peerAddSearchImg').find('.add-image-box-text').addClass('hide');
+                    break;
+            }
+            $(".temporaryShelfSelect").find(".table-checkbox-input").removeAttr("checked");
+            $(".temporaryShelfContent").find(".image-card-list-wrap .ui-checkboxradio-checkbox-label.ui-checkboxradio-checked").removeClass("ui-checkboxradio-checked");
+
+            $("#temporarySearch").addClass("disabled");
+            $("#temporaryBK").addClass("disabled");
+            $("#temporaryOnetoone").addClass("disabled");
+            $("#temporaryPeer").addClass("disabled");
+
+            $(".temporaryShelf").addClass("hide");
+            $(".temporaryShelfIcon").removeClass("hide");
+        });
+
+        /*****************意见反馈 start***************/
+
+        // 获取联系人数据
+        function getContentPersonId() {
+            var port = 'v2/dic/dictionaryInfo',
+                data = {
+                    "kind": "RX_CONTACT_PERSON"
+                };
+            var successFunc = function (data) {
+                if (data.code == '200') {
+                    if (data.code === '200' && data.data.length) {
+                        var contentData = data.data;
+                        var html = `<div>${contentData[0].name}：<span class='text-link'>${contentData[0].id}</span></br>${contentData[1].name}：<span class='text-link'>${contentData[1].id}</span></div>`;
+                        $('.feedback-container .feedback-item').eq(0).attr('data-original-title', html);
+                    }
+                } else {
+                    warningTip.say(data.message);
+                }
+            };
+            loadData(port, true, data, successFunc, undefined, 'GET');
+        };
+        getContentPersonId();
+
+        // 获取异常类型数据
+        // function getAnomalyTypeId() {
+        //     var port = 'v2/dic/dictionaryInfo',
+        //         data = {
+        //             "kind": "RX_ERROR_TYPE"
+        //         };
+        //     var successFunc = function (data) {
+        //         if (data.code == '200') {
+        //             if (data.code === '200' && data.data.length) {
+        //                 var errorTypeData = data.data;
+        //                 var html = "";
+        //                 for (var i = 0; i < errorTypeData.length; i++) {
+        //                     html += `<option class="tag" value=${errorTypeData[i].id}>${errorTypeData[i].name}</option>`
+        //                 }
+        //                 $('#errorType_val').append(html);
+        //                 $('#errorType_val').selectmenu('refresh');
+        //             }
+        //         } else {
+        //             warningTip.say(data.message);
+        //         }
+        //     };
+        //     loadData(port, true, data, successFunc, undefined, 'GET');
+        // };
+        //getAnomalyTypeId();
+
+        // 意见反馈 点击添加 上传图片事件
+        $('#feedbackImgs .uploadFile').on('change', function () {
+            if (this.value != '') {
+                var _this = $(this);
+                var reader = new FileReader();
+                var html = '',
+                    fileNameArr = this.value.split('\\'), // 文件名路径数组
+                    fileName = fileNameArr[fileNameArr.length - 1], // 获取文件名字
+                    fileNameTypeArr = fileName.split('.'),
+                    fileType = fileNameTypeArr[fileNameTypeArr.length - 1].toLowerCase(),
+                    typeArr = ['bmp', 'jpg', 'jpeg', 'png', 'dib', 'webp', 'svgz', 'gif', 'ico', 'svg', 'tif', 'xbm', 'jfif', 'pjpeg', 'pjp', 'tiff'];
+                if (typeArr.indexOf(fileType) < 0) {
+                    this.value = '';
+                    warningTip.say('格式不正确,请上传图片格式');
+                    return;
+                }
+                //获取图片大小
+                var size = this.files[0].size / 1024;
+                if (size < (1024 * 10)) {
+                    var formFileData = new FormData($(_this).parent()[0]),
+                        uploadFormData = new FormData(),
+                        xhr = new XMLHttpRequest(),
+                        token = $.cookie('xh_token'),
+                        imgFiles = formFileData.get('imgFiles');
+
+                    reader.onload = function (e) {
+                        var addimg = reader.result;
+
+                        xhr.open('post', serviceUrl + '/v3/memberInfos/upload');
+                        xhr.setRequestHeader("token", token);
+                        uploadFormData.append('file', imgFiles);
+                        uploadFormData.append('type', '1');
+                        xhr.send(uploadFormData);
+                        showLoading($('#feedbackImgs'));
+                        xhr.onload = function (res) { // word，pdf文件
+                            var data = JSON.parse(res.currentTarget.response);
+                            hideLoading($('#feedbackImgs'));
+                            if (data.code === '200') {
+                                $html = $([`<div class="add-image-item">
+                                        <img class="add-image-img" src="${addimg}" alt="" portUrl=${data.url}>
+                                        <i class="aui-icon-delete-line"></i>
+                                    </div> `].join(''));
+                                $html.data('imgData', data);
+                                _this.closest('.add-image-icon').before($html);
+                                var $imgItem = $('#feedbackImgs').find('.add-image-item');
+                                if ($imgItem.length == 8) {
+                                    $('#feedbackImgs .add-image-icon').addClass('hide');
+                                }
+                                $('#feedbackImgs').find('.uploadFile')[0].value = '';
+
+                                $('#feedbackImgs').removeClass('center');
+                                $('#feedbackImgs').find('.add-image-icon').removeClass('add-image-new');
+                                $('#feedbackImgs').find('.add-image-box-text').addClass('hide');
+                                $("#feedbackImgs .add-image-icon").siblings('.add-image-item').removeClass('active');
+                                // $('#addImgWarningApplyMyPower').addClass('hide');
+                            } else {
+                                warningTip.say(data.message);
+                            }
+                        }
+                        var addimg = reader.result;
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                } else {
+                    // $('#addImgWarningApplyMyPower').removeClass('hide');
+                }
+                // $('#addImgWarningApplyMyPower').siblings('.text-danger.tip').addClass('hide');
+            }
+        });
+
+        // 意见反馈 已经上传的图片 删除事件
+        $('#feedbackImgs').on('click', '.aui-icon-delete-line', function (e) {
+            e.stopPropagation();
+            var father = $(this).closest('.add-image-item');
+            father.remove();
+            var $imgItem = $('#feedbackImgs').find('.add-image-item');
+            if ($imgItem.length < 9) {
+                $('#feedbackImgs .add-image-icon').removeClass('hide');
+            }
+            if ($imgItem.length === 0) {
+                $('#feedbackImgs').addClass('center');
+                $('#feedbackImgs').find('.add-image-icon').addClass('add-image-new');
+                $('#feedbackImgs').find('.add-image-box-text').removeClass('hide');
+            }
+            $('#feedbackImgs').closest(".face-card").next().addClass('hide');
+        });
+
+        // 意见反馈 上传图片hover 显示中图
+        showMiddleImg($('#feedbackImgs'), $('#adviceFeedbackModal'), '.add-image-item .add-image-img');
+
+        // 意见反馈
+        $('.feedback-container').find('.feedback-item').eq(1).on('click', function () {
+            $('#adviceFeedbackModal').find('[id$=_val]').removeClass('no-input-warning').val('');
+            $('#adviceFeedbackModal').find('.text-danger.tip').addClass('hide');
+            // 反馈类型初始化
+            $("#feedbackTypeBtn").find('.btn').eq(0).click();
+            // 上传图片初始化
+            $('#feedbackImgs').find(".add-image-item").remove();
+            $('#feedbackImgs').addClass('center');
+            $('#feedbackImgs').find('.add-image-icon').removeClass('hide').addClass('add-image-new');
+            $('#feedbackImgs').find('.add-image-box-text').removeClass('hide');
+            $('#feedbackImgs').closest(".face-card").next().addClass('hide');
+            // 详细描述初始化
+            $('#adviceFeedbackModal').find('.wordNum').addClass('hide');
+
+            $("#adviceFeedbackModal").modal('show');
+        })
+
+        getFeedbackType();
+        //意见反馈申请类型获取
+        function getFeedbackType(pid) {
+            var port = 'v3/feedback/ftypeList',
+                data = {
+                    pid
+                };
+            var successFunc = function (data) {
+                if (data.code == '200') {
+                    var errorTypeData = data.data;
+                    //反馈类型
+                    if (!pid) {
+                        var html = "";
+                        for (var i = 0; i < errorTypeData.length; i++) {
+                            html += `<button type="button" class="btn btn-sm btn-primary" value=${errorTypeData[i].ftypeId}>${errorTypeData[i].typeName}</button>`
+                        }
+                        $('#feedbackTypeBtn').append(html);
+                        $("#feedbackTypeBtn").find(".btn").eq(0).click();
+                    } else {
+                        if (errorTypeData.length) {
+                            $("#errorType_val").closest(".form-group").removeClass('hide');
+                            var html = "";
+                            for (var i = 0; i < errorTypeData.length; i++) {
+                                html += `<option class="tag" value=${errorTypeData[i].ftypeId}>${errorTypeData[i].typeName}</option>`
+                            }
+                            $('#errorType_val').append(html);
+                            $('#errorType_val').selectmenu('refresh');
+                        } else {
+                            $("#errorType_val").closest(".form-group").addClass('hide');
+                        }
+                    }
+                } else {
+                    warningTip.say(data.message);
+                }
+            };
+            loadData(port, true, data, successFunc, undefined, 'GET');
+        };
+
+        // 意见反馈 申请类型按钮切换事件
+        $("#feedbackTypeBtn").on("click", ".btn", function () {
+            $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+            var id = $(this).val();
+            getFeedbackType(id);
+            // //每次切换重置数据
+            // resetApplyData();
+            // if (id == '3') {
+            //     $("#errorType_val").closest(".form-group").removeClass('hide');
+            // } else {
+            //     $("#errorType_val").closest(".form-group").addClass('hide');
+            // }
+        });
+
+        // 意见反馈 详细描述 输入事件 限制长度
+        $('#topicContent_val').on('input propertychange', function () {
+            if ($(this).val() !== '') {
+                var currInpLength = $(this).val().length;
+                if (currInpLength > 120) {
+                    var numText = $(this).val().substring(0, 120);
+                    $(this).val(numText);
+                    warningTip.say('字数超出限制，多出字符将被截断！');
+                    var nodeNumb = $(this).removeClass('no-input-warning').next();
+                    nodeNumb.find('span').text(0);
+                } else {
+                    var nodeNumb = $(this).removeClass('no-input-warning').next();
+                    nodeNumb.removeClass('hide');
+                    nodeNumb.find('span').text(120 - currInpLength);
+                }
+                $(this).removeClass('no-input-warning').closest('.form-group').find('.text-danger.tip').addClass('hide');
+            }
+        });
+
+        // 意见反馈 标题 输入事件 限制长度
+        $('#subject_val').on('input propertychange', function () {
+            if ($(this).val() !== '') {
+                $(this).removeClass('no-input-warning').closest('.form-group').find('.text-danger.tip').addClass('hide');
+            }
+        })
+
+        // 意见反馈 确定按钮事件
+        $("#feedbackOk").on("click", function () {
+            // 标题
+            var subject = $('#subject_val').val();
+            // 反馈类型
+            var feedbackType = $('#feedbackTypeBtn').find(".btn-primary").val();
+            // 异常类型：
+            var errorType = $('#errorType_val').val();
+            // 详细描述
+            var topicContent = $('#topicContent_val').val();
+            // 图片
+            var enclosureInfo = []; // 本地添加图片
+            $('#feedbackImgs').find('.add-image-item').each(function (index) {
+                enclosureInfo.push($(this).data('imgData'));
+            });
+
+            var portData = {
+                title: subject ? subject : '',
+                // feedbackType: feedbackType ? feedbackType : '',
+                // errorType: errorType ? errorType : '',
+                ftypeId: errorType ? errorType : feedbackType,
+                content: topicContent ? topicContent : '',
+                picList: enclosureInfo ? enclosureInfo : ''
+            }
+
+            // 校验
+            var isSubmitOpinion = true;
+            for (var item in portData) {
+                if ((portData[item] == '' || portData[item] == []) && item !== "errorType" && item !== "enclosureInfo") {
+                    $('#' + item + '_val').addClass('no-input-warning').closest('.aui-col-18').find('.text-danger.tip').removeClass('hide');
+                    isSubmitOpinion = false;
+                } else if (item == "errorType") {
+                    if (feedbackType == '3' && portData[item] == '') {
+                        $('#' + item + '_val').addClass('no-input-warning').closest('.aui-col-18').find('.text-danger.tip').removeClass('hide');
+                        isSubmitOpinion = false;
+                    }
+                }
+            }
+
+            var portDataSuccessFunc = function (data) {
+                hideLoading($('#adviceFeedbackModal .modal-content'));
+                if (data.code == '200') {
+                    $('#adviceFeedbackModal').modal('hide');
+                    warningTip.say("提交成功");
+                } else {
+                    warningTip.say(data.message);
+                }
+            }
+            if (isSubmitOpinion) {
+                showLoading($('#adviceFeedbackModal .modal-content'));
+                loadData('v3/feedback/askAdd', true, portData, portDataSuccessFunc);
+            }
+
+        })
+
+        /******************意见反馈 end*******************/
+        /******************问题解答 start*******************/
+        // 问题解答弹窗
+        $('.feedback-container').find('.feedback-item').eq(2).on('click', function () {
+            $("#askModal").modal('show');
+        })
+        /******************问题解答 end*******************/
+        /******************操作指引 start*******************/
+        $('.feedback-container').find('.feedback-item').eq(3).popover({
+            html: true,
+            content: `<label for="feedBackDoc" style="margin-right:0.5rem!important">操作指引</label>
+                    <input type="radio" name="feedBackRadio" id="feedBackDoc" data-role="radio" value="1">
+                    <label for="feedBackApp" style="margin-right:0.5rem!important">申请视频</label>
+                    <input type="radio" name="feedBackRadio" id="feedBackApp" data-role="radio"  value="2">
+                    <label for="feedBackPc" style="margin-right:0.5rem!important">审批视频</label>
+                    <input type="radio" name="feedBackRadio" id="feedBackPc" data-role="radio" value="3">`,
+            trigger: 'click'
+        });
+        // 问题解答弹窗
+        $('.feedback-container').find('.feedback-item').eq(3).on('click', function () {
+            $('[data-role="radio"]').checkboxradio();
+            $('[data-role="radio-button"]').checkboxradio({
+                icon: false
+            });
+        })
+
+        $(document).on('click', '.popover .ui-checkboxradio-label', function () {
+            var datas = {
+                url: '',
+                name: ''
+            };
+
+            if ($(this).next().val() == '1') {
+                datas.url = 'http://190.13.37.6:10085/production/lawFile/202004/08/2020040819243456.docx';
+                datas.name = '操作指引'
+            } else if ($(this).next().val() == '2') {
+                datas.url = 'http://190.13.37.6:10085/production/lawFile/202004/08/202004081911123.avi';
+                datas.name = '申请视频';
+            } else {
+                datas.url = 'http://190.13.37.6:10085/production/lawFile/202004/08/2020040819116523.mp4';
+                datas.name = '审批视频';
+            }
+
+            $("#exportIframeIndex").attr("src", encodeURI(serviceUrl + "/v2/file/downloadByHttpUrl?name=" + encodeURI(encodeURI(decodeURIComponent(datas.name, true))) + "&url=" + datas.url));
+        });
+        /******************问题解答 end*******************/
+
+        /******************消息提醒开始 start*******************/
+        getSystemTipsData();
+        function getSystemTipsData() {
+            var portUrl = 'v2/index/notice/show';
+            var getUrlSuccessFunc = function (data) {
+                if (data.code == '200') {
+                    getSystemTips(data.data.slice(0, 3));
+                } else {
+                    warningTip.say(data.message);
+                }
+            }
+            loadData(portUrl, true, {}, getUrlSuccessFunc);
+        };
+
+        function getSystemTips(dataArr) {
+            for (var i = 0; i < dataArr.length; i++) {
+                (function () {
+                    let data = systemMessageItem(dataArr[i]),
+                        $dom = data.$dom,
+                        timer = data.timer;
+                    $dom.on("mouseover", function () {
+                        clearTimeout(timer);
+                    });
+                    $dom.on("mouseout", function () {
+                        timer = messagestartTimer($(this));
+                    });
+                    $dom.on("click", ".aui-icon-not-through", function () {
+                        clearTimeout(timer);
+                        $(".feedback-tips").find($dom).remove();
+                    });
+                })();
+            }
+        }
+
+        function systemMessageItem(data) {
+            let $dom = $(`<div class="feedback-tips-item">
+                            <div class="feedback-tips-itemTitle">
+                                <span class="titlename">通知</span>
+                                <i class="aui-icon-not-through"></i>
+                            </div>
+                            <div class="feedback-tips-itemContent">
+                                <h2>${data.title}</h2>
+                                <div class="contentText">${data.context}</div>
+                            </div>
+                        </div>`);
+            $(".feedback-tips").append($dom);
+            let timer = messagestartTimer($dom);
+            return { $dom, timer }
+        }
+
+        function messagestartTimer($dom) {
+            let timer = setTimeout(() => {
+                $dom.remove();
+            }, 5000);
+            return timer;
+        }
+
+        // 消息提醒点击事件
+        $('.feedback-container').find('.feedback-item').eq(4).on('click', function () {
+            var that = $(this);
+            if ($(".feedback-allTips").hasClass("hide")) {
+                var portUrl = 'v2/index/notice/show';
+                var getUrlSuccessFunc = function (data) {
+                    if (data.code == '200') {
+                        var list = data.data;
+                        if (list.length > 0) {
+                            var html = '';
+                            for (let i = 0; i < list.length; i++) {
+                                html += `<div class="tipsItem">
+                                            <h2>${list[i].title}</h2>
+                                            <div class="tipsContent">${list[i].context}</div>
+                                        </div>`;
+                            }
+                            $(".feedback-allTips").find(".feedback-allTips-itemContent").html(html);
+                            $(".feedback-allTips").removeClass("hide");
+
+                            let top = that.offset().top - $(".feedback-allTips").height() / 2,
+                                left = that.offset().left - $(".feedback-allTips").width() - 20;
+                            $(".feedback-allTips").css({
+                                top,
+                                left
+                            });
+                            $(".feedback-tips").empty();
+                        } else {
+                            warningTip.say("暂无通知");
+                        }
+                    } else {
+                        warningTip.say(data.message);
+                    }
+                }
+                loadData(portUrl, true, {}, getUrlSuccessFunc);
+            } else {
+                $(".feedback-allTips").addClass("hide");
+            }
+        })
+
+        //消息提醒弹窗关闭按钮点击事件
+        $(".feedback-allTips").on("click", ".aui-icon-not-through", function () {
+            $(".feedback-allTips").addClass("hide");
+        });
+    </script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script>
+        $("#rightMouseImgMenuTWY").orgTree({
+            all: true, //人物组织都开启
+            area: ['620px', '542px'], //弹窗框宽高
+            search: true, // 搜索事件不在orgTree
+            newBk: true,
+            noMap: true,
+            noTree: true,
+            ajaxFilter: false,
+            node: 'rightMouseImgMenuTWY'
+        });
+    </script>
+</body>
+
+</html>

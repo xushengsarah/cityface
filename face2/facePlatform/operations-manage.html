@@ -1,0 +1,142 @@
+<div>
+    <!-- 人像库日志页面 -->
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.css" />
+
+    <div id="operationsManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="titleTotal">
+                <div class="titleTotalItem">
+                    <span class="titleTotalName">视频流异常总数：</span>
+                    <span class="titleTotalValue" id="opPicStatusErrNum">0</span>
+                </div>
+                <div class="titleTotalItem">
+                    <span class="titleTotalName">图片流异常总数：</span>
+                    <span class="titleTotalValue" id="opVideoStatusErrNum">0</span>
+                </div>
+            </div>
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-7 snapStatisticOrg">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">镜头所属机构:</label>
+                        <div class="aui-col-16">
+                            <select class="selectpicker" id="operationsOrgId" data-live-search="true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">镜头名称:</label>
+                        <div class="aui-col-16">
+                            <input id="operationsCameraName" type="text" class="aui-input" placeholder="请输入镜头名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">国标编码:</label>
+                        <div class="aui-col-16">
+                            <input id="operationsGBCode" type="text" class="aui-input" placeholder="请输入国标编码">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">视频流是否正常:</label>
+                        <div class="aui-col-16 snapRoleType">
+                            <label for="cameraOperationsOne" style="margin-right:0.5rem!important">全部</label>
+                            <input type="radio" name="snapCameraOperations" id="cameraOperationsOne" value="" data-role="radio" checked>
+                            <label for="cameraOperationsTwo" style="margin-right:0.5rem!important">是</label>
+                            <input type="radio" name="snapCameraOperations" id="cameraOperationsTwo" value="0" data-role="radio">
+                            <label for="cameraOperationsThree" style="margin-right:0!important">否</label>
+                            <input type="radio" name="snapCameraOperations" id="cameraOperationsThree" value="1" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">图片流是否正常:</label>
+                        <div class="aui-col-16 snapRoleType">
+                            <label for="picOperationsOne" style="margin-right:0.5rem!important">全部</label>
+                            <input type="radio" name="snapPicOperations" id="picOperationsOne" value="" data-role="radio" checked>
+                            <label for="picOperationsTwo" style="margin-right:0.5rem!important">是</label>
+                            <input type="radio" name="snapPicOperations" id="picOperationsTwo" value="0" data-role="radio">
+                            <label for="picOperationsThree" style="margin-right:0!important">否</label>
+                            <input type="radio" name="snapPicOperations" id="picOperationsThree" value="1" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10 otherData">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">图片抓拍时间：</label>
+                        <div class="aui-col-16">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="snapPicOperationsStart" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'snapPicOperationsEnd\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="snapPicOperationsEnd" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'snapPicOperationsStart\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'snapPicOperationsStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar" style="right:0.25rem;"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7 otherData">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-8">历史抓拍数：</label>
+                        <div class="aui-col-16 snapRoleType">
+                            <label for="snapOPHPicYWOne" style="margin-right:0.5rem!important">全部</label>
+                            <input type="radio" name="snapOPHPicYW" id="snapOPHPicYWOne" value="" data-role="radio" checked>
+                            <label for="snapOPHPicYWTwo" style="margin-right:0.5rem!important">为零</label>
+                            <input type="radio" name="snapOPHPicYW" id="snapOPHPicYWTwo" value="0" data-role="radio">
+                            <label for="snapOPHPicYWThree" style="margin-right:0!important">不为零</label>
+                            <input type="radio" name="snapOPHPicYW" id="snapOPHPicYWThree" value="1" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="operationsSearch" class="btn btn-primary" style="min-width: auto;">搜索</button>
+                        <button type="button" id="operationsUpload" class="btn" style="min-width: auto;">导出</button>
+                        <button type="button" id="operationsReset" class="btn" style="min-width: auto;">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <table id="operationsTableList" class="table-hover" data-toggle="table">
+                <colgroup>
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="item1">镜头名称</th>
+                        <th data-field="item2">国标编码</th>
+                        <th data-field="item3">机构名</th>
+                        <!-- <th data-field="item4">在线状态</th> -->
+                        <th data-field="item5">视频流是否正常</th>
+                        <th data-field="item6">图片流是否正常</th>
+                        <th data-field="item7">历史抓拍总数</th>
+                        <th data-field="item8">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="operationsTablePagination"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script src="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/operationsManage.js"></script>
+</div>

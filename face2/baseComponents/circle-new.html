@@ -1,0 +1,144 @@
+<div class="container-box" style="background:#19222d;">
+    <div id="container" style="height: 300px;width:300px;">
+    </div>
+</div>
+<script>
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    app.title = '嵌套环形图';
+
+    option = {
+        graphic: [{
+            type: 'text',
+            left: 'center',
+            top: '45%',
+            style: {
+                text: '76%',
+                textAlign: 'center',
+                fill: '#fff',
+                padding: '10',
+                width: 30,
+                height: 30,
+                fontSize: 32,
+            }
+        }, {
+            type: 'text',
+            left: 'center',
+            top: '55%',
+            style: {
+                text: '任务处理率',
+                textAlign: 'center',
+                fill: '#bac5cc',
+                padding: '10',
+                width: 30,
+                height: 30,
+                fontSize: 14,
+            }
+        }],
+        series: [{
+            type: 'pie',
+            hoverAnimation: false,
+            radius: ['35%', '50%'],
+            data: [{
+                value: 220,
+                name: '订阅镜头',
+                legendHoverLink: false,
+                itemStyle: {
+                    normal: {
+                        color: '#1ef1ff'
+                    },
+                    emphasis: {
+                        color: '#1ef1ff'
+                    }
+                }
+            }, {
+                value: 1060,
+                itemStyle: {
+                    opacity: 0
+                }
+            }],
+            labelLine: {
+                show: false,
+            },
+            label: {
+                show: false,
+            }
+        }, {
+            type: 'pie',
+            hoverAnimation: false,
+            radius: ['55%', '70%'],
+            data: [{
+                value: 450,
+                name: '抓拍机数',
+                itemStyle: {
+                    normal: {
+                        color: '#6c7dff'
+                    },
+                    emphasis: {
+                        color: '#6c7dff'
+                    }
+                }
+            }, {
+                value: 830,
+                itemStyle: {
+                    opacity: 0
+                }
+            }],
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+        }, {
+            type: 'pie',
+            hoverAnimation: false,
+            radius: ['75%', '90%'],
+            data: [{
+                value: 860,
+                name: '在线镜头',
+                itemStyle: {
+                    normal: {
+                        color: '#2392fd'
+                    },
+                    emphasis: {
+                        color: '#2392fd'
+                    }
+                }
+            }, {
+                value: 420,
+                itemStyle: {
+                    normal: {
+                        color: '#303a43'
+                    },
+                    emphasis: {
+                        color: '#303a43'
+                    }
+                }
+            }],
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>

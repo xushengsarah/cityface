@@ -1,0 +1,98 @@
+.jumpto-container{
+  position:relative;
+  margin-right: 200px;
+  transition: all ease .5s;
+}
+.close .jumpto-subnav{
+	top: 25px;
+	border-radius: 5px;
+  background: transparent;
+  transition: all ease .5s;
+}
+.jumpto-subnav .jumpto-second {
+  display: none;
+}
+
+.jumpto-subnav {
+  	position: fixed !important;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    width: 200px;
+    overflow-x: hidden;
+    max-height: 100%;
+    font-family: cursive;
+}
+
+.jumpto-first{
+	background: #fff;
+}
+.jumpto-subnav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jumpto-subnav ul li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jumpto-subnav ul li a {
+ padding:10px;
+ display: block;
+ box-sizing: border-box; 
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ color: #000;
+ font-size: 12px;
+ text-decoration: none;
+}
+
+.jumpto-subnav ul li a:hover, .jumpto-subnav ul li a.active {
+  color: red;
+}
+.jumpto-subnav ul > li > ul > li > a{
+  padding-left: 15px;
+}
+
+.jumpto-title, .jumpto-close a{
+  background: black;
+  color: #FFF;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  display: block;
+  text-decoration: none;
+  transition: background-color ease .5s;
+  cursor: pointer;
+}
+.close .jumpto-title, .close .jumpto-close a{	
+  background-color: rgba(0,0,0,.5);
+}
+
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}

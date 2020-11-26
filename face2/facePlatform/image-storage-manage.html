@@ -1,0 +1,284 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div id="imgStorageManage" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">http ip 地址：</label>
+                        <div class="aui-col-18">
+                            <input id="httpIpVal" type="text" class="aui-input" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">类型：</label>
+                        <div class="aui-col-18">
+                            <select name="urlTypeVal" id="urlTypeVal">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <button type="button" id="searchBtn" class="btn btn-primary">搜索</button>
+                </div>
+            </form>
+        </div>
+        <div class="manages-card-content">
+            <div class="search-btn-group image-storage-btn">
+                <button type="button" id="imgStorageAddBtn" class="btn btn-primary">添加</button>
+            </div>
+            <div>
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="imageStorageTableList" class="table table-hover">
+                                    <colgroup>
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="httpIp">
+                                                <div class="th-inner ">http ip地址</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="isDefault">
+                                                <div class="th-inner ">是否默认</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="urlType">
+                                                <div class="th-inner ">类型</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="mlbs">
+                                                <div class="th-inner">目录标识</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="creator">
+                                                <div class="th-inner">创建人</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="createtime">
+                                                <div class="th-inner ">创建时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination imageStoragePagination" id="imageStorageTableListPagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片存储配置 编辑弹框 -->
+    <div class="modal fade modal-lger" id="imageStorageEditModal" tabindex="-1" role="dialog" aria-labelledby="imageStorageEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">图片存储配置</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form" id="editForm" novalidate>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">http ip地址：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_httpIp" name="httpIp" placeholder="请输入http ip地址" required>
+                                    <p class="text-danger tip hide">http ip地址不能为空</p>
+                                    <p class="text-danger tip1 hide">http ip地址格式不对</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">http 端口：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_httpPort" name="httpPort" placeholder="请输入http 端口" required>
+                                    <p class="text-danger tip hide">http 端口不能为空</p>
+                                    <p class="text-danger tip1 hide">http 端口格式不对</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">http 路径：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_httpUrl" name="httpUrl" placeholder="请输入http 路径" required>
+                                    <p class="text-danger tip hide">http 路径不能为空</p>
+                                    <p class="text-danger tip1 hide">http 路径格式不对</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">ftp Ip地址：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_ftpIp" name="ftpIp" placeholder="请输入ftp Ip地址" required>
+                                    <p class="text-danger tip hide">ftp Ip地址不能为空</p>
+                                    <p class="text-danger tip1 hide">ftp Ip地址格式不对</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">ftp端口：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_ftpPort" name="ftpPort" placeholder="请输入ftp端口" required>
+                                    <p class="text-danger tip hide">ftp端口不能为空</p>
+                                    <p class="text-danger tip1 hide">ftp端口格式不对</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">ftp路径： </label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_ftpUrl" name="ftpUrl" placeholder="请输入ftp路径" required>
+                                    <p class="text-danger tip hide">ftp路径不能为空</p>
+                                    <p class="text-danger tip1 hide">ftp路径格式不对</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">ftp用户名： </label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_ftpUser" name="ftpUser" placeholder="请输入ftp用户名" required>
+                                    <p class="text-danger tip hide">ftp用户名不能为空</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">ftp密码： </label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_ftpPasswd" name="ftpPasswd" placeholder="请输入ftp密码" required>
+                                    <p class="text-danger tip hide">ftp密码不能为空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">是否默认：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="isDefault" id="config_isDefault">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">类型：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="urlType" id="config_urlType">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">目录标识：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="config_mlbs" name="mlbs" placeholder="请输入目录标识" required>
+                                    <p class="text-danger tip hide">目录标识不能为空</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-imgstorage-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="creator" name="creator" placeholder="请输入创建人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="createtime" name="createtime" placeholder="请输入创建时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-imgstorage-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updator" name="updator" placeholder="请输入更新人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updatetime" name="updatetime" placeholder="请输入更新时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明：</label>
+                                <div class="aui-col-18 control-form">
+                                    <textarea name="comments" id="config_comments" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="imageStorageEditModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 图片存储配置 编辑弹框 end -->
+
+    <!-- 图片存储配置 删除提示弹窗 -->
+    <div class="modal fade modal-sm" id="imageStorageDelModal" tabindex="-1" role="dialog" aria-labelledby="imageStorageDelLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="imageStorageDelLabel">是否确认删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="imageStorageDelModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 图片存储配置 删除提示弹窗 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/imageStorageManage.js"></script>
+</div>

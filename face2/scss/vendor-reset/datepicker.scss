@@ -1,0 +1,113 @@
+.datepicker-box {
+    position: relative;
+
+    .datepicker-input {
+        width: 100%;
+        height: 100%;
+        line-height: 100%;
+        border: none;
+    }
+
+    .datepicker-icon {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        right: 0.75rem;
+        top: 50%;
+        margin-top: -7px;
+        color: $text-color-lighter;
+    }
+}
+
+.datepicker-dropdown {
+    padding: 5px 10px 2px;
+    color: $text-color-default;
+    font-size: $font-size-default;
+}
+
+.datepicker table tr th,
+.datepicker table tr td {
+    border-radius: 0;
+    border: none;
+    transition: all $default-animation;
+}
+
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.highlighted.active,
+.datepicker table tr td.active.highlighted:active,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active.highlighted:hover,
+.datepicker table tr td.active:active:hover,
+.datepicker table tr td.active.active:hover,
+
+.datepicker .datepicker-switch:hover,
+.datepicker .prev:hover,
+.datepicker .next:hover,
+
+.datepicker tfoot tr th:hover,
+.datepicker table tr td.highlighted:hover,
+.datepicker table tr td.selected,
+.datepicker table tr td.selected.highlighted,
+.datepicker table tr td.selected:hover,
+.datepicker table tr td.selected.active:hover,
+
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today:focus,
+.datepicker table tr td.today.focus,
+.datepicker table tr td.today:active,
+.datepicker table tr td.today.active,
+
+.datepicker table tr td span.focused, 
+.datepicker table tr td span:hover,
+.datepicker table tr td span.focused, 
+.datepicker table tr td span:hover,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active.active:hover,
+.datepicker table tr td span.active:hover:active:hover
+ {
+    background-color: $theme-color !important;
+    color: $text-color-inverse !important;
+    border-color: $theme-color !important;
+}
+
+.datepicker table tr td.disabled,
+.datepicker table tr td.disabled:hover {
+    background: none;
+    color: $text-color-disabled;
+    cursor: default;
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new {
+    color: $text-color-disabled;
+}
+
+.datepicker .prev,
+.datepicker .next {
+    font-size: $font-size-large;
+}
+
+.datepicker .datepicker-switch,
+.datepicker .prev,
+.datepicker .next {
+    border-bottom: 1px solid #ccc;
+}
+
+.datepicker table tr td.today {
+    background: transparent;
+    border: 2px solid $theme-color;
+}
+
+/* 日历时间段 */
+.input-daterange {
+    .datepicker-input {
+        width: 42%;
+    }
+}
+
+.datepicker table tr td.range {
+    background: lighten($theme-color, 45%);
+}

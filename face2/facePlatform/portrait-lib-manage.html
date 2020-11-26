@@ -1,0 +1,264 @@
+<div>
+    <!-- 人像照片原始信息表（子表）配置管理页面 -->
+    <meta name="referrer" content="no-referrer">
+    <div id="portraitLibManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style systemTab">
+            <ul class="nav nav-tabs pd0" id="typeValBut" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#typeVal1" role="tab" aria-controls="typeVal1" aria-selected="true">业务对象
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2" aria-selected="false">关注对象
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">库名称：</label>
+                        <div class="aui-col-18">
+                            <input id="libNameVal" type="text" class="aui-input" placeholder="请输入库名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTimePLM" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimePLM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTimePLM" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimePLM\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <div class="form-group">
+                        <button type="button" id="searchPLMBut" class="btn btn-primary aui-mr-0">搜索</button>
+                        <button type="button" id="configAddBtn" class="btn aui-mr-0">新增</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <div class="tab-content" id="typeValContent">
+                <!-- 表格展示 -->
+                <table id="portraitLibTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                    data-pagination="false">
+                    <colgroup>
+                        <col width="4%">
+                        <col width="12%">
+                        <col width="6%">
+                        <col width="13%">
+                        <col width="13%">
+                        <col width="13%">
+                        <col width="13%">
+                        <col width="13%">
+                        <col width="13%" class="operation">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th data-field="libName">库名称</th>
+                            <th data-field="libID">库编码</th>
+                            <th data-field="libDesc">物理表名称</th>
+                            <th data-field="creator">创建人</th>
+                            <th data-field="creator">用户警号</th>
+                            <th data-field="createtime">创建时间</th>
+                            <th data-field="comments">备注/说明</th>
+                            <th data-field="operate" class="operation">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div id="portraitLibPagination" class="fixed-table-pagination"></div>
+                <!-- 表格展示 end-->
+            </div>
+        </div>
+    </div>
+    <!-- 人像库 新建/编辑弹窗 -->
+    <div class="modal fade modal-sm" id="portraitLibModal" tabindex="-1" role="dialog" aria-labelledby="portraitLibLabel">
+        <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+        <link rel="stylesheet" href="assets/css/dynamicface.css">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="portraitLibHead">新增</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mr-xs" role="form">
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">库类型</label>
+                            <div class="aui-col-18" id="type_val">
+                                <div class="aui-col-12 mt-sm">
+                                    <label for="radio-level-9">业务对象</label>
+                                    <input type="radio" name="radio-5" id="radio-level-9" value="1" data-role="radio">
+                                </div>
+                                <div class="aui-col-12 mt-sm">
+                                    <label for="radio-level-10">关注对象</label>
+                                    <input type="radio" name="radio-5" id="radio-level-10" value="2" data-role="radio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">库编码</label>
+                            <div class="aui-col-18">
+                                <input id="libId_val" type="text" class="aui-input" placeholder="请输入库编码" maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'')">
+                                <p class="text-danger mg-top-xs tip hide">请输入库编码</p>
+                                <p class="text-danger mg-top-xs tip1 hide"></p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <label class="aui-form-label aui-col-6">物理表名称</label>
+                            <div class="aui-col-18">
+                                <input id="libDesc_val" type="text" class="aui-input" placeholder="请输入物理表名称">
+                                <p class="text-danger mg-top-xs tip hide">请输入物理表名称</p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">库名称</label>
+                            <div class="aui-col-18">
+                                <input id="libName_val" type="text" class="aui-input" placeholder="请输入库名称" maxlength="20">
+                                <p class="text-danger mg-top-xs tip hide">请输入库名称</p>
+                                <p class="text-danger mg-top-xs tip1 hide"></p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <label class="aui-form-label aui-col-6">更新人</label>
+                            <div class="aui-col-18">
+                                <input id="updator_val" type="text" class="aui-input">
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <label class="aui-form-label aui-col-6">更新时间</label>
+                            <div class="aui-col-18">
+                                <input id="udpatetime_val" type="text" class="aui-input">
+                            </div>
+                        </div>
+                        <div class="form-group aui-row isDistAll">
+                            <label class="aui-form-label aui-col-6 aui-form-require">允许布控类型</label>
+                            <div class="aui-col-18">
+                                <select id="isDistAll_val" title="请选择业务类型">
+                                    <option value="1">一级标签布控</option>
+                                    <option value="2">二级标签布控</option>
+                                    <option value="3">临时布控</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row aui-mb-0">
+                            <label class="aui-form-label aui-col-6">备注/说明</label>
+                            <div class="aui-col-18">
+                                <textarea id="comments_val" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea" maxlength="120"></textarea>
+                                <p class="text-danger tip hide">请输入备注/说明</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="portraitLibSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 标签 新建/编辑弹窗 -->
+    <div class="modal fade modal-sm" id="portraitLabelModal" tabindex="-1" role="dialog" aria-labelledby="portraitLabelLabel">
+        <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+        <link rel="stylesheet" href="assets/css/dynamicface.css">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="portraitLabelHead">新增</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mr-xs" role="form">
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require control-label">库名称</label>
+                            <div class="aui-col-18">
+                                <input id="libName_value" type="text" class="aui-input" placeholder="请输入库名称" maxlength="20">
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">标签编码</label>
+                            <div class="aui-col-18">
+                                <input id="labelId_value" type="text" class="aui-input" placeholder="请输入标签编码" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')">
+                                <p class="text-danger mg-top-xs tip hide">请输入标签编码</p>
+                                <p class="text-danger mg-top-xs tip1 hide">请输入标签编码</p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-6 aui-form-require">标签名称</label>
+                            <div class="aui-col-18">
+                                <input id="labelName_value" type="text" class="aui-input" placeholder="请输入标签名称" maxlength="20">
+                                <p class="text-danger mg-top-xs tip hide">请输入标签名称</p>
+                                <p class="text-danger mg-top-xs tip1 hide">请输入标签名称</p>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <label class="aui-form-label aui-col-6">更新人</label>
+                            <div class="aui-col-18">
+                                <input id="updator_value" type="text" class="aui-input">
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <label class="aui-form-label aui-col-6">更新时间</label>
+                            <div class="aui-col-18">
+                                <input id="udpatetime_value" type="text" class="aui-input">
+                            </div>
+                        </div>
+                        <div class="form-group aui-row aui-mb-0">
+                            <label class="aui-form-label aui-col-6">备注/说明</label>
+                            <div class="aui-col-18">
+                                <textarea name="" id="comments_value" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea" maxlength="120"></textarea>
+                                <p class="text-danger tip hide">请输入备注/说明</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="portraitLabelSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="configTipModal" tabindex="-1" role="dialog" aria-labelledby="configTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabel">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="configTipDeletedSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/portraitLibManage.js"></script>
+</div>

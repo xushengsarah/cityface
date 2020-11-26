@@ -1,0 +1,39 @@
+<style>
+    .swiper-demo {
+        width: 100%;
+        height: 20rem;
+    }
+    
+    .swiper-demo-bg {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="swiper-container swiper-demo">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="swiper-demo-bg" style="background: #3b9ef3"></div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-demo-bg" style="background: #26BFCE"></div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-demo-bg" style="background: #f2a20c"></div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-demo-bg" style="background: #4dcc72"></div>
+        </div>
+    </div>
+    <div class="swiper-button-next">
+        <i class="aui-icon aui-icon-drop-right"></i>
+    </div>
+    <div class="swiper-button-prev">
+        <i class="aui-icon aui-icon-drop-left"></i>
+    </div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
+</script>

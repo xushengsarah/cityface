@@ -1,0 +1,15 @@
+<h4>当前时间：</h5>
+<input type="text" class="datepicker-input" name="start" placeholder="开始时间" id="startTime"/>
+<h4>最近7天：</h5>
+<input type="text" class="datepicker-input" name="end" placeholder="结束时间" id="entTime"/>
+<h4>最近1个月：</h5>
+<input type="text" class="datepicker-input" name="end" placeholder="结束时间" id="entTime1"/>
+
+<script>
+    var now = moment().format('YYYY-MM-DD HH:MM:SS');
+    $("#startTime").val(now);
+    var end = moment().add(7, 'days').format('YYYY-MM-DD');
+    $("#entTime").val(end);
+    var end1 = moment().add(-1, 'months').format('YYYY-MM-DD');
+    $("#entTime1").val(end1);
+</script> 

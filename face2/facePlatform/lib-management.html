@@ -1,0 +1,542 @@
+<div>
+    <!-- 人像库权限配置管理页面 -->
+    <meta name="referrer" content="no-referrer">
+    <div id="libManagement" class="manages-page">
+        <div class="manages-search-style systemTab">
+            <ul class="nav nav-tabs pd0" id="typeValBut" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#typeVal1" role="tab" aria-controls="typeVal1" aria-selected="true">按人
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2" aria-selected="false">按库
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2" aria-selected="false">按角色
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="libmanagementone">
+            <div class="manages-search-style">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户姓名：</label>
+                            <div class="aui-col-18">
+                                <input id="userNameLib" type="text" class="aui-input" placeholder="请输入用户姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户警号：</label>
+                            <div class="aui-col-18">
+                                <input id="userIdLib" type="text" class="aui-input" placeholder="请输入用户警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8">
+                        <div class="form-group">
+                            <button id="searchButFusionLib" type="button" class="btn btn-primary">搜索</button>
+                            <button id="addBtnFusionLib" type="button" class="btn">新增</button>
+                            <button id="importLib" type="button" class="btn">导出</button>
+                            <button id="deleteBtnFusionLib" type="button" class="btn disabled">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <!--列表内容区 -->
+                <!-- <div class="search-btn-group service-share-btn">
+                        <button id="addBtnFusionLib" type="button" class="btn btn-primary">新增</button>
+                        <button id="importLib" type="button" class="btn btn-primary">导出</button>
+                        <button id="deleteBtnFusionLib" type="button" class="btn btn-primary disabled">批量删除</button>
+                    </div> -->
+                <!-- <div class="tip-box">
+                        <i class="icon aui-icon-information"></i>
+                        <span>已选择
+                            <span class="checked-counts">0</span>项</span>
+                    </div> -->
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="serviceFusionImgTableLib" class="table table-hover">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="19%">
+                                        <col width="19%">
+                                        <col width="19%">
+                                        <col width="19%">
+                                        <col width="19%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                                <div class="th-inner ">
+                                                    <div class="table-checkbox">
+                                                        <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input table-checkbox-all-serviceFusion-lib">
+                                                        <label class="table-checkbox-label"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="username">
+                                                <div class="th-inner ">用户姓名</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="password">
+                                                <div class="th-inner">用户警号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="limitCount">
+                                                <div class="th-inner">用户所属机构</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">修改时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="serviceFusionImgTablePaginationLib"></div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+        <div class="libmanagementTwo hide">
+            <div class="manages-search-style">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">库名称：</label>
+                            <div class="aui-col-18">
+                                <input id="libManageName" type="text" class="aui-input" placeholder="请输入库名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">库编码：</label>
+                            <div class="aui-col-18">
+                                <input id="libManageId" type="text" class="aui-input" placeholder="请输入库编码">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8">
+                        <button id="searchButFusionLibTwo" type="button" class="btn btn-primary aui-mr-0">搜索</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="serviceFusionImgTableLibTwo" class="table table-hover">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="35%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th data-field="username">
+                                                <div class="th-inner ">库名称</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="password">
+                                                <div class="th-inner">库编码</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">修改时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="serviceFusionImgTablePaginationLibTwo"></div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+        <div class="libmanagementThree hide">
+            <div class="manages-search-style">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">角色名称：</label>
+                            <div class="aui-col-18">
+                                <input id="roleOneName" type="text" class="aui-input" placeholder="请输入角色名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8">
+                        <button id="searchButFusionLibThree" type="button" class="btn btn-primary">搜索</button>
+                        <button id="addBtnFusionLibThree" type="button" class="btn">新增</button>
+                        <button id="importLibThree" type="button" class="btn">导出</button>
+                        <button id="deleteBtnFusionLibThree" type="button" class="btn disabled">批量删除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="serviceFusionImgTableLibThree" class="table table-hover">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="25%">
+                                        <col width="30%">
+                                        <col width="25%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                                <div class="th-inner ">
+                                                    <div class="table-checkbox">
+                                                        <input name="roleSelectAllLib" type="checkbox" class="table-checkbox-input table-checkbox-all-serviceFusion-lib">
+                                                        <label class="table-checkbox-label"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="username">
+                                                <div class="th-inner ">角色名称</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="username">
+                                                <div class="th-inner ">角色ID</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">更新时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="serviceFusionImgTablePaginationLibThree"></div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑新增弹框按人 start -->
+    <div class="modal fade modal-lger" id="serviceShareEditModalLib" aria-labelledby="serviceShareEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务分享</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body-head">
+                        <div class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                            <div class="form-group aui-row">
+                                <div class="aui-col-10 addPerson hide">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">用户姓名：</label>
+                                    <div class="aui-col-18 control-form">
+                                        <input placeholder="请选择用户" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name="" id="libUserChose">
+                                    </div>
+                                </div>
+                                <div class="aui-col-10 addRole hide">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">角色名称：</label>
+                                    <div class="aui-col-18 control-form">
+                                        <select class="selectpicker" id="libRoleChose" data-live-search="true" title="请选择角色名称" multiple="multiple"></select>
+                                    </div>
+                                </div>
+                                <div class="aui-col-14">
+                                    <div class="aui-col-16 control-form">
+                                        <input placeholder="请输入库名称搜索" type="text" class="aui-input js-change-cames" name="" id="libNameChose">
+                                    </div>
+                                    <div class="aui-col-4">
+                                        <button id="libNameSearchManage" type="button" class="btn btn-primary aui-mr-0">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body-content">
+                        <div class="bootstrap-table">
+                            <table id="LibModal" class="table table-hover tableFixedHead">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="username">
+                                            <div class="th-inner ">对象库名称</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="password">
+                                            <div class="th-inner">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>浏览
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="limitCount">
+                                            <div class="th-inner">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>编辑
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="visitCount">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>1：N比对
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="visitCount">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>可布控
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="serviceShareOkButLib">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑新增弹框按库 start -->
+    <div class="modal fade modal-lger" id="serviceShareEditModalLibTwo" aria-labelledby="serviceShareEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务分享</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库名称</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input cursor" id="libUserChoseTwo" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body-content">
+                        <div class="bootstrap-table">
+                            <table id="LibModalTwo" class="table table-hover">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="username">
+                                            <div class="th-inner ">类型</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="username">
+                                            <div class="th-inner ">用户/角色名称</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="username">
+                                            <div class="th-inner ">用户机构</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="password">
+                                            <div class="th-inner">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>浏览
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="limitCount">
+                                            <div class="th-inner">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>编辑
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="visitCount">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>1：N比对
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="visitCount">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAllLib" type="checkbox" class="table-checkbox-input libModalCheck">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>可布控
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="LibModalTwoPagination"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="serviceShareOkButLibTwo">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 编辑弹框 end -->
+
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="serviceShareTipModalLib" tabindex="-1" role="dialog" aria-labelledby="serviceShareTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="serviceShareDeleOkLib">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script class="js-addVersion" src="./assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/lib-management.js"></script>
+</div>

@@ -1,0 +1,408 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="configTable" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建人警号：</label>
+                        <div class="aui-col-18">
+                            <input id="platform" type="text" class="aui-input" placeholder="请输入创建人">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">采集源编码：</label>
+                        <div class="aui-col-18">
+                            <input id="sourceCodeSearch" type="text" class="aui-input" placeholder="请输入采集源编码" maxlength="32">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">采集源说明:</label>
+                        <div class="aui-col-18">
+                            <input id="sourceExplainSearch" placeholder="请输入采集源说明" class="aui-input"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">图片类型：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="dataTypeSearch">
+                                <option selected value="">全部</option>
+                                <option value="1">s3</option>
+                                <option value="2">url</option>
+                                <option value="3">blob</option>
+                                <option value="4">无图片</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">库源类型：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="dbTypeSearch">
+                                <option selected value="">全部</option>
+                                <option value="1">oracle</option>
+                                <option value="2">mysql</option>
+                                <option value="3">sqlserver</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="searchConfigList" class="btn btn-primary aui-mr-0">搜索</button>
+                        <button type="button" id="configAddBtn" class="btn aui-mr-0">新增</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--配置表 开始-->
+        <div class="manages-card-content">
+            <!-- <div class="search-btn-group algo-setting-btn">
+                <button type="button" id="configAddBtn" class="btn btn-primary">新增</button>
+                <button type="button" id="configMultiDeleteBtn" class="btn btn-primary disabled">批量删除</button>
+            </div>-->
+            <!-- <div class="tip-box">
+                <i class="icon aui-icon-information"></i>
+                <span>已选择<span class="checked-counts" id="configTableCounts">0</span>项</span>
+            </div> -->
+            <div class="right-list bayonet-right-list">
+                <table id="tableListConfig" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                    data-pagination="false">
+                    <colgroup>
+                        <col width="2%">
+                        <col width="10%">
+                        <col width="8%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th data-field="platform">数据源ip</th>
+                            <th data-field="version">数据源端口</th>
+                            <th data-field="modifyTime">用户姓名</th>
+                            <th data-field="comments">密码</th>
+                            <th data-field="modifyTime">数据类型</th>
+                            <th data-field="functionName">创建人</th>
+                            <th data-field="algorithmName">创建时间</th>
+                            <th data-field="operate">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody style="max-height:30rem">
+                    </tbody>
+                </table>
+                <div class="fixed-table-pagination bayonetCameralPagination" id="tableConfigListPagination"></div>
+            </div>
+        </div>
+        <!-- 配置表 结束 -->
+    </div>
+    <!-- 新建/编辑弹窗 -->
+    <div class="modal fade modal-lger" id="ConfigTableModal" tabindex="-1" role="dialog" aria-labelledby="configLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="configLabel">新增</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">图片类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="imgType_val">
+                                        <option value="1">s3</option>
+                                        <option value="2">url</option>
+                                        <option value="3">blob</option>
+                                        <option value="4">无图片</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库源类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="dbType_val">
+                                        <option value="1">oracle</option>
+                                        <option value="2">mysql</option>
+                                        <option value="3">sqlserver</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row s3t hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">s3桶名称</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="bucketName_val" type="text" class="aui-input" placeholder="请输入s3桶名称">
+                                    <p class="text-danger mg-top-xs tip hide">请输入s3桶名称</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">s3桶访问地址</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="bucketUrl_val" type="text" class="aui-input" placeholder="请输入s3桶访问地址">
+                                    <p class="text-danger mg-top-xs tip hide">请输入s3桶访问地址</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">同步标识字段类型</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="speed" id="scheType_val">
+                                        <option value="1">数值</option>
+                                        <option value="2">时间</option>
+                                        <option value="3">时间字符串</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">同步标识字段</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="scheColumn_val" type="text" class="aui-input" placeholder="请输入同步标识字段">
+                                    <p class="text-danger mg-top-xs tip hide">请输入同步标识字段</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">采集源编码</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="sourceCode_val" type="text" class="aui-input" placeholder="请输入采集源编码" maxlength="32">
+                                    <p class="text-danger mg-top-xs tip hide">请输入采集源编码</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">采集源说明</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="sourceExplain_val" placeholder="请输入采集源说明" class="aui-input"></input>
+                                    <p class="text-danger tip hide">请输入采集源说明</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">数据类型</label>
+                                <div class="aui-col-18 control-form" id="dataType_val">
+                                    <div class="aui-col-10 mt-sm">
+                                        <label for="radio-level-12">图片库</label>
+                                        <input type="radio" name="radio-1" id="radio-level-12" value="1" data-role="radio">
+                                    </div>
+                                    <div class="aui-col-10 mt-sm">
+                                        <label for="radio-level-13">人员信息库</label>
+                                        <input type="radio" name="radio-1" id="radio-level-13" value="2" data-role="radio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">分页查询数</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="querySize_val" type="text" class="aui-input" placeholder="请输入分页查询数" maxlength="6" oninput="value=value.replace(/[^0-9]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入分页查询数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">数据源IP</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="sourceIp_val" type="text" class="aui-input" placeholder="请输入数据源ip" oninput="value=value.replace(/[^0-9.]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入数据源IP</p>
+                                    <p class="text-danger mg-top-xs tip1 hide">请输入正确的IP</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">数据源端口</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="sourcePort_val" type="text" class="aui-input" placeholder="请输入数据源端口" maxlength="6" oninput="value=value.replace(/[^0-9-]/g,'')">
+                                    <p class="text-danger mg-top-xs tip hide">请输入数据源端口</p>
+                                    <p class="text-danger mg-top-xs tip1 hide">请输入正确端口</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">数据源</label>
+                                <div class="aui-col-18 control-form" id="source_val">
+                                    <div class="aui-col-12 mt-sm">
+                                        <label for="radio-level-20">数据源sid</label>
+                                        <input type="radio" name="radio-5" id="radio-level-20" value="1" data-role="radio">
+                                    </div>
+                                    <div class="aui-col-12 mt-sm">
+                                        <label for="radio-level-21">数据源集群服务名</label>
+                                        <input type="radio" name="radio-5" id="radio-level-21" value="2" data-role="radio">
+                                    </div>
+                                </div>
+                                <div class="aui-col-18 aui-col-offset-6 control-form " id="sourceSid">
+                                    <input id="sourceSid_val" type="text" class="aui-input" placeholder="请输入数据源sid">
+                                    <p class="text-danger mg-top-xs tip hide">请输入数据源sid</p>
+                                </div>
+                                <div class="aui-col-18 aui-col-offset-6 control-form hide" id="sourceClusterName">
+                                    <input id="sourceClusterName_val" type="text" class="aui-input" placeholder="请输入数据源集群服务名">
+                                    <p class="text-danger mg-top-xs tip hide">请输入数据源集群服务名</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">任务启动时间</label>
+                                <div class="aui-col-18 control-form" id="data_val">
+                                    <div class="aui-col-12 mt-sm">
+                                        <label for="radio-level-10">定点启动</label>
+                                        <input type="radio" name="radio-2" id="radio-level-10" value="1" data-role="radio">
+                                    </div>
+                                    <div class="aui-col-12 mt-sm">
+                                        <label for="radio-level-11">定时启动</label>
+                                        <input type="radio" name="radio-2" id="radio-level-11" value="2" data-role="radio">
+                                    </div>
+                                </div>
+                                <div class="aui-col-18 aui-col-offset-6 control-form input-daterange datepicker-box" id="timeStart">
+                                    <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;padding: 0;">
+                                        <input id="timeStart_val" type="text" class="input-text datepicker-input radius config_cronExpressionDate aui-input" placeholder="请选择任务启动时间"
+                                            readonly onFocus="WdatePicker({dateFmt:'HH:mm:ss',autoPickDate:true})">
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="aui-col-18 aui-col-offset-6 control-form hide" id="regularyStart">
+                                    <input id="regularyStart_val" type="text" class="aui-input" placeholder="请输入任务定期启动">
+                                    <p class="text-danger mg-top-xs tip hide">请输入任务定期启动</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">用户姓名</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="userName_val" type="text" class="aui-input" placeholder="请输入用户姓名">
+                                    <p class="text-danger mg-top-xs tip hide">请输入用户姓名</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">密码</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="password_val" type="text" class="aui-input" placeholder="请输入密码">
+                                    <p class="text-danger mg-top-xs tip hide">请输入密码</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">星火存储表</label>
+                                <div class="aui-col-18 control-form">
+                                    <!-- <input id="xhTableName_val" type="text" class="aui-input" placeholder="请输入星火存储表">
+                                    <p class="text-danger mg-top-xs tip hide">请输入星火存储表</p> -->
+                                    <select name="xhTableName" id="xhTableName_val">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="creator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="createtime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row viewConfigList hide">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="updator_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间</label>
+                                <div class="aui-col-18 control-form">
+                                    <input id="udpatetime_val" type="text" class="aui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">表查询sql</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea id="querySql_val" placeholder="请输入表查询sql" cols="30" rows="10" class="aui-textarea"></textarea>
+                                    <p class="text-danger mg-top-xs tip hide">请输入表查询sql</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea name="" id="comments_val" placeholder="请输入备注" cols="30" rows="10" class="aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="configModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="configTipModal" tabindex="-1" role="dialog" aria-labelledby="configTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabel">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="configModaldelectSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/configTable.js"></script>
+</div>

@@ -1,0 +1,149 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <!-- content -->
+    <!-- <div class="popup-panel hide"></div> -->
+    <div class="layout-type2 portrait-new-card popup" id="portraitCardNewPage">
+        <!-- 面包屑 -->
+        <!-- <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-0 bg-gray">
+                <li id="backPrevPage" class="breadcrumb-item active icon-back" aria-current="page">
+                    <i class="aui-icon-back text-lger"></i>
+                    <a class="inline-block v-middle text-md">返回</a>
+                </li>
+            </ol>
+        </nav> -->
+        <div class="aui-card">
+            <div class="popup-title">
+                <span class="card-title">新建布控</span>
+                <span data-dismiss="modal" aria-label="Close" class="float-right">
+                    <i class="aui-icon-not-through" id="portraitCardBackPrevPage"></i>
+                </span>
+            </div>
+            <div class="popup-body">
+                <div class="card-content">
+                    <div class="type-content security show">
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-11">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">对象信息：</label>
+                                    <div class="aui-col-18 control-form">
+                                        <input id="controlCard_info" type="text" class="aui-input" maxlength="50" placeholder="请输入对象信息" disabled>
+                                        <p class="text-danger mg-top-xs tip hide">请输入对象信息</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-13">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">阈值</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="aui-slider-box">
+                                            <div class="aui-slider-box-inner">
+                                                <div class="aui-slider" id="sliderPortraitCard2"></div>
+                                                <div class="aui-slider-min" id="sliderMinPortraitCard2"></div>
+                                                <div class="aui-slider-max" id="sliderMaxPortraitCard2"></div>
+                                            </div>
+                                            <div class="float-right">
+                                                <input id="sliderInputPortraitCard2" type="text" class="aui-input aui-slider-input" value="90">% 以上
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-11">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">任务名称</label>
+                                    <div class="aui-col-18 control-form">
+                                        <input id="controlCard_name" type="text" class="aui-input" maxlength="50" placeholder="请输入任务名称">
+                                        <p class="text-danger mg-top-xs tip hide">请输入布控名称</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-13">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">布控期限</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="inline-block v-middle wid-45">
+                                            <label for="card-time-radio-button-5" id="card-time-label-three-days" class="ui-checkboxradio-button mr-smr">三天</label>
+                                            <input type="radio" name="time-radio-2" id="card-time-radio-button-5" value="3" data-role="radio-button" checked>
+                                            <label for="card-time-radio-button-6" id="card-time-label-oneweek-days" class="ui-checkboxradio-button mr-smr">一周</label>
+                                            <input type="radio" name="time-radio-2" id="card-time-radio-button-6" value="7" data-role="radio-button">
+                                            <label for="card-time-radio-button-7" id="card-time-label-halfmonth-days" class="ui-checkboxradio-button mr-smr">半个月</label>
+                                            <input type="radio" name="time-radio-2" id="card-time-radio-button-7" value="15" data-role="radio-button">
+                                        </div>
+                                        <div class="input-daterange datepicker-box aui-input wid-55 v-middle float-right" style="font-size:0.75rem;" id="controlCard_Time">
+                                            <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <p class="text-danger mg-top-xs tip hide"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-11">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 control-label aui-form-require">布控原因</label>
+                                    <div class="aui-col-18 control-form">
+                                        <textarea name="" id="controlCard_reason" placeholder="请填写布控原因" cols="30" rows="10" class="control-textarea"></textarea>
+                                        <div class="wordNum warning-item-text hide">剩余
+                                            <span></span>个字</div>
+                                        <p class="text-danger tip hide">请填写布控原因</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-13">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">公开范围</label>
+                                    <div class="aui-col-8 mt-sm aui-mb-xs">
+                                        <label for="view-card-cameraRadio1" id="viewcameraRadioLableCrad1">按机构</label>
+                                        <input type="radio" name="view-card-camera-radio-1" id="view-card-cameraRadio1" value="1" data-role="radio" checked>
+                                    </div>
+                                    <div class="aui-col-8 mt-sm aui-mb-xs">
+                                        <label for="view-card-cameraRadio2" id="viewcameraRadioLableCrad2">按人</label>
+                                        <input type="radio" name="view-card-camera-radio-1" id="view-card-cameraRadio2" value="2" data-role="radio">
+                                    </div>
+                                    <div class="aui-col-18 control-form" style="float:right;">
+                                        <div class="aui-input-affix-wrapper" id="contorlViewCardList">
+                                            <div class="aui-input-group-inner cursor">
+                                                <input placeholder="请选择可见机构" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name=""
+                                                    id="controlCard_viewList" />
+                                                <span class="aui-input-suffix">
+                                                    <i class="aui-icon-delete-line"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="aui-input-affix-wrapper hide" id="contorlViewCardPerson">
+                                            <div class="aui-input-group-inner cursor">
+                                                <input placeholder="请选择可见人" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name="" id="controlCard_viewUserList"
+                                                />
+                                                <span class="aui-input-suffix">
+                                                    <i class="aui-icon-delete-line"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p class="text-danger mg-top-xs tip hide">请选择公开范围</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <span class="btn btn-primary" id="onNewBukongPortrait">确定</span>
+                <span class="btn" id="cancelEditPortrait">取消</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/portraitCard-new.js"></script>
+</div>

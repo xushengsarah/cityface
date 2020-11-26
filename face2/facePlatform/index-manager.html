@@ -1,0 +1,937 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/rollNum/css/rollNum.css" />
+    <!-- content -->
+    <link rel="stylesheet" href="assets/vendor/layer/css/dataLayer.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table-fixed-columns.css" />
+    <div class="layout-type1 manages">
+        <div class="container-hat" id="mapOuterContiner">
+            <div class="index-map-box">
+                <!-- <iframe width="100%" height="100%" id="map_iframe_index" value="http://190.168.17.2:6082/peopleCityBlack.html?orgid=44031&rxModule=map_iframe_index"
+                    src="http://190.168.17.2:6082/peopleCityBlack.html?orgid=44031&rxModule=map_iframe_index"></iframe> -->
+                <iframe width="100%" height="100%" id="map_iframe_index"></iframe>
+            </div>
+            <div class="gis-map-layer">
+                <div class="layer-top"></div>
+                <div class="layer-left"></div>
+                <div class="layer-bottom"></div>
+                <div class="layer-right"></div>
+            </div>
+            <div class="kpi-container">
+                <div class="tab-title">
+                    <div class="place" id="orgSelectParent">
+                        <i class="aui-icon-color-default aui-icon-building"></i>
+                        <select name="place" id="orgSelectMenu">
+                        </select>
+                    </div>
+                </div>
+                <div class="gis-kpi" id="tabContentContainer">
+                    <div class="tab-content-pane poluation clearfix">
+                        <ul class="kpi-list clearfix">
+                            <li class="kpi-list-item clearfix active" id="alarmCount">
+                                <div class="kpi-data first-list">
+                                    <span class="title">告警总数</span>
+                                    <div class="number">0</div>
+                                </div>
+                            </li>
+                            <li class="kpi-list-item clearfix" id="todayAlarmCount">
+                                <div class="kpi-data second-list">
+                                    <span class="title">今日告警数</span>
+                                    <div class="number">0</div>
+                                </div>
+                            </li>
+                            <li class="kpi-list-item clearfix aui-mt-sm">
+                                <div class="kpi-data-list">
+                                    <span class="title">平均每日抓拍人脸数</span>
+                                    <span class="number">0</span>
+                                </div>
+                            </li>
+                            <li class="kpi-list-item clearfix">
+                                <div class="kpi-data-list">
+                                    <span class="title">平均每路镜头每日抓拍数</span>
+                                    <span class="number">0</span>
+                                </div>
+                            </li>
+                            <li class="kpi-list-item clearfix">
+                                <div class="kpi-data-list">
+                                    <span class="title">平均每日告警数</span>
+                                    <span class="number">0</span>
+                                </div>
+                            </li>
+                            <li class="kpi-list-item clearfix aui-mt-sm">
+                                <div class="kpi-data-list">
+                                    <span class="title">已布控人数</span>
+                                    <span class="number">0</span>
+                                </div>
+                            </li>
+                            <!-- <li class="kpi-list-item clearfix">
+                                <div class="kpi-data-list">
+                                    <span class="title">剩余布控人数</span>
+                                    <span class="number">0</span>
+                                </div>
+                            </li> -->
+                            <li class="kpi-list-item clearfix aui-mt-sm" id="faceCameraCountTwo">
+                                <div class="kpi-data-list">
+                                    <span class="title">镜头在线数/镜头总数</span>
+                                    <span class="number">
+                                        <a class="snap">0</a>/
+                                        <a class="snap">0</a>
+                                    </span>
+                                </div>
+                                <!-- <div class="kpi-data-list">
+                                    <span class="title"></span>
+                                    <span class="number warming">0</span>
+                                </div> -->
+                            </li>
+                            <li class="kpi-list-item clearfix" id="faceCameraPer">
+                                <div class="kpi-data-list">
+                                    <span class="title">视频流在线率</span>
+                                    <span class="number">0</span>
+                                </div>
+                                <!-- <div class="kpi-data-list">
+                                    <span class="title"></span>
+                                    <span class="number warming">0</span>
+                                </div> -->
+                            </li>
+                            <li class="kpi-list-item clearfix" id="facePhotoPer">
+                                <div class="kpi-data-list">
+                                    <span class="title">图片流在线率</span>
+                                    <span class="number">0</span>
+                                </div>
+                                <!-- <div class="kpi-data-list">
+                                        <span class="title"></span>
+                                        <span class="number warming">0</span>
+                                    </div> -->
+                            </li>
+                            <li class="kpi-list-item clearfix" id="faceCameraCount">
+                                <div class="kpi-data-list">
+                                    <span class="title">接入抓拍机数/欠账数</span>
+                                    <span class="number">
+                                        <a class="snap">0</a>/
+                                        <a class="snap">0</a>
+                                    </span>
+                                </div>
+                                <!-- <div class="kpi-data-list">
+                                    <span class="title"></span>
+                                    <span class="number warming">0</span>
+                                </div> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="head-container">
+                <div class="head-name">深圳市人像大数据平台</div>
+                <div class="head-data-item clearfix" id="facePictureTotal">
+                    <div class="head-list kpi-data1">
+                        <div class="dashboard-roll-num"></div>
+                        <span class="title">历史抓拍人脸数</span>
+                    </div>
+                    <div class="head-list kpi-data2">
+                        <div class="dashboard-roll-num"></div>
+                        <span class="title">今日抓拍人脸数</span>
+                    </div>
+                </div>
+            </div>
+            <div class="data-btn" id="databash">
+                <i class="aui-icon-databoard"></i>
+                <span>数据看板</span>
+                <div class="databoard-loading-box hide">
+                    <div class="aui-spin aui-spin-spinning">
+                        <span class="aui-spin-icon aui-spin-icon-spin"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="data-btn" id="allListBtn" style="top: calc(0rem + 5rem);">
+                <i class="aui-icon-databoard"></i>
+                <span>统计报表</span>
+            </div>
+            <span class="btn btn-back btn-primary hide">
+                <i class="aui-icon-back"></i>
+                返回
+            </span>
+        </div>
+        <div class="aui-card no-wihie-bg pd-bt0 hide">
+            <div class="control-list-box aui-row">
+                <div class="aui-col-18 warning-list-wrap">
+                    <!-- <ul class="control-list" id="bukongPlatInfo">
+                            <li class="control-item" id="blueRiband">
+                                <div class="control-item-content">
+                                    <div class="control-item-detail">
+                                        <div class="control-item-img">
+                                            <img src="assets/images/managers/icon-01.png" />
+                                        </div>
+                                        <div class="control-item-info">
+                                            <span class="control-item-name">重大事件</span>
+                                            <p class="control-item-text">
+                                                <span class="taskNum">0</span>个布控任务数量</p>
+                                            <p class="control-item-text">
+                                                <span class="alarmNum">0</span>条告警数量</p>
+                                        </div>
+                                    </div>
+                                    <p class="control-item-tips">
+                                        <span class="text-bold">最新告警:</span>
+                                        <span class="control-item-tips-text">818重大杀人案</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="control-item" id="scene">
+                                <div class="control-item-content">
+                                    <div class="control-item-detail">
+                                        <div class="control-item-img">
+                                            <img src="assets/images/managers/icon-02.png" />
+                                        </div>
+                                        <div class="control-item-info">
+                                            <span class="control-item-name">场景安保</span>
+                                            <p class="control-item-text">
+                                                <span class="taskNum">0</span>个布控任务数量</p>
+                                            <p class="control-item-text">
+                                                <span class="alarmNum">0</span>条告警数量</p>
+                                        </div>
+                                    </div>
+                                    <p class="control-item-tips">
+                                        <span class="text-bold">最新告警:</span>
+                                        <span class="control-item-tips-text">818重大杀人案</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="control-item" id="general">
+                                <div class="control-item-content">
+                                    <div class="control-item-detail">
+                                        <div class="control-item-img">
+                                            <img src="assets/images/managers/icon-03.png" />
+                                        </div>
+                                        <div class="control-item-info">
+                                            <span class="control-item-name">常规布控</span>
+                                            <p class="control-item-text">
+                                                <span class="taskNum">0</span>个布控任务数量</p>
+                                            <p class="control-item-text">
+                                                <span class="alarmNum">0</span>条告警数量</p>
+                                        </div>
+                                    </div>
+                                    <p class="control-item-tips">
+                                        <span class="text-bold">最新告警:</span>
+                                        <span class="control-item-tips-text">818重大杀人案</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="control-item" id="patrol">
+                                <div class="control-item-content">
+                                    <div class="control-item-detail">
+                                        <div class="control-item-img">
+                                            <img src="assets/images/managers/icon-04.png" />
+                                        </div>
+                                        <div class="control-item-info">
+                                            <span class="control-item-name">巡逻布控</span>
+                                            <p class="control-item-text">
+                                                <span class="taskNum">0</span>个布控任务数量</p>
+                                            <p class="control-item-text">
+                                                <span class="alarmNum">0</span>条告警数量</p>
+                                        </div>
+                                    </div>
+                                    <p class="control-item-tips">
+                                        <span class="text-bold">最新告警:</span>
+                                        <span class="control-item-tips-text">818重大杀人案</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul> -->
+                    <ul class="card-title-content warning-list" id="manage-warning-list">
+                        <!-- <li class="warning-item">
+                                <div class="warning-item-content">
+                                    <div class="warning-item-img-box">
+                                        <div class="warning-item-img">
+                                            <img src="img/people.jpg" />
+                                            <img src="img/people.jpg" />
+                                        </div>
+                                        <span class="warning-item-percent grade1">94%</span>
+                                    </div>
+                                    <div class="warning-item-name">
+                                        <span>818特大杀人案</span>
+                                        <span class="warning-item-level grade1">紧急</span>
+                                    </div>
+                                    <p class="warning-item-address">
+                                        <span class="warning-item-text">解放路广播电视大学路口A1</span>
+                                    </p>
+                                    <p class="warning-item-time">
+                                        <i class="aui-icon-color-default aui-icon-history"></i>
+                                        <span class="warning-item-text">2018-01-02 05:23:03</span>
+                                    </p>
+                                </div>
+                            </li> -->
+                    </ul>
+                </div>
+                <div class="aui-col-6">
+                    <div class="add-control">
+                        <div class="add-control-content">
+                            <img src="assets/images/managers/add-control-icon.png">
+                        </div>
+                        <button type="button" class="btn text-bold" id="newBukong" prevPageName="index-manager">
+                            <i class="aui-icon-add"></i>
+                            新建布控
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+        <!-- <div class="feedback-container">
+            <a class="feedback-item split-line" href="#" data-toggle="tooltip" data-placement="top" data-html="true" title="">
+                <i class="aui-icon-phone"></i>
+            </a>
+            <a class="feedback-item" href="#" data-toggle="tooltip" data-placement="top" title="意见反馈">
+                <i class="aui-icon-edit"></i>
+            </a>
+        </div> -->
+    </div>
+
+    <!-- 确认告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmOkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">确认后将无法修改，是否确认是同一个人？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 确认告警信息弹窗 end -->
+
+    <!-- 误报告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">误报告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">误报后将无法修改，是否选择误报？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 误报告警信息弹窗 end -->
+    <!-- 考核异常告警人像抓拍统计 start -->
+    <div class="layout-type2 control-new-card popup hide" id="snapMoreTypeModal">
+        <div class="aui-card">
+            <div class="popup-title">
+                <ul class="nav nav-tabs pd0" role="tablist" id="snapMoreTypeModalTab">
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">异常报表</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">运维统计</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link active" data-toggle="tab" aria-selected="true">考核报表</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">厂家评比报表</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">布控告警报表</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">动静态使用</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">人脸使用情况</a>
+                    </li>
+                    <li class="nav-item" style="cursor:pointer;">
+                        <a class="nav-link" data-toggle="tab" aria-selected="false">人像库统计</a>
+                    </li>
+                </ul>
+                <i class="aui-icon-not-through" id="snapMoreTypeModalClose"></i>
+            </div>
+            <div class="popup-body" style="height: 46rem;">
+                <div class="tab-content" style="height:100%">
+                    <ul class="tab-pane active" id="snapMoreTypeYC" role="tabpanel"
+                        aria-labelledby="snapMoreTypeYC-tab">
+                        <div class="search-terms-box">
+                            <div class="aui-from-horizontal aui-row">
+                                <div class="aui-col-6 snapStatisticOrg more">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">机构名称：</label>
+                                        <div class="aui-col-16">
+                                            <select class="selectpicker" id="orgIdDataYC"
+                                                    data-live-search="true"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-6 snapRoleType">
+                                    <div class="form-group" style="text-align: center;">
+                                        <label class="aui-form-label aui-col-8">角色类型：</label>
+                                        <div class="aui-col-16" style="padding-left:0;">
+                                            <label for="snapRoleTypeYCOne"
+                                                   style="margin-right:0.5rem!important">动静态权限</label>
+                                            <input type="radio" name="snapRoleRadio" id="snapRoleTypeYCOne" value="1"
+                                                   data-role="radio" checked>
+                                            <label for="snapRoleTypeYCTwo" style="margin-right:0!important">普通权限</label>
+                                            <input type="radio" name="snapRoleRadio" id="snapRoleTypeYCTwo" value="2"
+                                                   data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                                 style="font-size:0.75rem;" id="timeSnapMoreStatYC">
+                                                <!-- <input id="startTimeSnapMoreStatYC" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapMoreStatYC\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                                />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="endTimeSnapMoreStatYC" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapMoreStatYC\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                                />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                                </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchYC" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                    <button type="button" id="snapStatisticImportYC" class="btn"
+                                            style="min-width: auto;">导出</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-tab-box">
+                            <table id="snapStatisticTableYC" class="table-hover">
+                            </table>
+                            <div class="loadEmpty hide" id="snapStatisticLoadYCEmpty"></div>
+                            <!-- <div class="fixed-table-pagination bayonetCameralPagination" id="SnapStatisticPagination"></div> -->
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeYW" role="tabpanel" aria-labelledby="snapMoreTypeYW-tab">
+                        <div class="search-terms-box" style="border-bottom:none">
+                            <div class="titleTotal">
+                                <div class="titleTotalItem">
+                                    <span class="titleTotalName">视频流异常总数：</span>
+                                    <span class="titleTotalValue" id="YWPicStatusErrNum">0</span>
+                                </div>
+                                <div class="titleTotalItem">
+                                    <span class="titleTotalName">图片流异常总数：</span>
+                                    <span class="titleTotalValue" id="YWVideoStatusErrNum">0</span>
+                                </div>
+                            </div>
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-8 snapStatisticOrg">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">镜头所属机构:</label>
+                                        <div class="aui-col-16">
+                                            <select class="selectpicker" id="orgIdDataYW"
+                                                    data-live-search="true"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">镜头名称:</label>
+                                        <div class="aui-col-16">
+                                            <input id="YWCameraName" type="text" class="aui-input"
+                                                   placeholder="请输入镜头名称">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">国标编码:</label>
+                                        <div class="aui-col-16">
+                                            <input id="YWGBCode" type="text" class="aui-input" placeholder="请输入国标编码">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">视频流是否正常:</label>
+                                        <div class="aui-col-16 snapRoleType">
+                                            <label for="snapCameraYWOne"
+                                                   style="margin-right:0.5rem!important">全部</label>
+                                            <input type="radio" name="snapCameraYW" id="snapCameraYWOne" value=""
+                                                   data-role="radio" checked>
+                                            <label for="snapCameraYWTwo" style="margin-right:0.5rem!important">是</label>
+                                            <input type="radio" name="snapCameraYW" id="snapCameraYWTwo" value="0"
+                                                   data-role="radio">
+                                            <label for="snapCameraYWThree" style="margin-right:0!important">否</label>
+                                            <input type="radio" name="snapCameraYW" id="snapCameraYWThree" value="1"
+                                                   data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">视频流是否正常:</label>
+                                        <div class="aui-col-16 snapRoleType">
+                                            <label for="snapVideoYWOne" style="margin-right:0.5rem!important">全部</label>
+                                            <input type="radio" name="snapVideoYW" id="snapVideoYWOne" value="" data-role="radio" checked>
+                                            <label for="snapVideoYWTwo" style="margin-right:0.5rem!important">是</label>
+                                            <input type="radio" name="snapVideoYW" id="snapVideoYWTwo" value="0" data-role="radio">
+                                            <label for="snapVideoYWThree" style="margin-right:0!important">否</label>
+                                            <input type="radio" name="snapVideoYW" id="snapVideoYWThree" value="1" data-role="radio">
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">图片流是否正常:</label>
+                                        <div class="aui-col-16 snapRoleType">
+                                            <label for="snapPicYWOne" style="margin-right:0.5rem!important">全部</label>
+                                            <input type="radio" name="snapPicYW" id="snapPicYWOne" value=""
+                                                   data-role="radio" checked>
+                                            <label for="snapPicYWTwo" style="margin-right:0.5rem!important">是</label>
+                                            <input type="radio" name="snapPicYW" id="snapPicYWTwo" value="0"
+                                                   data-role="radio">
+                                            <label for="snapPicYWThree" style="margin-right:0!important">否</label>
+                                            <input type="radio" name="snapPicYW" id="snapPicYWThree" value="1"
+                                                   data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">抓拍数是否为0:</label>
+                                        <div class="aui-col-16 snapRoleType">
+                                            <label for="snapIsPhotoYWOne" style="margin-right:0.5rem!important">全部</label>
+                                            <input type="radio" name="snapIsPhotoYW" id="snapIsPhotoYWOne" value="" data-role="radio" checked>
+                                            <label for="snapIsPhotoYWTwo" style="margin-right:0.5rem!important">是</label>
+                                            <input type="radio" name="snapIsPhotoYW" id="snapIsPhotoYWTwo" value="0" data-role="radio">
+                                            <label for="snapIsPhotoYWThree" style="margin-right:0!important">否</label>
+                                            <input type="radio" name="snapIsPhotoYW" id="snapIsPhotoYWThree" value="1" data-role="radio">
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">图片抓拍时间：</label>
+                                        <div class="aui-col-16">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                                 style="font-size:0.75rem;">
+                                                <input id="startTimeSnapStatYW"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStatYW\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="endTimeSnapStatYW"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStatYW\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeSnapStatYW\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">历史抓拍数：</label>
+                                        <div class="aui-col-16 snapRoleType">
+                                            <label for="snapHPicYWOne" style="margin-right:0.5rem!important">全部</label>
+                                            <input type="radio" name="snapHPicYW" id="snapHPicYWOne" value=""
+                                                   data-role="radio" checked>
+                                            <label for="snapHPicYWTwo" style="margin-right:0.5rem!important">为零</label>
+                                            <input type="radio" name="snapHPicYW" id="snapHPicYWTwo" value="0"
+                                                   data-role="radio">
+                                            <label for="snapHPicYWThree" style="margin-right:0!important">不为零</label>
+                                            <input type="radio" name="snapHPicYW" id="snapHPicYWThree" value="1"
+                                                   data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8">
+                                    <div class="form-group">
+                                        <button type="button" id="snapStatisticSearchYW" class="btn btn-primary"
+                                                style="min-width: auto;">搜索</button>
+                                        <button type="button" id="snapStatisticUploadYW" class="btn"
+                                                style="min-width: auto;">导出</button>
+                                        <button type="button" id="snapStatisticResetYW" class="btn"
+                                                style="min-width: auto;">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box" style="height:auto;">
+                            <table id="snapStatisticTableYW" class="table-hover">
+                            </table>
+                            <div class="fixed-table-pagination bayonetCameralPagination" id="SnapPaginationYW"></div>
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeKH" role="tabpanel" aria-labelledby="snapMoreTypeKH-tab">
+                        <div class="search-terms-box">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-6 snapStatisticOrg more">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-8">机构名称：</label>
+                                        <div class="aui-col-16" style="padding-left:0;">
+                                            <select class="selectpicker" id="orgIdDataKH"
+                                                    data-live-search="true"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-6 snapRoleType">
+                                    <div class="form-group" style="text-align: center;">
+                                        <label class="aui-form-label aui-col-8">角色类型：</label>
+                                        <div class="aui-col-16" style="padding-left:0;">
+                                            <label for="snapRoleTypeKHOne"
+                                                   style="margin-right:0.5rem!important">动静态权限</label>
+                                            <input type="radio" name="snapRoleRadio" id="snapRoleTypeKHOne" value="1"
+                                                   data-role="radio" checked>
+                                            <label for="snapRoleTypeKHTwo" style="margin-right:0!important">普通权限</label>
+                                            <input type="radio" name="snapRoleRadio" id="snapRoleTypeKHTwo" value="2"
+                                                   data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8 khData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="inline-block v-middle wid-35">
+                                                <label for="khDataMoreOneInput" id="khDataMoreOne"
+                                                       class="ui-checkboxradio-button mr-smr">日报</label>
+                                                <input type="radio" name="khDataMoreRadio" id="khDataMoreOneInput"
+                                                       value="1" data-role="radio-button" checked>
+                                                <label for="khDataMoreTwoInput" id="khDataMoreTwo"
+                                                       class="ui-checkboxradio-button mr-smr">自定义</label>
+                                                <input type="radio" name="khDataMoreRadio" id="khDataMoreTwoInput"
+                                                       value="2" data-role="radio-button">
+                                            </div>
+                                            <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataDay"
+                                                 style="font-size:0.75rem;">
+                                                <input id="khDataDayMoreSnap"
+                                                       class="input-text datepicker-input radius Wdate"
+                                                       style="width:100%;text-align: left;" type="text" readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                            <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataWeek hide"
+                                                 style="font-size:0.75rem;padding:0;">
+                                                <input id="khDataDaySnapMoreStart"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'khDataDaySnapMoreEnd\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="khDataDaySnapMoreEnd"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'khDataDaySnapMoreStart\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'khDataDaySnapMoreStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchKH" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                    <button type="button" id="snapStatisticImportKH" class="btn"
+                                            style="min-width: auto;">导出</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box">
+                            <table id="snapStatisticTableKH" class="table-hover">
+                            </table>
+                            <div class="loadEmpty hide" id="snapStatisticLoadKHEmpty"></div>
+                            <!-- <div class="fixed-table-pagination bayonetCameralPagination" id="SnapStatisticPagination"></div> -->
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeCJ" role="tabpanel" aria-labelledby="snapMoreTypeCJ-tab">
+                        <div class="search-terms-box" style="border-bottom:none">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-8 khData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="inline-block v-middle wid-35">
+                                                <label for="cjDataMoreOneInput" id="cjDataMoreOne"
+                                                       class="ui-checkboxradio-button mr-smr">日报</label>
+                                                <input type="radio" name="cjDataMoreRadio" id="cjDataMoreOneInput"
+                                                       value="1" data-role="radio-button" checked>
+                                                <label for="cjDataMoreTwoInput" id="khDataMoreTwo"
+                                                       class="ui-checkboxradio-button mr-smr">自定义</label>
+                                                <input type="radio" name="cjDataMoreRadio" id="cjDataMoreTwoInput"
+                                                       value="2" data-role="radio-button">
+                                            </div>
+                                            <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataDay"
+                                                 style="font-size:0.75rem;">
+                                                <input id="cjDataDayMoreSnap"
+                                                       class="input-text datepicker-input radius Wdate"
+                                                       style="width:100%;text-align: left;" type="text" readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                            <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataWeek hide"
+                                                 style="font-size:0.75rem;padding:0;">
+                                                <input id="cjDataDaySnapMoreStart"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'cjDataDaySnapMoreEnd\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="cjDataDaySnapMoreEnd"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'cjDataDaySnapMoreStart\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'cjDataDaySnapMoreStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchCJ" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box">
+                            <div style="margin-top:0.5rem;font-size:0.85rem;font-weight:bold;">性能排名</div>
+                            <table id="snapStatisticTableCJ" class="table-hover">
+                            </table>
+                            <div style="margin-top:0.5rem;font-size:0.85rem;font-weight:bold;">精准度评分</div>
+                            <table id="snapStatisticTableCJTwo" class="table-hover">
+                            </table>
+                            <!-- <div class="fixed-table-pagination bayonetCameralPagination" id="SnapStatisticPagination"></div> -->
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeGJ" role="tabpanel" aria-labelledby="snapMoreTypeGJ-tab">
+                        <div class="search-terms-box" style="border-bottom:none">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-7 snapStatisticOrg more">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">机构名称：</label>
+                                        <div class="aui-col-18">
+                                            <select class="selectpicker" id="orgIdDataGJ"
+                                                    data-live-search="true"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                                 style="font-size:0.75rem;">
+                                                <input id="startTimeSnapStatGJ"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStatGJ\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="endTimeSnapStatGJ"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStatGJ\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeSnapStatGJ\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchGJ" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                    <button type="button" id="snapStatisticImportGJ" class="btn"
+                                            style="min-width: auto;">导出</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box">
+                            <table id="snapStatisticTableGJ" class="table-hover">
+                            </table>
+                            <div class="loadEmpty hide" id="snapStatisticLoadGJEmpty"></div>
+                            <!-- <div class="fixed-table-pagination bayonetCameralPagination" id="SnapStatisticPagination"></div> -->
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeDJ" role="tabpanel" aria-labelledby="snapMoreTypeDJ-tab">
+                        <div class="search-terms-box" style="border-bottom:none">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-7 snapStatisticOrg more">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">机构名称：</label>
+                                        <div class="aui-col-18">
+                                            <select class="selectpicker" id="orgIdDataDJ"
+                                                    data-live-search="true"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                                 style="font-size:0.75rem;">
+                                                <input id="startTimeSnapStatDJ"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStatDJ\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="endTimeSnapStatDJ"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStatDJ\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeSnapStatDJ\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchDJ" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                    <button type="button" id="snapStatisticImportDJ" class="btn"
+                                            style="min-width: auto;">导出</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box">
+                            <table id="snapStatisticTableDJ" class="table-hover"></table>
+                            <table id="snapStatisticTableDJTwo" class="table-hover"></table>
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeRL" role="tabpanel" aria-labelledby="snapMoreTypeRL-tab">
+                        <div class="search-terms-box" style="border-bottom:none;height:3rem;">
+                            <div class="body-right-box" style="left:1rem">
+                                <div class="btn-group btn-group-capsule" role="group" id="rlBtnGrounp">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近一年</button>
+                                </div>
+                                <button type="button" id="snapStatisticImportRL" class="btn"
+                                        style="min-width: auto;">导出</button>
+                            </div>
+                            <div class="body-right-box" id="rlTabChange">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">表格</button>
+                                    <button type="button" class="btn btn-sm">图表</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-tab-box">
+                            <div class="tabTable" id="snapTableRL">
+                                <table id="snapStatisticTableRL" class="table-hover"></table>
+                            </div>
+                            <div class="tabTable hide" id="snapChartRL" style="height:40rem;">
+                                <div id="getUserInfoChartRL" class="chart" style="height:100%"></div>
+                            </div>
+                            <div class="loadEmpty hide" id="snapStatisticLoadRLEmpty"></div>
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="snapMoreTypeRX" role="tabpanel" aria-labelledby="snapMoreTypeRX-tab">
+                        <div class="search-terms-box" style="border-bottom:none">
+                            <form class="aui-from-horizontal aui-row">
+                                <div class="aui-col-8 otherData">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6">起止时间：</label>
+                                        <div class="aui-col-18">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                                 style="font-size:0.75rem;">
+                                                <input id="startTimeSnapStatRX"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStatRX\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">~</span>
+                                                <input id="endTimeSnapStatRX"
+                                                       class="input-text datepicker-input radius Wdate" type="text"
+                                                       readonly
+                                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStatRX\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeSnapStatRX\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"
+                                                       style="right:0.25rem;"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-4">
+                                    <button type="button" id="snapStatisticSearchRX" class="btn btn-primary"
+                                            style="min-width: auto;">搜索</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="search-tab-box" style="min-height: 20px">
+                            <div style="margin-top:0.5rem;font-size:0.85rem;font-weight:bold;">人像库</div>
+                            <table id="snapStatisticTableRX" class="table-hover"></table>
+                            <div style="margin-top:0.5rem;font-size:0.85rem;font-weight:bold;">算法厂家</div>
+                            <table id="snapStatisticTableTwoRX" class="table-hover"></table>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--考核列表各项点击事件展示弹窗-->
+    <div class="modal modal-lger" id="snapKHItemModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <span>
+                        <i aria-hidden="true" class="aui-icon-not-through" id="powerUsageCountTwoClose"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height:50rem;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--考核列表各项点击事件的点击事件展示弹窗-->
+    <div class="modal modal-lger" id="snapKHItemChildModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height:50rem;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/vendor/jquery-ui/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/bootstrap-table/js/bootstrap-table-fixed-columns.js"></script>
+    <script src="assets/vendor/rollNum/js/rollNum.js"></script>
+    <script type="text/javascript" src="js/indexManager.js"></script>
+    <script type="text/javascript" src="assets/vendor/layer/js/dataLayer.js"></script>
+</div>

@@ -1,0 +1,119 @@
+$prefix-whj: whj_;
+.#{$prefix-whj}jqueryPaginationCss-1 {
+    display: flex;
+    justify-content: flex-end;
+    div {
+        height: 1.75rem;
+        line-height: 1.75rem;
+        min-width: 1.75rem;
+        text-align: center;
+        margin: 0;
+        margin-right: .3125rem;
+    }
+    select {
+        height: 1.75rem;
+        margin: 0;
+        margin-right: .3125rem;
+    }
+    select option {
+        line-height: 30px;
+        height: 30px;
+        margin: 5px auto;
+    }
+    .#{$prefix-whj}color {
+        color: $text-color-lighter;
+    }
+    .#{$prefix-whj}border {
+        border: 1px solid $border-color-lighter;
+    }
+    .#{$prefix-whj}hover {
+        &:hover {
+            background-color: $color-white;
+            border: 1px solid $theme-color;
+            cursor: pointer;
+        }
+    }
+    .#{$prefix-whj}bgc {
+        background-color: $color-white;
+        color: $text-color-lighter;
+        border-radius: 2px;
+    }
+    .#{$prefix-whj}checked {
+        background: $theme-color;
+        border: 1px solid $theme-color;
+        color: $color-white;
+    }
+    .#{$prefix-whj}hoverDisable {
+        cursor: default;
+        color: $text-color-lighter;
+        background: $border-color-light;
+        border-color: $border-color-light;
+        opacity: 1;
+    }
+    input {
+        height: 1.75rem;
+        line-height: 1.75rem;
+        padding: 0.25rem 0.75rem;
+        background: $color-white;
+        width: 3.125rem;
+        margin: 0;
+        text-align: center;
+        border-radius: 2px;
+        border-right: none!important;
+        border-color: $border-color-lighter;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .#{$prefix-whj}padding {
+        padding: 0 .3125rem;
+    }
+    [name=#{$prefix-whj}previousPage],
+    [name=#{$prefix-whj}nextPage],
+    [name=#{$prefix-whj}firstPage],
+    [name=#{$prefix-whj}lastPage] {
+        font-family: 'iconFont' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: pointer;
+        font-size: 0;
+        transition: all $default-animation;
+    }
+    [name=#{$prefix-whj}previousPage],
+    [name=#{$prefix-whj}nextPage] {
+        &:before {
+            content: "\e917";
+            font-size: 0.75rem;
+        }
+    }
+    [name=#{$prefix-whj}firstPage],
+    [name=#{$prefix-whj}lastPage] {
+        &:before {
+            content: "\e956";
+            font-size: 0.75rem;
+        }
+    }
+    [name=#{$prefix-whj}previousPage] {
+        transform: rotate(90deg);
+    }
+    [name=#{$prefix-whj}nextPage] {
+        transform: rotate(-90deg);
+    }
+    [name=#{$prefix-whj}firstPage] {
+        transform: rotate(180deg);
+    }
+    [name=#{$prefix-whj}confirm] {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin: 0;
+    }
+}

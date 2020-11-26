@@ -1,0 +1,1117 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div class="layout-type1 user" id="alarmOverviewPage" style="height:100%;background:#fff;">
+        <!-- <div class="container-hat container-overview">
+            <p class="text-lg">告警概览</p>
+            <div class="hat-content hat-content2 clearfix hide">
+                <ul class="circle-data-box" id="alarm-counts">
+                    <li class="numerical-box type1">
+                        <p class="number text-overflow">0</p>
+                        <p class="numerical-title text-overflow">告警总数</p>
+                    </li>
+                    <li class="numerical-box type2">
+                        <p class="number text-overflow">0</p>
+                        <p class="numerical-title text-overflow">今日告警数</p>
+                    </li>
+                    <li class="numerical-box type3">
+                        <p class="number text-overflow">0</p>
+                        <p class="numerical-title text-overflow">本月告警数</p>
+                    </li>
+                </ul>
+                <div class="circle-chart-box dot-card-body">
+                    <div class="circle-chart" id="alarmCountsCircleChart"></div>
+                    <div class="chart-legend">
+                        <ul class="legend-list">
+                            <li class="legend-item">
+                                <i class="legend-icon error"></i>
+                                <span class="legend-name">未处理</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                            <li class="legend-item">
+                                <i class="legend-icon warning"></i>
+                                <span class="legend-name">已命中</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                            <li class="legend-item">
+                                <i class="legend-icon online"></i>
+                                <span class="legend-name">已误报</span>
+                                <span class="legend-num">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="line-chart-box">
+                    <p class="text-lg">告警统计 </p>
+                    <div class="lineChart" id="alarmStatisticsLineChart"></div>
+                    <div class="chart-card-empty hide">
+                        <img src="./assets/images/common/no-data.png" />
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="content content-hat" id="alarmOverviewFilterBox"> -->
+        <div class="content-hat" id="alarmOverviewFilterBox">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative">
+                <div class="card-title-box">
+                    <div class="card-title">
+                        <ul class="nav nav-tabs" id="alarm-change-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show fz18" data-toggle="tab" href="#all" role="tab"
+                                    aria-controls="all" aria-selected="false">全部告警</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fz18" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="true">我的告警</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fz18" data-toggle="tab" href="#alarmAnalysis" role="tab"
+                                    aria-controls="alarmAnalysis" aria-selected="true">新增告警</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link fz18" data-toggle="tab" href="#socketAlarmList" role="tab"
+                                    aria-controls="socketAlarmList" aria-selected="true">最新告警</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="card-operate-box float-right">
+                        <div class="operate">
+                            <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                <div class="aui-input-group-inner" title="支持以“,”拼接查询">
+                                    <input placeholder="请输入姓名或者身份证号" type="text" class="aui-input"
+                                        id="alarm-overview-search">
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="tag-list clearfix">
+                                <li class="tag hide">
+                                    <span>告警等级：</span>
+                                    <span>全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>告警状态：</span>
+                                    <span>全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>所属机构：</span>
+                                    <span>全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>告警时间：</span>
+                                    <span class="alarmTimeTop">全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>人像库：</span>
+                                    <span>全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>在逃人员状态：</span>
+                                    <span>全部</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>告警时间：</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                            </ul>
+                            <span class="btn btn-sm btn-filter" data-role="expandFilter">
+                                <span>显示筛选</span>
+                                <i class="aui-icon-drop-down-2"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="filter-box">
+                    <li class="filter-item clearfix hide">
+                        <span class="filter-label text-overflow">告警等级:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">紧急</li>
+                                    <li class="tag">重要</li>
+                                    <li class="tag">一般</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix hide">
+                        <span class="filter-label text-overflow">告警状态:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">未处理</li>
+                                    <li class="tag">已命中</li>
+                                    <li class="tag">已误报</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix mt-0">
+                        <span class="filter-label text-overflow">所属机构:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">告警时间:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">近十天</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag hide">近十天</li>
+                                    <!--勿删-->
+                                    <li class="tag">近二十天</li>
+                                    <li class="tag">近三十天</li>
+                                    <li class="tag">自定义时间</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">人像库:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow" title="在逃人员状态">在逃人员状态:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag" value="1">布控中</li>
+                                    <li class="tag" value="2">疑似撤逃</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="alarmLableShow hide">
+                    <button class="btn btn-link" type="button">查看更多</button>
+                    <div class="alarmLableTotal">
+                        <p>预警总数：</p>
+                        <p id="alarmLableTotalNum">2500</p>
+                    </div>
+                    <div class="alarmLableShowDetail showMoreLables">
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarmLableShowItem">
+                            <div class="alarmLableTitle">在逃人员</div>
+                            <div class="alarmLableDetailShow">
+                                <div class="alarmLableDetail">
+                                    <span>布控人数：</span>
+                                    <span class="alarmLableBKRS">2000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警次数：</span>
+                                    <span class="alarmLableYJCS">1000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>预警人数：</span>
+                                    <span class="alarmLableBKRS">20000</span>
+                                </div>
+                                <div class="alarmLableDetail">
+                                    <span>已确认数：</span>
+                                    <span class="alarmLableBKRS">8888</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content tab-content aui-mb-sm" id="alarmOverviewContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="clearfix">
+                            <ul class="nav nav-tabs nav-tabs-split" id="all-alarm-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="javascript:;" data-toggle="tab" role="tab"
+                                        aria-selected="true">按时间排序</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:;" data-toggle="tab" role="tab"
+                                        aria-selected="false">按布控对象排序</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="alarm-info-box alarm-info-css1">
+                            <ul class="card-title-content warning-list alarm-overview-time clearfix"
+                                id="all-alarm-time">
+                                <!-- <li class="warning-item">
+                                    <div class="warning-item-content">
+                                        <div class="warning-item-img-box">
+                                            <div class="warning-item-img">
+                                                <img src="http://190.15.116.189:8066/faceImgService/faceImg/getImgByUrl?id=21621d1c6e8d481e8ee5f186c1c6a28d">
+                                                <img src="http://190.15.117.56:8010/facePlatform/2019-01-24/1548334532277_2bbdd0728f984b8f8c1c0e050a7aaa12_31_xt.jpg">
+                                            </div>
+                                            <span class="warning-item-percent grade1">31%</span>
+                                        </div>
+                                        <div class="warning-item-name"><span>818特大杀人案</span><span class="warning-item-level grade1">紧急</span></div>
+                                        <p class="warning-item-address">
+                                            <span class="warning-item-text" title="宏发大世界青年路入口2">宏发大世界青年路入口2</span>
+                                        </p>
+                                        <p class="warning-item-time">
+                                            <i class="aui-icon-color-default aui-icon-history"></i>
+                                            <span class="warning-item-text">2019-01-24 20:54:04</span>
+                                        </p>
+                                    </div>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="alarm-info-box alarm-info-css2 hide">
+                            <ul class="card-list2 alarm-overview-cardlist" id="all-alarm-object">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="clearfix">
+                            <ul class="nav nav-tabs nav-tabs-split" id="my-alarm-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="javascript:;" data-toggle="tab" role="tab"
+                                        aria-selected="true">按时间排序</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:;" data-toggle="tab" role="tab"
+                                        aria-selected="false">按布控对象排序</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="alarm-info-box alarm-info-css1">
+                            <ul class="card-title-content warning-list alarm-overview-time clearfix" id="my-alarm-time">
+                            </ul>
+                        </div>
+                        <div class="alarm-info-box alarm-info-css2 hide">
+                            <ul class="card-list2 alarm-overview-cardlist" id="my-alarm-object"></ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="alarmAnalysis" role="tabpanel" aria-labelledby="alarmAnalysis-tab">
+                        <div class="clearfix">
+                            <button id="searchAlarmAnalysis" type="button"
+                                class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+                            <div class="analysisTimeChose">
+                                <label class="aui-form-label aui-col-3">比对时间：</label>
+                                <div class="aui-col-10">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs"
+                                        id="analysis_time_alarm_start">
+                                        <input id="startTimeAlarmAnalysis"
+                                            class="input-text datepicker-input radius Wdate" type="text" readonly
+                                            onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeAlarmAnalysis\') || \'%y-%M-%d\'}',minDate:'#F{$dp.$D(\'endTimeAlarmAnalysis\',{d:-31})}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTimeAlarmAnalysis"
+                                            class="input-text datepicker-input radius Wdate" type="text" readonly
+                                            onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeAlarmAnalysis\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeAlarmAnalysis\',{d:31})}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="aui-form-label aui-col-3" style="padding:0.25rem 0.5rem 0;">VS</label>
+                                <div class="aui-col-10">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs"
+                                        id="analysis_time_alarm_end">
+                                        <input id="startTimeAlarmAnalysisTwo"
+                                            class="input-text datepicker-input radius Wdate" type="text" readonly
+                                            onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeAlarmAnalysisTwo\') || \'%y-%M-%d\'}',minDate:'#F{$dp.$D(\'endTimeAlarmAnalysisTwo\',{d:-31})}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTimeAlarmAnalysisTwo"
+                                            class="input-text datepicker-input radius Wdate" type="text" readonly
+                                            onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeAlarmAnalysisTwo\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeAlarmAnalysisTwo\',{d:31})}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alarm-info-box alarm-info-css2">
+                            <ul class="card-list2 alarm-overview-cardlist" id="alarm-analysis-object"></ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="socketAlarmList" role="tabpanel"
+                        aria-labelledby="socketAlarmList-tab">
+                        <div class="alarm-info-box alarm-info-css2">
+                            <ul class="card-title-content warning-list alarm-overview-time clearfix"
+                                id="sock-alarm-time">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alarmSearchOpt">
+                        <button type="button" id="allSearchAlarm" class="btn btn-primary aui-mr-0 aui-col-1">全部</button>
+                        <button type="button" id="nSearchAlarm" class="btn aui-mr-0 aui-col-1">未处理</button>
+                        <button type="button" id="cSearchAlarm" class="btn aui-mr-0 aui-col-1">正确</button>
+                        <button type="button" id="wSearchAlarm" class="btn aui-mr-0 aui-col-1">错误</button>
+                        <button type="button" id="alarmImport" class="btn aui-mr-0 aui-col-1">
+                            <i class="icon aui-icon-import"></i>
+                            <span class="text">导出</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-logo-wrap">
+                <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+            </div>
+        </div>
+        <div class="sliderContent" id="sliderContent">
+            <div class="timeSlider" id="timeSlider"></div>
+            <div class="choseTime">
+                <div class="input-daterange datepicker-box aui-input aui-mt-xs" style="font-size:0.75rem;">
+                    <input id="startTimeSlider" class="input-text datepicker-input radius Wdate" type="text">
+                    <span class="input-group-addon">~</span>
+                    <input id="endTimeSlider" class="input-text datepicker-input radius Wdate" type="text">
+                    <span class="input-group-addon">
+                        <i class="datepicker-icon aui-icon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="alarm-wrap-flex" id="sliderShow" show="1">
+            <i class="aui-icon-drop-down-2"></i>
+        </div>
+    </div>
+    <div class="layout-type3 search-result hide search-path" id="currentAlarmPath">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left path-box alarm-overview-list">
+            <div class="card-side-header-box">
+                <div class="title-wrap">
+                    <div class="float-right text-md text-bold" id="alartmListTotal" style="line-height:2rem;">告警总数</div>
+                    <button class="float-left btn" id="backToAlarmOverview">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span class="v-middle">返回</span>
+                    </button>
+                </div>
+            </div>
+            <div class="card-side-content-box card-control-content">
+                <div id="alarmList">
+                    <div class="aui-timeline-wrap clearfix">
+                        <div class="case-img-box float-left clearfix relative">
+                            <img class="case-img float-left" peopleid="2bbdd0728f984b8f8c1c0e050a7aaa12"
+                                src="http://190.15.116.189:8066/faceImgService/faceImg/getImgByUrl?id=6e00497a9bf840a793ef883b4f340ca1"
+                                alt="">
+                            <img class="case-img float-left" alarmid="9adcf78406264ec5a457b762ada618d6"
+                                src="http://190.15.117.56:8010/facePlatform/2019-01-24/1548334534282_2bbdd0728f984b8f8c1c0e050a7aaa12_31_xt.jpg"
+                                alt="">
+                            <span class="case-num">31%</span>
+                        </div>
+                        <div class="alarm-content-right float-left aui-ml-mmd">
+                            <div class="alarm-group clearfix">
+                                <div class="alarm-group-title text-md text-bold float-left">818特大杀人案</div>
+                                <div class="float-right">
+                                    <span class="warning-item-level grade1">紧急</span>
+                                </div>
+                            </div>
+                            <div class="alarm-group">
+                                <span class="text-lighter text-xm">宏发大世界青年路入口2</span>
+                            </div>
+                            <div class="alarm-group">
+                                <span class="text-lighter text-xm">2019-01-24 20:54:04</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 relative" style="height:100%; width: 100%;">
+            <!-- <iframe class="map-iframe" width="100%" height="100%" id="alarm_overview_path" style="height:100%; width: 100%;" value="http://190.168.17.2:6082/peopleCity.html?rxModule=alarm_overview_path"
+                src="http://190.168.17.2:6082/peopleCity.html?rxModule=alarm_overview_path"></iframe> -->
+            <iframe class="map-iframe" width="100%" height="100%" id="alarm_overview_path"
+                style="height:100%; width: 100%;"></iframe>
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs"
+                                        id="customPopup_time_alarm">
+                                        <input id="startTimeAlarm" class="input-text datepicker-input radius Wdate"
+                                            type="text"
+                                            onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeAlarm\') || \'%y-%M-%d\'}',minDate:'#F{$dp.$D(\'endTimeAlarm\',{d:-30})}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTimeAlarm" class="input-text datepicker-input radius Wdate"
+                                            type="text"
+                                            onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeAlarm\')}',maxDate:'#F{$dp.$D(\'startTimeAlarm\',{d:30})||\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" autocomplete="off" placeholder="开始时间" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" autocomplete="off" placeholder="结束时间" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmOkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">确认后将无法修改，是否确认是同一个人？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 确认告警信息弹窗 end -->
+
+    <!-- 误报告警信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">误报告警信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">误报后将无法修改，是否选择误报？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 误报告警信息弹窗 end -->
+
+    <!-- 在逃核验信息弹窗 -->
+    <div class="modal fade modal-lger" id="alarmCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">在逃核验信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body alarmCheckContent">
+                    <div class="detailContent">
+                        <table id="mainTable" border="1" cellspacing="0" cellpadding="0" align="center"
+                            class="TableMain">
+                            <colgroup>
+                                <col width="13%">
+                                <col width="20%">
+                                <col width="13%">
+                                <col width="20%">
+                                <col width="13%">
+                                <col width="20%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">在逃人员编号</div>
+                                    </td>
+                                    <td colspan="4" class="TableDetail1">--</td>
+                                    <td rowspan="8" class="TableDetail1 img" align="center" valign="middle">
+                                        <img height="120" width="110" src="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">姓名</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">曾用名/别名绰号</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">性别</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">出生日期</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">民族</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">身高</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2" width="13%">
+                                        <div align="right">证件</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2" width="13%">
+                                        <div align="right">其他证件</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">口音</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">职业</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">体貌特征</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">特殊标记</div>
+                                    </td>
+                                    <td colspan="2" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">籍贯</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">户籍地址</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="2">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">现住地址</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="5">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">案件编号</div>
+                                    </td>
+                                    <td colspan="3" class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">案件类别</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">简要案情及附加信息</div>
+                                    </td>
+                                    <td colspan="5" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">立案单位</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2" width="13px">
+                                        <div align="right">立案单位详称</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2" width="13%">
+                                        <div align="right">立案日期</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">逃跑日期</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">逃跑方向</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">在逃类型</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">备注</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="5">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">法律文书</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">签发日期</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right"></div>
+                                    </td>
+                                    <td class="TableDetail1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">通缉令</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">通缉令级别</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">奖金</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">主办单位分类</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">主办单位</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="3">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">主办人</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">联系方式</div>
+                                    </td>
+                                    <td colspan="3" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">主办人2</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">联系方式2</div>
+                                    </td>
+                                    <td colspan="3" class="TableDetail1">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2" width="13%">
+                                        <div align="right">主办单位电话</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">上网登记审批人</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="5">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">抓获日期</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">抓获方式</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="3">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">抓获地区</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">抓获单位</div>
+                                    </td>
+                                    <td class="TableDetail1" colspan="3">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">指纹编号</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">DNA编号</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right"></div>
+                                    </td>
+                                    <td class="TableDetail1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">撤销填表人</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+
+                                    <td class="TableDetail2">
+                                        <div align="right">撤销审批人</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right"></div>
+                                    </td>
+                                    <td class="TableDetail1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">入部登记库时间</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">登记最后修改时间</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right"></div>
+                                    </td>
+                                    <td class="TableDetail1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableDetail2">
+                                        <div align="right">入部撤销库时间</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right">撤销最后修改时间</div>
+                                    </td>
+                                    <td class="TableDetail1">--</td>
+                                    <td class="TableDetail2">
+                                        <div align="right"></div>
+                                    </td>
+                                    <td class="TableDetail1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-content aui-mt-sm">
+                        <!-- 表格展示 -->
+                        <table id="alarmCheckTable" class="table-hover" data-toggle="table" data-detail-view="true"
+                            data-detail-formatter="detailFormatter" data-pagination="false">
+                            <colgroup>
+                                <col width="1%">
+                                <col width="11%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="ztCode">在逃人员编码</th>
+                                    <th data-field="ztryType">在逃类型</th>
+                                    <th data-field="name">姓名</th>
+                                    <th data-field="gender">性别</th>
+                                    <th data-field="hjdz">户籍地行政区划</th>
+                                    <th data-field="ajType">案件类别</th>
+                                    <th data-field="ladw">立案单位</th>
+                                    <th data-field="zhTime">抓获时间</th>
+                                    <th data-field="zhdw">抓获单位</th>
+                                    <th data-field="onlineTime">上网时间</th>
+                                    <th data-field="cxTime">撤销时间</th>
+                                    <th data-field="zbdw">主办单位</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <!-- 表格展示 end-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 在逃核验信息弹窗 end -->
+
+    <!-- 撤销信息弹窗 -->
+    <div class="modal fade modal-sm" id="alarmRevokeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="z-index: 1051">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">撤销信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body text-center">
+                    <h1 class="modal-content-title">撤销后该人员将从布控库中删除，是否选择撤销？</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 撤销信息弹窗 end -->
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/pathAnalysis.js"></script>
+    <script type="text/javascript" src="js/alarmOverview.js"></script>
+</div>

@@ -1,0 +1,38 @@
+<fieldset>
+    <label for="radio-1">New York</label>
+    <input type="radio" name="radio-1" id="radio-1" data-role="radio" checked disabled>
+    <label for="radio-2">Paris</label>
+    <input type="radio" name="radio-1" id="radio-2" data-role="radio" disabled>
+    <label for="radio-3">London</label>
+    <input type="radio" name="radio-1" id="radio-3" data-role="radio">
+</fieldset>
+<fieldset style="margin-top:20px;">
+    <p>按钮类型</p>
+    <label for="radio-button-1" class="ui-checkboxradio-button">一周</label>
+    <input type="radio" name="radio-2" id="radio-button-1" data-role="radio-button" checked>
+    <label for="radio-button-2" class="ui-checkboxradio-button">一个月</label>
+    <input type="radio" name="radio-2" id="radio-button-2" data-role="radio-button">
+    <label for="radio-button-3" class="ui-checkboxradio-button">三个月</label>
+    <input type="radio" name="radio-2" id="radio-button-3" data-role="radio-button">
+    <label for="radio-button-4" class="ui-checkboxradio-button">一年</label>
+    <input type="radio" name="radio-2" id="radio-button-4" data-role="radio-button">
+</fieldset>
+<fieldset style="margin-top:20px;">
+    <p>tag类型</p>
+    <label for="radio-tag-1" class="ui-checkboxradio-tag">一周</label>
+    <input type="radio" name="radio-3" id="radio-tag-1" data-role="radio-button" checked>
+    <label for="radio-tag-2" class="ui-checkboxradio-tag">一个月</label>
+    <input type="radio" name="radio-3" id="radio-tag-2" data-role="radio-button">
+    <label for="radio-tag-3" class="ui-checkboxradio-tag">三个月</label>
+    <input type="radio" name="radio-3" id="radio-tag-3" data-role="radio-button">
+    <label for="radio-tag-4" class="ui-checkboxradio-tag">一年</label>
+    <input type="radio" name="radio-3" id="radio-tag-4" data-role="radio-button">
+</fieldset>
+<script>
+    $(function() {
+        $('[ data-role="radio"]').checkboxradio();
+        $('[ data-role="radio-button"]').checkboxradio({
+            icon: false
+        });
+    })
+</script>

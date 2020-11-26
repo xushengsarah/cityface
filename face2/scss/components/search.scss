@@ -1,0 +1,251 @@
+.aui-input-search {
+    .ui-selectmenu-button {
+        width: auto;
+        min-width: 7rem;
+        max-width: 40%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        .ui-selectmenu-text {
+            font-size: $font-size-default;
+        }
+    }
+    .ui-selectmenu-disabled {
+        border-right-color: $border-color-default;
+    }
+}
+
+.search {
+    &-box {
+        position: relative;
+        width: 100%;
+        display: flex;
+        height: 3rem;
+        line-height: 1.5rem;
+        padding: .75rem 1.875rem;
+        background: $background-color-x-gray;
+        [class^=aui-icon-] {
+            line-height: 1.5rem;
+        }
+        .search-icon {
+            padding: 0 .75rem;
+            border-left: 1px solid rgba($color-black, .1);
+            color: $text-color-lighter;
+            &.noborder {
+                border: 0;
+            }
+            [class^=aui-icon-]{
+                font-weight: bold;
+                font-size: $font-size-large;
+            }
+            &:hover{
+                color: $theme-color;
+            }
+            &:first-child {
+                padding-left: 0.5rem;
+            }
+        }
+        .search-more {
+            padding-left: 1rem;
+            padding-right: .625rem;
+            &.active {
+                .aui-icon-filter {
+                    position: relative;
+                    z-index: 3;
+                    color: $theme-color;
+                }
+            }
+        }
+        .search-more-box {
+            position: absolute;
+            z-index: 2;
+            left: 22.875rem;
+            top: .375rem;
+            display: none;
+            width: 32rem;
+            min-height: 20px;
+            background: $color-white;
+            border-radius: $border-radius;
+            box-shadow: $box-shadow;
+            border: 1px solid $border-color-default;
+            &::before {
+                position: absolute;
+                left: -2.25rem;
+                top: -1px;
+                content: '';
+                display: inline-block;
+                width: 2.25rem;
+                height: 2.25rem;
+                background: $color-white;
+                border: 1px solid $border-color-default;
+                box-shadow: -12px 0 34px rgba(0, 0, 0, 0.1);
+                border-right: none;
+                border-top-left-radius: $border-radius;
+                border-bottom-left-radius: $border-radius;
+            }
+        }
+        .search-more-inner {
+            height: 100%;
+            max-height: 40rem;
+            padding: $space;
+            overflow-y: scroll;
+            .text-item {
+                padding: 1rem .75rem;
+                .text-label{
+                    width:auto;
+                    min-width: 5rem;
+                }
+            }
+        }
+        &.btn-search {
+            &-box {
+                .btn {
+                    height: 3rem;
+                    line-height: calc(3rem - 2px);
+                }
+                .btn-search{
+                    height: 3rem;
+                    line-height: 3rem;
+                }
+            }
+        }
+    }
+    &-input {
+        @include ellipsis();
+        flex: 1;
+        height: 100%;
+        min-width: 2rem;
+        border: none;
+        background: none;
+    }
+}
+.btn-search {
+    .aui-input {
+        padding-right: 0;
+        padding-left: 2.75rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    &.index-user {
+
+        input::-webkit-input-placeholder {
+            color: rgba($color-white, 0.35);
+        }
+    }
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(50%, -50%);
+    }
+    .btn {
+        &.btn-default {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: none;
+            margin: 0;
+        }
+    }
+}
+.search-shadow {
+    box-shadow: $box-shadow;
+    .aui-input,
+    .aui-input-suffix {
+        border: none;
+    }
+}
+.search-section{
+    display: none;
+    margin: 0 -1.875rem;
+    padding: 1.25rem 1.875rem 0;
+    background: $background-color-x-gray;
+    border-bottom: 1px solid $border-color-light;
+}
+.search-expand{
+    position: relative;
+    height: 3.75rem;
+    &:not(.deep){
+        .aui-input{
+            color: rgba($color-white, .5);
+            background: rgba($color-white, .1);
+            border-color: transparent;
+            &::-webkit-input-placeholder{
+                color: rgba($color-white, .5);
+            }
+        }
+        .search-icon{
+            color: rgba($color-white, .3);
+            &.active{
+                color: $color-white;
+            }
+        }
+    }
+    .aui-input{
+        font-size: $font-size-large;
+        padding: 0 5rem 0 1.25rem;
+    }
+    .aui-input-group-inner .btn{
+        width: 11.25rem;
+        min-width: 11.25rem;
+        height: 3.75rem;
+        line-height: calc(3.75rem - 2px);
+        margin-right: 0;
+        font-size: $font-size-large;
+    }
+    .search-icon{
+        position: absolute;
+        right: 13.5rem;
+        top: 50%;
+        font-size: $font-size-x-larger;
+        color: $text-color-lighter;
+        transform: translateY(-50%);
+        &.active{
+            color: $text-color-default;
+        }
+    }
+    .search-dropdown{
+        position: absolute;
+        z-index: 2;
+        top: 100%;
+        left: 0;
+        display: none;
+        width: 100%;
+        height: 11.5rem;
+        background: $background-color-x-gray;
+        border-radius: $border-radius-medium;
+        padding: $space*1.2;
+        &-inner{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            background: $color-white;
+            border: 1px dotted $theme-color;
+            .btn{
+                margin-right: 0;
+                margin-top: $space*.5;
+            }
+        }
+        .aui-icon-not-through{
+            position: absolute;
+            right: $space;
+            top: $space;
+            color: $text-color-lighter;
+        }
+    }
+    &.small{
+        height: 3rem;
+        .aui-input-group-inner .btn{
+            height: 3rem;
+            line-height: calc(3rem - 2px);
+            font-size: $font-size-medium;
+        }
+        .aui-input{
+            font-size: $font-size-medium;
+        }
+        .search-icon{
+            font-size: 2rem;
+        }
+    }
+}

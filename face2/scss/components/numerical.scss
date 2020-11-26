@@ -1,0 +1,59 @@
+.numerical{
+    &-title{
+        @include ellipsis();
+        color: $text-color-lighter;
+        display: block;
+    }
+    &-num{
+        @include ellipsis();
+        margin-top: 4px;
+        font-size: $font-size-x-larger;
+        font-weight: bold;
+    }
+    &-list{
+        margin-top: -4rem;
+        .numerical{
+            float: left;
+            width: 25%;
+            padding-right: $space;
+            margin-top: 4rem;
+        }
+    }
+}
+.numerical-icon{
+    padding: 0 2rem 0 3rem;
+    border-left: 1px solid $border-color-default;
+    font-size: 0;
+    .icon{
+        display: inline-block;
+        vertical-align: middle;
+        width: 6.25rem;
+        height: 6.25rem;
+    }
+    .info{
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 6.25rem);
+        padding-left: 1.5rem;
+    }
+    .number{
+        font-size: 2.5rem;
+    }
+    .subtitle{
+        font-size: $font-size-medium;
+        color: $text-color-lighter;
+        margin-top: $space*.5;
+    }
+    &-list{
+        display: block;
+        width: 100%;
+        .numerical-icon{
+            float: left;
+            width: 25%;
+            &:first-child{
+                padding-left: 0;
+                border: 0;
+            }
+        }
+    }
+}

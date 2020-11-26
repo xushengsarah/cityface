@@ -1,0 +1,45 @@
+.popover {
+    border: 0;
+    background: rgba($background-color-dark2, .9);
+    color: $color-white;
+    padding: 0 1.5rem;
+    max-width: 460px;
+    .arrow::before {
+        display: none;
+    }
+    .popover-header {
+        @include ellipsis();
+        height: 3.5rem;
+        line-height: 3.5rem;
+        padding: 0;
+        background: none;
+        border-bottom-color: rgba($color-white, .1);
+        &:before {
+            display: none;
+        }
+    }
+    .popover-body {
+        padding: 1.125rem 0 1.5rem;
+        color: inherit;
+    }
+}
+
+.bs-popover-auto[x-placement^=right] .arrow::after,
+.bs-popover-right .arrow::after {
+    border-right-color: rgba($background-color-dark2, .9);
+}
+
+.bs-popover-auto[x-placement^=left] .arrow::after,
+.bs-popover-left .arrow::after {
+    border-left-color: rgba($background-color-dark2, .9);
+}
+
+.bs-popover-auto[x-placement^=top] .arrow::after,
+.bs-popover-top .arrow::after {
+    border-top-color: rgba($background-color-dark2, .9);
+}
+
+.bs-popover-auto[x-placement^=bottom] .arrow::after,
+.bs-popover-bottom .arrow::after {
+    border-bottom-color: rgba($background-color-dark2, .9);
+}

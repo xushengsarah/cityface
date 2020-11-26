@@ -1,0 +1,90 @@
+<div>
+    <div class="layout-type2 new-type" id="contentPageTool">
+        <!-- 内容卡片开始 -->
+        <div class="aui-card aui-card-cover">
+            <div class="card-title-box">
+                <span class="card-title">AI工具</span>
+            </div>
+            <div class="card-content" style="padding: 1rem 3rem;">
+                <ul class="card-info-list card-info-list2 clearfix" id="toolCardList">
+                    <li class="card-info card-info2 tool-card" lc="onetoone">
+                        <img class="icon" src="./assets/images/files/icon5.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">图片比对</p>
+                            <p class="subtitle">将两张嫌疑人图片进行一比一比对,判断是否为同一人</p>
+                        </div>
+                    </li>
+                    <li class="card-info card-info2 tool-card" lc="peerAnalysis">
+                        <img class="icon" src="./assets/images/files/icon6.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">同行人分析</p>
+                            <p class="subtitle">找出嫌疑人的同行/同伙人员,掌握其活动范围及规律</p>
+                        </div>
+                    </li>
+                    <li class="card-info card-info2 tool-card" lc="AI-alarm">
+                        <img class="icon" src="./assets/images/files/icon6.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">AI告警</p>
+                            <p class="subtitle">找出嫌疑人的同行/同伙人员,掌握其活动范围及规律</p>
+                        </div>
+                    </li>
+                    <li class="card-info card-info2 tool-card disabled">
+                        <img class="icon" src="./assets/images/files/icon7.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">图片模糊处理</p>
+                            <p class="subtitle">将抓拍不清晰嫌疑人的图片进行图像增加处理</p>
+                        </div>
+                    </li>
+                    <li class="card-info card-info2 tool-card disabled">
+                        <img class="icon" src="./assets/images/files/icon8.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">暗影捕手</p>
+                            <p class="subtitle">在光线环境较弱的案件场景中,找出嫌疑人的动态线索</p>
+                        </div>
+                    </li>
+                    <li class="card-info card-info2 tool-card" lc="alarm-overview-suspect">
+                        <img class="icon" src="./assets/images/files/icon8.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">疑似预警</p>
+                            <p class="subtitle">找出疑似病例人员的预警信息</p>
+                        </div>
+                    </li>
+                    <!-- lc="batch-comparison"-->
+                    <li class="card-info card-info2 tool-card disabled">
+                        <img class="icon" src="./assets/images/files/icon9.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">批量比对</p>
+                            <p class="subtitle">一批待身份落地的照片，通过批量比对落地身份后，批量生成比对结果</p>
+                        </div>
+                    </li>
+                    <!--  lc="cross-comparison"-->
+                    <li class="card-info card-info2 tool-card disabled">
+                        <img class="icon" src="./assets/images/files/icon11.png" alt="" srcset="">
+                        <div class="info">
+                            <p class="title text-lg text-bold">交叉比对</p>
+                            <p class="subtitle">两批数据（如两个照片文件夹），通过交叉比对功能，匹配有交集的人员</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 内容卡片结束 -->
+        <div class="footer-logo-wrap">
+            <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+        </div>
+    </div>
+
+    <!-- AI工具 子页面 -->
+    <ul class="tool-page-box hide" id="toolPage">
+        <li class="toolPage-save-item hide" id="onetoone"></li>
+        <li class="toolPage-save-item hide" id="peerAnalysis"></li>
+        <li class="toolPage-save-item hide" id="AI-alarm"></li>
+        <li class="toolPage-save-item hide"></li>
+        <li class="toolPage-save-item hide"></li>
+        <li class="toolPage-save-item hide" id="alarm-overview-suspect"></li>
+        <li class="toolPage-save-item hide" id="batch-comparison"></li>
+        <li class="toolPage-save-item hide" id="cross-comparison"></li>
+    </ul>
+
+    <script type="text/javascript" src="js/tool.js"></script>
+</div>

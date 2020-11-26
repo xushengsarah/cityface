@@ -1,0 +1,51 @@
+$spinner-height: 2.25rem!default;
+$spinner-button-width:2.25rem!default;
+.ui-spinner {
+    display: block;
+    width: 100%;
+    height: $spinner-height;
+    border-color: $border-color-default;
+    border-radius: $border-radius;
+    &:hover {
+        border-color: $border-color-focus;
+    }
+    .ui-spinner-input {
+        width: calc(100% - 2.25rem);
+        height: 100%;
+        line-height: 100%;
+        padding: 0 0 0 $space;
+        margin: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .ui-button:hover .ui-icon,
+    .ui-button:focus .ui-icon,
+    .ui-icon {
+        @extend .aui-icon-drop-down;
+        text-indent: 0;
+        font-size: 12px;
+        background-image: none;
+        color: $text-color-lighter;
+        font-family: 'iconFont';
+    }
+    .ui-icon-triangle-1-n {
+        transform: scale(.8) rotate(180deg);
+    }
+    .ui-icon-triangle-1-s {
+        transform: scale(.8);
+    }
+    a.ui-spinner-button {
+        width: $spinner-button-width;
+        line-height: 50%;
+        text-align: center;
+        border: 0;
+        background: none;
+        &:hover {
+            background: $background-color-x-gray;
+            .ui-icon {
+                color: $text-color-default;
+            }
+        }
+    }
+}

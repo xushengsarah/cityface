@@ -1,0 +1,44 @@
+.circle-box {
+    width: 180px;
+    .circle {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        .inspect-tip-img-bg {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #48515c;
+            border: 8px solid transparent;
+        }
+        .canvas {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            canvas {
+                position: absolute;
+                top: -11px;
+                left: -11px;
+            }
+        }
+        .value {
+            color: #fff;
+            font-size: 32px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            line-height: 32px;
+            margin-top: -16px;
+            transform: translateX(-50%);
+        }
+    }
+    .label {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 20px;
+    }
+}

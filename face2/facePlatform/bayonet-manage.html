@@ -1,0 +1,169 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div class="layout-type3" id='bayonetManage'>
+        <!-- 右边内容 -->
+        <div class="bayonet-left aui-col-8">
+            <div class="bayonet-left-search">
+                <form class="aui-from-horizontal aui-row">
+                    <div class="form-group" id='bayonetLeftSearchRow'>
+                        <label class="aui-form-label aui-col-4">卡口名称:</label>
+                        <div class="aui-col-13">
+                            <input id="bayonet_name" type="text" class="aui-input" placeholder="请输入">
+                            <p class="text-danger mg-top-xs tip hide">请输入任务名称</p>
+                        </div>
+                        <div class="aui-col-7">
+                            <button type="button" id="bayonetSearch" class="btn btn-primary aui-mr-0">搜索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="bayonet-left-btn">
+                <button type="button" id="addBayonetBtn" class="btn btn-primary">添加卡口</button>
+                <button type="button" id="addBayonetBtnQuick" class="btn btn-primary disabled">快速添加</button>
+                <button type="button" id="deleteBayonetBtn" class="btn btn-primary disabled">批量删除</button>
+            </div>
+            <div class="bayonet-left-list bayonet-height100" id="bayonetList">
+                <ul class="bayonet-card-list">
+                </ul>
+            </div>
+        </div>
+        <div class="bayonet-right aui-col-16">
+            <div class="bayonet-right-search">
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-12">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">镜头名称：</label>
+                            <div class="aui-col-18">
+                                <input id="cameral_name" type="text" class="aui-input" placeholder="请输入">
+                                <p class="text-danger mg-top-xs tip hide">请输入镜头名称</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-12">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">镜头国际编码：</label>
+                            <div class="aui-col-18">
+                                <input id="cameral_gbcode" type="text" class="aui-input" placeholder="请输入">
+                                <p class="text-danger mg-top-xs tip hide">请输入镜头国际编码</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-8">
+                        <div class="form-group" id="">
+                            <div class="aui-col-12 mt-sm">
+                                <label class="aui-form-label" for="bayonetRadio1" id="currentBayonetGroup">当前卡口组</label>
+                                <input type="radio" name="control-radio-1" id="bayonetRadio1" value="bayonetRadio1" data-role="radio" checked>
+                            </div>
+                            <div class="aui-col-12 mt-sm">
+                                <label class="aui-form-label" for="bayonetRadio2" id="allBayonetGroup">全部卡口组</label>
+                                <input type="radio" name="control-radio-1" id="bayonetRadio2" value="bayonetRadio2" data-role="radio">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-4">
+                        <button type="button" id="bayonetCameralSearch" class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+                        <!-- <button type="button" id="" class="btn btn-primary aui-mr-0 aui-col-1">重置</button> -->
+                    </div>
+                </form>
+            </div>
+            <div class="bayonet-right-btn">
+                <button type="button" id="bayonetCameralMultiDelete" class="btn btn-primary aui-mr-0 disabled">批量删除</button>
+            </div>
+            <div class="bayonet-right-tip">
+                <div class="tip-box bayonet-right-tip-box">
+                    <i class="icon aui-icon-information"></i>
+                    <span>已选择
+                        <span class="checked-counts" id="bayonetCameraCounts">0</span>项</span>
+                </div>
+            </div>
+            <div class="bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="tableBayonetList" class="table table-hover">
+                                <colgroup>
+                                    <col>
+                                    <col width="25%">
+                                    <col width="25%">
+                                    <col width="35%">
+                                    <col width="15%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-bayonet">
+                                                    <label class="table-checkbox-label aui-form-label"></label>
+                                                </div>
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="gbCode">
+                                            <div class="th-inner ">镜头国标编码</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="name">
+                                            <div class="th-inner ">镜头名称</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="organ">
+                                            <div class="th-inner ">所属机构</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner ">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="tableBayonetListPagination"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 右边内容结束 -->
+    </div>
+    <!-- 删除提示弹窗 -->
+    <div class="modal fade modal-sm" id="dispatchTipModal" tabindex="-1" role="dialog" aria-labelledby="dispatchTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="dispatchTipLabel">是否确认删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="dispatchModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/bayonetManage.js"></script>
+</div>

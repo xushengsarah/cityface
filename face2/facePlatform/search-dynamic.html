@@ -1,0 +1,443 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="./assets/vendor/paginator/css/paginator.css" />
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <div class="layout-type3 small search-result searchDynamic" id="current-page-dynamic">
+        <div class="aui-card side side-left" id="getSearchBox">
+            <div class="card-side-header-box">
+                <div class="search-box">
+                    <!-- <div class="search-wrap"> -->
+                    <!-- <span class="search-icon noborder">
+                        <i class="aui-icon-idcard"></i>
+                    </span> -->
+                    <div class="search-box-border">
+                        <select name="type" class="idcardSelect">
+                            <option class="option-item" value="">默认</option>
+                            <option class="option-item" value="22">在逃库</option>
+                        </select>
+                        <!-- <span id="idcardSelectDynamic" class="idcardSelect">
+                            <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                <span style="margin-top: -0.2rem;display: inline-block;">在逃人员</span>
+                            </label>
+                        </span> -->
+                        <input placeholder="请输入身份证号,并选择相应库" id="idcardsearchDynamic" type="text" class="search-input">
+                        <span class="search-icon noborder" id="idcardsearchIconDynamic">
+                            <i class="aui-icon-search"></i>
+                        </span>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="card-side-content-box no-tabs">
+                <div class="add-image-wrap add-type-3 center" id="usearchImgDynamic">
+                    <div class="add-image-icon add-image-new">
+                        <i class="aui-icon-add"></i>
+                        <p class="add-image-box-text">添加一张或多张照片检索</p>
+                        <input type="file" class="uploadFile">
+                    </div>
+                </div>
+                <div class="text-error display-none">请上传图片. </div>
+                <form class="search-result-side-form">
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <div class="aui-form-label-wrap">
+                            <label class="aui-form-label">时间段</label>
+                            <div class="btn-group btn-group-capsule" role="group" aria-label="Basic example"
+                                 id="mergeTimeDynamic">
+                                <button type="button" class="btn btn-sm" data-date="3">近3天</button>
+                                <button type="button" class="btn btn-sm" data-date="7">近7天</button>
+                                <button type="button" class="btn btn-sm btn-primary" data-date="30">近30天</button>
+                            </div>
+                        </div>
+                        <div class="input-daterange datepicker-box aui-input" id="searchMerge_TimeDynamic"
+                             style="font-size:0.75rem;">
+                            <input id="timeStartDynamic" class="input-text datepicker-input radius Wdate" type="text"
+                                   onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timeEndDynamic\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                            <span class="input-group-addon">~</span>
+                            <input id="timeEndDynamic" class="input-text datepicker-input radius Wdate" type="text"
+                                   onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timeStartDynamic\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                            <span class="input-group-addon">
+                                <i class="datepicker-icon aui-icon-calendar"></i>
+                            </span>
+                            <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" autocomplete="off" />
+                            <span class="input-group-addon">~</span>
+                            <input type="text" class="datepicker-input" name="end" placeholder="结束时间" autocomplete="off" />
+                            <span class="input-group-addon">
+                                <i class="datepicker-icon aui-icon-calendar"></i>
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="aui-form-label">相似度</label>
+                        <div class="aui-slider-box clearfix">
+                            <div class="aui-slider-box-inner">
+                                <div class="aui-slider" id="slider"></div>
+                                <div class="aui-slider-min" id="sliderMin"></div>
+                                <div class="aui-slider-max" id="sliderMax"></div>
+                            </div>
+                            <div class="float-right">
+                                <input id="sliderInputDynamic" type="text" class="aui-input aui-slider-input"
+                                       value="90">%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="selMergeCameraIDDynamic">
+                        <div class="btn-group searchTab" role="group" style="margin:0.5rem 0;">
+                            <button type="button" class="btn btn-sm btn-primary" id="searchSelectDynamic">区域</button>
+                            <button type="button" class="btn btn-sm" id="searchMapDynamic">地图</button>
+                        </div>
+                        <div class="searchSelect searchArea">
+                            <div class="cameraTypeSearch" style="padding: 0.5rem 0;">
+                                <label for="dynamicCameraTypeAll" style="margin-right:0.5rem!important">全部</label>
+                                <input type="radio" name="dynamicCameraType" id="dynamicCameraTypeAll" value=""
+                                       data-role="radio" disabled>
+                                <label for="dynamicCameraTypeOne" style="margin-right:0.5rem!important">一类点</label>
+                                <input type="radio" name="dynamicCameraType" id="dynamicCameraTypeOne" value="2" checked
+                                       data-role="radio">
+                                <label for="dynamicCameraTypeTwo" style="margin-right:0!important">二三类点</label>
+                                <input type="radio" name="dynamicCameraType" id="dynamicCameraTypeTwo" value="3"
+                                       data-role="radio">
+                            </div>
+                            <div class="aui-form-item camera-drop-select">
+                                <select class="selectpicker" id="sidebarOrgSelectDynamic" data-live-search="true"
+                                        title="请选择分局">
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    分局
+                                    <span>
+                            </div>
+                            <div class="aui-form-item camera-drop-select">
+                                <select class="selectpicker" id="sidebarPoliceSelectDynamic" data-live-search="true"
+                                        title="请选择派出所" disabled>
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    派出所
+                                    <span>
+                            </div>
+                            <div class="aui-form-item select-multiple-container camera-drop-select">
+                                <select class="selectpicker" id="sidebarCameraSelectDynamic" multiple
+                                        data-live-search="true" title="请选择摄像机" disabled
+                                        data-selected-text-format="count">
+                                </select>
+                                <span class="float-right text-right select-title">
+                                    摄像机
+                                    <span>
+                            </div>
+                        </div>
+                        <div class="searchMap">
+                            <div class="multiPickerSelect">
+                                <div class="multiPickerSelect_title">
+                                    <div class="right-count aui-inline-block">
+                                        <span class="">已选镜头</span>
+                                        (共
+                                        <span class="js-camera-totle">0</span>条)
+                                    </div>
+                                    <div class="js-remove-all">清空全部</div>
+                                </div>
+                                <div class="multiPickerSelect_cnt">
+                                    <div class="js_right_col">
+                                        <ul id="saveNodeSearchDynamic">
+                                        </ul>
+                                    </div>
+                                    <div class="multiPickerDlg_no_result">
+                                        <i></i>未选择镜头
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-from-horizontal">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-form-require">任务名称</label>
+                            <div class="commentSelect" id="commentSelectDynamic">
+                                <!-- <select class="selectpicker" id="dynamicComments" data-live-search="true" title="请选择事件"></select> -->
+                            </div>
+                            <p class="text-danger mg-top-xs tip hide">请选择任务名称</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-side-footer-box">
+                <button type="button" class="btn btn-primary" id="dynamicsearchDynamic">搜索</button>
+                <button type="button" class="btn btn-primary hide searchApply" id="dynamicApply">申请权限</button>
+                <button type="button" class="btn" id="resetBtnDynamic">重置</button>
+            </div>
+        </div>
+        <div class="flex-container p-0 search searchDynamicOnly">
+            <div class="aui-card aui-card-cover result-wrap dynamicCardImgDynamic" id="snappingWrap"
+                 style="position:absolute!important;">
+                <div class="card-title-box">
+                    <i class="aui-icon-camera card-title-icon"></i>
+                    <span class="card-title">动态库</span>
+                    <span class="card-subtitle text-theme" id="sortTotalDynamic"></span>
+                    <span class="card-subtitle text-theme hide" id="sortByTimeTotalDynamic"></span>
+                    <span class="card-subtitle text-theme hide" id="timeTogetherTotalDynamic"></span>
+                    <span class="card-subtitle text-theme hide" id="positionTogetherTotalDynamic"></span>
+                    <div class="card-operate-box float-right">
+                        <div class="operate text-xm">
+                            <div class="operate-item">
+                                <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                    <label for="cjDynamicOne"
+                                           style="margin-right:0.5rem!important;font-size:0.85rem;font-weight:bold;">市局主中心</label>
+                                    <input type="radio" name="cjDynamicType" id="cjDynamicOne" data-role="radio"
+                                           value="1" checked>
+                                    <label for="cjDynamicTwo"
+                                           style="margin-right:0.5rem!important;font-size:0.85rem;font-weight:bold;">龙岗分中心</label>
+                                    <input type="radio" name="cjDynamicType" id="cjDynamicTwo" data-role="radio"
+                                           value="2">
+                                </div>
+                            </div>
+                            <div class="operate-item">
+                                <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                    <!-- <span class="dropdown-toggle" id="sortListDynamic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="按相似度排序">按相似度排序</span>
+                                    <div class="dropdown-menu" aria-labelledby="sortListDynamic">
+                                        <a class="dropdown-item active" id="sortByScoreDynamic">按相似度排序</a>
+                                        <a class="dropdown-item" id="sortByTimeDynamic">按时间排序</a>
+                                        <a class="dropdown-item" id="timeTogetherDynamic">按时间聚合</a>
+                                        <a class="dropdown-item" id="placeTogetherDynamic">按地点聚合</a>
+                                    </div> -->
+                                    <label for="sortByScoreDynamic" style="margin-right:0.5rem!important">相似度</label>
+                                    <input type="radio" name="dynamicSortType" id="sortByScoreDynamic" data-role="radio"
+                                           checked>
+                                    <label for="sortByTimeDynamic" style="margin-right:0.5rem!important">时间</label>
+                                    <input type="radio" name="dynamicSortType" id="sortByTimeDynamic" data-role="radio">
+                                    <label for="timeTogetherDynamic" style="margin-right:0.5rem!important">时间聚合</label>
+                                    <input type="radio" name="dynamicSortType" id="timeTogetherDynamic"
+                                           data-role="radio">
+                                    <label for="placeTogetherDynamic" style="margin-right:0.5rem!important">地点聚合</label>
+                                    <input type="radio" name="dynamicSortType" id="placeTogetherDynamic"
+                                           data-role="radio">
+                                </div>
+                            </div>
+                            <div class="operate-item">
+                                <span id="selectAllSnappingDynamic">
+                                    <label
+                                           class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                        <span
+                                              class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                        <span>全选</span>
+                                    </label>
+                                </span>
+                                <span class="text-link default aui-ml-xs" id="aui-icon-importDynamic">
+                                    <i class="icon aui-icon-import"></i>
+                                    <span class="text">导出</span>
+                                </span>
+                                <span class="text-link default aui-ml-xs" id="refreshBtnDynamic">
+                                    <i class="icon aui-icon-restart"></i>
+                                    <span class="text">刷新</span>
+                                </span>
+                                <div class="btn-group btn-group-icon aui-ml-xs" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" id="showCardSearchDynamic"
+                                            style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                        <i class="aui-icon-card"></i>
+                                    </button>
+                                    <button type="button" class="btn" id="showListSearchDynamic"
+                                            style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                        <i class="aui-icon-list"></i>
+                                    </button>
+                                </div>
+                                <button id="courseAnalyseDynamic" type="button"
+                                        class="btn btn-primary disabled">轨迹分析</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="searchUseSatate" id="dynamicSearchPower"></div>
+                    <div class="card-tip text-lighter hide" style="float:right">*鼠标
+                        <span class="btn-link-tip">点击空白区域左键按住</span>即可进行框选,鼠标
+                        <span class="btn-link-tip">左键按住</span>即可进行
+                        <span class="btn-link-tip">拖拽</span>
+                    </div>
+                    <div class="imageCacheDynamicList" id="imageCacheDynamicList">
+
+                    </div>
+                    <!-- <div class="image-card-list no-bottom-border">
+                        <ul class="image-card-list-wrap showBigImgDynamic wrap-empty-center" id="search-infoDynamic"></ul>
+                        <ul class="image-card-list-wrap display-none showBigImgDynamic wrap-empty-center" id="sortByTimeWrapperDynamic"></ul>
+                        <div class="display-none showBigImgDynamic wrap-empty-center" id="timeTogetherWrapperDynamic"></div>
+                        <div class="display-none showBigImgDynamic wrap-empty-center" id="positionTogetherWrapperDynamic"></div>
+                    </div> -->
+                </div>
+            </div>
+            <div id="searchResultFlexDynamic" class="result-wrap-flex">
+                <i class="aui-icon-drop-left"></i>
+            </div>
+            <div class="search-map-frame">
+                <!-- <iframe class="map-iframe" id="search_map_iframeDynamic" value="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframeDynamic"
+                    src="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframeDynamic"></iframe> -->
+                <iframe class="map-iframe" id="search_map_iframeDynamic"></iframe>
+            </div>
+        </div>
+        <!-- 多张图片识别弹窗 -->
+        <div class="modal fade face" id="myModalDynamic" tabindex="-1" role="dialog"
+             aria-labelledby="myModalDynamicLabel" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalDynamicLabel">请选择人脸图片</h4>
+                        <span aria-label="Close">
+                            <i aria-hidden="true" class="aui-icon-not-through"></i>
+                        </span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="" class="modal-face-img" />
+                        </div>
+                        <div class="modal-face-box">
+                            <p class="modal-face-info">识别出的人脸
+                                <span class="modal-face-num"></span>
+                            </p>
+                            <div class="add-image-wrap add-type-3 clearfix">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">抠图检索</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">原图检索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-type3 search-result display-none search-path" id="currentPagePathDynamic">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left path-box control-left-box">
+            <div class="card-side-header-box">
+                <div class="title-wrap">
+                    <button class="float-left btn" id="backToSearchDynamic">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span class="v-middle">返回</span>
+                    </button>
+                    <button class="float-right btn btn-primary hide">
+                        保存轨迹图片
+                    </button>
+                </div>
+            </div>
+            <div id="coursePageSelectAllDynamic" class="card-content">
+                <label
+                       class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget ui-checkboxradio-checked">
+                    <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                    <span>全选</span>
+                </label>
+            </div>
+            <div class="card-side-content-box bdTop0">
+                <div class="aui-timeline" id="auiTimeLineDynamic">
+                </div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 relative" style="height:100%; width: 100%;">
+            <!-- <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_pathDynamic" style="height:100%; width: 100%;" value="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_pathDynamic"
+                src="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_pathDynamic"></iframe> -->
+            <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_pathDynamic"
+                    style="height:100%; width: 100%;"></iframe>
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+    <iframe id="exportIframeDynamic" src="" style="display: none;border: 0px;"></iframe>
+    <form id="exportFormDynamic" action='' style="display: none;" method="post">
+        <input type="text" name="token" value=''>
+    </form>
+    <script class="js-addVersion" src="./assets/vendor/paginator/js/jqPaginator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/searchCommon.js"></script>
+    <script type="text/javascript" src="js/searchDynamicface.js"></script>
+    <script src="js/pathAnalysis.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script>
+        // 时间轴 删除图片
+        $(".aui-timeline").find(".image-box").hover(function () {
+            $(this).addClass('select');
+            $('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }, function () {
+            $(this).removeClass('select');
+        });
+
+        if ($('.image-box').hasClass('select')) {
+            $(this).find('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }
+
+        $('.switch').on('click', function () {
+            $('.map-container').toggleClass('line-show')
+        })
+
+        // 纯动态页面 初始化阈值
+        $(function () {
+            var slider = $("#slider").slider({
+                orientation: "horizontal",
+                range: "min",
+                max: 100,
+                min: 1,
+                value: 90, // 滑块
+                create: function (event, ui) {
+                    $("#sliderMin").text(1);
+                    $("#sliderMax").text(100);
+                },
+                slide: function (event, ui) {
+                    $("#sliderInputDynamic").val(ui.value); // 输入阈值
+                }
+            });
+            $("#sliderInputDynamic").data('comp', slider);
+            $("#sliderInputDynamic").on("change", function () {
+                if (!(+$(this).val()) || ((+$(this).val()) < 1)) {
+                    $(this).val('90');
+                }
+
+                if (parseInt($(this).val()) <= 0) {
+                    $(this).val('90');
+                } else if (parseInt($(this).val()) > 100) {
+                    $(this).val('90');
+                }
+
+                var reg = /^\d+$/;
+                if ($(this).val()) {
+                    if (!reg.test($(this).val())) {
+                        $(this).val('90');
+                    }
+                }
+
+                slider.slider("value", $(this).val());
+            });
+        });
+
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul, item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {
+                        text: item.label
+                    });
+
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                }).appendTo(wrapper);
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+
+        // 单选框 多选框
+        $(function () {
+            $('[ data-role="checkbox"]').checkboxradio();
+            $('[ data-role="checkbox-button"]').checkboxradio({
+                icon: false
+            });
+            $('[ data-role="radio"]').checkboxradio();
+            $('[ data-role="radio-button"]').checkboxradio({
+                icon: false
+            });
+        })
+        initImgDynamic(); // 初始化 上传图片
+    </script>
+</div>

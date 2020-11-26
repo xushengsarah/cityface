@@ -1,0 +1,16 @@
+.breadcrumb {
+    background: transparent !important;
+    padding: .75rem 1rem .75rem 0;
+    &-hat{
+        .breadcrumb-item{
+            color: rgba($color-white, .5);
+            &.active{
+                color: $color-white;
+                &:before{
+                    content: '>';
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}

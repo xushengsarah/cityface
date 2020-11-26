@@ -1,0 +1,108 @@
+.card-info {
+    position: relative;
+    padding: 1rem 1.25rem;
+    border: 1px solid $border-color-default;
+    &:hover {
+        cursor: pointer;
+    }
+    .card-image {
+        position: relative;
+        float: left;
+        width: 3rem;
+        margin-right: .625rem;
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+        }
+        .tag-text {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            border: 2px solid $color-white;
+            line-height: calc(1.25rem - 2px);
+            padding: 0 2px;
+        }
+    }
+    .info-box {
+        float: left;
+        width: calc(100% - 3.625rem);
+    }
+    .card-info-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: .5*$space;
+        .info-title {
+            font-size: $font-size-large;
+            font-weight: bold;
+            height: 1.5rem;
+        }
+        .info-subtitle {
+            color: $text-color-lighter;
+            white-space: nowrap;
+            font-size: $font-size-small;
+        }
+        .card-extra {
+            font-size: $font-size-small;
+        }
+    }
+    &.active {
+        border-color: $border-color-focus;
+        box-shadow: 0 2px 2.5rem rgba($border-color-focus, .2), 0 0 0 1px $border-color-focus;
+    }
+    .form-info {
+        margin-top: 0;
+    }
+    .form-info .form-group {
+        margin-top: 4px;
+    }
+    .form-info .aui-form-label,
+    .form-info .form-text {
+        font-size: $font-size-small;
+    }
+}
+
+.card-info-list {
+    margin: 0;
+    border: none;
+    .card-info {
+        float: left;
+        width: calc(33.3% - 1.25rem);
+        margin: 1.25rem 0 0 1.25rem;
+    }
+}
+
+.swiper-container.swiper-container-control {
+    width: calc(100% + 2.5rem);
+    margin-left: -.625rem !important;
+    .side-bottom-right {
+        padding-top: 3.5rem;
+        padding-left: 4.375rem;
+    }
+}
+
+.tag-text {
+    display: inline-block;
+    height: 1.25rem;
+    min-width: 1.25rem; // padding: 0 4px;;
+    line-height: 1.25rem;
+    color: $color-white;
+    text-align: center;
+    border-radius: .625rem;
+    background: $color-danger;
+    font-size: $font-size-default;
+    font-weight: normal;
+    &.warning {
+        background: $color-warning;
+    }
+    &.md {
+        min-width: 22px;
+        height: 22px;
+        line-height: 22px;
+        border-radius: 11px;
+    }
+}
+
+.collapse-type2 .card-info-list {
+    margin-top: -1.75rem;
+}

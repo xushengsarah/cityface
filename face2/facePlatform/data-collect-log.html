@@ -1,0 +1,206 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="dataCollectLog" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">库名称：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="libIdVal">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">操作类型：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="opTypeVal">
+                                <option selected value="">全部</option>
+                                <option value="1">新增</option>
+                                <option value="2">修改</option>
+                                <option value="3">删除</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">采集起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">操作状态：</label>
+                        <div class="aui-col-18">
+                            <select name="speed" id="opStatusVal">
+                                <option selected value="">全部</option>
+                                <option value="1">成功</option>
+                                <option value="2">部分成功</option>
+                                <option value="3">失败</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-2">
+                    <div class="form-group">
+                        <button type="button" id="collectSearchBut" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--配置表 开始-->
+        <div class="manages-card-content">
+            <table id="collectLogTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="9%">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="7%">
+                    <col width="6%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="libName">库名称</th>
+                        <th data-field="opType">操作类型</th>
+                        <th data-field="picTotal">照片总数</th>
+                        <th data-field="picSuccess">成功数</th>
+                        <th data-field="picFail">失败数</th>
+                        <th data-field="tooks">请求耗时ms</th>
+                        <th data-field="opStatus">操作状态</th>
+                        <th data-field="increValue">增量字段值</th>
+                        <th data-field="updateTime">记录时间</th>
+                        <th data-field="exeDate">执行日期</th>
+                        <th data-field="opTime">启动时间</th>
+                        <th data-field="stopTime">停止时间</th>
+                    </tr>
+                </thead>
+                <tbody style="max-height:30rem">
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="collectLogPagination"></div>
+        </div>
+        <!-- 配置表 结束 -->
+    </div>
+
+    <!-- 查看采集成功详情 -->
+    <div class="modal fade modal-lger" id="successCollectDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">成功人员信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <table id="successCollectDetailTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="4%">
+                            <col width="5%">
+                            <col width="3%">
+                            <col width="5%">
+                            <col width="10%">
+                            <col width="4%">
+                            <col width="6%">
+                            <col width="6%">
+                            <col width="10%">
+                            <col width="10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="item1">照片</th>
+                                <th data-field="item2">姓名</th>
+                                <th data-field="item5">性别</th>
+                                <th data-field="item3">证件类型</th>
+                                <th data-field="item4">证件号码</th>
+                                <th data-field="item6">民族</th>
+                                <th data-field="item7">户籍</th>
+                                <th data-field="item8">标签</th>
+                                <th data-field="item9">同步时间</th>
+                                <th data-field="item10">来源</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="successCollectDetailPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看采集成功详情 end -->
+
+    <!-- 查看采集失败详情 -->
+    <div class="modal fade modal-lger" id="failCollectDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">失败日志</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <table id="failCollectDetailTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="10%">
+                            <col width="20%">
+                            <col width="15%">
+                            <col width="9%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="15%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="libName">库名称</th>
+                                <th data-field="keyValue">关键字段值</th>
+                                <th data-field="increValue">增量字段值</th>
+                                <th data-field="opType">操作类型</th>
+                                <th data-field="collectTime">采集/同步时间</th>
+                                <th data-field="errInfo">出错信息</th>
+                                <th data-field="updateTime">记录时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="failCollectDetailPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看采集失败详情 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/dataCollectLog.js"></script>
+</div>

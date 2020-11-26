@@ -1,0 +1,180 @@
+<div>
+    <!-- 检索查询页面 -->
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.css" />
+
+    <div id="searchManage" class="manages-page">
+        <!-- 搜索区域 -->
+        <div class="manages-search-style">
+            <div class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">任务名称：</label>
+                        <div class="aui-col-18">
+                            <input id="searchManageTask" type="text" class="aui-input" placeholder="请输入查询任务名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户警号：</label>
+                        <div class="aui-col-18">
+                            <input id="searchManageName" type="text" class="aui-input" placeholder="请输入查询用户警号">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">检索类型：</label>
+                        <div class="aui-col-18">
+                            <select name="type" id="searchManageType">
+                                <option value="118002002">动态检索</option>
+                                <option value="118002001">静态检索</option>
+                                <option value="118005001">轨迹大图</option>
+                                <option value="118005002">告警大图</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">分局：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="searchManageOrg" data-live-search="true"
+                                    title="请选择分局"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">派出所：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="searchManagePolice" data-live-search="true"
+                                    title="请选择派出所"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10" id="timeSearchItem">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">检索起止时间:</label>
+                        <div class="aui-col-18">
+                            <div class="inline-block v-middle wid-40">
+                                <label for="searchManage-three" id="searchManage-daysOne"
+                                       class="ui-checkboxradio-button mr-smr">一天</label>
+                                <input type="radio" name="searchManage-time-radio" id="searchManage-three" value="1"
+                                       data-role="radio-button" checked>
+                                <label for="searchManage-oneweek" id="searchManage-daysTwo"
+                                       class="ui-checkboxradio-button mr-smr">三天</label>
+                                <input type="radio" name="searchManage-time-radio" id="searchManage-oneweek" value="3"
+                                       data-role="radio-button">
+                                <label for="searchManage-halfmonth" id="searchManage-daysThree"
+                                       class="ui-checkboxradio-button mr-smr">一周</label>
+                                <input type="radio" name="searchManage-time-radio" id="searchManage-halfmonth" value="7"
+                                       data-role="radio-button">
+                            </div>
+                            <div class="input-daterange datepicker-box aui-input wid-60 v-middle float-right"
+                                 style="font-size:0.75rem;" id="searchManageTime">
+                                <input id="startTimeSearchManage" class="input-text datepicker-input radius Wdate"
+                                       type="text"
+                                       onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSearchManage\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTimeSearchManage" class="input-text datepicker-input radius Wdate"
+                                       type="text"
+                                       onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSearchManage\')}',maxDate:'#F{\'%y-%M-%d}\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                            <p class="text-danger mg-top-xs tip hide"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7 hide">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">业务类型：</label>
+                        <div class="aui-col-18">
+                            <select id="searchManageOpType" title="请选择业务类型"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7 searchManageRoleType">
+                    <div class="form-group" style="text-align: center;">
+                        <label class="aui-form-label aui-col-6">角色类型：</label>
+                        <div class="aui-col-18">
+                            <select name="type" id="searchManageRoleType">
+                                <option value="">全部</option>
+                                <option value="1">动静态权限</option>
+                                <option value="2">普通权限</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">ip地址：</label>
+                        <div class="aui-col-18">
+                            <input id="searchManageIP" type="text" class="aui-input" placeholder="请输入ip地址">
+                            <p class="text-danger mg-top-xs tip hide">请输入正确的ip地址</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-10">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-5">案件编号：</label>
+                        <div class="aui-col-18">
+                            <input id="searchManageNumber" type="text" class="aui-input" placeholder="请输入案件编号">
+                            <p class="text-danger mg-top-xs tip hide">请输入正确的ip地址</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <button type="button" id="searchManageList" class="btn btn-primary">搜索</button>
+                        <button type="button" id="revertManageList" class="btn">重置</button>
+                        <button type="button" id="importManageList" class="btn">导出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 列表区域 -->
+        <div class="manages-card-content">
+            <table id="searchManageTableList" class="table-hover" data-toggle="table" data-detail-view="true"
+                   data-detail-formatter="detailFormatter" data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="4%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="16%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="7%">
+                    <col width="12%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>照片</th>
+                        <th title="大图照片">大图照片</th>
+                        <th>任务名称</th>
+                        <th>用户姓名</th>
+                        <th>用户警号</th>
+                        <th>操作人ip</th>
+                        <th>检索类型</th>
+                        <th>记录时间</th>
+                        <th>案件编号</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="searchManageTablePagination"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script src="assets/vendor/bootstrap-multipleSelect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/searchManage.js"></script>
+</div>

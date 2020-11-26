@@ -1,0 +1,97 @@
+<div>
+    <link rel="stylesheet" href="./assets/vendor/videojs/video-js.min.css" />
+    <div class="layout-type2 map-video popup" id="mapVideoPage">
+        <div class="aui-card">
+            <div class="popup-title mapVideoMove" id="mapVideoMove">
+                <span class="card-title">实时视频</span>
+                <i class="aui-icon-not-through" id="closeMapVideoPage"></i>
+                <i class="aui-icon-minus" id="hideMapViewPage" title="隐藏"></i>
+            </div>
+            <div class="popup-body">
+                <!--镜头列表-->
+                <div class="popup-body-camera aui-col-6">
+                    <div class="popup-body-camera-title">
+                        <span>已选镜头</span>
+                        <span id="popup-body-camera-title-num">0</span>
+                    </div>
+                    <div class="popup-body-camera-cnt" id="popup-body-camera-cnt">
+                        <ul id="popup-body-camera-cntList"></ul>
+                    </div>
+                    <div class="popup-body-camera-time hide" id="popup-body-camera-time">
+                        <div class="popup-body-camera-timeItem">
+                            <label class="aui-form-label aui-col-4">开始时间：</label>
+                            <div class="aui-col-20">
+                                <div class="input-daterange datepicker-box aui-input" id="popup-body-camera-startTime">
+                                    <input id="mapVideoStartTime" class="input-text datepicker-input radius Wdate" type="text" readonly="" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'mapVideoEndTime\') || \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})">
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-body-camera-timeItem">
+                            <label class="aui-form-label aui-col-4">结束时间：</label>
+                            <div class="aui-col-20">
+                                <div class="input-daterange datepicker-box aui-input" id="popup-body-camera-endTime">
+                                    <input id="mapVideoEndTime" class="input-text datepicker-input radius Wdate" type="text" readonly="" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'mapVideoStartTime\')}',maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})">
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="popup-body-camera-time-search" class="btn btn-primary popup-body-camera-time-search">搜索</button>
+                    </div>
+                </div>
+                <!--镜头播放-->
+                <div class="popup-body-video aui-col-12">
+                    <div class="video-warp" id="map-video-warp">
+                        <div class="video"></div>
+                        <div class="controls" id="mapVideoControls">
+                            <i id="mapVideoStop" class="bui-icon-stopplay" title="停止"></i>
+                            <i id="mapVideoPlay" class="bui-icon-play hide" title="播放"></i>
+                            <i id="mapVideoPause" class="bui-icon-pause" title="暂停"></i>
+                            <div class="mapVideoProgress" id="map-video-progress">
+                                <div class="mapVideoTimrBar" id="mapVideoTimrBar"></div>
+                                <div class="timeBarCircle" id="timeBarCircle"></div>
+                            </div>
+                            <div class="video-timer" id="map-video-timer">
+                                <span id="mapVideoCurrentTime">00:00</span>
+                                <em>/</em>
+                                <span id="mapVideoDuration">00:00</span>
+                            </div>
+                            <i id="mapVideoScreen" class="aui-icon-focus" title="全屏"></i>
+                            <!-- <span id="mapVideoPlaySpeed">*3</span> -->
+                        </div>
+                        <div class="no-video hide" id="mapVideoEnd"></div>
+                    </div>
+                </div>
+                <!--镜头告警-->
+                <div class="popup-body-alarm aui-col-6">
+                    <div class="popup-body-alarm-title">
+                        <span>告警图</span>
+                    </div>
+                    <div class="popup-body-alarm-cnt">
+                        <ul id="popup-body-alarm-cntList" class="popup-body-alarm-cntList">
+                        </ul>
+                    </div>
+                </div>
+                <!--镜头抓拍图-->
+                <div class="popup-body-face aui-col-24">
+                    <div class="popup-body-face-title">
+                        <span>人脸抓拍图</span>
+                    </div>
+                    <div class="popup-body-face-cnt">
+                        <ul id="popup-body-face-cntList" class="popup-body-face-cntList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="js/hls.min.js"></script> -->
+    <script type="text/javascript" src="./assets/vendor/videojs/video.min.js"></script>
+    <script type="text/javascript" src="js/flv.min.js"></script>
+    <script type="text/javascript" src="js/videojs-flvjs.min.js"></script>
+    <script type="text/javascript" src="js/videojs-flash.min.js"></script>
+    <script type="text/javascript" src="js/map-new.js"></script>
+</div>

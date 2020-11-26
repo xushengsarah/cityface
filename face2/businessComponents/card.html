@@ -1,0 +1,66 @@
+<p>基础用法：</p>
+<div class="aui-card">
+    <div class="card-title-box">
+        <span class="card-title">布控基本信息</span>
+        <div class="card-operate-box float-right">
+            右侧自定义区域
+        </div>
+    </div>
+    <div class="card-content" style="height: 200px;">
+        内容区
+    </div>
+</div>
+<p>扩展用法:</p>
+<div class="aui-card">
+    <div class="card-title-box">
+        <i class="aui-icon-idcard card-title-icon"></i>
+        <span class="card-title">布控基本信息</span>
+        <span class="card-subtitle text-theme">(142)</span>
+        <div class="card-operate-box float-right">
+            <div class="operate text-xm">
+                <div class="operate-item">
+                    <ul class="nav nav-tabs nav-tabs-split" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="javascript:;" data-toggle="tab" role="tab" aria-selected="true">按时间排序</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:;" data-toggle="tab" role="tab" aria-selected="false">按相似度排序</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="operate-item">
+                    <span class="text-link default">
+                        <i class="icon aui-icon-data"></i>
+                        <span class="text">按时间聚合</span>
+                    </span>
+                    <span class="text-link default aui-ml-mmd">
+                        <i class="icon aui-icon-position"></i>
+                        <span class="text">按地点聚合</span>
+                    </span>
+                </div>
+                <div class="operate-item">
+                    <label for="checkbox-1" class="ui-checkboxradio-checkbox-label">全选</label>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1" data-role="checkbox" checked>
+                    <div class="switch-box aui-ml-mmd">
+                        <span class="switch" data-role="switch"></span>
+                        <span class="switch-label">显示地图</span>
+                    </div>
+                </div>
+                <div class="operate-item">
+                    <span class="text-link default">
+                        <i class="icon aui-icon-import"></i>
+                        <span class="text">导出</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-content" style="height: 200px;">
+        内容区
+    </div>
+</div>
+<script>
+    $(function() {
+        $('[ data-role="checkbox"]').checkboxradio();
+    })
+</script>

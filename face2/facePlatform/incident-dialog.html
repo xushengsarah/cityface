@@ -1,0 +1,144 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div class="layout-type2 popup incident-new-card" id="incidentDialog">
+        <div class="aui-card">
+            <div class="popup-title">
+                <ul class="nav nav-tabs pd0" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#incidentDialogDeatil" role="tab"
+                           aria-controls="incidentDialogDeatil" aria-selected="true" id="incidentDialogDeatilItem">申请详情
+                        </a>
+                    </li>
+                    <li class="nav-item" id="incidentDialogFileDeatilItem">
+                        <a class="nav-link" data-toggle="tab" href="#incidentDialogFileDeatil" role="tab"
+                           aria-controls="incidentDialogFileDeatil" aria-selected="false">附件详情
+                        </a>
+                    </li>
+                </ul>
+                <i class="aui-icon-not-through" id="incidentDialogClose"></i>
+            </div>
+            <div class="popup-body">
+                <div class="tab-content">
+                    <ul class="tab-pane active" id="incidentDialogDeatil" role="tabpanel"
+                        aria-labelledby="incidentDialogDeatil-tab">
+                        <div class="aui-col-16" id="IDApplyDetailShow">
+                            <div class="card-title-head">
+                                申请类型：
+                                <span class="card-title"></span>
+                            </div>
+                            <ul class="form-info form-label-fixed mt-0">
+                            </ul>
+                        </div>
+                        <div class="aui-col-8" id="IDApproveDetailShow">
+                            <div class="card-title-head">
+                                <span class="card-title">审批情况</span>
+                            </div>
+                            <div class="detailInfoShow"></div>
+                        </div>
+                        <div class="aui-col-24 aui-mt-sm">
+                            <div class="card-title-head">
+                                <span class="card-title">检索情况</span>
+                            </div>
+                            <div class="aui-p-xs">
+                                <table id="IDSearchDetailTable" class="table-hover" data-toggle="table"
+                                       data-detail-view="true" data-detail-formatter="detailFormatter"
+                                       data-pagination="false">
+                                    <colgroup>
+                                        <col width="1%">
+                                        <col width="25%">
+                                        <col width="15%">
+                                        <!-- <col width="15%" class="static"> -->
+                                        <col width="15%" class="dynamic">
+                                        <col width="15%">
+                                        <col width="14%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="item1">检索人</th>
+                                            <th data-field="item6">用户警号</th>
+                                            <!-- <th data-field="item2" class="static">今日静态检索次数</th> -->
+                                            <th data-field="item3" class="dynamic">动态检索次数</th>
+                                            <th data-field="item4">人员类型</th>
+                                            <th data-field="item5">检索人权限状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="fixed-table-pagination bayonetCameralPagination"
+                                     id="IDSearchDetailPagination"></div>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="tab-pane" id="incidentDialogFileDeatil" role="tabpanel"
+                        aria-labelledby="incidentDialogFileDeatil-tab">
+                        <table id="incidentDialogFileDeatilTable" class="table-hover" data-toggle="table"
+                               data-detail-view="true" data-detail-formatter="detailFormatter" data-pagination="false">
+                            <colgroup>
+                                <col width="1%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="15%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="item1">图片</th>
+                                    <th data-field="item6">姓名</th>
+                                    <th data-field="item2">身份证</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="fixed-table-pagination bayonetCameralPagination"
+                             id="incidentDialogFileDeatilPagination"></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--考核列表各项点击事件展示弹窗-->
+    <div class="modal modal-lger" id="incidentDynamicDialog" style="z-index: 1052;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">动态检索明细</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height:50rem;">
+                    <table id="incidentDynamicTable" class="table-hover" data-toggle="table" data-pagination="false">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="15%">
+                            <col width="15%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="item1">序号</th>
+                                <th data-field="item2">检索图片</th>
+                                <th data-field="item3">案件名称</th>
+                                <th data-field="item4">单位名称</th>
+                                <th data-field="item5">检索人</th>
+                                <th data-field="item6">检索人警号</th>
+                                <th data-field="item7">操作时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="incidentDynamicPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/incidentDialog.js"></script>
+</div>

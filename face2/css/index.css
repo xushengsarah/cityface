@@ -1,0 +1,21 @@
+/* #uindexImg{position: relative; } */
+/* #uindexImg>img {cursor: pointer; width: 191px; height: 166px;  border-radius: 3px;} */
+/* #uindexImg .uploadFile{position:absolute; cursor: pointer; opacity: 0; width: 191px; height: 166px; } */
+.disp-n{display: none !important;}
+
+.alert{
+    padding: 0 1.25rem; 
+    margin-bottom: 0; 
+    margin-top: 10px;
+    font-size: 1rem;
+    display:none;
+}
+.alert.show{
+    display: block;
+}
+
+.add-image-box.add-image-item.active{
+    width: auto;
+    border: none;
+    min-width: 8rem;
+}

@@ -1,0 +1,338 @@
+//树样式
+.portrait-tree-list,.search-result-list,.bayonet-tree-list {
+    font-size: $font-size-default;
+    line-height: 2rem;
+    color: $text-color-lighter;
+    position: relative;
+    .switch{
+        width: 1rem;
+        min-width: inherit;
+        height: 2.25rem;
+        line-height: 2.25rem;
+        margin-left: 2rem;
+        background: none;
+        color: $text-color-lighter;
+        font-size: $font-size-small;
+        text-align: center;
+        vertical-align: top;
+        &:before{
+            position: static;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            background: none;
+        }
+    }
+    .portrait-tree-num{
+        margin-left:0.5rem;
+        font-weight: bold;
+    }
+    .portrait-tree-type{
+        position: absolute;
+        left: 1rem;
+        font-size: 0.5rem;
+        font-weight: bold;
+    }
+
+    .portrait-tree-type1{
+        color: #1ef1ff;
+    }
+
+    .portrait-tree-type2{
+        color: #febc42;
+    }
+
+    .portrait-tree-type3{
+        color: #ff5558;
+    }
+
+    .treeLevelTitle{
+        background:  rgba(59,158,243,.2);
+        font-size: 1.25rem;
+    }
+    .rightMenu{
+        background: #f2f4fa;
+        color: #3b9ef3;
+        font-weight: bold;
+    }
+    a.level0{
+        line-height: 2.25rem;
+    }
+    li.level0{
+        position: relative;
+        &:focus,&:active{
+            outline: none;
+        }
+        &.active{
+            a.level0{
+                color: $theme-color;
+            }
+        }
+        .level0.switch{
+            position: absolute;
+        }
+        a.level0{
+            display: block;
+            padding-left: 3.5rem;
+            cursor: pointer;
+            &:hover{
+                color: $theme-color;
+            }
+        }
+        .curSelectedNode{
+            color: $theme-color;
+        }
+    }
+    li.level1 .switch{
+        margin-left: 2.5rem;
+    }
+    li.level1{
+        position: relative;
+        height: 2.25rem;
+        line-height: 2.25rem;
+        white-space: nowrap;
+        &.active,&:hover{
+            background: #f2f4fa;
+            outline: none;
+            cursor: pointer;
+            color: $theme-color;
+            font-weight: bold;
+            &::before{
+                position: absolute;
+                left: 0;
+                top:0;
+                bottom: 0;
+                content:'';
+                display: inline-block;
+                width: 2px;
+                background: $theme-color;
+            }
+        }
+        &:active,&:focus{
+            outline: none;
+        }
+        &:after{
+            position: absolute;
+            left: 2.4rem;
+            top: 1.125rem;
+            z-index: 2;
+            content: '';
+            display: block;
+            width: 1.125rem;
+            border-bottom: 1px dashed $border-color-default;
+        }
+    }
+    .roots_open,.center_open,.bottom_open,.root_open{
+        font-family: 'iconFont';
+        @extend .aui-icon-drop-down;
+        color: $theme-color;
+        transform: rotate(-45deg);
+        vertical-align: middle;
+    }
+    .roots_close,.center_close,.bottom_close,.root_close{
+        font-family: 'iconFont';
+        @extend .aui-icon-drop-down;
+        transform: rotate(-90deg);
+    }
+    ul.level0{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -.75rem;
+            bottom: 1.125rem;
+            left: 2.4rem;
+            border-left: 1px dashed $border-color-default;
+        }
+    }
+    .roots_close + a.level0 {
+        color: $text-color-lighter;
+    }
+}
+
+.portrait-tree-item {
+    .item-title {
+        position: relative;
+        padding-left: 4rem;
+        [class*=aui-icon-], [class^=aui-icon-] {
+            position: absolute;
+            top: 50%;
+            left: 3rem;
+            transform: translate(-25%, -50%)
+        }    
+    }
+
+    .portrait-tree-sublist {
+        display: none;
+    }
+
+    &.active {
+        .item-title {
+
+            [class*=aui-icon-], [class^=aui-icon-] {
+                color: $theme-color;
+                transform: translate(-50%, -50%) rotate(90deg);
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 3rem;
+                top: 50%;
+                height: 50%;
+                border-left: 1px dotted $border-color-default;
+            }
+        }
+
+        .portrait-tree-sublist {
+            display: block;
+        }
+    }
+    .portrait-tree-subitem {
+        position: relative;
+        padding-left: 5rem;
+        height: 3rem;
+        transition: all $default-animation;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 3rem;
+            height: 3rem;
+            border-left: 1px dotted $border-color-default;
+    
+        }
+        &.active {
+            background: rgba($color-active, .1);
+            color: $text-color-emphasize;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 3px;
+                height: 3rem;
+                background: $theme-color;
+            }
+        }
+    
+    }
+}
+
+
+.portrait-search-result {
+    // padding-left: 2rem;
+    // font-size: $font-size-large;
+    // font-weight: bold;
+    // color: $text-color-lighter;
+    // line-height: 3rem;
+
+    .search-result-none {
+        display: none;
+    }
+
+    .search-result-list {
+        // padding-left: 1rem;
+        // line-height: 2.25rem;
+    }
+}
+
+.tag{
+    position: relative;
+    .aui-icon-not-through{
+        display: none;
+        margin-left: .5rem;
+        font-size: $font-size-small;
+        color: $text-color-lighter;
+    }
+    &.icon-show{
+        .aui-icon-not-through{
+            display: inline-block;
+        }
+    }
+}
+
+.swiper-wrapper .select2-container{
+    line-height: 1;
+}
+
+.portrait-tree-list{
+    @extend .subscribe-tree-list;
+    li{ 
+        &.level0{
+            &:hover{
+                color: inherit!important;
+            }
+            a.level0{
+                &:hover{
+                    color: inherit!important;
+                }
+            }
+            .curSelectedNode{
+                color: inherit!important;
+            }
+        }
+        &:not(.level0){
+            &:hover{
+                background: inherit!important;
+                color: inherit!important;
+                font-weight: normal!important;
+            }
+            &::before{
+                background: #fff!important;
+            }
+        }
+        &:not(.level0) a{
+            &:hover{
+                // color: #000!important;
+                text-decoration: underline!important;
+                font-weight: 700!important;
+            }
+        }
+        &.active{
+            &:hover{
+                background: #f2f4fa!important;
+                outline: 0;
+                cursor: pointer;
+                color: $theme-color!important;
+                font-weight: normal!important;
+                &::before{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    content: '';
+                    display: inline-block;
+                    width: 2px;
+                    background: $theme-color!important;
+                }
+            }
+            &::before{
+                background: $theme-color!important
+            }
+        }
+        &.level1{
+            height: auto;
+            & .switch{
+                margin-left: 3.5rem;
+            }
+            .level2{
+                & .switch{
+                    margin-left: 5.5rem!important;
+                }
+            }
+        }
+        &.staticTree{
+            .level2{
+                .switch{
+                    margin-left: 4.5rem!important;
+                }
+            }
+        }
+        &.bkTree{
+            .level1{
+                .switch{
+                    margin-left: 2.5rem!important;
+                }
+            }
+        }
+    }
+}

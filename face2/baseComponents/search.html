@@ -1,0 +1,148 @@
+<p>普通搜索：</p>
+<div class="aui-input-affix-wrapper">
+    <div class="aui-input-group-inner">
+        <input placeholder="input search text" type="text" class="aui-input">
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<p class="aui-mt-md">过滤搜索：</p>
+<div class="aui-input-affix-wrapper aui-input-search">
+    <div class="aui-input-group-inner">
+        <select name="speed" id="search" data-role="select">
+            <option>Slower</option>
+            <option>Slow</option>
+            <option selected>Medium</option>
+            <option>Fast</option>
+            <option disabled>Faster</option>
+        </select>
+        <input placeholder="input search text" type="text" class="aui-input">
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<p class="aui-mt-md">小尺寸：</p>
+<div class="aui-input-affix-wrapper aui-input-group-small">
+    <div class="aui-input-group-inner">
+        <input placeholder="input search text" type="text" class="aui-input">
+        <span class="aui-input-suffix">
+                <i class="aui-icon-search"></i>
+            </span>
+    </div>
+</div>
+<div class="aui-input-affix-wrapper aui-input-search aui-input-group-small" style="margin-top:20px">
+    <div class="aui-input-group-inner">
+        <select name="speed" id="search-small" data-role="select">
+                    <option>Slower</option>
+                    <option>Slow</option>
+                    <option selected>Medium</option>
+                    <option>Fast</option>
+                    <option disabled>Faster</option>
+                </select>
+        <input placeholder="input search text" type="text" class="aui-input">
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<p class="aui-mt-md">禁用：</p>
+<div class="aui-input-affix-wrapper aui-input-group-disabled">
+    <div class="aui-input-group-inner">
+        <input placeholder="input search text" type="text" class="aui-input disabled" disabled>
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<div class="aui-input-affix-wrapper aui-input-search aui-input-group-disabled" style="margin-top:20px;">
+    <div class="aui-input-group-inner">
+        <select name="speed" id="search" data-role="select" disabled>
+            <option>Slower</option>
+            <option>Slow</option>
+            <option selected>Medium</option>
+            <option>Fast</option>
+            <option disabled>Faster</option>
+        </select>
+        <input placeholder="input search text" type="text" class="aui-input disabled" disabled>
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<p class="aui-mt-md">搜索块：</p>
+<div class="search-box" id="search-input-box">
+    <input placeholder="搜索布控关键词" type="text" class="search-input">
+    <span class="search-icon noborder"><i class="aui-icon-search"></i></span>
+    <span class="search-icon search-more" data-role="search-more">
+        <i class="aui-icon-filter"></i>
+    </span>
+    <div class="search-more-box">
+        <div class="search-more-inner">
+            <ul class="text-list">
+                <li class="text-item">
+                    <p class="text-label">类型：</p>
+                    <div class="text-content">
+                        <span class="text text-link">全部</span>
+                        <span class="text">重大事件</span>
+                        <span class="text">场景安保</span>
+                        <span class="text">常规布控</span>
+                        <span>巡逻布控</span>
+                    </div>
+                </li>
+                <li class="text-item">
+                    <p class="text-label">时间：</p>
+                    <div class="text-content">
+                        <span class="text text-link">全部</span>
+                        <span class="text">近一周</span>
+                        <span class="text">近一个月</span>
+                        <span class="text">近三年</span>
+                        <span class="text">近一年</span>
+                    </div>
+                </li>
+                <li class="text-item">
+                    <p class="text-label">类型：</p>
+                    <div class="text-content">
+                        <span class="text text-link">全部</span>
+                        <span class="text">紧急</span>
+                        <span class="text">重要</span>
+                        <span class="text">一般</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<p>按钮搜索：</p>
+<div class="aui-input-affix-wrapper btn-search">
+    <div class="aui-input-group-inner">
+        <span class="search-icon noborder">
+            <i class="aui-icon-idcard"></i>
+        </span>
+        <input placeholder="请输入身份证号" type="text" class="aui-input">
+        <button type="button" class="btn btn-default">开始搜索</button>
+    </div>
+</div>
+<br />
+<p>悬浮层搜索：</p>
+<div class="aui-input-affix-wrapper search-shadow">
+    <div class="aui-input-group-inner">
+        <input placeholder="input search text" type="text" class="aui-input">
+        <span class="aui-input-suffix">
+            <i class="aui-icon-search"></i>
+        </span>
+    </div>
+</div>
+<script>
+    $('[data-role="select"]').each(function() {
+        $(this).selectmenu();
+    });
+    $("#search-small").selectmenu().selectmenu("widget").addClass("ui-selectmenu-small");
+    $("#search-small").selectmenu().selectmenu("menuWidget").addClass("ui-selectmenu-small-menu");
+    $('[data-role="search-more"]').click(function(e) {
+        $(this).toggleClass('active');
+        $('.search-more-box').toggle();
+    });
+</script>

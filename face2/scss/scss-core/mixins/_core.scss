@@ -1,0 +1,327 @@
+////
+/// This is a poster comment.
+/// It will apply annotations to all items from file.
+/// @group utils
+///
+////
+
+
+///清除浮动
+///
+///@name clearfix
+///@param {Boolean} $extend[true] - 是否采用继承的方式
+/// 闭合子元素的浮动
+
+@mixin clearfix($extend:true) {
+  @if $extend {
+    @extend %clearfix;
+  } @else {
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+%clearfix {
+  @include clearfix(false);
+}
+
+/// 水平居中
+///
+///@name center-block
+///@param {Boolean} $extend[true] - 是否采用继承的方式
+@mixin center-block($extend:true) {
+  @if $extend {
+    @extend %center-block;
+  } @else {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+%center-block {
+  @include center-block(false);
+}
+
+/// 透明度，
+/// IE8使用filter兼容写法
+///
+///@name opacity
+///@param {Number} $opacity[50] - 不透明度百分比值
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+%opacity {
+  @include opacity;
+}
+
+%triangle-basic {
+  content: "";
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+///边框实现的三角形
+///
+///@name triangle
+///@param {String} $direction[top] - 方向
+///@param {Measure} $size[10px] - 大小
+///@param {Color} $borderColor[#fff] - 颜色
+
+@mixin triangle($direction:top, $size:10px, $borderColor:#fff ) {
+  @extend %triangle-basic;
+  @if $direction == top {
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  } @else if $direction == right {
+    border-left: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  } @else if $direction == bottom {
+    border-top: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  } @else if $direction == left {
+    border-right: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  }
+}
+
+///文本溢出
+///
+///@name ellipsis
+///@param {Number} $rows[top] - 行数
+///@param {Measure} $font-size[10px] - 字体大小
+///@param {Number} $line-height[1.5] - 行高
+@mixin ellipsis($rows:1 , $font-size:14px, $line-height:1.5) {
+  @if $rows == 1 {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: $rows;
+    -webkit-box-orient: vertical;
+    max-height: #{$rows*$line-height}em;
+    line-height: $line-height;
+    font-size: $font-size;
+  }
+}
+
+%ellipsis {
+  @include ellipsis(1)
+}
+
+%ellipsis-multi {
+  @include ellipsis(2);
+}
+
+///文本溢出-文本有固定高度限制
+///
+///@name multi-row
+///@param {Number} $rows[top] - 行数
+///@param {Number} $line-height[1.5] - 行高
+@mixin multi-row($rows:2 , $line-height:1.5 ) {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: $rows;
+  -webkit-box-orient: vertical;
+  height: #{$rows*$line-height}em;
+  line-height: $line-height;
+}
+
+///Retina image
+///
+///@name img-retina
+///@param {String} $file-1x[] - 1倍图片URL
+///@param {String} $file-2x[] - 2倍图片URL
+///@param {Measure} $width-1x[] - 1倍图片的宽度
+///@param {Measure} $height-1x[] - 1倍图片的高度
+@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url($file-1x);
+  @media only screen and (min-resolution: 192dpi), // IE9-11 don't support dppx
+  only screen and (min-resolution: 2dppx) { // Standardized
+    background-image: url($file-2x);
+    background-size: $width-1x $height-1x;
+  }
+}
+
+//font-size单位转换,使用rem并兼容px单位
+@mixin fontSize($font-size:14px) {
+  font-size: $font-size;
+  font-size: pxToRem($font-size);
+}
+
+///针对火狐浏览器打bug
+///
+///@name firefox
+///@example @include firefox{.test{padding-bottom:3px;}}
+// @mixin firefox {
+//   @-moz-document url-prefix() {
+//     @content;
+//   }
+// }
+
+///定高垂直居中,多用于卡片定高垂直居中
+///
+///@name block-vertical-middle
+@mixin block-vertical-middle {
+  font-size: 0;
+  &-content {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: $font-default;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+}
+
+%vertical-middle {
+  display: inline-block;
+  vertical-align: middle;
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+}
+
+/// 利用 absolute 把指定元素水平垂直居中布局，适用于已知元素宽高的情况下
+///
+/// @name absoluteCenter
+/// @param {Measure} $width - 元素的宽度
+/// @param {Measure} $height - 元素的高度
+@mixin absoluteCenter($width, $height){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: (-$height)/2 0 0 (-$width)/2;
+}
+
+/// 选择内容的 CSS 选择器
+///
+///
+/// @name selection
+@mixin selection {
+  @at-root #{&}::selection {
+    @content;
+  }
+
+  @at-root #{&}::-moz-selection {
+    @content;
+  }
+
+  @at-root #{&}::-webkit-selection {
+    @content;
+  }
+}
+
+/// 在长单词或 URL 地址内部进行换行，适用于以中文为主混有英文的文字排版
+///
+///
+/// @name text-breakWord
+%text-breakWord {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+%text_breakWord {
+  @extend %text-breakWord;
+}
+
+/// 适配多倍屏的 CSS 选择器
+///
+///
+/// @name screenResolution
+/// @param {Number} $num - 需要适配的屏幕倍数
+@mixin screenResolution($num) {
+  @media (-webkit-min-device-pixel-ratio: $num),
+  (min--moz-device-pixel-ratio: $num),
+  (-o-min-device-pixel-ratio: $num),
+  (min-device-pixel-ratio: $num),
+  (min-resolution: #{$num}dppx),
+  (min-resolution: #{$num*96}dpi) {
+    @content;
+  }
+}
+
+/// 适配 Pad 的 CSS 选择器，例如有响应式布局中适配 Pad 的代码可以包在这里
+///
+///
+/// @name screenForPad
+@mixin screenForPad {
+  @media (min-width:$screen_width_pad) {
+    @content;
+  }
+  @media \0screen {
+    @content;
+  }
+}
+
+/// 适配手机的 CSS 选择器，与 screenForPad 方法对应，可以用于包裹只在 Phone 版使用的代码，不在 Pad 版使用的样式
+///
+///
+/// @name screenForPhone
+@mixin screenForPhone {
+  @media (max-width:$screen_width_pad) {
+    @content;
+  }
+}
+
+/// 适配 IE 10 及以上版本的 CSS 选择器，需要针对 IE10 或以上版本的样式可以写在这里
+///
+///
+/// @name screenForIE10AndLater
+@mixin screenForIE10AndLater {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+/// 单独适配 IE 8 CSS 选择器，需要仅针对 IE 8 的样式可以写在这里
+///
+///
+/// @name forIE8
+@mixin forIE8 {
+  @media \0screen {
+    @content;
+  }
+}
+
+/// 单独适配 IE 9 CSS 选择器，需要仅针对 IE 9（不包括 IE 10 等更高版本） 的样式可以写在这里
+///
+///
+/// @name forIE9
+@mixin forIE9 {
+  @media all and (min-width:0\0) and (min-resolution: .001dpcm) {
+    @content;
+  }
+}

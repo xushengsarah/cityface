@@ -1,0 +1,57 @@
+$panel-head-height: 2.5rem!default;
+.panel {
+    &-heading {
+        height: $panel-head-height;
+        padding: 0 2rem;
+        line-height: $panel-head-height;
+        border-top: 1px solid $border-color-default;
+        background: $background-color-x-gray;
+        font-size: $font-size-medium;
+        .aui-icon-drop-down-2 {
+            float: right;
+            margin-top: .75rem;
+            transform: rotate(-180deg);
+            font-size: $font-size-small;
+        }
+        .collapsed {
+            .aui-icon-drop-down-2 {
+                transform: rotate(0);
+            }
+        }
+    }
+    &-toggle {
+        display: block;
+    }
+    &-body {
+        padding: 0 2rem;
+    }
+}
+.collapse-type2{
+    .panel{
+        margin-bottom: 1.125rem;
+    }
+    .panel-body{
+        padding: $space*2 0;
+    }
+    .panel-heading{
+        height: auto;
+        line-height: 1.5;
+        padding: 0;
+        border: none;
+        background: none;
+        font-size: $font-size-default;
+    }
+    .panel-toggle:hover{
+        color: $text-color-default;
+    }
+    .aui-icon-drop-down{
+        font-size: $font-size-small;
+        color: $text-color-lighter;
+    }
+    .panel-toggle .aui-icon-drop-down{
+        transform: scale(.8);
+    }
+    .panel-toggle.collapsed .aui-icon-drop-down{
+        transform: scale(.8) rotate(-180deg);
+    }
+}

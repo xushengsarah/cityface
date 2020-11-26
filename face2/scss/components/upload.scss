@@ -1,0 +1,44 @@
+$upload-height:10rem;
+.upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: $upload-height;
+    border: 1px dashed $theme-color;
+    &.pic-add {        
+        width: 6.375rem!important;
+        height: 6.375rem!important;        
+    }
+    .aui-icon-add {
+        font-size: 2.5rem;
+        color: $theme-color;
+        padding: 1.75rem;
+        border-radius: $border-radius;
+    }
+    .uploadFile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .pic-add-img {
+        height: 100%;
+        width: 100%;
+    }
+    &-box {
+        padding: 2px;
+        border: 1px solid $border-color-default
+    }
+    .aui-icon-upload {
+        font-size: 3.125rem;
+        color: rgba($theme-color, .2);
+    }
+    .btn {
+        margin: 1.25rem 0 0;
+    }
+}

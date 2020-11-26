@@ -1,0 +1,58 @@
+
+
+.status-item{
+    line-height: 1.5rem;
+    font-size: $font-size-small;
+    .status-icon{
+        display: inline-block;
+        width: 0.625rem;
+        height: 0.625rem;
+        margin-right: 5px;
+        vertical-align: middle;
+        border-radius: 100%;
+        background: $text-color-disabled;
+        &-online{
+            background: $color-prompt;
+        }
+    
+        &-success{
+            background: $color-success;
+        }
+    
+        &-error, &-grade0{
+            background: $color-error;
+        }
+    
+        &-warning {
+            background: $color-warning;
+        }
+        
+        &-grade1{
+            background: #fd7e14;
+        }
+
+        &-grade2{
+            background: #ffc107;
+        }
+	&-sub1{
+            background: $color-sub1;
+        }
+        &-sub2{
+            background: $color-sub2;
+        }
+        &-sub3{
+            background: $color-sub3;
+        }
+    }
+    .status-text{
+        vertical-align: middle;
+    }
+    [class*=aui-icon-], [class^=aui-icon-]{
+        font-size: $font-size-small;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+}
+
+
+

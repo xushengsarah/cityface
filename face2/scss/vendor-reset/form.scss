@@ -1,0 +1,101 @@
+.form-group {
+    margin-bottom: 1.5rem;
+    @include clearfix();
+    .#{$prefix}-form-label {
+        display: block;
+        color: $text-color-light;
+        font-size: $font-size-default;
+        line-height: 1;
+        padding-bottom: .5rem;
+        height: 1.375rem;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .#{$prefix}-form-require {
+        position: relative;
+        &:before {
+            content: '*';
+            position: absolute;
+            color: $color-error;
+            margin-left: -0.5rem;
+        }
+    }
+    .form-text {
+        color: $text-color-lighter;
+        color: #999;
+        font-size: $font-size-small;
+        margin-bottom: -0.75rem;
+        line-height: 1.25;
+    }
+    .form-words {
+        color: $text-color-default;
+        line-height: 2.25;
+    }
+    .#{$prefix}-form-label {
+        padding-top: calc(.375rem + 1px);
+        padding-bottom: calc(.375rem + 1px);
+        margin-bottom: 0;
+        font-size: inherit;
+        line-height: 1.5;
+        height: auto;
+        //padding-right: 0.75rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .#{$prefix}-form-label-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .number-to-wrap{
+        background: $color-white;
+        height: $input-height;
+    }
+    .searchHalf{
+        width: 49%;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .searchMap{
+        display: none;
+    }
+}
+
+form.#{$prefix}-row {
+    //margin-left: -1.5rem;
+    .form-text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+form.#{$prefix}-from-horizontal {
+    .#{$prefix}-form-label {
+        // text-align: right;
+    }
+}
+
+.#{$prefix}-row .form-group {
+    [class^="#{$prefix}-col-"],
+    [class*="#{$prefix}-col-"] {
+        padding-right: 0;
+    }
+}
+
+.form-control-type1 {
+    .datepicker-box {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: .75rem;
+        width: calc(100% - 25.85rem);
+    }
+}
+
+.form-radio-box{
+    padding-top: .4rem;
+}
+.aui-form .form-group{
+    min-height: 2.25rem;
+}

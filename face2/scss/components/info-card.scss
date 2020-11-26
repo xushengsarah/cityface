@@ -1,0 +1,38 @@
+$info-card-padding: $space*1.8 $space*1.6;
+.info-card {
+    padding: $info-card-padding;
+    background: $background-color-x-gray;
+    border-radius: $border-radius-medium;
+    &-title {
+        @include ellipsis();
+        font-size: $font-size-medium;
+    }
+    .form-info {
+        margin-top: $space*.5;
+        .form-group {
+            margin-top: 0;
+        }
+        .aui-form-label,
+        .form-text {
+            line-height: 1;
+        }
+        .form-text {
+            @include ellipsis();
+            padding: 0 0 0 .325rem;
+        }
+    }
+    &-group {
+        @include ellipsis();
+        margin: -.625rem 0 0 -.625rem;
+        .info-card {
+            float: left;
+            width: calc(50% - #{$space});
+            margin: $space 0 0 $space;
+        }
+        &.col4 {
+            .info-card {
+                width: calc(25% - #{$space});
+            }
+        }
+    }
+}

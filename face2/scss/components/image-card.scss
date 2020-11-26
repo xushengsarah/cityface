@@ -1,0 +1,443 @@
+.image-card-wrap {
+    position: relative;
+    padding: 0.175rem;
+    margin-right: 0.625rem;
+    margin-bottom: 0.625rem;
+    overflow: hidden;
+    border-radius: $border-radius-medium;
+    border: 1px solid transparent;
+    transition: all $default-animation;
+    &:last-child {
+        margin-right: 0;
+    }
+    &.active,
+    &:hover {
+        &:not(.disabled) {
+            border-color: $border-color-focus;
+            box-shadow: 0 2px 2.5rem rgba($border-color-focus, .2), 0 0 0 1px $border-color-focus;
+        }
+    }
+    &.image-card-wrap2 {
+        border-radius: $border-radius;
+        padding: 0;
+        cursor: pointer;
+        .image-card-img {
+            border-radius: $border-radius;
+        }
+        .image-card-outer {
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+        }
+    }
+    &.image-card-wrap-mask {
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba($color-black, .05);
+            border-radius: $border-radius;
+        }
+    }
+    &.light {
+        opacity: .5;
+    }
+    &.noborer {
+        border-color: transparent !important;
+        &:hover {
+            box-shadow: none;
+        }
+    }
+    &.disabled {
+        cursor: $cursor-disabled;
+    }
+}
+
+.image-card-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:before {
+        background: rgba(0, 0, 0, 0.05);
+        z-index: 1;
+    }
+}
+
+.showBigImg,
+.showBigImgDynamic {
+    .image-card-wrap {
+        border: 1px solid $border-color-light;
+    }
+    .image-card-box:before {
+        background: transparent;
+        z-index: 0;
+    }
+}
+
+.image-card-img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.image-card-outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.image-card-inner {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    font-size: $font-size-small;
+    background: rgba($theme-color, .8);
+    transition: all $default-animation;
+    &.danger {
+        background: rgba($color-danger, .8);
+    }
+    &.gray {
+        background: rgba($background-color-gray, .8);
+    }
+    &.deepgray {
+        background: rgba($background-color-dark, .6);
+    }
+    &.warning {
+        background: rgba($color-warning, .8);
+    }
+    &.white {
+        background: rgba(64, 64, 64, .6);
+    }
+    &.blue {
+        background: rgba($theme-color-active, .6);
+    }
+}
+
+.image-card-text {
+    vertical-align: middle;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-card-message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    font-size: $font-size-small;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.image-card-message-position {
+    width: 100%;
+    color: $text-color-default;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-card-message-time {
+    width: 100%;
+    color: $text-color-lighter;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-card-operate-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    background: $background-color-x-gray;
+}
+
+.image-card-operate-outer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    [class*=aui-icon-],
+    [class^=aui-icon-] {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        color: $text-color-lighter;
+        font-size: $font-size-default;
+    }
+    &.checkbox {
+        justify-content: flex-start;
+    }
+}
+
+.image-box-flex {
+    position: relative;
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%;
+    }
+    .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .image-card-outer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        line-height: 1.2rem;
+    }
+    .image-card-number {
+        font-weight: bold;
+    }
+    .image-title {
+        @include ellipsis();
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        line-height: 2.2;
+        padding: 0 .75rem;
+        text-align: center;
+        color: $color-white;
+        font-weight: bold;
+        z-index: 2;
+        &.expand {
+            display: flex;
+            justify-content: space-between;
+            line-height: 2.5;
+        }
+    }
+    &.rectangle {
+        &:before {
+            padding-top: 56.06%;
+        }
+    }
+    &.image-card-wrap-mask {
+        &:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba($color-black, .05);
+            border-radius: $border-radius;
+        }
+    }
+}
+
+.image-tag {
+    @include ellipsis();
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    min-width: 3.75rem;
+    max-width: 100%;
+    height: 1.875rem;
+    padding: 0 $space*.5;
+    line-height: 1.875rem;
+    text-align: center;
+    color: $color-white;
+    background: rgba($color-black, .5);
+    &.danger,
+    &.warning,
+    &.white {
+        position: absolute;
+        z-index: 3;
+        left: inherit;
+        right: .625rem;
+        top: .625rem;
+        display: inline-block;
+        min-width: 4rem;
+        max-width: 100%;
+        height: auto;
+        line-height: 1.25rem;
+        text-align: center;
+        font-weight: bold;
+        background: none;
+        border-width: 2px;
+        border-style: solid;
+    }
+    &.rotate {
+        transform: rotate(15deg);
+        top: .875rem;
+        right: .5rem;
+    }
+    &.danger {
+        color: $color-danger;
+        border-color: $color-danger;
+    }
+    &.warning {
+        color: $color-warning;
+        border-color: $color-warning;
+    }
+    &.white {
+        color: rgba($color-white, .6);
+        border-color: rgba($color-white, .6);
+    }
+}
+
+.image-card-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top right, transparent 50%, rgba($color-black, .6) 100%);
+    border-radius: $border-radius;
+}
+
+.image-flex-list {
+    position: relative;
+    overflow: hidden;
+    &>.image-box-flex,
+    &>.image-card-wrap {
+        float: left;
+        width: 50%;
+        margin: 0;
+    }
+    .image-flex-similarity {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        display: flex;
+        color: $color-white;
+        border-radius: $border-radius;
+        font-size: $font-size-default;
+        font-weight: 700;
+        transform: translateX(-50%);
+        span {
+            padding: 0 0.625rem;
+        }
+        .danger {
+            background: rgba($color-danger, .8);
+        }
+        .gray {
+            background: rgba($background-color-gray, .8);
+        }
+        .warning {
+            background: rgba($color-warning, .8);
+        }
+        .white {
+            background: rgba(64, 64, 64, .6);
+        }
+        .primary {
+            background: rgba($theme-color, .8);
+        }
+    }
+}
+
+.mask-image-contrast {
+    .image-box-flex {
+        display: inline-block;
+        height: 48rem;
+        width: 49%;
+    }
+}
+
+.image-flex-list2 {
+    &>.image-box-flex {
+        float: left;
+        width: 3.375rem;
+        margin: 4px 4px 0 0;
+    }
+}
+
+.image-card-title {
+    @include multi-row(2);
+    transition: all $default-animation;
+}
+
+.image-card-container {
+    position: relative;
+    &:hover,
+    &.active {
+        .image-card-wrap {
+            border-color: $border-color-focus;
+            box-shadow: 0 2px 2.5rem rgba($border-color-focus, .2), 0 0 0 2px $border-color-focus;
+        }
+        .image-card-title {
+            color: $theme-color;
+            font-weight: bold;
+        }
+        .deepgray {
+            background: rgba($theme-color, .8);
+        }
+    }
+    .image-card-wrap {
+        margin-right: 0;
+    }
+}
+
+.image-popover {
+    position: absolute;
+    z-index: 2;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid $theme-color;
+    padding: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: $color-white;
+    box-shadow: 0 10px 10px rgba(darken($theme-color, 30%), .2);
+    .tag-text {
+        position: absolute;
+        right: -.55rem;
+        top: -.55rem;
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: calc(1.5rem - 4px);
+        background: $color-error;
+        color: $color-white;
+        text-align: center;
+        border: 2px solid $color-white;
+        border-radius: 50%;
+        @include ellipsis();
+    }
+    .image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    &:focus {
+        outline: none;
+    }
+    &.error {
+        border-color: $color-error;
+    }
+    &.success {
+        border-color: $color-success;
+    }
+}

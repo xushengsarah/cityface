@@ -1,0 +1,920 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="./assets/vendor/paginator/css/paginator.css" />
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div class="layout-type3 small search-result" id="current-page">
+        <div class="aui-card side side-left">
+            <div class="card-side-header-box">
+                <div class="search-box">
+                    <!-- <div class="search-wrap"> -->
+                    <!-- <span class="search-icon noborder">
+                        <i class="aui-icon-idcard"></i>
+                    </span>
+                    <select name="type" class="idcardSelect">
+                        <option class="option-item" value="">唯一库</option>
+                        <option class="option-item" value="22">在逃库</option>
+                    </select> -->
+                    <div class="search-box-border">
+                        <!-- <span id="idcardSelectMerge" class="idcardSelect">
+                            <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                <span style="margin-top: -0.2rem;display: inline-block;">在逃人员</span>
+                            </label>
+                        </span> -->
+                        <select name="type" class="idcardSelect">
+                            <option class="option-item" value="">默认</option>
+                            <option class="option-item" value="22">在逃库</option>
+                        </select>
+                        <input placeholder="请输入身份证号,并选择相应库" type="text" class="search-input" id="idcardsearch">
+                        <span class="search-icon noborder" id="idcardsearchIconMerge">
+                            <i class="aui-icon-search"></i>
+                        </span>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="idcard-alert alert alert-dismissible text-error" role="alert">身份证号有误.</div>
+            </div>
+            <div class="card-side-content-box pd0">
+                <ul class="nav nav-tabs hide" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                           aria-selected="false">单张检索</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="true">多张检索</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="add-image-wrap add-type-3 center" id="usearchImg">
+                            <div class="add-image-icon add-image-new">
+                                <i class="aui-icon-add"></i>
+                                <p class="add-image-box-text">添加一张或多张照片检索</p>
+                                <input type="file" class="uploadFile">
+                            </div>
+                        </div>
+                        <form class="search-result-side-form cover">
+                            <div class="panel-group" id="sidebarAccordion" role="tablist" aria-multiselectable="false">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <a class="panel-toggle collapsed" role="button" data-toggle="collapse"
+                                           href="#collapseOne" aria-expanded="true"
+                                           aria-controls="collapseOne collapseTwo">
+                                            <label
+                                                   class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                                <span
+                                                      class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                                <span>静态库</span>
+                                            </label>
+                                            <!-- <span>静态库</span> -->
+                                            <!-- <i class="aui-icon-drop-down-2"></i> -->
+                                            <i class="aui-icon-setting-2 margeConfigIcon" id="mergeConfig"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- 静态库配置 -->
+                                <div class="facedb-box facedb-dynamic hide" id="mergeConfigBox">
+                                    <i class="aui-icon-not-through"></i>
+                                    <div class="facedb-box-form">
+                                        <div class="form-group aui-mb-sm">
+                                            <label class="aui-form-label aui-col-3">年龄</label>
+                                            <div class="aui-col-12">
+                                                <div class="number-to-wrap">
+                                                    <input class="number-to-input" type="text" id="ageStart" value=""
+                                                           maxlength="3" oninput="value=value.replace(/[^0-9]/g,'')">
+                                                    <span class="number-to-text">至</span>
+                                                    <input class="number-to-input" type="text" id="ageEnd" value=""
+                                                           maxlength="3" oninput="value=value.replace(/[^0-9]/g,'')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="sex">
+                                            <label class="aui-form-label aui-col-3">性别</label>
+                                            <div class="aui-col-21">
+                                                <div class="radio-group-wrap aui-mt-xs">
+                                                    <input type="radio" name="radio-1" id="radio-1" value="1"
+                                                           data-role="radio">
+                                                    <label for="radio-1">男性</label>
+                                                    <input type="radio" name="radio-1" id="radio-2" value="2"
+                                                           data-role="radio">
+                                                    <label for="radio-2">女性</label>
+                                                    <input type="radio" name="radio-1" id="radio-3" value="-1"
+                                                           data-role="radio" checked>
+                                                    <label for="radio-3">全部</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group aui-mb-0" id="facedb">
+                                            <div class="facedb-box-title">
+                                                <div class="aui-col-20">
+                                                    <label class="aui-form-label">人脸库</label>
+                                                </div>
+                                                <div class="aui-col-4 aui-form-label">
+                                                    <label
+                                                           class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget ui-checkboxradio-checked">
+                                                        <span
+                                                              class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                                        <span>全选</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="facedb-box-content radio-group-wrap" id="facedbContent"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="facedb-box-title">
+                                                <div class="aui-col-20">
+                                                    <label class="aui-form-label">算法</label>
+                                                </div>
+                                            </div>
+                                            <div class="alg-box-content" id="sf"></div>
+                                        </div>
+                                        <div class="form-group" id="top">
+                                            <label class="aui-form-label aui-col-3">结果数</label>
+                                            <div class="aui-col-21">
+                                                <div class="radio-group-wrap aui-mt-xs">
+                                                    <input type="radio" name="top-1" id="radio-top-1" value="20"
+                                                           data-role="radio" checked>
+                                                    <label for="radio-top-1">前20位</label>
+                                                    <input type="radio" name="top-1" id="radio-top-2" value="28"
+                                                           data-role="radio">
+                                                    <label for="radio-top-2">前28位</label>
+                                                    <input type="radio" name="top-1" id="radio-top-3" value="36"
+                                                           data-role="radio">
+                                                    <label for="radio-top-3">前36位</label>
+                                                    <input type="radio" name="top-1" id="radio-top-4" value="48"
+                                                           data-role="radio">
+                                                    <label for="radio-top-4">前48位</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseTwo"
+                                           aria-expanded="true" aria-controls="collapseOne collapseTwo">
+                                            <label
+                                                   class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                                <span
+                                                      class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                                <span>动态库</span>
+                                            </label>
+                                            <i class="aui-icon-drop-down-2"></i>
+                                        </a>
+
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse in show" role="tabpanel"
+                                         aria-labelledby="headingTwo" data-parent="#sidebarAccordion">
+                                        <div class="panel-body aui-mt-sm">
+                                            <div class="form-group">
+                                                <div class="aui-form-label-wrap">
+                                                    <label class="aui-form-label">时间段</label>
+                                                    <div class="btn-group btn-group-capsule" role="group"
+                                                         aria-label="Basic example" id="mergeTime">
+                                                        <button type="button" class="btn btn-sm"
+                                                                data-date="3">近3天</button>
+                                                        <button type="button" class="btn btn-sm"
+                                                                data-date="7">近7天</button>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                                data-date="30">近30天</button>
+                                                    </div>
+                                                </div>
+                                                <div class="input-daterange datepicker-box aui-input"
+                                                     id="searchMerge_Time" style="font-size:0.75rem;">
+                                                    <input id="timeStart"
+                                                           class="input-text datepicker-input radius Wdate" type="text"
+                                                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timeEnd\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                                    <span class="input-group-addon">~</span>
+                                                    <input id="timeEnd" class="input-text datepicker-input radius Wdate"
+                                                           type="text"
+                                                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timeStart\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                                    <span class="input-group-addon">
+                                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                                    </span>
+                                                    <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" autocomplete="off" />
+                                                    <span class="input-group-addon">~</span>
+                                                    <input type="text" class="datepicker-input" name="end" placeholder="结束时间" autocomplete="off" />
+                                                    <span class="input-group-addon">
+                                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                                    </span> -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="aui-form-label">相似度</label>
+                                                <div class="aui-slider-box clearfix">
+                                                    <div class="aui-slider-box-inner">
+                                                        <div class="aui-slider" id="slider1"></div>
+                                                        <div class="aui-slider-min" id="sliderMin1"></div>
+                                                        <div class="aui-slider-max" id="sliderMax1"></div>
+                                                    </div>
+                                                    <div class="float-right">
+                                                        <input id="sliderInput" type="text"
+                                                               class="aui-input aui-slider-input" value="90">%
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="selMergeCameraID">
+                                                <div class="btn-group searchTab" role="group" style="margin:0.25rem 0;">
+                                                    <button type="button" class="btn btn-sm btn-primary"
+                                                            id="searchSelect">区域</button>
+                                                    <button type="button" class="btn btn-sm" id="searchMap">地图</button>
+                                                </div>
+                                                <div class="searchSelect searchArea">
+                                                    <div class="cameraTypeSearch" style="padding: 0.25rem 0;">
+                                                        <label for="mergeCameraTypeAll"
+                                                               style="margin-right:0.1rem!important">全部</label>
+                                                        <input type="radio" name="mergeCameraType"
+                                                               id="mergeCameraTypeAll" value="" data-role="radio"
+                                                               disabled>
+                                                        <label for="mergeCameraTypeOne"
+                                                               style="margin-right:0.1rem!important">一类点</label>
+                                                        <input type="radio" name="mergeCameraType"
+                                                               id="mergeCameraTypeOne" value="2" data-role="radio"
+                                                               checked>
+                                                        <label for="mergeCameraTypeTwo"
+                                                               style="margin-right:0!important">二三类点</label>
+                                                        <input type="radio" name="mergeCameraType"
+                                                               id="mergeCameraTypeTwo" value="3" data-role="radio">
+                                                    </div>
+                                                    <div class="aui-form-item camera-drop-select">
+                                                        <select class="selectpicker" id="sidebarOrgSelect"
+                                                                data-live-search="true" title="请选择分局">
+                                                        </select>
+                                                        <span class="float-right text-right select-title">
+                                                            分局
+                                                            <span>
+                                                    </div>
+                                                    <div class="aui-form-item camera-drop-select">
+                                                        <select class="selectpicker" id="sidebarPoliceSelect"
+                                                                data-live-search="true" title="请选择派出所" disabled>
+                                                        </select>
+                                                        <span class="float-right text-right select-title">
+                                                            派出所
+                                                            <span>
+                                                    </div>
+                                                    <div
+                                                         class="aui-form-item select-multiple-container camera-drop-select">
+                                                        <select class="selectpicker" id="sidebarCameraSelect" multiple
+                                                                data-live-search="true" title="请选择摄像机" disabled
+                                                                data-selected-text-format="count">
+                                                        </select>
+                                                        <span class="float-right text-right select-title">
+                                                            摄像机
+                                                            <span>
+                                                    </div>
+                                                </div>
+                                                <div class="searchMap">
+                                                    <div class="multiPickerSelect">
+                                                        <div class="multiPickerSelect_title">
+                                                            <div class="right-count aui-inline-block">
+                                                                <span class="">已选镜头</span>
+                                                                (共
+                                                                <span class="js-camera-totle">0</span>条)
+                                                            </div>
+                                                            <div class="js-remove-all">清空全部</div>
+                                                        </div>
+                                                        <div class="multiPickerSelect_cnt">
+                                                            <div class="js_right_col">
+                                                                <ul id="saveNodeSearch">
+                                                                </ul>
+                                                            </div>
+                                                            <div class="multiPickerDlg_no_result">
+                                                                <i></i>未选择镜头
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group" style="margin-bottom:0;">
+                                            <label class="aui-form-label aui-form-require"
+                                                   style="padding-top:0;">任务名称</label>
+                                            <div class="commentSelect" id="commentSelectMerge">
+                                                <!-- <select class="selectpicker" id="mergeComments" data-live-search="true" title="请选择事件"></select> -->
+                                            </div>
+                                            <p class="text-danger mg-top-xs tip hide">请选择任务名称</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-side-footer-box">
+                <button type="button" id="mergeSearch" class="btn btn-primary">搜索</button>
+                <button type="button" id="resetBtn" class="btn">重置</button>
+                <button type="button" id="mergeApply" class="btn btn-primary searchApply hide">申请权限</button>
+            </div>
+        </div>
+        <div class="flex-container p-0 position-relative swiper-scroll-view search searchMergeOnly">
+            <div class="result-wrap" id="searchMergeContent" style="overflow-y: hidden">
+                <div class="panel-group">
+                    <div class="panel panel-default" id="staticContentContainer">
+                        <div class="panel-heading" role="tab" id="staticTitleContainer" title="双击可展示全部">
+                            <div class="panel-toggle collapsed" role="button" href="#collapseStatic"
+                                 aria-expanded="true" aria-controls="collapseStatic collapseDynamic">
+                                <i class="aui-icon-face card-title-icon static"></i>
+                                <span class="card-title static">静态库</span>
+                                <span class="card-subtitle text-theme static" id="allCount"></span>
+                                <div class="searchUseSatate" id="staticMergeSearchPower">
+                                </div>
+                                <!-- <i class="aui-icon-drop-down-2 static"></i> -->
+                                <!-- <div class="searchDisplayStatue static">
+                                    <p>折半显示：</p>
+                                    <span class="switch on" data-role="switch"></span>
+                                </div> -->
+                                <div class="centerBut static">
+                                    <i class="aui-icon-drop-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseStatic" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="staticTitleContainer">
+                            <div class="panel-body lg1">
+                                <div class="panel-body-box" id="staticSearchResult">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default dynamicCardImg" id="dynamicContentContainer">
+                        <div class="panel-heading" role="tab" id="dynamicTitleContainer" title="鼠标按住可上下拖拽,双击可展示全部">
+                            <div class="panel-toggle" role="button" href="#collapseDynamic" aria-expanded="true"
+                                 aria-controls="collapseStatic collapseDynamic">
+                                <i class="aui-icon-camera card-title-icon"></i>
+                                <span class="card-title">动态库</span>
+                                <span class="card-subtitle text-theme" id="sortTotal"></span>
+                                <span class="card-subtitle text-theme hide" id="sortByTimeTotal"></span>
+                                <span class="card-subtitle text-theme hide" id="timeTogetherTotal"></span>
+                                <span class="card-subtitle text-theme hide" id="positionTogetherTotal"></span>
+                                <!-- <i class="aui-icon-drop-down-2 static"></i> -->
+                                <div class="card-operate-box">
+                                    <div class="operate text-xm">
+                                        <div class="operate-item">
+                                            <div class="dropdown dropdown-text dropdown-select"
+                                                 data-role="dropdown-select">
+                                                <label for="cjMergeOne"
+                                                       style="margin-right:0.5rem!important;font-size:0.85rem;font-weight:bold;">市局主中心</label>
+                                                <input type="radio" name="cjMergeType" id="cjMergeOne" data-role="radio"
+                                                       value="1" checked>
+                                                <label for="cjMergeTwo"
+                                                       style="margin-right:0.5rem!important;font-size:0.85rem;font-weight:bold;">龙岗分中心</label>
+                                                <input type="radio" name="cjMergeType" id="cjMergeTwo" data-role="radio"
+                                                       value="2">
+                                            </div>
+                                        </div>
+                                        <div class="operate-item">
+                                            <div class="dropdown dropdown-text dropdown-select"
+                                                 data-role="dropdown-select">
+                                                <!-- <span class="dropdown-toggle" id="sortList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="按相似度排序">按相似度排序</span>
+                                                <div class="dropdown-menu" aria-labelledby="sortList">
+                                                    <a class="dropdown-item active" id="sortByScore">按相似度排序</a>
+                                                    <a class="dropdown-item" id="sortByTime">按时间排序</a>
+                                                    <a class="dropdown-item" id="timeTogether">按时间聚合</a>
+                                                    <a class="dropdown-item" id="placeTogether">按地点聚合</a>
+                                                </div> -->
+                                                <label for="sortByScore"
+                                                       style="margin-right:0.5rem!important">相似度</label>
+                                                <input type="radio" name="mergeSortType" id="sortByScore"
+                                                       data-role="radio" checked>
+                                                <label for="sortByTime" style="margin-right:0.5rem!important">时间</label>
+                                                <input type="radio" name="mergeSortType" id="sortByTime"
+                                                       data-role="radio">
+                                                <label for="timeTogether"
+                                                       style="margin-right:0.5rem!important">时间聚合</label>
+                                                <input type="radio" name="mergeSortType" id="timeTogether"
+                                                       data-role="radio">
+                                                <label for="placeTogether"
+                                                       style="margin-right:0.5rem!important">地点聚合</label>
+                                                <input type="radio" name="mergeSortType" id="placeTogether"
+                                                       data-role="radio">
+                                            </div>
+                                        </div>
+                                        <div class="operate-item">
+                                            <span id="selectAllSnapping">
+                                                <label
+                                                       class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                                    <span
+                                                          class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                                    <span>全选</span>
+                                                </label>
+                                            </span>
+                                            <span class="text-link default aui-ml-xs" id="aui-icon-import">
+                                                <i class="icon aui-icon-import"></i>
+                                                <span class="text">导出</span>
+                                            </span>
+                                            <span class="text-link default aui-ml-xs" id="refreshBtn">
+                                                <i class="icon aui-icon-restart"></i>
+                                                <span class="text">刷新</span>
+                                            </span>
+                                            <div class="btn-group btn-group-icon aui-ml-xs" role="group"
+                                                 aria-label="Basic example">
+                                                <button type="button" class="btn" id="showCardSearch"
+                                                        style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                                    <i class="aui-icon-card"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="showListSearch"
+                                                        style="margin-left:0rem;height:20px;line-height:20px;min-width:1rem;">
+                                                    <i class="aui-icon-list"></i>
+                                                </button>
+                                            </div>
+                                            <button id="courseAnalyse" type="button" class="btn btn-primary disabled"
+                                                    id="dynamicsearch">轨迹分析</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseDynamic" class="panel-collapse collapse in show" role="tabpanel"
+                             aria-labelledby="dynamicTitleContainer">
+                            <div class="panel-body">
+                                <div class="panel-body-box">
+                                    <div class="searchUseSatate aui-mt-xs" id="dynamicMergeSearchPower"></div>
+                                    <div class="card-tip text-lighter aui-mt-xs hide" style="float:right">*鼠标
+                                        <span class="btn-link-tip">点击空白区域左键按住</span>即可进行框选,鼠标
+                                        <span class="btn-link-tip">左键按住</span>即可进行
+                                        <span class="btn-link-tip">拖拽</span>
+                                    </div>
+                                    <div class="imageCacheDynamicList" id="imageCacheMergeList">
+
+                                    </div>
+                                    <!-- <div class="image-card-list no-bottom-border">
+                                        <ul class="image-card-list-wrap showBigImg wrap-empty-center merge" id="search-info"></ul>
+                                        <ul class="image-card-list-wrap display-none showBigImg wrap-empty-center" id="sortByTimeWrapper"></ul>
+                                        <div class="display-none showBigImg wrap-empty-center" id="timeTogetherWrapper"></div>
+                                        <div class="display-none showBigImg wrap-empty-center" id="positionTogetherWrapper"></div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="staticIDContentContainer">
+                        <div class="panel-heading" role="tab" id="staticTitleContainerID" title="鼠标按住可上下拖拽,双击可展示全部">
+                            <div class="panel-toggle collapsed" role="button" href="#collapseStaticID"
+                                 aria-expanded="true" aria-controls="collapseStatic collapseDynamic collapseStaticID">
+                                <i class="aui-icon-face card-title-icon static"></i>
+                                <span class="card-title static">静态全量</span>
+                                <span class="card-subtitle text-theme static" id="staticIDCount"></span>
+                                <!-- <i class="aui-icon-drop-down-2 static hide"></i> -->
+                                <div class="centerBut static">
+                                    <i class="aui-icon-drop-down" style="margin-top:-1.75rem"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseStaticID" class="panel-collapse collapse colsePanel" role="tabpanel"
+                             aria-labelledby="staticTitleContainerID">
+                            <div class="panel-body lg1">
+                                <div class="panel-body-box imgBaseCS" style="border:none;" id="staticSearchResultID">
+                                    <!-- <ul class="image-card-list-wrap aui-mt-sm showBigImg">
+                                        <li class="imgBase-card-wrap">
+                                            <div class="image-card-box" style="width: 100%;">
+                                                <img class="image-card-img" src="http://190.15.116.189:8066/faceImgService/faceImg/getImgByUrl?id=b1a24f92f7da45e798501a9f1c17f05f">
+                                            </div>
+                                            <div class="imgBaseCS-new">
+                                                <p class="imgBaseCS-new-text">常住人口库</p>
+                                                <p class="imgBaseCS-new-text">2016-08-21 20:10:39</p>
+                                            </div>
+                                        </li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="searchResultFlex" class="result-wrap-flex">
+                <i class="aui-icon-drop-left"></i>
+            </div>
+            <div class="search-map-frame">
+                <!-- <iframe class="map-iframe" id="search_map_iframe" value="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframe"
+                    src="http://190.168.17.2:6082/peopleCity.html?rxModule=search_map_iframe"></iframe> -->
+                <iframe class="map-iframe" id="search_map_iframe"></iframe>
+            </div>
+        </div>
+        <!-- 右侧边栏开始 -->
+        <div class="aui-card side float-right position-relative" id="bottom-sidebar">
+            <i class="card-side-close aui-icon-not-through" data-role="side-close"></i>
+            <div class="card-side-content-box">
+                <div class="side-search-detail change-detail-box change-detail-style">
+                    <div class="image-flex-list clearfix">
+                        <div class="image-box-flex">
+                            <span class="image-tag">原图</span>
+                            <img class="img" src="./assets/images/search/photo-data01.png" alt="">
+                        </div>
+                        <div class="image-box-flex">
+                            <span class="image-tag">静态库</span>
+                            <img class="img" src="./assets/images/search/cloud-algorithm04.png" alt="">
+                        </div>
+                        <span class="image-flex-similarity">0%</span>
+                    </div>
+                    <div class="message-side-right">
+                        <div class="message-icon-group icon-bg-white">
+                            <div class="btn-group-default">
+                                <button type="button" class="btn btn-sm" id="sureSearch">比中</button>
+                                <button type="button" class="btn btn-sm" id="repeatSearch">二次检索</button>
+                                <button type="button" class="btn btn-sm" id="quitControl"
+                                        prevPageName="search-merge">快速布控</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-mb-sm">
+                        <span class="text-lg name text-bold"></span>
+                        <span class="tag tag-error aui-ml-xs">重点人物</span>
+                    </div>
+                    <div class="form-info clearfix">
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-8">
+                                <span>所属库：</span>
+                            </label>
+                            <div class="form-text aui-col-16 libInfo"></div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-8">
+                                <span>性别：</span>
+                            </label>
+                            <div class="form-text aui-col-16 sex"></div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-8">
+                                <span>年龄：</span>
+                            </label>
+                            <div class="form-text aui-col-16 age"></div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-8">
+                                <span>身份证：</span>
+                            </label>
+                            <div class="form-text aui-col-16 idcard"></div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-8">
+                                <span>出生日期：</span>
+                            </label>
+                            <div class="form-text aui-col-16 birthday"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 下侧边栏结束 -->
+    </div>
+    <div class="layout-type3 search-result display-none search-path" id="currentPagePath">
+        <!-- 左侧边栏开始 -->
+        <div class="aui-card side side-left path-box control-left-box">
+            <div class="card-side-header-box">
+                <div class="title-wrap">
+                    <button class="float-left btn" id="backToSearch">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span class="v-middle">返回</span>
+                    </button>
+                    <button class="float-right btn btn-primary hide">
+                        保存轨迹图片
+                    </button>
+                </div>
+            </div>
+            <div id="coursePageSelectAll" class="card-content">
+                <label
+                       class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget ui-checkboxradio-checked">
+                    <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                    <span>全选</span>
+                </label>
+            </div>
+            <div class="card-side-content-box bdTop0" style="padding-top: 0.5rem;">
+                <div class="aui-timeline" id="auiTimeLine"></div>
+            </div>
+        </div>
+        <!-- 左侧边栏结束 -->
+        <!-- 内容区开始 -->
+        <div class="flex-container p-0 relative" style="height:100%; width: 100%;">
+            <!-- <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_path" style="height:100%; width: 100%;" value="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_path"
+                src="http://190.168.17.2:6082/peopleCity.html?rxModule=map_iframe_path"></iframe> -->
+            <iframe class="map-iframe" width="100%" height="100%" id="map_iframe_path"
+                    style="height:100%; width: 100%;"></iframe>
+        </div>
+        <!-- 内容区结束 -->
+    </div>
+    <iframe id="exportIframe" src="" style="display: none;border: 0px;"></iframe>
+
+    <!-- 静态检索横向对比弹窗 -->
+    <div class="modal fade modal-lger" id="contrastEditModal" tabindex="-1" role="dialog"
+         aria-labelledby="contrastEditModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">横向对比</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="image-flex-list clearfix">
+                        <div class="image-box-flex">
+                            <span class="image-tag">原图</span>
+                            <div class="img iviewer_cursor"></div>
+                        </div>
+                        <div class="image-box-flex">
+                            <span class="image-tag">人脸库</span>
+                            <div class="img iviewer_cursor"></div>
+                        </div>
+                    </div>
+                    <div class="image-flex-list-right">
+                        <div class="newCS">
+                            <ul class="form-info aui-row form-label-fixed mt-0">
+                                <li class="aui-col-12 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">姓名：</label>
+                                        <div class="form-text">---</div>
+                                    </div>
+                                </li>
+                                <li class="aui-col-12 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">性别：</label>
+                                        <div class="form-text">---</div>
+                                    </div>
+                                </li>
+                                <li class="aui-col-12 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">年龄：</label>
+                                        <div class="form-text">---</div>
+                                    </div>
+                                </li>
+                                <li class="aui-col-12 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">身份证：</label>
+                                        <div class="form-text">---</div>
+                                    </div>
+                                </li>
+                                <li class="aui-col-24 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">人员库：</label>
+                                        <div class="form-text" title="---">---</div>
+                                    </div>
+                                </li>
+                                <li class="aui-col-24 form-item-box">
+                                    <div class="form-group">
+                                        <label class="aui-form-label">厂家：</label>
+                                        <div class="form-text" title="---">---</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="buttonCS">
+                            <button type="button" class="btn btn-primary" id="contrastConfirm">比中</button>
+                            <button type="button" class="btn btn-primary" id="mergeOnetooneSearch">1:1比对</button>
+                            <button type="button" class="btn" id="quicklyBK">快速布控</button>
+                            <button type="button" class="btn" id="quicklyJSM">快速检索</button>
+                        </div>
+                        <div class="imgBaseCS">
+                            <div class="card-title-box">
+                                <span class="card-title">静态全量</span>
+                            </div>
+                            <ul class="image-card-list-wrap" style="padding: 0.5rem 0.25rem;">
+                                <li class="imgBase-card-wrap type-5">
+                                    <div class="image-card-box img-right-event" style="width: 100%;">
+                                        <img class="image-card-img" src="">
+                                    </div>
+                                    <div class="imgBaseCS-new">
+                                        <p class="imgBaseCS-new-text">111</p>
+                                        <p class="imgBaseCS-new-text">222</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding-bottom: 0.8rem;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 多张图片识别弹窗 -->
+    <div class="modal fade face" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">请选择人脸图片</h4>
+                    <span aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="" class="modal-face-img" />
+                    </div>
+                    <div class="modal-face-box">
+                        <p class="modal-face-info">识别出的人脸
+                            <span class="modal-face-num"></span>
+                        </p>
+                        <div class="add-image-wrap add-type-3 clearfix">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">抠图检索</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">原图检索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 档案基本信息弹窗 -->
+    <div class="modal fade modal-lger" id="basicsEditModal" tabindex="-1" role="dialog"
+         aria-labelledby="basicsEditModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">档案基本信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body basicsNewContent" style="min-height: 20rem;">
+                    <div class="aui-card container-overview">
+                        <!--人员信息 -->
+                        <div class="fh-section-item" id="basicsNew">
+                            <div class="card-title-box">
+                                <i class="aui-icon-face card-title-icon"></i>
+                                <span class="card-title">人员信息</span>
+                            </div>
+                            <div class="fh-section-detail clearfix">
+                                <div class="person-img">
+                                    <!-- <img id="basicsUrlV" src="" alt=""> -->
+                                </div>
+                                <div class="hat-content clearfix">
+                                    <div class="detailContent">
+                                        <table class="person-detail">
+                                            <tr>
+                                                <td class="tagDeatil">姓名:</td>
+                                                <td id="detailNameVal"></td>
+                                                <td class="tagDeatil">英文名:</td>
+                                                <td id="detailEngNameVal"></td>
+                                                <td class="tagDeatil">通行证号:</td>
+                                                <td id="detailPassNoVal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">性别:</td>
+                                                <td id="detailGenderVal"></td>
+                                                <td class="tagDeatil">电话号码:</td>
+                                                <td id="detailTelNoVal"></td>
+                                                <td class="tagDeatil">身份证:</td>
+                                                <td id="detailIdcardVal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">出生年月:</td>
+                                                <td id="detailBirthdayVal"></td>
+                                                <td class="tagDeatil">户籍所在地:</td>
+                                                <td id="detailRegaddressVal"></td>
+                                                <td class="tagDeatil">违法时间:</td>
+                                                <td id="detailIllegallyTimeVal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">毕业院校:</td>
+                                                <td id="detailSchoolVal"></td>
+                                                <td class="tagDeatil">标签:</td>
+                                                <td id="detailTagVal"></td>
+                                                <td class="tagDeatil">是否抓获:</td>
+                                                <td id="detailIsArrestVal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">上传人:</td>
+                                                <td id="detailUserNameVal"></td>
+                                                <td class="tagDeatil">上传机构:</td>
+                                                <td id="detailOrgNameVal"></td>
+                                                <td class="tagDeatil">上传时间:</td>
+                                                <td id="detailCreateTimeVal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">背景资料:</td>
+                                                <td id="detailBackgroundInfoVal" colspan="3"></td>
+                                                <td class="tagDeatil" rowspan="6">出入境信息截图:</td>
+                                                <td id="detailExitEntry" rowspan="6">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">违法地点:</td>
+                                                <td id="detailIllegallyAddVal" colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">违法行为:</td>
+                                                <td id="detailOnSiteDelict" colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">涉嫌全国性罪名:</td>
+                                                <td id="detailStateChargeVal" colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">涉嫌香港罪名:</td>
+                                                <td id="detailHhkChargeVal" colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tagDeatil">备注/说明:</td>
+                                                <td id="detailCommentsVal" colspan="3"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="breakLowNew">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding-bottom: 0.8rem;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pathAnalysis.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/searchCommon.js"></script>
+    <script type="text/javascript" src="js/searchMerge.js"></script>
+    <script>
+        // 时间轴删除图片
+        $(".aui-timeline").find(".image-box").hover(function () {
+            $(this).addClass('select');
+            $('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }, function () {
+            $(this).removeClass('select');
+        });
+
+        if ($('.image-box').hasClass('select')) {
+            $(this).find('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }
+
+        $('.switch').on('click', function () {
+            $('.map-container').toggleClass('line-show')
+        })
+
+        // 动静结合页面 初始化阈值
+        $(function () {
+            var slider = $("#slider1").slider({
+                orientation: "horizontal",
+                range: "min",
+                max: 100,
+                min: 1,
+                value: 90, // 滑块值
+                create: function (event, ui) {
+                    $("#sliderMin1").text(1);
+                    $("#sliderMax1").text(100);
+                },
+                slide: function (event, ui) {
+                    $("#sliderInput").val(ui.value); // 输入值
+                }
+            });
+            $("#sliderInput").data('comp', slider);
+            $("#sliderInput").on("change", function () {
+                if (!(+$(this).val()) || ((+$(this).val()) < 1)) {
+                    $(this).val('90');
+                }
+
+                if (parseInt($(this).val()) <= 0) {
+                    $(this).val('90');
+                } else if (parseInt($(this).val()) > 100) {
+                    $(this).val('90');
+                }
+
+                var reg = /^\d+$/;
+                if ($(this).val()) {
+                    if (!reg.test($(this).val())) {
+                        $(this).val('90');
+                    }
+                }
+
+                slider.slider("value", $(this).val());
+            });
+        });
+
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul, item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {
+                        text: item.label
+                    });
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                }).appendTo(wrapper);
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+
+        initImg(); // 初始化 上传图片
+    </script>
+</div>

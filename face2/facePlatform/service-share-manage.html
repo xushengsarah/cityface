@@ -1,0 +1,375 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+
+    <div id="serviceSharePage" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">账号配置类型：</label>
+                        <div class="aui-col-18">
+                            <select name="serviceType" id="serviceType">
+                                <option value="1">融合人像账号配置</option>
+                                <option value="2">城市人像账号配置</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户账号：</label>
+                        <div class="aui-col-18">
+                            <input id="userNameVal" class="aui-input" placeholder="请输入">
+                            <p class="text-danger tip hide">请输入用户账号</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">用户描述：</label>
+                        <div class="aui-col-18">
+                            <input id="userDescVal" class="aui-input" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">创建起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime1" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime1\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime1" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime1\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                                <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" autocomplete="off" />
+                                <span class="input-group-addon">~</span>
+                                <input type="text" class="datepicker-input" name="end" placeholder="结束时间" autocomplete="off" />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <button id="searchButFusion" type="button" class="btn btn-primary">搜索</button>
+                </div>
+            </form>
+        </div>
+        <div class="manages-card-content">
+            <!--列表内容区 -->
+            <div class="search-btn-group service-share-btn">
+                <button id="addBtnFusion" type="button" class="btn btn-primary">新增</button>
+                <button id="deleteBtnFusion" type="button" class="btn btn-primary disabled">批量删除</button>
+            </div>
+            <div class="tip-box">
+                <i class="icon aui-icon-information"></i>
+                <span>已选择
+                    <span class="checked-counts">0</span>项</span>
+            </div>
+            <div class="right-list bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="serviceFusionImgTable" class="table table-hover">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-serviceFusion">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="username">
+                                            <div class="th-inner ">用户账号</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="password">
+                                            <div class="th-inner">用户密码</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="limitCount">
+                                            <div class="th-inner">每天限制次数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="visitCount">
+                                            <div class="th-inner ">已访问次数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="status">
+                                            <div class="th-inner">状态</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="createtime">
+                                            <div class="th-inner">创建时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="udpatetime">
+                                            <div class="th-inner">更新时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination serviceSharePagination" id="serviceFusionImgTablePagination"></div>
+                </div>
+            </div>
+            <!-- 列表内容区 -->
+        </div>
+    </div>
+
+    <!-- 服务账号配置管理 编辑弹框 start -->
+    <div class="modal fade modal-lger" id="serviceShareEditModal" tabindex="-1" role="dialog" aria-labelledby="serviceShareEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">服务分享</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal aui-ml-md aui-mt-sm" role="form">
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">用户帐号：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="userName_val" name="userName" placeholder="请输入用户帐号">
+                                    <p class="text-danger tip hide">请输入用户帐号</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">用户密码：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="password_val" name="password" placeholder="请输入用户密码">
+                                    <p class="text-danger tip hide">请输入用户密码</p>
+                                    <p class="text-danger tip1 hide">用户密码不能超过32位</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">用户描述：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="userDesc_val" name="userDesc" placeholder="请输入用户描述">
+                                    <p class="text-danger tip hide">请输入用户描述</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">每天限制次数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="limitCount_val" name="limitCount" placeholder="请输入每天限制次数" oninput="value=value.replace(/[^0-9-]/g,'')">
+                                    <p class="text-danger tip hide">请输入每天限制次数</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">库id数组：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select class="selectpicker" id="libIds_val" name="libIds" data-live-search="false" multiple data-change="true"></select>
+                                    <p class="text-danger tip hide">请输入库id数组</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">1:N返回数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="resultTop_val" name="resultTop" maxlength="6" placeholder="请输入0-50的整数" oninput="value=value.replace(/[^\d]/g,'')">
+                                    <p class="text-danger tip hide">请输入1:N返回数</p>
+                                    <p class="text-danger tip1 hide">1:N返回数为0-50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">限制访问ip数组：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="limitIps_val" name="limitIps" placeholder="请输入限制访问ip数组并使用','分割" oninput="value=value.replace(/[^\d,.，]/g,'')"
+                                        onkeyup="value=value.replace('，',',')">
+                                    <p class="text-danger tip hide">请输入限制访问ip，并使用','分割</p>
+                                    <p class="text-danger tip1 hide">请按格式输入正确ip</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">拥有访问模块权限：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select class="selectpicker" id="moduleCodes_val" name="moduleCodes" data-live-search="false" multiple data-change="true"></select>
+                                    <p class="text-danger tip hide">请输入拥有访问模块权限</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">状态：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="status" id="status_val">
+                                        <option value="1">允许</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">需要密码？</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="needPassword" id="needPassword_val">
+                                        <option value="0">否</option>
+                                        <option value="1">是</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">需要权限校验？</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="needRight" id="needRight_val">
+                                        <option value="0">否</option>
+                                        <option value="1">是</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">网络类型：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select name="netType" id="netType_val">
+                                        <option value="1">专网</option>
+                                        <option value="2">公安网</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">授权算法厂家：</label>
+                                <div class="aui-col-18 control-form">
+                                    <select class="selectpicker" id="platformIds_val" name="platformIds" data-live-search="false" multiple data-change="true"></select>
+                                    <p class="text-danger tip hide">请输入授权算法厂家</p>
+                                </div>
+                            </div>
+                            <div class="aui-col-12 form-group-service-search">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">已访问次数：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="visitCount_val" name="visitCount" placeholder="未访问">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group aui-row">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 aui-form-require control-label">特征同步图片质量最低分设置：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="minScore_val" name="minScore" placeholder="请输入特征同步图片质量最低分设置" oninput="value=value.replace(/[^\d]/g,'')">
+                                    <p class="text-danger tip hide">请输入特征同步图片质量最低分设置</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="form-group aui-row form-group-service-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="creator_val" name="creator" placeholder="请输入创建人">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">创建时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="createtime_val" name="createtime" placeholder="请输入创建时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row form-group-service-search">
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新人：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="updator_val" name="updator" placeholder="无更新">
+                                </div>
+                            </div>
+                            <div class="aui-col-12">
+                                <label class="aui-form-label aui-col-6 control-label">更新时间：</label>
+                                <div class="aui-col-18 control-form">
+                                    <input type="text" class="aui-input" id="udpatetime_val" name="udpatetime" placeholder="无更新">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row" style="margin-bottom: 0;">
+                            <div class="aui-col-24">
+                                <label class="aui-form-label aui-col-3 aui-form-require control-label">备注/说明：</label>
+                                <div class="aui-col-21 control-form">
+                                    <textarea name="comments" id="comments_val" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea"></textarea>
+                                    <p class="text-danger tip hide">请输入备注/说明</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="serviceShareOkBut">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 服务账号配置管理 编辑弹框 end -->
+
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="serviceShareTipModal" tabindex="-1" role="dialog" aria-labelledby="serviceShareTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg">是否批量删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="serviceShareDeleOk">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/serviceShareManage.js"></script>
+</div>

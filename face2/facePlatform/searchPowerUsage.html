@@ -1,0 +1,561 @@
+<div>
+    <!-- 权限使用情况 -->
+    <div id="searchPowerUsage" class="manages-page">
+        <div class="manages-search-style systemTab" id="searchPowerUsageTab">
+            <ul class="nav nav-tabs pd0" id="typeValBut" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#typeVal1" role="tab" aria-controls="typeVal1"
+                       aria-selected="true">总览
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal2" role="tab" aria-controls="typeVal2"
+                       aria-selected="false">明细
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#typeVal3" role="tab" aria-controls="typeVal3"
+                       aria-selected="false">失效
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="searchPowerUsageOne">
+            <div class="manages-search-style" id="searchPowerUsageTabOne">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户警号：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageOneId" type="text" class="aui-input" placeholder="请输入用户警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">分局：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="searchUsageOneOrg" data-live-search="true"
+                                        title="请选择分局"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">派出所：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="searchUsageOnePolice" data-live-search="true"
+                                        title="请选择派出所"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户姓名：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageOneName" type="text" class="aui-input" placeholder="请输入用户姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <button id="searchUsageOneBtn" type="button" class="btn btn-primary">搜索</button>
+                            <button id="searchUsageOneReset" type="button" class="btn">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <!--列表内容区 -->
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="searchUsageTableOne" class="table table-hover">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="15%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="username">
+                                                <div class="th-inner ">序号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="username">
+                                                <div class="th-inner ">用户姓名</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="password">
+                                                <div class="th-inner">用户警号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="limitCount">
+                                                <div class="th-inner">所属机构</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">可使用次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">已使用次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">剩余总次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="searchUsageTableOnePagination">
+                        </div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+        <div class="searchPowerUsageTwo hide">
+            <div class="manages-search-style" id="searchPowerUsageTabTwo">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户警号：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageTwoId" type="text" class="aui-input" placeholder="请输入用户警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">分局：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="searchUsageTwoOrg" data-live-search="true"
+                                        title="请选择分局"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">派出所：</label>
+                            <div class="aui-col-18">
+                                <select class="selectpicker" id="searchUsageTwoPolice" data-live-search="true"
+                                        title="请选择派出所"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户姓名：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageTwoName" type="text" class="aui-input" placeholder="请输入用户姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">操作人：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageTwoOptName" type="text" class="aui-input" placeholder="请输入操作人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-10">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">操作起止时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                     style="font-size:0.75rem;">
+                                    <input id="startTime" class="input-text datepicker-input radius Wdate" type="text"
+                                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="endTime" class="input-text datepicker-input radius Wdate" type="text"
+                                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})" />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">奖励类型：</label>
+                            <div class="aui-col-18">
+                                <select name="speed" id="searchUsageTwoType"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <button id="searchUsageTwoBtn" type="button" class="btn btn-primary">搜索</button>
+                            <button id="searchUsageTwoReset" type="button" class="btn">重置</button>
+                            <button id="searchUsageTwoAdd" type="button" class="btn">临时奖励</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="searchUsageTableTwo" class="table table-hover">
+                                    <colgroup>
+                                        <col width="4%">
+                                        <col width="8%">
+                                        <col width="13%">
+                                        <col width="15%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="username">
+                                                <div class="th-inner ">序号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="password">
+                                                <div class="th-inner">用户姓名</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">用户警号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">所属机构</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">奖励次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">奖励类型</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">奖励事由</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作用户</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="searchUsageTableTwoPagination">
+                        </div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+        <div class="searchPowerUsageThree hide">
+            <div class="manages-search-style" id="searchPowerUsageTabThree">
+                <div class="aui-from-horizontal aui-row">
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户警号：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageThreeId" type="text" class="aui-input" placeholder="请输入用户警号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">用户姓名：</label>
+                            <div class="aui-col-18">
+                                <input id="searchUsageThreeName" type="text" class="aui-input" placeholder="请输入用户姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-7">
+                        <div class="form-group">
+                            <button id="searchUsageThreeBtn" type="button" class="btn btn-primary">搜索</button>
+                            <button id="searchUsageThreeReset" type="button" class="btn">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="manages-card-content">
+                <div class="right-list bayonet-right-list">
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar"></div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                <table id="searchUsageTableThree" class="table table-hover">
+                                    <colgroup>
+                                        <col width="10%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="username">
+                                                <div class="th-inner ">序号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="password">
+                                                <div class="th-inner">用户姓名</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="visitCount">
+                                                <div class="th-inner ">用户警号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">所属机构</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">最后登录时间</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th data-field="operate">
+                                                <div class="th-inner">操作</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="fixed-table-pagination serviceSharePagination" id="searchUsageTableThreePagination">
+                        </div>
+                    </div>
+                </div>
+                <!-- 列表内容区 -->
+            </div>
+        </div>
+    </div>
+    <!--临时奖励弹窗-->
+    <div class="modal modal-sm" id="powerUsageAdd" aria-labelledby="serviceShareEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">临时奖励次数</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="aui-col-24">
+                            <label class="aui-form-label aui-col-6 aui-form-require">用户姓名</label>
+                            <div class="aui-col-18">
+                                <input placeholder="请选择用户姓名" type="text" class="aui-input js-change-cames"
+                                       data-state="list" readonly="readonly" name="" id="powerUsageAddUser">
+                                <p class="text-danger mg-top-xs tip hide">请选择用户姓名</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="aui-col-24">
+                            <label class="aui-form-label aui-col-6 aui-form-require">奖励次数</label>
+                            <div class="aui-col-18">
+                                <input id="powerUsageAddCount" type="text" class="aui-input" placeholder="输入奖励次数"
+                                       maxlength="50" onkeyup="this.value=this.value.replace(/[^(\-)0-9]/g,'')">
+                                <p class="text-danger mg-top-xs tip hide">请输入奖励次数</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="aui-col-24">
+                            <label class="aui-form-label aui-col-6 aui-form-require">奖励事由</label>
+                            <div class="aui-col-18">
+                                <textarea name="" id="powerUsageAddReason" placeholder="请输入奖励事由" cols="30" rows="5"
+                                          class="control-textarea" maxlength="500"></textarea>
+                                <p class="text-danger mg-top-xs tip hide">请输入奖励事由</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="powerUsageAddOK">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--可使用次数弹窗-->
+    <div class="modal modal-lger" id="powerUsageCountOneModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">可使用次数明细</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <table id="powerUsageCountOneTable" class="table-hover" data-toggle="table">
+                        <colgroup>
+                            <col width="4%">
+                            <col width="7%">
+                            <col width="12%">
+                            <col width="15%">
+                            <col width="8%">
+                            <col width="10%">
+                            <col width="8%">
+                            <col width="8%">
+                            <col width="12%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="username">
+                                    <div class="th-inner ">序号</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="password">
+                                    <div class="th-inner">用户姓名</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="visitCount">
+                                    <div class="th-inner ">用户警号</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">所属机构</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">奖励次数</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">奖励类型</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">奖励事由</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">操作用户</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th data-field="operate">
+                                    <div class="th-inner">操作时间</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="powerUsageCountOnePagination">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--已使用次数弹窗-->
+    <div class="modal modal-lger" id="powerUsageCountTwoModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">已使用次数明细</h4>
+                    <span>
+                        <i aria-hidden="true" class="aui-icon-not-through" id="powerUsageCountTwoClose"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height:50rem;padding:0;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="enabledAccountTipModal" tabindex="-1" role="dialog"
+         aria-labelledby="serviceShareTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg">是否确认启用该账号？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            id="enabledAccountTipSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script class="js-addVersion" src="./assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/searchPowerUsage.js"></script>
+</div>

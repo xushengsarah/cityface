@@ -1,0 +1,240 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <div id='cjSettingPage'>
+        <!--厂家设置 右边内容 -->
+        <div class="aui-col-24">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-6">
+                    <div class="form-group" id=''>
+                        <label class="aui-form-label aui-col-6">厂家名称：</label>
+                        <div class="aui-col-18">
+                            <input id="platformName" type="text" class="aui-input" placeholder="请输入">
+                            <p class="text-danger mg-top-xs tip hide">请输入厂家名称</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group" id=''>
+                        <label class="aui-form-label aui-col-6">数据库名称：</label>
+                        <div class="aui-col-18">
+                            <input id="dbName" type="text" class="aui-input" placeholder="请输入">
+                            <p class="text-danger mg-top-xs tip hide">请输入数据库名称</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-4">
+                    <div class="form-group" id="">
+                        <div class="aui-col-12 mt-sm">
+                            <label for="policeRadio1" id="policeWeb">公安网</label>
+                            <input type="radio" name="police-radio-1" id="policeRadio1" value="policeRadio1" data-role="radio" checked>
+                        </div>
+                        <div class="aui-col-12 mt-sm">
+                            <label for="policeRadio2" id="videoWeb">视频网</label>
+                            <input type="radio" name="video-radio-1" id="policeRadio2" value="policeRadio2" data-role="radio">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="searchList" class="btn btn-primary aui-mr-0 aui-col-1">搜索</button>
+            </form>
+            <div class="cj-setting-btn">
+                <button type="button" id="cjAddBtn" class="btn btn-primary aui-mr-0">添加</button>
+                <button type="button" id="cjMultiDeleteBtn" class="btn btn-primary aui-mr-0 disabled">批量删除</button>
+            </div>
+            <div class="tip-box">
+                <i class="icon aui-icon-information"></i>
+                <span>已选择
+                    <span class="checked-counts" id="listCheckedCounts">0</span>项</span>
+            </div>
+            <div class="bayonet-right-list">
+                <div class="bootstrap-table">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-header" style="display: none;">
+                            <table></table>
+                        </div>
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                            <table id="tableList" class="table table-hover">
+                                <colgroup>
+                                    <col>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state" data-checkbox="true">
+                                            <div class="th-inner ">
+                                                <div class="table-checkbox">
+                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all">
+                                                    <label class="table-checkbox-label"></label>
+                                                </div>
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="platformName">
+                                            <div class="th-inner ">厂家名称</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="serverName">
+                                            <div class="th-inner ">服务名称</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="serverIP">
+                                            <div class="th-inner ">服务IP</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="port">
+                                            <div class="th-inner ">端口</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="account">
+                                            <div class="th-inner ">账号</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="password">
+                                            <div class="th-inner ">密码</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="web">
+                                            <div class="th-inner ">网络</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="modifyTime">
+                                            <div class="th-inner ">端口</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th data-field="operate">
+                                            <div class="th-inner ">操作</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="fixed-table-footer" style="display: none;">
+                            <table>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="tableBayonetListPagination"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 右边内容结束 -->
+    </div>
+
+    <!-- 厂家配置 编辑弹框 -->
+    <div class="modal fade" id="cjSettingEditModal" tabindex="-1" role="dialog" aria-labelledby="cjSettingEditLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">厂家服务账号表单</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <form class="aui-from-horizontal" role="form" action="" id="editForm" novalidate>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require" for="platformNameVal">厂家名称：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" id="platformNameVal" name="platformName" placeholder="请选择厂家名称" required>
+                                <div class="invalid-feedback">请选择厂家名称</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">服务名称：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" placeholder="请输入服务名称">
+                                <div class="invalid-feedback">请输入服务名称</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">网络：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" placeholder="请选择网络">
+                                <div class="invalid-feedback">请选择网络</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">服务IP：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" placeholder="请输入服务IP">
+                                <div class="invalid-feedback">请输入服务IP</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">端口：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" placeholder="请输入端口">
+                                <div class="invalid-feedback">请输入端口</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">账号：</label>
+                            <div class="aui-col-16">
+                                <input type="text" class="aui-input" placeholder="请输入账号">
+                                <div class="invalid-feedback">请输入账号</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4 aui-form-require">密码：</label>
+                            <div class="aui-col-16">
+                                <input type="password" class="aui-input" placeholder="请输入密码">
+                                <div class="invalid-feedback">请输入密码</div>
+                            </div>
+                        </div>
+                        <div class="form-group aui-row">
+                            <label class="aui-form-label aui-col-4">备注：</label>
+                            <div class="aui-col-16">
+                                <textarea rows="4" cols="4" class="aui-input"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="cjSettingEditModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 厂家配置 编辑弹框 end -->
+
+    <!-- 厂家配置 删除提示弹窗 -->
+    <div class="modal fade modal-sm" id="cjSettingModal" tabindex="-1" role="dialog" aria-labelledby="cjSettingLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="cjSettingLabel">是否删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cjSettingModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 厂家配置 删除提示弹窗 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/cjSetting.js"></script>
+</div>

@@ -1,0 +1,756 @@
+<div>
+    <link rel="stylesheet" href="assets/vendor/rollNum/css/rollNum.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-table/css/bootstrap-table-fixed-columns.css" />
+    <link rel="stylesheet" href="assets/vendor/jqueryanimationsmodal/style.css" />
+    <div class="databoard">
+        <div class="layout">
+            <div class="gis-map-layer">
+                <div class="layer-top"></div>
+                <div class="layer-left"></div>
+                <div class="layer-bottom"></div>
+                <div class="layer-right"></div>
+            </div>
+            <div class="board-mask hide"></div>
+            <div class="map">
+                <!-- <iframe class="map-iframe" width="100%" height="100%" id="dashboardMap" value="http://190.168.17.2:6082/peopleCityBlack.html?orgid=44032"
+                    src="http://190.168.17.2:6082/peopleCityBlack.html?orgid=44032"></iframe> -->
+                <iframe class="map-iframe" width="100%" height="100%" id="dashboardMap"></iframe>
+            </div>
+            <div class="header">
+                <div class="header-tool hide">
+                    <i class="aui-icon-color-default aui-icon-minus"></i>
+                    <i class="aui-icon-color-default aui-icon-fullScreen"></i>
+                    <i class="aui-icon-color-default aui-icon-not-through"></i>
+
+                </div>
+                <div class="header-title">
+                    <!-- <img class="header-title-logo" src="./assets/images/common/logo-big.png" alt=""> -->
+                    <span>城市人像数据看板</span>
+                </div>
+                <div class="header-back">
+                    <i class="aui-icon-drop-left"></i>
+                </div>
+            </div>
+            <span class="btn btn-back btn-primary hide">
+                <i class="aui-icon-back"></i> 返回</span>
+            <div class="tab-title" id="dataSwitchTabBut">
+                <ul class="tab-list">
+                    <li class="tab-item camera-item">
+                        <i class="aui-icon-color-default aui-icon-tree-camera"></i>
+                        <span class="camera-item-info">抓拍机数</span>
+                    </li>
+                    <li class="tab-item poluation-item hide">
+                        <i class="aui-icon-color-default aui-icon-crowd"></i>
+                        <span class="camera-item-info">抓拍总数</span>
+                    </li>
+                    <li class="tab-item poluation-item hide">
+                        <i class="aui-icon-color-default aui-icon-news"></i>
+                        <span class="camera-item-info">告警总数</span>
+                    </li>
+                    <li class="tab-item camera-item">
+                        <i class="aui-icon-color-default aui-icon-tree-camera"></i>
+                        <span class="camera-item-info">日平均抓拍</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-details" id="detectInfo">
+                <div class="border-card">
+                    <div class="border-line-box top">
+                        <div class="border-line border-line-left"></div>
+                        <div class="border-dot border-dot-left"></div>
+                        <div class="border-line-middle"></div>
+                        <div class="border-dot border-dot-right"></div>
+                        <div class="border-line border-line-right"></div>
+                    </div>
+                    <div class="border-line-box bottom">
+                        <div class="border-line border-line-left"></div>
+                        <div class="border-dot border-dot-left"></div>
+                        <div class="border-line-middle"></div>
+                        <div class="border-dot border-dot-right"></div>
+                        <div class="border-line border-line-right"></div>
+                    </div>
+                </div>
+                <div class="bBooder first">
+                    <div class="dot-card-content gis-kpi to-bottom">
+                        <div class="kpi-data" id="snapCountStatisBoard">
+                            <span class="title text-center">
+                                <span class="snapCountStatisAll">抓拍总数</span>
+                                <span class="snapCountStatisToday">
+                                    今日抓拍数:
+                                    <span id="snapCountStatisChange"></span>
+                                </span>
+                            </span>
+                            <div class="dashboard-roll-num" style="cursor: pointer;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bBooder last">
+                    <div class="dot-card-content gis-kpi to-bottom">
+                        <div class="kpi-data" id="snapCountStatisAlarm">
+                            <span class="title text-center">
+                                <span class="snapCountStatisAll">告警总数</span>
+                                <span class="snapCountStatisToday">
+                                    今日告警数:
+                                    <span id="snapCountAlarmChange"></span>
+                                </span>
+                            </span>
+                            <div class="dashboard-roll-num" style="cursor: pointer;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-sidebar content-sidebar-left dashboard-content-card">
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-right">
+                        <div class="dot-card-title">
+                            <i class="dot-card-sign"></i>
+                            应用成效
+                            <button class="btn btn-sm btn-primary titleBtn" id="applicationEffectDetail">查看详情</button>
+                        </div>
+                        <div class="dot-card-body dot-card-table">
+                            <table class="table" id="applicationEffectTable">
+
+                            </table>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-left">
+                        <div class="dot-card-title">
+                            <i class="dot-card-sign"></i>用户情况
+                            <button class="btn btn-sm btn-primary titleBtn" id="userInfoDetail">查看详情</button>
+                        </div>
+                        <div class="dot-card-body pt">
+                            <div class="body-right-box">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近三月</button>
+                                </div>
+                            </div>
+                            <!-- <div class="chart-select-btn prev">
+                                <i class="aui-icon-drop-left icon"></i>
+                            </div>
+                            <div class="chart-select-btn next">
+                                <i class="aui-icon-drop-right icon"></i>
+                            </div> -->
+                            <div class="chartOne">
+                                <div id="getUserInfoChart1" class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img class="small" src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                            <div class="chartTwo">
+                                <div id="getUserInfoChart2" class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img class="small" src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-left">
+                        <div class="dot-card-title all">
+                            <i class="dot-card-sign"></i>静态人像算法评比
+                        </div>
+                        <div class="dot-card-body pt" id="algorithmCompare">
+                            <div class="body-right-box">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近三月</button>
+                                </div>
+                            </div>
+                            <div class="chartTwo">
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img class="small" src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                            <div class="chartTwo">
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img class="small" src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-right">
+                        <div class="dot-card-title">
+                            <i class="dot-card-sign"></i>静态人像入库统计</div>
+                        <div class="dot-card-body pt">
+                            <div class="body-right-box">
+                                <!-- <button class="btn btn-sm btn-primary portrait">人像统计</button> -->
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm ">近一年</button>
+                                </div>
+                            </div>
+                            <div id="queryLibCountsTrend" class="chart"></div>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-sidebar content-sidebar-right dashboard-content-card">
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-right">
+                        <div class="dot-card-title">
+                            <i class="dot-card-sign"></i>布控任务统计
+                            <button class="btn btn-sm btn-primary titleBtn" id="AlarmStatisticsDetail">查看详情</button>
+                        </div>
+                        <div class="dot-card-body pt">
+                            <!-- <div class="dot-card-middle">
+                                <div id="taskStatus" class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div> -->
+                            <div class="body-right-box">
+                                <div class="btn-group btn-group-capsule" role="group" id="AlarmStatisticsGroupBtn">
+                                    <button type="button" class="btn btn-sm btn-primary" index="2">近一月</button>
+                                    <button type="button" class="btn btn-sm" index="5">近三月</button>
+                                    <button type="button" class="btn btn-sm" index="0">全部</button>
+                                </div>
+                            </div>
+                            <div class="chartThree">
+                                <div id="emphasisAlarm" class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" class="small" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-left">
+                        <div class="dot-card-title body-right-box" style="right:0;">
+                            <i class="dot-card-sign"></i>
+                            动静检索
+                            <!-- <div class="body-right-box" style="top:0;right:0">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">次数</button>
+                                    <button type="button" class="btn btn-sm">性能</button>
+                                </div>
+                            </div> -->
+                            <!-- <ul class="nav nav-tabs pd0" role="tablist">
+                                <li class="nav-item" style="cursor:pointer;">
+                                    <a class="nav-link active show" data-toggle="tab" role="tab" aria-selected="false">次数</a>
+                                </li>
+                                <li class="nav-item" style="cursor:pointer;">
+                                    <a class="nav-link" data-toggle="tab" role="tab" aria-selected="false">性能</a>
+                                </li>
+                            </ul> -->
+                            <div class="btn-group btn-group-capsule btn-title" role="group" id="dynamicStaticTab">
+                                <button type="button" class="btn btn-sm btn-primary">次数</button>
+                                <button type="button" class="btn btn-sm">性能</button>
+                            </div>
+                        </div>
+                        <div class="tab-pane dot-card-body pt" id="dynamicStaticTabOne">
+                            <div class="body-right-box">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近一年</button>
+                                </div>
+                            </div>
+                            <div id="getSearchFaceCounts2" class="chart"></div>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                        <div class="tab-pane dot-card-body pt hide" id="dynamicStaticTabTwo">
+                            <div class="body-right-box">
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近一年</button>
+                                </div>
+                            </div>
+                            <div id="getSearchFaceCounts3" class="chart"></div>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-left">
+                        <div class="dot-card-title all">
+                            <i class="dot-card-sign"></i>在线率排名
+                            <button class="btn btn-sm btn-primary titleBtn" id="onlineDetail">查看详情</button>
+                        </div>
+                        <div class="dot-card-body pt">
+                            <div class="body-right-box">
+                                <!-- <button class="btn btn-sm btn-primary statistic">抓拍统计</button> -->
+                                <div class="btn-group btn-group-capsule" role="group" id="onlineGroupBtn">
+                                    <button type="button" class="btn btn-sm btn-primary">前一天</button>
+                                    <button type="button" class="btn btn-sm">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                </div>
+                            </div>
+                            <table class="table onlineTable" id="onlineTable"></table>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card type">
+                        <div class="border-line-box left">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                        <div class="border-line-box right">
+                            <div class="border-line border-line-top"></div>
+                            <div class="border-dot border-dot-top"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-bottom"></div>
+                            <div class="border-line border-line-bottom"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content to-right">
+                        <div class="dot-card-title all">
+                            <i class="dot-card-sign"></i>抓拍情况
+                            <button class="btn btn-sm btn-primary titleBtn" id="cameraPhotographDetail">查看详情</button>
+                        </div>
+                        <div class="dot-card-body pt">
+                            <div class="body-right-box">
+                                <!-- <button class="btn btn-sm btn-primary statistic">抓拍统计</button> -->
+                                <div class="btn-group btn-group-capsule" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary">近一周</button>
+                                    <button type="button" class="btn btn-sm">近一月</button>
+                                    <button type="button" class="btn btn-sm">近一年</button>
+                                </div>
+                            </div>
+                            <div class="chart" id="queryLibCountsSwiper">
+                            </div>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts-container">
+                <div class="dot-card">
+                    <div class="border-card">
+                        <div class="border-line-box top">
+                            <div class="border-line border-line-left"></div>
+                            <div class="border-dot border-dot-left"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-right"></div>
+                            <div class="border-line border-line-right"></div>
+                        </div>
+                        <div class="border-line-box bottom">
+                            <div class="border-line border-line-left"></div>
+                            <div class="border-dot border-dot-left"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-right"></div>
+                            <div class="border-line border-line-right"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content full" id="resourceState">
+                        <div class="dot-card-title new">资源状况统计</div>
+                        <div class="dot-chart-body no-bg">
+                            <div class="chart-col-4">
+                                <div class="chart-name">CPU使用率</div>
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                            <div class="chart-col-4">
+                                <div class="chart-name">内存使用率</div>
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                            <div class="chart-col-4">
+                                <div class="chart-name">存储使用率</div>
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                            <div class="chart-col-4">
+                                <div class="chart-name">GPU使用率</div>
+                                <div class="chart"></div>
+                                <div class="chart-card-empty hide">
+                                    <img src="./assets/images/common/no-data.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dot-card">
+                    <div class="border-card">
+                        <div class="border-line-box top">
+                            <div class="border-line border-line-left"></div>
+                            <div class="border-dot border-dot-left"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-right"></div>
+                            <div class="border-line border-line-right"></div>
+                        </div>
+                        <div class="border-line-box bottom">
+                            <div class="border-line border-line-left"></div>
+                            <div class="border-dot border-dot-left"></div>
+                            <div class="border-line-middle"></div>
+                            <div class="border-dot border-dot-right"></div>
+                            <div class="border-line border-line-right"></div>
+                        </div>
+                    </div>
+                    <div class="dot-card-content full" id="top5AlarmTask">
+                        <div class="dot-card-title new">最新告警
+                            <div class="dot-card-more">更多</div>
+                        </div>
+                        <div class="dot-chart-body dot-card-body no-bg normal">
+                            <ul class="task-list" id="taskListTop">
+                                <!-- <li class="task-list-item">
+                                    <span class="name">
+                                        <i class="num">1.</i>
+                                        <span>920重点区域</span>
+                                    </span>
+                                    <span class="total">105</span>
+                                </li> -->
+                            </ul>
+                            <div class="chart-card-empty hide">
+                                <img class="small" src="./assets/images/common/no-data.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-border-card left">
+                <div class="map-line-top"></div>
+                <div class="map-dot-top"></div>
+                <div class="map-line-bottom"></div>
+                <div class="map-dot-bottom"></div>
+            </div>
+            <div class="map-border-card right">
+                <div class="map-line-top"></div>
+                <div class="map-dot-top"></div>
+                <div class="map-line-bottom"></div>
+                <div class="map-dot-bottom"></div>
+            </div>
+            <!--新版浮层start-->
+            <div class="popup databoardModal" id="databoardModal">
+                <div class="modal-background">
+                    <div class="modal">
+                        <div class="popup-title">
+                            <span class="card-title">
+                                <i class="card-title-sign"></i>
+                                <span class="card-title-text"></span>
+                                <i class="aui-icon-not-through" id="closeDataboardModal"></i>
+                        </div>
+                        <div class="popup-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 动态人像抓拍统计 start -->
+    <div class="modal fade modal-lger" id="snapStatisticModal" tabindex="-1" role="dialog"
+         aria-labelledby="snapStatisticLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">动态人像抓拍统计</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 46rem;">
+                    <div class="search-terms-box">
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-7 snapStatisticOrg">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">机构名称：</label>
+                                    <div class="aui-col-18">
+                                        <select class="selectpicker" id="orgIdData" data-live-search="true"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-7 snapStatisticLib hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">库类型：</label>
+                                    <div class="aui-col-18">
+                                        <label for="snapStatisticLibOne" style="margin-right:1rem!important">全量库</label>
+                                        <input type="radio" name="snapStatisticLib" id="snapStatisticLibOne" value="1"
+                                               data-role="radio" checked>
+                                        <label for="snapStatisticLibTwo" style="margin-right:0!important">唯一库</label>
+                                        <input type="radio" name="snapStatisticLib" id="snapStatisticLibTwo" value="2"
+                                               data-role="radio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-7 snapDataType">
+                                <div class="form-group" style="text-align: center;">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-primary">日报</button>
+                                        <button type="button" class="btn">月报</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-7 snapRoleType">
+                                <div class="form-group" style="text-align: center;">
+                                    <label class="aui-form-label aui-col-6">角色类型：</label>
+                                    <div class="aui-col-18">
+                                        <label for="snapRoleTypeOne" style="margin-right:1rem!important">动静态权限</label>
+                                        <input type="radio" name="snapRoleRadio" id="snapRoleTypeOne" value="1"
+                                               data-role="radio" checked>
+                                        <label for="snapRoleTypeTwo" style="margin-right:0!important">普通权限</label>
+                                        <input type="radio" name="snapRoleRadio" id="snapRoleTypeTwo" value="2"
+                                               data-role="radio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-8 otherData">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">起止时间：</label>
+                                    <div class="aui-col-18">
+                                        <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                             style="font-size:0.75rem;">
+                                            <input id="startTimeSnapStat"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStat\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="endTimeSnapStat" class="input-text datepicker-input radius Wdate"
+                                                   type="text" readonly
+                                                   onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStat\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'startTimeSnapStat\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-18 hide">
+                                        <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                             style="font-size:0.75rem;">
+                                            <input id="startTimeSnapStat1"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStat1\')}',dateFmt:'yyyy-MM',autoPickDate:true})" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="endTimeSnapStat1"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStat1\')}',maxDate:'#F{\'%y-%M\'}',dateFmt:'yyyy-MM',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-8 khData hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">起止时间：</label>
+                                    <div class="aui-col-18">
+                                        <div class="inline-block v-middle wid-35">
+                                            <label for="khDataOneInput" id="khDataOne"
+                                                   class="ui-checkboxradio-button mr-smr">日报</label>
+                                            <input type="radio" name="khDataRadio" id="khDataOneInput" value="1"
+                                                   data-role="radio-button" checked>
+                                            <label for="khDataTwoInput" id="khDataTwo"
+                                                   class="ui-checkboxradio-button mr-smr">自定义</label>
+                                            <input type="radio" name="khDataRadio" id="khDataTwoInput" value="2"
+                                                   data-role="radio-button">
+                                        </div>
+                                        <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataDay"
+                                             style="font-size:0.75rem;">
+                                            <input id="khDataDaySnap" class="input-text datepicker-input radius Wdate"
+                                                   style="width:100%;text-align: left;" type="text" readonly
+                                                   onFocus="WdatePicker({maxDate:'#F{\'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <div class="input-daterange datepicker-box aui-input wid-65 v-middle float-right khDataWeek hide"
+                                             style="font-size:0.75rem;padding:0;">
+                                            <input id="khDataDaySnapStart"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'khDataDaySnapEnd\')|| \'%y-%M-%d\'}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="khDataDaySnapEnd"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({minDate:'#F{$dp.$D(\'khDataDaySnapStart\')}',maxDate:'#F{\'%y-%M-%d\'||$dp.$D(\'khDataDaySnapStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})" />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar" style="right:0.25rem;"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-8 ycData hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6">起止时间：</label>
+                                    <div class="aui-col-18">
+                                        <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right"
+                                             style="font-size:0.75rem;">
+                                            <input id="startTimeSnapStatYC"
+                                                   class="input-text datepicker-input radius Wdate" type="text" readonly
+                                                   onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTimeSnapStatYC\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="endTimeSnapStatYC" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTimeSnapStatYC\')}',maxDate:'#F{\'%y-#{%M-1}\'}',dateFmt:'yyyy-MM',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-2">
+                                <button type="button" id="snapStatisticSearchBut" class="btn btn-primary">搜索</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="search-tab-box">
+                        <table id="snapStatisticTable" class="table-hover">
+                        </table>
+                        <div class="loadEmpty hide" id="snapStatisticLoadEmpty"></div>
+                        <!-- <div class="fixed-table-pagination bayonetCameralPagination" id="SnapStatisticPagination"></div> -->
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="serviceShareOkBut">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- 动态人像抓拍统计 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table-fixed-columns.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/rollNum/js/rollNum.js"></script>
+    <script src="js/dataDashboard.js"></script>
+</div>

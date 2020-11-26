@@ -1,0 +1,1031 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+
+    <div class="layout-type1 user mangementG" id="dispatchPage">
+        <div class="container-hat container-overview">
+            <ul class="text-md btn-group dispatch">
+                <li class="btn active">
+                    <i class="aui-icon-tree-camera"></i>
+                    <span>镜头</span>
+                </li>
+                <li class="btn">
+                    <i class="aui-icon-file"></i>
+                    <span>任务</span>
+                </li>
+            </ul>
+        </div>
+        <div class="content-hat">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative " id="dispatchInfoContent">
+                <div class="card-title-box">
+                    <div class="card-title">
+                        <button type="button" class="btn btn-primary btn-sm dispatchCreateBtn float-left">
+                            <i class="aui-icon-add-circle"></i> 新建
+                        </button>
+                        <button type="button" class="btn btn-sm float-left" id="cameraMainListRefresh">
+                            <i class="aui-icon-refresh"></i> 刷新
+                        </button>
+                        <!-- <span class="btn-group float-left">
+                            <select id="btn-grounap">
+                                <option selected value="stop">停止</option>
+                                <option value="start">启动</option>
+                                <option value="remove">删除</option>
+                            </select>
+                        </span> -->
+                        <button type="button" class="btn btn-sm float-left optCamera">
+                            <i class="aui-icon-deactivation"></i>
+                            <span>停止</span>
+                        </button>
+                        <button type="button" class="btn btn-sm float-left optCamera">
+                            <i class="aui-icon-video2"></i>
+                            <span>启动</span>
+                        </button>
+                        <!-- <button type="button" class="btn btn-sm float-left">停止</button>
+                        <button type="button" class="btn btn-sm float-left">启动</button>
+                        <button type="button" class="btn btn-sm float-left">删除</button> -->
+                    </div>
+                    <div class="card-operate-box float-right">
+                        <div class="operate">
+                            <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                <div class="aui-input-group-inner" id="dispatchSearchBox">
+                                    <input placeholder="请输入镜头名称搜索" type="text" class="aui-input" id="dispatchKeyWordInput">
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="tag-list">
+                                <li class="tag hide">
+                                    <span>任务类型：</span>
+                                    <span>进行中</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>视频类型：</span>
+                                    <span>实时</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>镜头机构：</span>
+                                    <span>龙岗分局</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>起止时间：</span>
+                                    <span>近一天</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                            </ul>
+                            <span class="btn btn-sm btn-filter" data-role="expandFilter">
+                                <span>显示筛选</span>
+                                <i class="aui-icon-drop-down-2"></i>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <ul class="filter-box">
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">任务类型:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list" id="cameraStatus">
+                                    <li class="tag">进行中</li>
+                                    <li class="tag">已完成</li>
+                                    <li class="tag">已暂停</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">视频类型:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">实时</li>
+                                    <li class="tag">历史</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">镜头机构:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">起止时间:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">近一天</li>
+                                    <li class="tag">近三天</li>
+                                    <li class="tag">近七天</li>
+                                    <li class="tag">近半个月</li>
+                                    <li class="tag">自定义时间</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-content tab-content">
+                    <div class="tab-pane fade fade1 show active" role="tabpanel" aria-labelledby="all-tab">
+                        <div id="dispatchAllPageOne">
+                            <div class="table-page-box">
+                                <div class="bootstrap-table">
+                                    <div class="fixed-table-toolbar"></div>
+                                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                                        <div class="fixed-table-header" style="display: none;">
+                                            <table></table>
+                                        </div>
+                                        <div class="fixed-table-body">
+                                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                            <table id="dispatchTableOne" class="table table-hover">
+                                                <colgroup>
+                                                    <col>
+                                                    <col width="12%">
+                                                    <col width="14%">
+                                                    <col width="10%">
+                                                    <col width="11%">
+                                                    <col width="11%">
+                                                    <col width="11%">
+                                                    <col width="11%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state">
+                                                            <div class="th-inner ">
+                                                                <div class="table-checkbox">
+                                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-cameraDetail">
+                                                                    <label class="table-checkbox-label"></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="name">
+                                                            <div class="th-inner ">摄像机名称</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="type">
+                                                            <div class="th-inner ">所属机构</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="person">
+                                                            <div class="th-inner ">视频类型</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="founder">
+                                                            <div class="th-inner ">开始时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">结束时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">状态</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">操作</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="fixed-table-footer" style="display: none;">
+                                            <table>
+                                                <tbody>
+                                                    <tr></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="fixed-table-pagination" id="dispatchTabletPagination">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative hide" id="dispatchInfoContent2">
+                <div class="card-title-box">
+                    <div class="card-title">
+                        <button type="button" class="btn btn-primary btn-sm dispatchCreateBtn float-left">
+                            <i class="aui-icon-add-circle"></i> 新建</button>
+                        <button type="button" class="btn btn-sm float-left" id="taskMainListRefresh">
+                            <i class="aui-icon-refresh"></i>刷新</button>
+                        <!-- <span class="btn-group float-left">
+                            <select id="btn-grounp-two">
+                                <option selected value="stop">停止</option>
+                                <option value="start">启动</option>
+                                <option value="remove">删除</option>
+                            </select>
+                        </span> -->
+                    </div>
+                    <div class="card-operate-box float-right">
+                        <div class="operate">
+                            <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block">
+                                <div class="aui-input-group-inner" id="dispatchSearchBox2">
+                                    <input placeholder="请输入任务名称或者创建人" type="text" class="aui-input" id="dispatchKeyWordInput2">
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="tag-list">
+                                <li class="tag hide">
+                                    <span>任务类型：</span>
+                                    <span>进行中</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>视频类型：</span>
+                                    <span>实时</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>创建时间：</span>
+                                    <span>近一天</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                                <li class="tag hide">
+                                    <span>起止时间：</span>
+                                    <span>近一天</span>
+                                    <i class="aui-icon-not-through"></i>
+                                </li>
+                            </ul>
+                            <span class="btn btn-sm btn-filter" data-role="expandFilter">
+                                <span>显示筛选</span>
+                                <i class="aui-icon-drop-down-2"></i>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <ul class="filter-box">
+                    <!-- 任务类型屏蔽，后续有这个接口之后去掉hide和下一个li的style -->
+                    <li class="filter-item clearfix" style="margin-top:0;">
+                        <span class="filter-label text-overflow">视频类型:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">实时</li>
+                                    <li class="tag">历史</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">创建时间:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">近一天</li>
+                                    <li class="tag">近三天</li>
+                                    <li class="tag">近七天</li>
+                                    <li class="tag">近半个月</li>
+                                    <li class="tag" data-time='true'>自定义时间</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix hide">
+                        <span class="filter-label text-overflow">镜头机构:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="filter-item clearfix">
+                        <span class="filter-label text-overflow">起止时间:</span>
+                        <div class="filter-content">
+                            <div class="filter-content-label">
+                                <tag class="tag tag-prompt">全部</span>
+                            </div>
+                            <div class="filter-content-inner more">
+                                <ul class="tag-list">
+                                    <li class="tag">近一天</li>
+                                    <li class="tag">近三天</li>
+                                    <li class="tag">近七天</li>
+                                    <li class="tag">近半个月</li>
+                                    <li class="tag">自定义时间</li>
+                                </ul>
+                                <span class="btn btn-link" data-role="expandMore">
+                                    <span class="text">更多</span>
+                                    <i class="aui-icon-drop-down-2"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-content tab-content">
+                    <div class="tab-pane fade fade1 show active" role="tabpanel" aria-labelledby="all-tab">
+                        <div id="dispatchAllPage2">
+                            <div class="table-page-box">
+                                <div class="bootstrap-table">
+                                    <div class="fixed-table-toolbar"></div>
+                                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                                        <div class="fixed-table-header" style="display: none;">
+                                            <table></table>
+                                        </div>
+                                        <div class="fixed-table-body">
+                                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                            <table id="tableTaskList" class="table table-hover">
+                                                <colgroup>
+                                                    <col width="12%">
+                                                    <col width="14%">
+                                                    <col width="10%">
+                                                    <col width="11%">
+                                                    <col width="11%">
+                                                    <col width="11%">
+                                                    <!-- <col width="11%"> -->
+                                                    <col width="11%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state">
+                                                            <div class="th-inner ">
+                                                                <div class="table-checkbox">
+                                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-taskDetail">
+                                                                    <label class="table-checkbox-label"></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th> -->
+                                                        <th data-field="name">
+                                                            <div class="th-inner ">任务名称</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="type">
+                                                            <div class="th-inner ">创建人</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="person">
+                                                            <div class="th-inner ">创建时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="founder">
+                                                            <div class="th-inner ">视频类型</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">开始时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">结束时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <!-- <th data-field="time">
+                                                            <div class="th-inner ">状态</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th> -->
+                                                        <th data-field="time">
+                                                            <div class="th-inner ">操作</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="fixed-table-footer" style="display: none;">
+                                            <table>
+                                                <tbody>
+                                                    <tr></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="fixed-table-pagination" id="tableTaskListPagination">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-type1 user hide dispatchDetailPage" id="dispatchDetailPage">
+        <div class="container-hat container-overview dispatch">
+            <div class="back-content">
+                <ul class="text-md btn-group dispatch">
+                    <li class="btn" id="backToDispatchPage">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span>返回</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="hat-content clearfix">
+                <div class="cameraIcon">
+                    <i class="aui-icon-tree-camera"></i>
+                </div>
+                <div class="detailContent">
+                    <div class="detailTitle" id="nameCamera"></div>
+                    <div class="detail-form">
+                        <div class="form-group">
+                            <label class="aui-form-label">所属机构:</label>
+                            <div class="form-text" id="unitCamera"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label">国标编码:</label>
+                            <div class="form-text" id="codeCamera"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label">解析时间:</label>
+                            <div class="form-text" id="timeCamera"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content content-hat">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative">
+                <div class="dispatch-detail-wrap">
+                    <div class="inline-block text-lg v-middle text-bold">调度日志(
+                        <span id="logNumCamera"></span>)</div>
+                    <div class="btn-wrap aui-mt-xs">
+                        <button type="button" class="btn btn-sm" id="cameraRefresh">刷新</button>
+                        <!-- <button type="button" class="btn btn-sm">启动</button> -->
+                        <!-- <button type="button" class="btn btn-sm">导出</button> -->
+                    </div>
+                </div>
+                <div class="card-content tab-content" id="dispatchContent">
+                    <div class="tab-pane fade show active" id="allBk" role="tabpanel" aria-labelledby="all-tab">
+                        <div id="dispatchAllPage">
+                            <div class="table-page-box aui-mt-md">
+                                <div class="bootstrap-table">
+                                    <div class="fixed-table-toolbar"></div>
+                                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                                        <div class="fixed-table-header" style="display: none;">
+                                            <table></table>
+                                        </div>
+                                        <div class="fixed-table-body">
+                                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                            <table id="dispatchTableCamera" class="table table-hover">
+                                                <colgroup>
+                                                    <col width="35%">
+                                                    <col width="35%">
+                                                    <col width="30%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state">
+                                                            <div class="th-inner ">
+                                                                <div class="table-checkbox">
+                                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-cameraDetail" id="checkBoxCameraDetail">
+                                                                    <label class="table-checkbox-label"></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th> -->
+                                                        <th data-field="name">
+                                                            <div class="th-inner ">开始时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="type">
+                                                            <div class="th-inner ">结束时间</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="person">
+                                                            <div class="th-inner" style="overflow:inherit;">
+                                                                <span>状态</span>
+                                                                <div class="iconState">
+                                                                    <span class="aui-icon-filter" id="showBoxCamera"></span>
+                                                                    <div class="stateList stateListTask" id="stateListCamera">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="fixed-table-footer" style="display: none;">
+                                            <table>
+                                                <tbody>
+                                                    <tr></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="fixed-table-pagination" id="dispatchTabletPaginationCamera">
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="page-jump">
+                                    <span class="text-lighter">跳转至</span>
+                                    <span class="page-jump-box">
+                                        <input type="text" class="aui-input aui-input-small" id="page">
+                                        <span class="page-go" id="jump">GO</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-logo-wrap mg0">
+            <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+        </div>
+    </div>
+    <div class="layout-type1 user hide dispatchDetailPage" id="dispatchDetailPageTask">
+        <div class="container-hat container-overview dispatch">
+            <div class="back-content">
+                <ul class="text-md btn-group dispatch">
+                    <li class="btn" id="backToDispatchPageTask">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span>返回</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="hat-content clearfix">
+                <div class="cameraIcon">
+                    <i class="aui-icon-tree-camera"></i>
+                </div>
+                <div class="detailContent">
+                    <div class="detailTitle" id="creatNameTask"></div>
+                    <div class="detail-form">
+                        <div class="form-group">
+                            <label class="aui-form-label">创建人:</label>
+                            <div class="form-text" id="creatByTask"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label">创建时间:</label>
+                            <div class="form-text" id="creatTimeTask"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label">起始时间:</label>
+                            <div class="form-text" id="creatStartTask"></div>
+                        </div>
+                    </div>
+                    <div class="detail-form">
+                        <div class="form-group">
+                            <label class="aui-form-label">任务状态:</label>
+                            <div class="form-text" id="creatStatusTask"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label">任务描述:</label>
+                            <div class="form-text" id="creatReasonTask"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="aui-form-label"></label>
+                            <div class="form-text"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content content-hat">
+            <div class="aui-card aui-card-noradius aui-mb-0 position-relative">
+                <div class="dispatch-detail-wrap">
+                    <div class="inline-block text-lg v-middle text-bold">任务日志(
+                        <span id="logNumTask"></span>)</div>
+                    <!-- <ul class="detail-title-list">
+                        <li>
+                            <span class="text">未解析</span>
+                            <span class="number gray">8</span>
+                            <span class="line"></span>
+                        </li>
+                        <li>
+                            <span class="text">进行中</span>
+                            <span class="number blue">1</span>
+                            <span class="line"></span>
+                        </li>
+                        <li>
+                            <span class="text">已完成</span>
+                            <span class="number green">2</span>
+                        </li>
+                    </ul> -->
+                    <div class="btn-wrap aui-mt-xs">
+                        <button type="button" class="btn btn-sm" id="taskRresh">刷新</button>
+                        <!-- <button type="button" class="btn btn-sm" id="teskExport">导出</button> -->
+                    </div>
+                </div>
+                <div class="card-content tab-content" id="dispatchContent">
+                    <div class="tab-pane fade show active" id="allBk" role="tabpanel" aria-labelledby="all-tab">
+                        <div id="dispatchAllPage">
+                            <div class="table-page-box aui-mt-md">
+                                <div class="bootstrap-table">
+                                    <div class="fixed-table-toolbar"></div>
+                                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                                        <div class="fixed-table-header" style="display: none;">
+                                            <table></table>
+                                        </div>
+                                        <div class="fixed-table-body">
+                                            <div class="fixed-table-loading" style="top: 41px;">加载中，请稍后...</div>
+                                            <table id="dispatchTableOneTask" class="table table-hover">
+                                                <colgroup>
+                                                    <col width="20%">
+                                                    <col width="20%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th class="bs-checkbox " style="text-align: center; width: 46px; " data-field="state">
+                                                            <div class="th-inner ">
+                                                                <div class="table-checkbox">
+                                                                    <input name="btSelectAll" type="checkbox" class="table-checkbox-input table-checkbox-all-taskDetail" id="checkBoxTaskDetail">
+                                                                    <label class="table-checkbox-label"></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th> -->
+                                                        <th data-field="name">
+                                                            <div class="th-inner ">镜头</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="type">
+                                                            <div class="th-inner ">镜头编号</div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                        <th data-field="person" class="hide">
+                                                            <div class="th-inner" style="overflow:inherit;">
+                                                                <span>状态</span>
+                                                                <div class="iconState">
+                                                                    <span class="aui-icon-filter" id="showBoxTask"></span>
+                                                                    <div class="stateList stateListTask" id="stateListTask">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fht-cell"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="fixed-table-footer" style="display: none;">
+                                            <table>
+                                                <tbody>
+                                                    <tr></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="fixed-table-pagination" id="dispatchTabletPaginationTask">
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="page-jump">
+                                    <span class="text-lighter">跳转至</span>
+                                    <span class="page-jump-box">
+                                        <input type="text" class="aui-input aui-input-small" id="page">
+                                        <span class="page-go" id="jump">GO</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-logo-wrap mg0">
+            <img class="bottom-logo" src="./assets/images/common/logo.png" alt="" />
+        </div>
+    </div>
+
+    <!-- 自定义时间弹窗 -->
+    <div class="modal fade modal-sm" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="timeLabel">自定义时间段</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md aui-ml-md">
+                        <form>
+                            <div class="form-group aui-row">
+                                <label class="aui-form-label aui-col-6 aui-form-require">输入时间段：</label>
+                                <div class="aui-col-18 control-form">
+                                    <div class="input-daterange datepicker-box aui-input aui-mt-xs" id="customPopup_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" autocomplete="off" placeholder="开始时间" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" autocomplete="off" placeholder="结束时间" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                    <p class="text-danger hide">请选择开始和结束时间</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="timeModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新建/编辑弹窗 -->
+    <div class="modal fade modal-lger" id="dispatchModal" tabindex="-1" role="dialog" aria-labelledby="dispatchLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="dispatchLabel">新建</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md type-content show">
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-10">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">任务名称</label>
+                                    <div class="aui-col-18 control-form">
+                                        <input id="dispatch_name" type="text" class="aui-input" placeholder="请输入任务名称">
+                                        <p class="text-danger mg-top-xs tip hide">请输入任务名称</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-14">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label ">选择镜头</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="aui-input-affix-wrapper">
+                                            <div class="aui-input-group-inner cursor">
+                                                <input placeholder="请选择镜头" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name="" id="dispatch_orgList"
+                                                />
+                                                <span class="aui-input-suffix">
+                                                    <i class="aui-icon-delete-line"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p class="text-danger mg-top-xs tip hide">请选择镜头</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-10">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">视频类型</label>
+                                    <div class="aui-col-18 control-form" id="dispatch_streamType">
+                                        <div class="aui-col-8 mt-sm">
+                                            <label for="radio-level-12">实时</label>
+                                            <input type="radio" name="radio-1" id="radio-level-12" value="0" data-role="radio" checked>
+                                        </div>
+                                        <div class="aui-col-8 mt-sm">
+                                            <label for="radio-level-13">历史</label>
+                                            <input type="radio" name="radio-1" id="radio-level-13" value="1" data-role="radio">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-14 nowTime">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-3 aui-form-require control-label">选择时间</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="inline-block v-middle wid-40">
+                                            <label for="dispatch-radio-button-5" class="ui-checkboxradio-button mr-smr">三天</label>
+                                            <input type="radio" name="dispatch-radio-2" id="dispatch-radio-button-5" value="3" data-role="radio-button" checked>
+                                            <label for="dispatch-radio-button-6" class="ui-checkboxradio-button mr-smr">一周</label>
+                                            <input type="radio" name="dispatch-radio-2" id="dispatch-radio-button-6" value="7" data-role="radio-button">
+                                            <label for="dispatch-radio-button-7" class="ui-checkboxradio-button mr-smr">半个月</label>
+                                            <input type="radio" name="dispatch-radio-2" id="dispatch-radio-button-7" value="15" data-role="radio-button">
+                                        </div>
+                                        <div class="input-daterange datepicker-box aui-input wid-55 v-middle float-right" style="font-size:0.75rem;" id="dispatch_cameraTime">
+                                            <input id="timeStartNow" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timeEndNow\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="timeEndNow" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timeStartNow\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                            <p class="text-danger mg-top-xs tip hide">请选择起止时间</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-14 historyTime hide">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-3 aui-form-require control-label">选择时间</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="inline-block v-middle wid-40">
+                                            <label for="dispatch-radio-button-8" class="ui-checkboxradio-button mr-smr">三天</label>
+                                            <input type="radio" name="dispatch-radio-3" id="dispatch-radio-button-8" value="3" data-role="radio-button" checked>
+                                            <label for="dispatch-radio-button-9" class="ui-checkboxradio-button mr-smr">一周</label>
+                                            <input type="radio" name="dispatch-radio-3" id="dispatch-radio-button-9" value="7" data-role="radio-button">
+                                            <label for="dispatch-radio-button-10" class="ui-checkboxradio-button mr-smr">半个月</label>
+                                            <input type="radio" name="dispatch-radio-3" id="dispatch-radio-button-10" value="15" data-role="radio-button">
+                                        </div>
+                                        <div class="input-daterange datepicker-box aui-input wid-55 v-middle float-right" style="font-size:0.75rem;" id="dispatch_histroyTime">
+                                            <input id="timeStartHistory" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timeEndHistory\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="timeEndHistory" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'timeStartHistory\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span>
+                                            <!-- <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">~</span>
+                                            <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                            />
+                                            <span class="input-group-addon">
+                                                <i class="datepicker-icon aui-icon-calendar"></i>
+                                            </span> -->
+                                            <p class="text-danger mg-top-xs tip hide">请选择起止时间</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-24">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">申请原因</label>
+                                    <div class="aui-col-18 control-form">
+                                        <textarea name="" id="dispatch_reason" placeholder="请填写申请原因" cols="30" rows="10" class="control-textarea"></textarea>
+                                        <p class="text-danger tip hide">请填写申请原因</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="dispatchModalSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑弹窗 -->
+    <div class="modal fade modal-lger" id="dispatchModalEdit" tabindex="-1" role="dialog" aria-labelledby="dispatchLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="dispatchLabelEdit">编辑</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-mt-md type-content show">
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-10">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">任务名称</label>
+                                    <div class="aui-col-18 control-form">
+                                        <input id="dispatch_name_edit" type="text" class="aui-input" placeholder="请输入任务名称">
+                                        <p class="text-danger mg-top-xs tip hide">请输入任务名称</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aui-col-14">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label ">选择镜头</label>
+                                    <div class="aui-col-18 control-form">
+                                        <div class="aui-input-affix-wrapper">
+                                            <div class="aui-input-group-inner cursor">
+                                                <input placeholder="请选择镜头" type="text" class="aui-input js-change-cames" data-state="list" readonly="readonly" name="" id="dispatch_orgList_edit"
+                                                />
+                                                <span class="aui-input-suffix">
+                                                    <i class="aui-icon-delete-line"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p class="text-danger mg-top-xs tip hide">请选择镜头</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="aui-from-horizontal aui-row">
+                            <div class="aui-col-24">
+                                <div class="form-group">
+                                    <label class="aui-form-label aui-col-6 aui-form-require control-label">申请原因</label>
+                                    <div class="aui-col-18 control-form">
+                                        <textarea name="" id="dispatch_reason_edit" placeholder="请填写申请原因" cols="30" rows="10" class="control-textarea"></textarea>
+                                        <p class="text-danger tip hide">请填写申请原因</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="dispatchModalSureEdit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="dispatchTipModal" tabindex="-1" role="dialog" aria-labelledby="dispatchTipLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="dispatchTipLabel">是否删除镜头调度任务？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="dispatchModalOptSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="statusCode" />
+
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/dispatch.js"></script>
+</div>

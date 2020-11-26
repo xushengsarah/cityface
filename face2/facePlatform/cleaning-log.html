@@ -1,0 +1,125 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <div id="cleaningLog" class="manages-page">
+        <div class="manages-search-style">
+            <form class="aui-from-horizontal aui-row">
+                <div class="aui-col-7">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">库名称：</label>
+                        <div class="aui-col-18">
+                            <select class="selectpicker" id="libIdVal" data-live-search="true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-8">
+                    <div class="form-group">
+                        <label class="aui-form-label aui-col-6">清洗起止时间：</label>
+                        <div class="aui-col-18">
+                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">~</span>
+                                <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" readonly onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-col-2">
+                    <div class="form-group">
+                        <button type="button" id="cleaningSearchBut" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--配置表 开始-->
+        <div class="manages-card-content">
+            <table id="cleaningLogTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                data-pagination="false">
+                <colgroup>
+                    <col width="1%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="8%">
+                    <col width="12%">
+                    <col width="12%">
+                    <col width="12%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-field="item1">库名称</th>
+                        <th data-field="item2" title="清洗照片表最小id">清洗照片表最小id</th>
+                        <th data-field="item3" title="清洗照片表最大id">清洗照片表最大id</th>
+                        <th data-field="item4" title="清洗全量表最小id">清洗全量表最小id</th>
+                        <th data-field="item5" title="清洗全量表最大id">清洗全量表最大id</th>
+                        <th data-field="item9" title="请求耗时ms">请求耗时ms</th>
+                        <th data-field="item6">启动时间</th>
+                        <th data-field="item7">停止时间</th>
+                        <th data-field="item10">记录时间</th>
+                    </tr>
+                </thead>
+                <tbody style="max-height:30rem">
+                </tbody>
+            </table>
+            <div class="fixed-table-pagination bayonetCameralPagination" id="cleaningLogPagination"></div>
+        </div>
+        <!-- 配置表 结束 -->
+    </div>
+
+    <!-- 查看清洗日志详情 -->
+    <div class="modal fade modal-lger" id="cleaningDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">成功人员信息</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <table id="cleaningDetailTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                            <col width="11%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="item1">图片</th>
+                                <th data-field="item2">姓名</th>
+                                <th data-field="item3">身份证号</th>
+                                <th data-field="item4">性别</th>
+                                <th data-field="item6">证件类型</th>
+                                <th data-field="item7">来源</th>
+                                <th data-field="item8">是否已经清洗</th>
+                                <th data-field="item9">说明/备注/描述</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="fixed-table-pagination bayonetCameralPagination" id="cleaningDetailPagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看建模成功日志 end -->
+
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/cleaningLog.js"></script>
+</div>

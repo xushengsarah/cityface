@@ -1,0 +1,576 @@
+<div>
+    <!--我的申请-->
+    <meta name="referrer" content="no-referrer">
+    <div id="myApply">
+        <div class="card-title-box">
+            <span class="card-title">我的申请</span>
+        </div>
+        <div class="card-approve-title">
+            <ul class="nav nav-tabs pd0" id="myApplyTabHeader" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#myApplySearch" role="tab" aria-controls="myApplySearch" aria-selected="true">权限申请
+                        <span class="control-total">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#myApplyCritical" role="tab" aria-controls="myApplyCritical" aria-selected="true">紧急警务
+                        <span class="control-total">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#myApplyContorl" role="tab" aria-controls="myApplyContorl" aria-selected="false">布控申请
+                        <span class="control-total">0</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="card-operate-box float-right">
+                <div class="operate">
+                    <div class="btn btn-primary aui-mr-0" id="newMyApply" style="height:1.85rem;line-height:calc(1.87rem - 2px)">申请权限</div>
+                    <div class="aui-input-affix-wrapper aui-input-group-small aui-inline-block hide">
+                        <div class="aui-input-group-inner" id="applySearchBox">
+                            <input placeholder="请输入任务名称搜索" type="text" class="aui-input" id="applyKeyWordInput">
+                            <span class="aui-input-suffix">
+                                <i class="aui-icon-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <ul class="tag-list">
+                        <li class="tag hide">
+                            <span>申请类型：</span>
+                            <span>待开始</span>
+                            <i class="aui-icon-not-through"></i>
+                        </li>
+                        <li class="tag hide">
+                            <span>申请状态：</span>
+                            <span>待开始</span>
+                            <i class="aui-icon-not-through"></i>
+                        </li>
+                        <li class="tag hide">
+                            <span>所属机构：</span>
+                            <span>待开始</span>
+                            <i class="aui-icon-not-through"></i>
+                        </li>
+                        <li class="tag hide">
+                            <span>申请时间：</span>
+                            <span>待开始</span>
+                            <i class="aui-icon-not-through"></i>
+                        </li>
+                    </ul>
+                    <span class="btn btn-sm btn-filter" data-role="expandFilter">
+                        <span>显示筛选</span>
+                        <i class="aui-icon-drop-down-2"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <ul class="filter-box">
+            <li class="filter-item clearfix mt-0">
+                <span class="filter-label text-overflow">申请类型:</span>
+                <div class="filter-content">
+                    <div class="filter-content-label">
+                        <tag class="tag tag-prompt">全部</span>
+                    </div>
+                    <div class="filter-content-inner more">
+                        <ul class="tag-list">
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- <li class="filter-item clearfix mt-0">
+                <span class="filter-label text-overflow">类型:</span>
+                <div class="filter-content">
+                    <div class="filter-content-label">
+                        <tag class="tag tag-prompt">全部</span>
+                    </div>
+                    <div class="filter-content-inner more">
+                        <ul class="tag-list">
+                        </ul>
+                    </div>
+                </div>
+            </li> -->
+            <li class="filter-item clearfix">
+                <span class="filter-label text-overflow">申请状态:</span>
+                <div class="filter-content">
+                    <div class="filter-content-label">
+                        <tag class="tag tag-prompt">全部</span>
+                    </div>
+                    <div class="filter-content-inner more">
+                        <ul class="tag-list">
+                            <li class="tag">审批中</li>
+                            <li class="tag">已通过</li>
+                            <li class="tag">已驳回</li>
+                        </ul>
+                        <span class="btn btn-link" data-role="expandMore">
+                            <span class="text">更多</span>
+                            <i class="aui-icon-drop-down-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="filter-item clearfix hide">
+                <span class="filter-label text-overflow">所属机构:</span>
+                <div class="filter-content">
+                    <div class="filter-content-label">
+                        <tag class="tag tag-prompt">全部</span>
+                    </div>
+                    <div class="filter-content-inner more">
+                        <ul class="tag-list">
+                            <li class="tag">罗湖分局</li>
+                            <li class="tag">福田分局</li>
+                            <!-- <li class="tag">龙岗分局</li>
+                                        <li class="tag">宝安分局</li> -->
+                        </ul>
+                        <span class="btn btn-link" data-role="expandMore">
+                            <span class="text">更多</span>
+                            <i class="aui-icon-drop-down-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="filter-item clearfix">
+                <span class="filter-label text-overflow">申请时间:</span>
+                <div class="filter-content">
+                    <div class="filter-content-label">
+                        <tag class="tag tag-prompt">全部</span>
+                    </div>
+                    <div class="filter-content-inner more">
+                        <ul class="tag-list">
+                            <li class="tag">近一天</li>
+                            <li class="tag">近三天</li>
+                            <li class="tag">近七天</li>
+                            <li class="tag">近半个月</li>
+                            <li class="tag">自定义时间</li>
+                        </ul>
+                        <span class="btn btn-link" data-role="expandMore">
+                            <span class="text">更多</span>
+                            <i class="aui-icon-drop-down-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="card-content">
+            <div class="tab-content" id="myApplyTabContent">
+                <ul class="card-info-list tab-pane active" id="myApplySearch" role="tabpanel" aria-labelledby="myApplySearch-tab">
+                    <!-- 表格展示 -->
+                    <table id="myApplySearch-table" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="12%">
+                            <col width="12%">
+                            <col width="18%">
+                            <col width="7%">
+                            <col width="10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="unit1">案件编号</th>
+                                <th data-field="unit2">任务名称</th>
+                                <th data-field="unit3">申请人</th>
+                                <th data-field="unit8">用户警号</th>
+                                <th data-field="unit5">协办人</th>
+                                <th data-field="unit4">申请时间</th>
+                                <th data-field="unit6">申请事由</th>
+                                <th data-field="unit7">审批状态</th>
+                                <th data-field="unit8">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="myApprovePage"></div>
+                    <!-- 表格展示 end-->
+                </ul>
+                <ul class="card-info-list tab-pane" id="myApplyCritical" role="tabpanel" aria-labelledby="myApplyCritical-tab">
+                    <div class="btn btn-primary" id="makeupApplyBtn" style="margin-bottom:0.5rem;">补办流程</div>
+                    <!-- 表格展示 -->
+                    <table id="myApplyCritical-table" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="12%">
+                            <col width="12%">
+                            <col width="18%">
+                            <col width="10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="unit1">案件编号</th>
+                                <th data-field="unit2">任务名称</th>
+                                <th data-field="unit3">申请人</th>
+                                <th data-field="unit8">用户警号</th>
+                                <th data-field="unit5">协办人</th>
+                                <th data-field="unit4">申请时间</th>
+                                <th data-field="unit6">申请事由</th>
+                                <th data-field="unit6">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="myApprovePage"></div>
+                    <!-- 表格展示 end-->
+                </ul>
+                <ul class="card-info-list tab-pane" id="myApplyContorl" role="tabpanel" aria-labelledby="myApplyContorl-tab">
+                    <!-- 表格展示 -->
+                    <table id="myApplyContorl-table" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter2">
+                        <colgroup>
+                            <col width="1%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="15%">
+                            <col width="14%">
+                            <col width="10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-field="unit1">布控任务</th>
+                                <th data-field="unit2">创建人</th>
+                                <th data-field="unit3">用户警号</th>
+                                <th data-field="unit4">布控对象</th>
+                                <th data-field="unit5">创建时间</th>
+                                <th data-field="unit6">审批状态</th>
+                                <th data-field="unit7">任务状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="myApprovePage"></div>
+                    <!-- 表格展示 end-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 查看权限申请详情 -->
+    <div class="modal fade modal-lger" id="permissionMyApplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="padding-bottom: 0;">
+                    <h4 class="modal-title">
+                        <ul class="nav nav-tabs pd0" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#myApplyDeatil" role="tab" aria-controls="myApplyDeatil" aria-selected="true"
+                                    id="myApplyDeatilItem">申请详情
+                                </a>
+                            </li>
+                            <li class="nav-item" id="myApplyFileDeatilItem">
+                                <a class="nav-link" data-toggle="tab" href="#myApplyFileDeatil" role="tab" aria-controls="myApplyFileDeatil" aria-selected="false">附件详情
+                                </a>
+                            </li>
+                        </ul>
+                    </h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <div class="tab-content">
+                        <ul class="tab-pane active" id="myApplyDeatil" role="tabpanel" aria-labelledby="myApplyDeatil-tab">
+                            <div class="aui-col-16" id="myApplyDetailShow">
+                                <div class="card-title-head">
+                                    申请类型：
+                                    <span class="card-title"></span>
+                                </div>
+                                <ul class="form-info form-label-fixed mt-0">
+                                </ul>
+                            </div>
+                            <div class="aui-col-8" id="myApproveDetailShow">
+                                <div class="card-title-head">
+                                    <span class="card-title">审批情况</span>
+                                </div>
+                                <div class="detailInfoShow"></div>
+                            </div>
+                            <div class="aui-col-24 aui-mt-sm">
+                                <div class="card-title-head">
+                                    <span class="card-title">检索情况</span>
+                                </div>
+                                <div class="aui-p-xs">
+                                    <table id="mySearchDetailTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                                        data-pagination="false">
+                                        <colgroup>
+                                            <col width="1%">
+                                            <col width="25%">
+                                            <col width="15%">
+                                            <col width="15%" class="static">
+                                            <col width="15%" class="dynamic">
+                                            <col width="15%">
+                                            <col width="14%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th data-field="item1">检索人</th>
+                                                <th data-field="item6">用户警号</th>
+                                                <th data-field="item2" class="static">今日静态检索次数</th>
+                                                <th data-field="item3" class="dynamic">今日动态检索次数</th>
+                                                <th data-field="item4">人员类型</th>
+                                                <th data-field="item5">检索人权限状态</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <div class="fixed-table-pagination bayonetCameralPagination" id="mySearchDetailPagination"></div>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="tab-pane" id="myApplyFileDeatil" role="tabpanel" aria-labelledby="myApplyFileDeatil-tab">
+                            <table id="myApplyFileDeatilTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                                data-pagination="false">
+                                <colgroup>
+                                    <col width="1%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th data-field="item1">图片</th>
+                                        <th data-field="item6">姓名</th>
+                                        <th data-field="item2">身份证</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="fixed-table-pagination bayonetCameralPagination" id="myApplyFileDeatilPagination"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查看权限申请详情 end -->
+
+    <!-- 延期和增加协办人弹窗 -->
+    <div class="modal modal-sm" id="myApplyOptModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">延期</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body type-content security show">
+                    <div class="form-group aui-row">
+                        <label class="aui-col-6 aui-form-require control-label">审批人：</label>
+                        <div class="aui-col-18 control-form">
+                            <select class="selectpicker" id="myApplyOptModal_approve" data-live-search="true" title="请选择审批人"></select>
+                            <i class="aui-icon-not-through"></i>
+                            <p class="text-danger mg-top-xs tip hide">请选择审批人</p>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group aui-row myApplyOptSTime">
+                        <label class="aui-col-6 aui-form-require control-label">静态时间段：</label>
+                        <div class="aui-col-18 control-form">
+                            <div class="input-daterange datepicker-box aui-input" id="myApplyOptS_time">
+                                <input id="myApplyOptModal_startTimeS" class="input-text datepicker-input radius Wdate" type="text" readonly />
+                                <span class="input-group-addon">~</span>
+                                <input id="myApplyOptModal_endTimeS" class="input-text datepicker-input radius Wdate" type="text" readonly />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                            <p class="text-danger hide">请选择静态时间段</p>
+                        </div>
+                    </div> -->
+                    <div class="form-group aui-row myApplyOptDTime">
+                        <label class="aui-col-6 aui-form-require control-label">动态时间段：</label>
+                        <div class="aui-col-18 control-form">
+                            <div class="input-daterange datepicker-box aui-input" id="myApplyOptD_time">
+                                <input id="myApplyOptModal_startTimeD" class="input-text datepicker-input radius Wdate" type="text" readonly />
+                                <span class="input-group-addon">~</span>
+                                <input id="myApplyOptModal_endTimeD" class="input-text datepicker-input radius Wdate" type="text" readonly />
+                                <span class="input-group-addon">
+                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                </span>
+                            </div>
+                            <p class="text-danger oneLog hide">请选择动态时间段</p>
+                            <p class="text-danger allLog hide">请至少选择一个权限类型的时间段</p>
+                        </div>
+                    </div>
+                    <div class="form-group aui-row myApplyOptAssistant">
+                        <label class="aui-col-6 aui-form-require control-label">协办人</label>
+                        <div class="aui-col-18 control-form">
+                            <div class="aui-input-affix-wrapper">
+                                <div class="aui-input-group-inner cursor">
+                                    <input id="myApplyOptModal_assistant" placeholder="请选择协办人" type="text" class="aui-input js-change-cames" data-state="list"
+                                        readonly="readonly" />
+                                    <span class="aui-input-suffix">
+                                        <i class="aui-icon-delete-line"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="text-danger tip null hide">请选择协办人</p>
+                            <p class="text-danger tip error hide">协办人已存在</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="myApplyOptModalOK">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--关联弹窗-->
+    <div class="modal fade modal-lger" id="myApplyCriticalModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">紧急事件关联</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body" style="height: 43rem">
+                    <div class="tab-content">
+                        <div class="aui-col-24 aui-mt-sm">
+                            <div class="card-title-head">
+                                <span class="card-title">可关联列表（可选择一个权限申请进行关联）</span>
+                            </div>
+                            <div class="aui-p-xs">
+                                <table id="myApplyCriticalTable" class="table-hover" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                                    data-pagination="false">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="25%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th data-field="item1">案件编号</th>
+                                            <th data-field="item6">任务名称</th>
+                                            <th data-field="item2">协办人</th>
+                                            <th data-field="item3">申请时间</th>
+                                            <th data-field="item4">申请事由</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="fixed-table-pagination bayonetCameralPagination" id="myApplyCriticalTablePagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="myApplyCriticalOK">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--申请权限须知弹窗-->
+    <div class="modal fade" id="askApplyModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">申请权限须知</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <ul class="askModalList">
+                        <li>
+                            一、城市人像系统动态人像查询必须经申请审批后才能使用，审批后，在查询页面选择相应的事件，开展查询操作；
+                        </li>
+                        <li>
+                            二、针对警情、案件申请城市人像使用权限请到深警平台“在办案件”或“已分流警情”处发起，在警种文书模块的“呈请城市人像轨迹查询申请表”申请；
+                        </li>
+                        <li>
+                            三、专项工作模块指针对经市局领导批准的专项工作、维稳工作、涉密案件、情报立线等特殊警务工作申请城市人像使用权限的模块；
+                        </li>
+                        <li>
+                            四、历史警情案件模块是指为解决原警综系统与深警平台数据不通的问题，针对2019年深警平台上线之前的警情、案件申请城市人像使用权限的模块；
+                        </li>
+                        <li>
+                            五、协外模块是指协助外地公安开展警务工作的申请模板；
+                        </li>
+                        <li>
+                            六、紧急警务模块是指针对涉及突发八类暴力案件、涉恐维稳事件、领导交办等紧急情况，或在晚上23：30至早上7：30的时间段，针对紧急的民生案事件，填表后可直接使用，并需在2日内补办完相关审批手续，
+                            <span style="color:red;cursor: pointer;" id="askApplyImg">补办手续流程；</span>
+                        </li>
+                        <li>
+                            七、系统使用的相关数据将每月在全局进行通报；
+                        </li>
+                        <li>
+                            八、上传的材料不得包含涉密类字眼；
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="askApplyKnow">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--补办手续流程-->
+    <div class="modal fade modal-lger" id="makeUpApplyModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">关联补办操作指南</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <div class="aui-timeline-item">
+                        <div class="aui-timeline-item-header clearfix">
+                            <div class="aui-timeline-item-dot">1</div>
+                            <div class="aui-timeline-item-title">"权限申请"模块————单击"申请权限"，补办是警情案件/专项工作，申请类型与申请紧急警务时保持一致————填写表单————确定，或到
+                                <span style="color:red;">"执法闭环"</span>平台申请，等待审批</div>
+                        </div>
+                        <div class="aui-timeline-item-wrap">
+                            <div class="aui-timeline-item-content">
+                                <img src="./assets/images/my/makeupapply1.png" style="width:49%;" />
+                                <img src="./assets/images/my/makeupapply2.png" style="width:49%;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-timeline-item">
+                        <div class="aui-timeline-item-header clearfix">
+                            <div class="aui-timeline-item-dot">2</div>
+                            <div class="aui-timeline-item-title">"紧急警务"模块————单击"关联补办"————关联案件（审批通过后展示）————确定</div>
+                        </div>
+                        <div class="aui-timeline-item-wrap">
+                            <div class="aui-timeline-item-content">
+                                <img src="./assets/images/my/makeupapply3.png" style="width:49%;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-timeline-item">
+                        <div class="aui-timeline-item-header clearfix">
+                            <div class="aui-timeline-item-dot">3</div>
+                            <div class="aui-timeline-item-title">完成补办</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="makeUpApplyKnow">我知道</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/myApply.js"></script>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "shenzhen",
+  "version": "1.0.0",
+  "description": "1、jQuery 2.2.4\r 2、bootstrap V4.0    https://getbootstrap.com/docs/4.0/components/alerts/\r 3、echarts 4.2.0\r 4、jquery-ui-1.12.1.custom      https://api.jqueryui.com/\r 5、bootstrap-datepicker-1.6.4     https://uxsolutions.github.io/bootstrap-datepicker/\r 6、Swiper 4.4.2    http://www.idangero.us/swiper/",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "concat": "^0.0.1-security",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-css-spriter": "^0.3.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^3.0.1",
+    "gulp.spritesmith": "^6.2.1",
+    "imagemin": "^5.2.1",
+    "node-sass": "^4.5.3",
+    "sassdoc": "^2.2.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,129 @@
+$sidebar-item-height: 4rem;
+$spacer:0.625rem;
+.sidebar-box {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: $header-height;
+    bottom: 0px;
+    width: .6rem;
+    background: rgba($background-menu-dark, .9);
+    transition: all $default-animation; // transform: translateX(-176px);
+    z-index: 100;
+    &.show {
+        width: $siderbar-width;
+        transform: translateX(0px);
+        background: $background-menu-dark;
+    }
+    /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background: none;
+    }
+    /*定义滚动条轨道 内阴影+圆角*/
+    ::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, .2);
+    }
+    /*定义滑块 内阴影+圆角*/
+    ::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: rgba(198, 237, 242, .2);
+    }
+}
+
+.sidebar-inner {
+    overflow: hidden;
+    height: 100%;
+}
+
+.sidebar-list {
+    margin-top: 2.4*$spacer;
+    .sidebar-item {
+        position: relative;
+        height: $sidebar-item-height;
+        color: $text-color-lighter;
+        transition: all $default-animation;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .aui-icon-color-default {
+            font-family: 'iconFont';
+        }
+        &:hover {
+            a:hover {
+                color: $text-color-inverse;
+                text-decoration: none;
+            }
+            &:before {
+                display: inline-block;
+                content: " ";
+                position: absolute;
+                left: 0;
+                width: 3px;
+                height: $sidebar-item-height;
+                background: $theme-color;
+            }
+            [class^="icon-"],
+            [class*="icon-"] {
+                color: $theme-color;
+            }
+        }
+        [class^="icon-"],
+        [class*="icon-"] {
+            font-size: 1.5rem;
+            margin-bottom: 0.5*$spacer;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &.active {
+            color: $text-color-inverse;
+            background: $background-menu-dark-submenu;
+            &:before {
+                display: inline-block;
+                content: " ";
+                position: absolute;
+                left: 0;
+                width: 3px;
+                height: $sidebar-item-height;
+                background: $theme-color;
+            }
+            [class^="icon-"],
+            [class*="icon-"] {
+                color: $theme-color;
+            }
+        }
+    }
+    .sub-sidebar {
+        position: absolute;
+        right: -132px;
+        top: 0;
+        color: #000;
+        background: #16253a;
+        color: #bbb;
+        line-height: 40px;
+        width: 132px;
+        text-align: left;
+        padding-left: 20px;
+    }
+}
+
+.sidebar-watermask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 5rem;
+    padding: 0 $space;
+    line-height: 5rem;
+    border-top: 1px solid rgba($color-white, .05);
+    text-align: center;
+    .img {
+        max-width: 100%;
+    }
+}

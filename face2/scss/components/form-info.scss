@@ -1,0 +1,67 @@
+.form-info {
+    margin-top: -.5rem;
+    .form-group {
+        margin: .4rem 0 0;
+    }
+    .form-text,
+    .aui-form-label {
+        min-height: 1rem;
+        margin: 0;
+        line-height: 1.5;
+        font-size: $font-size-default;
+    }
+    .aui-form-label {
+        padding: 0;
+        color: $text-color-lighter;
+    }
+    .form-text {
+        color: $text-color-default;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .face-card {
+        border: none;
+        padding: 0;
+        margin-bottom: 0;
+        height: auto;
+    }
+    .add-image-item {
+        cursor: default;
+        &:hover {
+            border-color: transparent;
+            box-shadow: none;
+        }
+    }
+}
+
+.form-label-fixed {
+    .form-group {
+        position: relative;
+    }
+    .aui-form-label {
+        position: absolute;
+        width: 6rem;
+    }
+    .form-text {
+        margin-left: 6rem;
+        margin-bottom: 0;
+        padding-left: .75rem;
+    }
+    &.form-label-short {
+        .aui-form-label {
+            width: 5rem;
+        }
+        .form-text {
+            margin-left: 5rem;
+        }
+    }
+    &.form-label-long {
+        .aui-form-label {
+            width: 7rem;
+        }
+        .form-text {
+            margin-left: 7rem;
+        }
+    }
+}

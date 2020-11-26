@@ -1,0 +1,706 @@
+<div>
+    <link rel="stylesheet" href="assets/vendor/photoSwiper/photoSwiper.min.css" />
+    <!-- 一人一档内容开始 -->
+    <div class="aui-card aui-card-cover flex-direction" id="portraitContainerTwo" style="margin-bottom: 0;display:block;">
+        <div class="card-title-box">
+            <span class="card-title">
+                <span class="text-prompt portrait-name aui-mr-xs">816一人一档库</span>
+                共有
+                <span class="title-count">0</span>
+                个对象
+            </span>
+            <div class="float-right">
+                <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                    <button type="button" class="btn" id="showListTwo">
+                        <i class="aui-icon-list"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="showCardTwo">
+                        <i class="aui-icon-card"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-content flex-direction">
+            <div class="card-section clearfix">
+                <div class="float-left btn-gutter-sm" id="twoCRDBut">
+                    <!-- <button type="button" class="btn btn-primary btn-sm" id="createCardTwo">新建</button>
+                    <button type="button" class="btn btn-sm" id="editCardTwo">编辑</button>
+                    <button type="button" class="btn btn-sm" id="deleteCardTwo">删除</button> -->
+                </div>
+                <div class="float-right" id="advancedSearchTwo">
+                    <span class="btn btn-sm btn-filter" id="searchFilter">
+                        <span>高级搜索</span>
+                        <i class="aui-icon-drop-down-2"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="filter-box" id="searchFilterShow">
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">姓名：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_name" type="text" class="aui-input" placeholder="请输入姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">身份证：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_idcard" type="text" class="aui-input" placeholder="请输入身份证">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">户籍所在地：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_regaddress" type="text" class="aui-input" placeholder="请输入户籍所在地">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">出生日期：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                    <input id="platform_birthdayStart" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'platform_birthdayEnd\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="platform_birthdayEnd" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'platform_birthdayStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">通行证号：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_passNo" type="text" class="aui-input" placeholder="请输入通行证号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">违法地点：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_illegallyAdd" type="text" class="aui-input" placeholder="请输入违法地点">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">违法行为：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_onSiteDelict" type="text" class="aui-input" placeholder="请输入违法行为">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">违法时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                    <input id="platform_illegallyTimeStart" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'platform_illegallyTimeEnd\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="platform_illegallyTimeEnd" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'platform_illegallyTimeStart\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">背景资料：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_backgroundInfo" type="text" class="aui-input" placeholder="请输入背景资料">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">全国性罪名：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_stateCharge" type="text" class="aui-input" placeholder="请输入全国性罪名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">香港罪名：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_hhkCharge" type="text" class="aui-input" placeholder="请输入香港罪名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-6">上传时间：</label>
+                            <div class="aui-col-18">
+                                <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                    <input id="platform_startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'platform_endTime\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">~</span>
+                                    <input id="platform_endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'platform_startTime\')}',dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                    />
+                                    <span class="input-group-addon">
+                                        <i class="datepicker-icon aui-icon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="aui-from-horizontal aui-row">
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">上传机构：</label>
+                            <div class="aui-col-15">
+                                <select class="selectpicker" id="platform_uploadOrgId" data-live-search="true"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">上传人：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_uploader" type="text" class="aui-input" placeholder="请输入上传人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="form-group">
+                            <label class="aui-form-label aui-col-9">备注/说明：</label>
+                            <div class="aui-col-15">
+                                <input id="platform_comments" type="text" class="aui-input" placeholder="请输入备注/说明">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-col-6">
+                        <div class="float-right" id="advancedSearchTwo">
+                            <span class="btn btn-primary btn-sm btn-filter" id="searchConfigList">
+                                <span>搜索</span>
+                            </span>
+                            <span class="btn btn-sm btn-filter" id="searchConfFresh">
+                                <span>重置</span>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex-direction" id="portraitResultContainerTwo" style="min-height: 30rem">
+                <!-- 图片展示 -->
+                <ul class="image-info-list aui-mb-md clearfix" id="cardInfoListTwo">
+                </ul>
+                <!-- 表格展示 -->
+                <div class="table-page-box aui-mt-md display-none" id="listContainerWrapTwo">
+                    <table class="table-collapse-check" id="portraitTableListTwo" data-toggle="table" data-detail-view="true" data-detail-formatter="detailFormatter"
+                        data-pagination="false">
+                        <colgroup>
+                            <col>
+                            <col width="10%">
+                            <col width="20%">
+                            <col width="40%">
+                            <col width="10%">
+                            <col width="20%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>照片</th>
+                                <th>姓名</th>
+                                <th>身份证号</th>
+                                <th>性别</th>
+                                <th>出生日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 表格展示 end-->
+                <div id="portraitPaginationTwo"></div>
+            </div>
+            <div class="flex-direction justify-content" id="portraitEmptyContainerTwo" style="margin-top: 20px;display: none;"></div>
+        </div>
+    </div>
+    <!--档案详情页面-->
+    <div class="layout-type1 user hide dispatchDetailPage portraitDetailSearchTwo" id="portraitDetailSearchTwo">
+        <div class="aui-card container-hat container-overview">
+            <div class="back-content">
+                <ul class="text-md btn-group dispatch">
+                    <li class="btn" id="backToContainerPage">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span>返回</span>
+                    </li>
+                </ul>
+                <div class="card-title">
+                    <span class="portrait-name aui-mr-xs">人员信息详情</span>
+                </div>
+                <div class="detailBtn">
+                    <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                        <div class="hat-content clearfix">
+                            <div class="float-left btn-gutter-sm">
+                                <button type="button" class="btn btn-primary btn-sm" id="createDetailCardTwo">新增</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content flex-direction">
+                <!--人员信息 -->
+                <div class="fh-section-item" id="people">
+                    <div class="card-title-box">
+                        <i class="aui-icon-face card-title-icon"></i>
+                        <span class="card-title">人员信息</span>
+                    </div>
+                    <div class="fh-section-detail clearfix">
+                        <div class="person-img">
+                            <img id="detailUrl" class="img-right-event" src="" alt="">
+                        </div>
+                        <div class="hat-content clearfix">
+                            <div class="detailContent">
+                                <table class="person-detail">
+                                    <tr>
+                                        <td class="tagDeatil">姓名:</td>
+                                        <td id="detailName"></td>
+                                        <td class="tagDeatil">英文名:</td>
+                                        <td id="detailEngName"></td>
+                                        <td class="tagDeatil">通行证号:</td>
+                                        <td id="detailPassNo"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">性别:</td>
+                                        <td id="detailGender"></td>
+                                        <td class="tagDeatil">电话号码:</td>
+                                        <td id="detailTelNo"></td>
+                                        <td class="tagDeatil">身份证:</td>
+                                        <td id="detailIdcard"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">出生年月:</td>
+                                        <td id="detailBirthday"></td>
+                                        <td class="tagDeatil">户籍所在地:</td>
+                                        <td id="detailRegaddress"></td>
+                                        <td class="tagDeatil">违法时间:</td>
+                                        <td id="detailIllegallyTime"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">毕业院校:</td>
+                                        <td id="detailSchool"></td>
+                                        <td class="tagDeatil">标签:</td>
+                                        <td id="detailTag"></td>
+                                        <td class="tagDeatil">是否抓获:</td>
+                                        <td id="detailIsArrest"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">上传人:</td>
+                                        <td id="detailUserName"></td>
+                                        <td class="tagDeatil">上传机构:</td>
+                                        <td id="detailOrgName"></td>
+                                        <td class="tagDeatil">上传时间:</td>
+                                        <td id="detailCreateTime"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">背景资料:</td>
+                                        <td id="detailBackgroundInfo" colspan="3"></td>
+                                        <td class="tagDeatil" rowspan="6">出入境信息截图:</td>
+                                        <td id="detailExitEntry" rowspan="6">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">违法地点:</td>
+                                        <td id="detailIllegallyAdd" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">违法行为:</td>
+                                        <td id="detailOnSiteDelict" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">涉嫌全国性罪名:</td>
+                                        <td id="detailStateCharge" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">涉嫌香港罪名:</td>
+                                        <td id="detailHhkCharge" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tagDeatil">备注/说明:</td>
+                                        <td id="detailComments" colspan="3"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="illegalInfo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--详情上传页面-->
+    <div class="layout-type1 user hide dispatchDetailPage portraitDetailSearchTwo" id="importLibraryDetail">
+        <div class="aui-card container-hat container-overview">
+            <div class="back-content">
+                <ul class="text-md btn-group dispatch">
+                    <li class="btn" id="backToDetailPage">
+                        <i class="aui-icon-back text-lger v-middle"></i>
+                        <span>返回</span>
+                    </li>
+                </ul>
+                <div class="card-title">
+                    <span class="portrait-name aui-mr-xs">新增违法信息</span>
+                </div>
+                <div class="detailBtn">
+                    <div class="btn-group btn-group-icon aui-ml-md" role="group" aria-label="Basic example">
+                        <div class="hat-content clearfix">
+                            <div class="float-left btn-gutter-sm">
+                                <button type="button" class="btn btn-primary btn-sm" id="saveDetailEvent">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content flex-direction" id="addDetailInfoType"></div>
+        </div>
+    </div>
+    <!-- 视频查看弹窗 -->
+    <div class="control-new-card popup display-none create-new" id="videoShowMask">
+        <div class="aui-card">
+            <div class="popup-title">
+                <span class="card-title">相关视频</span>
+                <span aria-label="Close" class="float-right">
+                    <i aria-hidden="true" class="aui-icon-not-through"></i>
+                </span>
+            </div>
+            <div class="popup-body" id="videoPlayContent" style="height:40rem;text-align:center;background: #000;">
+            </div>
+            <div class="popup-footer">
+                <span class="btn btn-primary" id="uploadVideo">下载原视频</span>
+                <span class="btn btn-primary" id="uploadZMVideo">下载转码视频</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- 新建人员内容 -->
+    <div class="control-new-card popup display-none create-new" id="createContainerTwo">
+        <div class="aui-card">
+            <div class="popup-title">
+                <span class="card-title">新建人员信息</span>
+                <span data-dismiss="modal" aria-label="Close" class="float-right">
+                    <i aria-hidden="true" class="aui-icon-not-through" id="cancelSaveCloseTwo"></i>
+                </span>
+            </div>
+            <div class="popup-body">
+                <div class="card-content">
+                    <div class="aui-row create-new-content">
+                        <div class="aui-col-6">
+                            <div class="aui-row">
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-9 control-label aui-form-require">照片：</label>
+                                        <div class="aui-col-15 control-form pic-add-box">
+                                            <div class="upload-box" id="addUploadImgTwo">
+                                                <div class="upload pic-add">
+                                                    <i class="aui-icon-add"></i>
+                                                    <input class="uploadFile" type="file">
+                                                    <img class="pic-add-img hide" src="" alt="">
+                                                </div>
+                                            </div>
+                                            <p id="noImgWarning" class="text-danger mg-top-xs tip hide">请上传图片</p>
+                                            <p id="addImgWarningTwo" class="text-danger mg-top-xs tip hide">图片大于2M</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-9 control-label">出入境照片：</label>
+                                        <div class="aui-col-15 control-form pic-add-box">
+                                            <div class="upload-box" id="addUploadImgThree">
+                                                <div class="upload pic-add">
+                                                    <i class="aui-icon-add"></i>
+                                                    <form method="POST" name="fileinfo" enctype="multipart/form-data">
+                                                        <input class="uploadFile" type="file" name="onePicImg">
+                                                    </form>
+                                                    <img class="pic-add-img hide" src="" alt="">
+                                                    <i class="aui-icon-delete-line hide"></i>
+                                                </div>
+                                            </div>
+                                            <p id="addImgWarningThree" class="text-danger mg-top-xs tip hide">图片大于2M</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-col-9">
+                            <form class=" aui-row">
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">姓名：</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入姓名" id="portraitTwo_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">性别</label>
+                                        <div class="aui-col-18 control-form" id="portraitTwo_gender">
+                                            <div class="aui-col-10 mt-sm">
+                                                <label for="radio-level-portrait-1">男</label>
+                                                <input type="radio" name="radio-portrait-1" id="radio-level-portrait-1" value="1" data-role="radio">
+                                            </div>
+                                            <div class="aui-col-10 mt-sm">
+                                                <label for="radio-level-portrait-2">女</label>
+                                                <input type="radio" name="radio-portrait-1" id="radio-level-portrait-2" value="2" data-role="radio">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">出生年月</label>
+                                        <div class="aui-col-18 control-form">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                                <input id="portraitTwo_birthday" class="input-text datepicker-input radius Wdate" style="width: 100%;text-align: left;" type="text"
+                                                    onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',autoPickDate:true})" placeholder="请选择出生年月"
+                                                />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">通行证号码</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入通行证号码" id="portraitTwo_passNo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">毕业院校</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入毕业院校" id="portraitTwo_school">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">违法地点</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入违法地点" id="portraitTwo_illegallyAdd">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="aui-col-9">
+                            <form class=" aui-row">
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">英文名</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input class="aui-input" type="text" id="portraitTwo_engName" placeholder="请输入英文名">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">身份证</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input class="aui-input" type="text" id="portraitTwo_idcard" placeholder="请输入身份证号" maxlength="20">
+                                            <p class="text-danger mg-top-xs tip noData hide">请输入身份证号</p>
+                                            <p class="text-danger mg-top-xs tip regTest hide">输入的格式不正确</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label ">户籍所在地</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入户籍所在地" id="portraitTwo_regaddress">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">电话号码</label>
+                                        <div class="aui-col-18 control-form">
+                                            <input type="text" class="aui-input" placeholder="请输入电话号码" id="portraitTwo_telNo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">标签</label>
+                                        <div class="aui-col-18 control-form">
+                                            <select class="" id="portraitTwo_labels" title="请选择标签" multiple="multiple"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aui-col-24">
+                                    <div class="form-group">
+                                        <label class="aui-form-label aui-col-6 control-label">违法时间</label>
+                                        <div class="aui-col-18 control-form">
+                                            <div class="input-daterange datepicker-box aui-input wid-100 v-middle float-right" style="font-size:0.75rem;">
+                                                <input id="portraitTwo_illegallyTime" class="input-text datepicker-input radius Wdate" style="width: 100%;text-align: left;"
+                                                    type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',autoPickDate:true})"
+                                                    placeholder="请选择违法时间" />
+                                                <span class="input-group-addon">
+                                                    <i class="datepicker-icon aui-icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="aui-col-24" style="padding:0">
+                            <div class="aui-col-6"></div>
+                            <div class="aui-col-18">
+                                <form class=" aui-row">
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">是否抓获</label>
+                                            <div class="aui-col-18 control-form" id="portraitTwo_arrested">
+                                                <div class="aui-col-3 mt-sm">
+                                                    <label for="radio-configLoad-level-1">是</label>
+                                                    <input type="radio" name="radio-configLoad-1" id="radio-configLoad-level-1" value="1" data-role="radio">
+                                                </div>
+                                                <div class="aui-col-3 mt-sm">
+                                                    <label for="radio-configLoad-level-2">否</label>
+                                                    <input type="radio" name="radio-configLoad-1" id="radio-configLoad-level-2" value="2" data-role="radio" checked="checked">
+                                                </div>
+                                                <div class="aui-col-6 mt-sm">
+                                                    <label for="radio-configLoad-level-3">潜逃</label>
+                                                    <input type="radio" name="radio-configLoad-1" id="radio-configLoad-level-3" value="3" data-role="radio">
+                                                </div>
+                                                <input id="portraitTwo_abscondArea" type="text" class="aui-input hide" style="width:50%;" placeholder="地区">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">组织信息</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_organization" placeholder="请输入组织信息" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">背景资料</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_backgroundInfo" placeholder="请输入背景资料" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">违法行为</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_onSiteDelict" placeholder="请输入违法行为" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">涉嫌全国性罪名</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_stateCharge" placeholder="请输入涉嫌全国性罪名" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">涉嫌香港罪名</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_hhkCharge" placeholder="请输入涉嫌香港罪名" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aui-col-24">
+                                        <div class="form-group">
+                                            <label class="aui-form-label aui-col-3 control-label">备注/说明</label>
+                                            <div class="aui-col-18 control-form">
+                                                <textarea name="" id="portraitTwo_comments" placeholder="请输入备注/说明" cols="30" rows="10" class="aui-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <span class="btn btn-primary" id="addPersonSaveTwo">保存</span>
+                <span class="btn" id="cancelTwo">取消</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="modal fade modal-sm" id="ModalDeleteTwo" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteTwo">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabel">是否确认删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="ModalDeleteTwoSure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 详情删除弹窗 -->
+    <div class="modal fade modal-sm" id="ModalDeleteTwoVideo" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteTwoVideo">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">确认提示</h4>
+                    <span data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="aui-icon-not-through"></i>
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-lg" id="configTipLabelVideo">是否确认删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="ModalDeleteTwoSureVideo">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vendor/My97DatePicker/WdatePicker.js"></script>
+    <script src="assets/vendor/photoSwiper/photoSwiper.js"></script>
+    <script type="text/javascript" src="./assets/vendor/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script src="js/portraitContentTwo.js"></script>
+</div>

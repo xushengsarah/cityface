@@ -1,0 +1,35 @@
+<!-- 在header-tools上加logined显示已登录状态 -->
+<div class="header-box logined clearfix">
+    <div class="header-menu">
+        <a class="header-logo-icon " href="index.html"></a>
+    </div>
+    <div class="header-logo-text"><img class="logo" src="./assets/images/header/logo.png" alt=""></div>
+    <div class="header-tools float-right">
+        <div class="header-tools-item nav-icon-alarm"></div>
+        <div class="head-user-info">
+            <i class="aui-icon-color-default aui-icon-search"></i>
+            <img src="./assets/images/header/user.png" alt="" class="user-head" />
+            <div class="dropdown dropdown-text">
+                <span class="dropdown-toggle" id="dropdownMenuText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          大队长-Jiang
+                        </span>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuText">
+                    <a class="dropdown-item">修改密码</a>
+                    <a class="dropdown-item">修改信息</a>
+                    <a class="dropdown-item js-logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+//退出
+$('.js-logout').click(function () {
+    location.href = 'login.html';
+    $.cookie('xh_token', null);
+});
+
+
+</script>

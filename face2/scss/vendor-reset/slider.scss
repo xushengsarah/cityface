@@ -1,0 +1,52 @@
+.ui-slider.ui-widget.ui-widget-content {
+    border-color: $border-color-light;
+    background: $border-color-light;
+}
+
+.ui-slider-horizontal {
+    height: 5px;
+}
+
+.ui-widget-header {
+    background: $theme-color;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    top: -1px;
+    height: 5px;
+}
+
+.ui-slider .ui-slider-handle {
+    border: 3px solid $theme-color !important;
+    background-color: $color-white !important;
+    width: 1rem;
+    height: 1rem;
+    top: -0.4rem;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow .3s ease;
+    box-shadow: 0 0 0 3px rgba($border-color-light, .5);
+}
+
+.#{$prefix}-slider-box {
+    .#{$prefix}-slider-box-inner {
+        width: calc(100% - 5.5rem);
+        float: left;
+        margin-top: 15px;
+    }
+    .#{$prefix}-slider-input {
+        width: 4rem;
+        margin-left: 1.5rem;
+    }
+    .#{$prefix}-slider-min,
+    .#{$prefix}-slider-max {
+        color: $text-color-default;
+        font-size: $font-size-small;
+        padding-top: .125rem;
+        float: left;
+    }
+    .#{$prefix}-slider-max {
+        float: right;
+    }
+}

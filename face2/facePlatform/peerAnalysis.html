@@ -1,0 +1,325 @@
+<div>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="assets/vendor/tree/common/reset.css">
+    <link rel="stylesheet" href="assets/vendor/tree/libs/default/orgTree.css">
+    <link rel="stylesheet" href="./assets/vendor/paginator/css/paginator.css" />
+    <link rel="stylesheet" href="assets/css/dynamicface.css">
+    <!-- content -->
+    <div class="layout-type3 small search-result" id="peerAnalysisPage">
+        <div class="aui-card side side-left">
+            <div class="card-side-header-box">
+                <div class="card-side-title text-0">
+                    <span class="tool-back btn btn-sm">
+                        <i class="aui-icon-back"></i>
+                        <p class="inline-block v-middle text-md">返回</p>
+                    </span>
+                </div>
+                <div class="search-box">
+                    <span class="search-icon noborder">
+                        <i class="aui-icon-idcard"></i>
+                    </span>
+                    <input placeholder="请输入身份证号" type="text" class="search-input" id="peeridcardsearch">
+                    <span class="search-icon noborder" onclick="findIdcard(event)">
+                        <i class="aui-icon-search"></i>
+                    </span>
+                </div>
+                <div class="idcard-alert alert alert-dismissible text-error" role="alert">身份证号有误.</div>
+            </div>
+            <div class="card-side-content-box bdTop0">
+                <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="add-image-wrap add-type-3 center" id="peerAddSearchImg">
+                        <div class="add-image-icon add-image-new">
+                            <i class="aui-icon-add"></i>
+                            <p class="add-image-box-text">添加两张图片进行分析</p>
+                            <input type="file" class="uploadFile">
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#sidebarAccordion">
+                        <form class="search-result-side-form cover">
+                            <div class="panel-body aui-mt-sm">
+                                <div class="form-group">
+                                    <label class="aui-form-label">同行次数（&gt;次）</label>
+                                    <div id="peerTime">
+                                        <input type="text" class="aui-input" placeholder="0">
+                                        <p class="text-danger mg-top-xs tip hide">请输入同行次数</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="aui-form-label">同行时间间隔（&lt;min）</label>
+                                    <div id="peerInterval">
+                                        <input type="text" class="aui-input" placeholder="0">
+                                        <p class="text-danger mg-top-xs tip hide">请输入同行时间间隔</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aui-form-label-wrap" id="peerSelectTime">
+                                        <label class="aui-form-label">时间段</label>
+                                        <div class="btn-group btn-group-capsule" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-sm btn-primary" data-date="3">近3天</button>
+                                            <button type="button" class="btn btn-sm" data-date="7">近7天</button>
+                                            <button type="button" class="btn btn-sm" data-date="30">近30天</button>
+                                        </div>
+                                    </div>
+                                    <div class="input-daterange datepicker-box aui-input" style="font-size:0.75rem;" id="peerAnalysis_time">
+                                        <input id="startTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">~</span>
+                                        <input id="endTime" class="input-text datepicker-input radius Wdate" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss',autoPickDate:true})"
+                                        />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span>
+                                        <!-- <input type="text" class="datepicker-input" name="start" placeholder="开始时间" autocomplete="off" />
+                                        <span class="input-group-addon">~</span>
+                                        <input type="text" class="datepicker-input" name="end" placeholder="结束时间" autocomplete="off" />
+                                        <span class="input-group-addon">
+                                            <i class="datepicker-icon aui-icon-calendar"></i>
+                                        </span> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="aui-form-label">相似度</label>
+                                    <div class="aui-slider-box clearfix">
+                                        <div class="aui-slider-box-inner">
+                                            <div class="aui-slider" id="peerslider1"></div>
+                                            <div class="aui-slider-min" id="peersliderMin1"></div>
+                                            <div class="aui-slider-max" id="peersliderMax1"></div>
+                                        </div>
+                                        <div class="float-right">
+                                            <input id="peersliderInput" type="text" class="aui-input aui-slider-input" value="50">%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="selPeerCameraID">
+                                    <div class="btn-group searchTab" role="group" style="margin:0.5rem 0;">
+                                        <button type="button" class="btn btn-sm btn-primary" id="PSearchSelect">区域</button>
+                                        <button type="button" class="btn btn-sm" id="PSearchMap">地图</button>
+                                    </div>
+                                    <div class="searchArea">
+                                        <div class="cameraTypeSearch" style="padding: 0.5rem 0;">
+                                            <label for="peerCameraTypeAll" style="margin-right:1rem!important">全部</label>
+                                            <input type="radio" name="peerCameraType" id="peerCameraTypeAll" value="" data-role="radio" checked>
+                                            <label for="peerCameraTypeOne" style="margin-right:1rem!important">一类点</label>
+                                            <input type="radio" name="peerCameraType" id="peerCameraTypeOne" value="2" data-role="radio">
+                                            <label for="peerCameraTypeTwo" style="margin-right:0!important">二三类点</label>
+                                            <input type="radio" name="peerCameraType" id="peerCameraTypeTwo" value="3" data-role="radio">
+                                        </div>
+                                        <div class="aui-form-item camera-drop-select">
+                                            <select class="selectpicker" id="PSidebarOrgSelect" data-live-search="true" title="请选择分局">
+                                            </select>
+                                            <span class="float-right text-right select-title">分局
+                                                <span>
+                                        </div>
+                                        <div class="aui-form-item camera-drop-select">
+                                            <select class="selectpicker" id="PSidebarPoliceSelect" data-live-search="true" title="请选择派出所" disabled>
+                                            </select>
+                                            <span class="float-right text-right select-title">派出所
+                                                <span>
+                                        </div>
+                                        <div class="aui-form-item select-multiple-container camera-drop-select">
+                                            <select class="selectpicker" id="PSidebarCameraSelect" multiple data-live-search="true" title="请选择摄像机" disabled data-selected-text-format="count">
+                                            </select>
+                                            <span class="float-right text-right select-title">摄像机
+                                                <span>
+                                        </div>
+                                    </div>
+                                    <div class="searchMap">
+                                        <div class="multiPickerSelect">
+                                            <div class="multiPickerSelect_title">
+                                                <div class="right-count aui-inline-block">
+                                                    <span class="">已选区域</span>
+                                                    (共
+                                                    <span class="js-camera-totle">0</span>条)
+                                                </div>
+                                                <div class="js-remove-all">清空全部</div>
+                                            </div>
+                                            <div class="multiPickerSelect_cnt">
+                                                <div class="js_right_col">
+                                                    <ul id="peerNodeSearch">
+                                                    </ul>
+                                                </div>
+                                                <div class="multiPickerDlg_no_result">
+                                                    <i></i>未选择部门
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-side-footer-box">
+                <button type="button" id="peerSearch" class="btn btn-primary">搜索</button>
+                <button type="button" id="resetBtn" class="btn">重置</button>
+            </div>
+        </div>
+        <div class="flex-container p-0 position-relative swiper-scroll-view search">
+            <div class="result-map-frame hide" id="peerSearchResult" style="height:100%">
+                <div class="aui-card dynamicCardImg" style="height:100%">
+                    <div class="card-title-box">
+                        <i class="aui-icon-library card-title-icon"></i>
+                        <span class="card-title">同行分析结果</span>
+                        <span class="card-subtitle text-theme" id="sortTotal"></span>
+                        <div class="card-operate-box float-right">
+                            <div class="operate text-xm">
+                                <div class="operate-item">
+                                    <div class="dropdown dropdown-text dropdown-select" data-role="dropdown-select">
+                                        <span class="dropdown-toggle" id="peerSortList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="时间降序排序">时间降序排序</span>
+                                        <div class="dropdown-menu" aria-labelledby="peerSortList" x-placement="bottom-start" style="position: absolute; transform: translate3d(32px, 23px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <a class="dropdown-item active" id="peerSortByTime">时间降序排序</a>
+                                            <a class="dropdown-item" id="peerSortBySimilar">相似度降序排序</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="operate-item">
+                                    <span id="peerAllSnapping">
+                                        <label class="ui-checkboxradio-checkbox-label ui-checkboxradio-label ui-button ui-widget">
+                                            <span class="ui-checkboxradio-icon  ui-icon ui-icon-background ui-icon-blank"></span>
+                                            <span>全选</span>
+                                        </label>
+                                    </span>
+                                    <span class="text-link default aui-ml-mmd" id="peerRefreshBtn">
+                                        <i class="icon aui-icon-restart"></i>
+                                        <span class="text">刷新</span>
+                                    </span>
+                                    <span class="text-link default aui-ml-mmd text-disabled" id="pathAnalyse">
+                                        <i class="icon aui-icon-trajectory"></i>
+                                        <span class="text">轨迹分析</span>
+                                    </span>
+                                    <!-- <div class="btn-group btn-group-icon aui-ml-md">
+                                        <button type="button" class="btn btn-primary" id="peerMapAnalysis">
+                                            <i class="aui-icon-position"></i>
+                                        </button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content" style="height:calc(100% - 3rem); overflow:auto;">
+                        <p class="card-tip text-lighter hide">*鼠标
+                            <span class="btn-link-tip">点击空白区域左键按住</span>即可进行框选,鼠标
+                            <span class="btn-link-tip">左键按住</span>即可进行
+                            <span class="btn-link-tip">拖拽</span>
+                        </p>
+                        <div class="image-card-list no-bottom-border" style="height:calc(100% - 3rem);">
+                            <ul class="card-title-content warning-list peer-overview-time clearfix" id="peerTimeResult" style="height:100%">
+                                <!-- <li class="peer-item">
+                                    <div class="peer-item-content">
+                                        <div class="peer-item-img-box">
+                                            <div class="peer-item-img">
+                                                <img src=" ">
+                                                <img src=" ">
+                                            </div>
+                                            <div class="peer-item-percent">
+                                                <span class="grade1">同行</span>
+                                                <span class="grade2">90%</span>
+                                                <span class="grade3">80%</span>
+                                            </div>
+                                        </div>
+                                        <div class="peer-item-name">
+                                            <span>老街地铁站摄像机A2</span>
+                                            <span class="peer-item-level">共4次</span>
+                                        </div>
+                                    </div>
+                                </li> -->
+                            </ul>
+                            <ul class="card-title-content warning-list peer-overview-time clearfix hide" id="peerSimilarResult" style="height:100%">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-map-frame" id="peerMap" style="height:100%; width:100%">
+                <div style="position:absolute;right:0.5rem;top:2.8rem;">
+                    <div class="btn-group btn-group-icon aui-ml-md">
+                        <button type="button" class="btn btn-primary" id="peerListAnalysis">
+                            <i class="aui-icon-card"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- <iframe class="map-iframe" id="peer_map_iframe" value="http://190.168.17.2:6082/peopleCity.html?rxModule=peer_map_iframe"
+                    src="http://190.168.17.2:6082/peopleCity.html?rxModule=peer_map_iframe" style="height:100%; width:100%"></iframe> -->
+                <iframe class="map-iframe" id="peer_map_iframe" style="height:100%; width:100%"></iframe>
+            </div>
+        </div>
+    </div>
+    <script class="js-addVersion" src="assets/vendor/tree/libs/orgTree.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/searchCommon.js"></script>
+    <script type="text/javascript" src="js/peerAnalysis.js"></script>
+    <script type="text/javascript" src="js/peerMerge.js"></script>
+
+    <script>
+        //时间轴删除图片
+        $(".aui-timeline").find(".image-box").hover(function () {
+            $(this).addClass('select');
+            $('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }, function () {
+            $(this).removeClass('select');
+        });
+        if ($('.image-box').hasClass('select')) {
+            $(this).find('.aui-path-delect').on('click', function () {
+                $(this).parents('.image-box').addClass('none')
+            })
+        }
+        $('.switch').on('click', function () {
+            $('.map-container').toggleClass('line-show')
+        })
+        //相似度设置
+        $(function () {
+            var slider = $("#peerslider1").slider({
+                orientation: "horizontal",
+                range: "min",
+                max: 100,
+                min: 1,
+                value: 50,
+                create: function (event, ui) {
+                    $("#peersliderMin1").text(1);
+                    $("#peersliderMax1").text(100);
+                },
+                slide: function (event, ui) {
+                    $("#peersliderInput").val(ui.value);
+                }
+            });
+
+            $("#peersliderInput").data('comp', slider);
+            $("#peersliderInput").on("change", function () {
+                if (!(+$(this).val()) || ((+$(this).val()) <= 1)) {
+                    $(this).val('1');
+                }
+                var reg = /^\d+$/;
+                if ($(this).val()) {
+                    if (!reg.test($(this).val())) {
+                        $(this).val('1');
+                    }
+                }
+
+                slider.slider("value", $(this).val());
+            });
+        });
+
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul,
+                item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {
+                        text: item.label
+                    });
+
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                })
+                    .appendTo(wrapper);
+
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+    </script>
+</div>

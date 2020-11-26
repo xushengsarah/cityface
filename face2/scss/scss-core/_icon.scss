@@ -1,0 +1,542 @@
+@font-face {
+    font-family: 'iconFont';
+    src: url('../fonts/iconFont.eot');
+    src: url('../fonts/iconFont.eot') format('embedded-opentype'), url('../fonts/iconFont.ttf') format('truetype'), url('../fonts/iconFont.woff') format('woff'), url('../fonts/iconFont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {font-family: "iconfontNew";
+    src: url('../font/iconfontNew.eot?t=1578481686860'); /* IE9 */
+    src: url('../font/iconfontNew.eot?t=1578481686860#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+    url('../font/iconfontNew.woff?t=1578481686860') format('woff'),
+    url('../font/iconfontNew.ttf?t=1578481686860') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('../font/iconfontNew.svg?t=1578481686860#iconfont') format('svg'); /* iOS 4.1- */
+}
+[class^="#{$prefix}-icon-"],
+[class*="#{$prefix}-icon-"],
+[class*="#{$prefixB}-icon-"]{
+    font-family: 'iconFont' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    font-size: $icon-size-default;
+    transition: all $default-animation;
+    &.disabled {
+        cursor: $cursor-disabled;
+    }
+    // color: $icon-color-default;
+    // &:hover {
+    //     color: $icon-color-hover;
+    // }
+    // &:active {
+    //     color: $icon-color-active;
+    // }
+    // &.disabled {
+    //     color: $text-color-disabled;
+    //     cursor: $cursor-disabled;
+    // }
+}
+
+[class*="#{$prefixB}-icon-"]{
+    font-family: "iconfontNew"!important;
+}
+
+.#{$prefix}-icon-color-default {
+    color: $icon-color-default;
+    &:hover {
+        color: $icon-color-hover;
+    }
+    &.disabled {
+        color: $text-color-disabled;
+    }
+}
+
+.#{$prefix}-icon-color-theme {
+    color: $theme-color;
+    &:hover {
+        color: $theme-color-hover;
+    }
+    &.disabled {
+        color: $text-color-disabled;
+        cursor: $cursor-disabled;
+    }
+}
+
+.#{$prefix}-icon-color-white {
+    color: $color-white;
+    &:hover {
+        color: $color-white;
+    }
+    &.disabled {
+        color: $text-color-disabled;
+        cursor: $cursor-disabled;
+    }
+}
+
+.#{$prefix}-icon-add:before {
+    content: "\e900";
+}
+
+.#{$prefix}-icon-minus:before {
+    content: "\e901";
+}
+
+.#{$prefix}-icon-success:before {
+    content: "\e902";
+}
+
+.#{$prefix}-icon-successful:before {
+    content: "\e903";
+}
+
+.#{$prefix}-icon-approval:before {
+    content: "\e904";
+}
+
+.#{$prefix}-icon-error:before {
+    content: "\e905";
+}
+
+.#{$prefix}-icon-close:before {
+    content: "\e906";
+}
+
+.#{$prefix}-icon-not-through:before {
+    content: "\e907";
+}
+
+.#{$prefix}-icon-prompt:before {
+    content: "\e908";
+}
+
+.#{$prefix}-icon-warning:before {
+    content: "\e909";
+}
+
+.#{$prefix}-icon-information:before {
+    content: "\e90a";
+}
+
+.#{$prefix}-icon-info:before {
+    content: "\e90b";
+}
+
+.#{$prefix}-icon-question:before {
+    content: "\e90c";
+}
+
+.#{$prefix}-icon-help:before {
+    content: "\e90d";
+}
+
+.#{$prefix}-icon-question2:before {
+    content: "\e90e";
+}
+
+.#{$prefix}-icon-toconfirmed:before {
+    content: "\e90f";
+}
+
+.#{$prefix}-icon-calendar:before {
+    content: "\e910";
+}
+
+.#{$prefix}-icon-date-report-statistics:before {
+    content: "\e91e";
+}
+
+.#{$prefix}-icon-deactivation:before {
+    content: "\e912";
+}
+
+.#{$prefix}-icon-delete-line:before {
+    content: "\e913";
+}
+
+.#{$prefix}-icon-drop-down:before {
+    content: "\e914";
+}
+
+.#{$prefix}-icon-time-back1:before {
+    content: "\e915";
+}
+
+.#{$prefix}-icon-time-go1:before {
+    content: "\e916";
+}
+
+.#{$prefix}-icon-drop-down-2:before {
+    content: "\e917";
+}
+
+.#{$prefix}-icon-drop-down-4:before {
+    content: "\e919";
+}
+
+.#{$prefix}-icon-drop-left:before {
+    content: "\e918";
+}
+
+.#{$prefix}-icon-drop-right:before {
+    content: "\e919";
+}
+
+.#{$prefix}-icon-edit:before {
+    content: "\e91a";
+}
+
+.#{$prefix}-icon-modify:before {
+    content: "\e91b";
+}
+
+.#{$prefix}-icon-filter:before {
+    content: "\e91c";
+}
+
+.#{$prefix}-icon-list:before {
+    content: "\e91d";
+}
+
+.#{$prefix}-icon-history:before {
+    content: "\e933";
+}
+
+.#{$prefix}-icon-pending:before {
+    content: "\e91f";
+}
+
+.#{$prefix}-icon-refresh:before {
+    content: "\e920";
+}
+
+.#{$prefix}-icon-restart:before {
+    content: "\e921";
+}
+
+.#{$prefix}-icon-search:before {
+    content: "\e922";
+}
+
+.#{$prefix}-icon-left-personnal-retrieval:before {
+    content: "\e923";
+}
+
+.#{$prefix}-icon-monitor:before {
+    content: "\e924";
+}
+
+.#{$prefix}-icon-Preview:before {
+    content: "\e925";
+}
+
+.#{$prefix}-icon-expand:before {
+    content: "\e926";
+}
+
+.#{$prefix}-icon-search-circle:before {
+    content: "\e927";
+}
+
+.#{$prefix}-icon-focus:before {
+    content: "\e928";
+}
+
+.#{$prefix}-icon-add-circle:before {
+    content: "\e929";
+}
+
+.#{$prefix}-icon-trajectory:before {
+    content: "\e92a";
+}
+
+.#{$prefix}-icon-home-2:before {
+    content: "\e92b";
+}
+
+.#{$prefix}-icon-databoard:before {
+    content: "\e92c";
+}
+
+.#{$prefix}-icon-building:before {
+    content: "\e92d";
+}
+
+.#{$prefix}-icon-carsearch:before {
+    content: "\e92e";
+}
+
+.#{$prefix}-icon-population:before {
+    content: "\e92f";
+}
+
+.#{$prefix}-icon-personnel:before {
+    content: "\e930";
+}
+
+.#{$prefix}-icon-idcard:before {
+    content: "\e931";
+}
+
+.#{$prefix}-icon-idcard2:before {
+    content: "\e932";
+}
+
+.#{$prefix}-icon-idcard3:before {
+    content: "\e94a";
+}
+
+.#{$prefix}-icon-sex:before {
+    content: "\e911";
+}
+
+.#{$prefix}-icon-girl:before {
+    content: "\e934";
+}
+
+.#{$prefix}-icon-boy:before {
+    content: "\e935";
+}
+
+.#{$prefix}-icon-setting-2:before {
+    content: "\e936";
+}
+
+.#{$prefix}-icon-customers:before {
+    content: "\e937";
+}
+
+.#{$prefix}-icon-Recording:before {
+    content: "\e938";
+}
+
+.#{$prefix}-icon-position2:before {
+    content: "\e939";
+}
+
+.#{$prefix}-icon-position:before {
+    content: "\e93a";
+}
+
+.#{$prefix}-icon-library:before {
+    content: "\e93b";
+}
+
+.#{$prefix}-icon-message:before {
+    content: "\e93e";
+}
+
+.#{$prefix}-icon-import:before {
+    content: "\e93f";
+}
+
+.#{$prefix}-icon-phone:before {
+    content: "\e940";
+}
+
+.#{$prefix}-icon-police-badge:before {
+    content: "\e941";
+}
+
+.#{$prefix}-icon-face:before {
+    content: "\e942";
+}
+
+.#{$prefix}-icon-data:before {
+    content: "\e943";
+}
+
+.#{$prefix}-icon-voice:before {
+    content: "\e944";
+}
+
+.#{$prefix}-icon-arrow-right:before {
+    content: "\e945";
+}
+
+.#{$prefix}-icon-camera:before {
+    content: "\e946";
+}
+
+.#{$prefix}-icon-tree-camera:before {
+    content: "\e93c";
+}
+
+.#{$prefix}-icon-no:before {
+    content: "\e93d";
+}
+
+.#{$prefix}-icon-back:before {
+    content: "\e947";
+}
+
+.#{$prefix}-icon-crop:before {
+    content: "\e948";
+}
+
+.#{$prefix}-icon-video:before {
+    content: "\e949";
+}
+
+.#{$prefix}-icon-monitor2:before {
+    content: "\e94b";
+}
+
+.#{$prefix}-icon-carsearch2:before {
+    content: "\e94c";
+}
+
+.#{$prefix}-icon-activation:before {
+    content: "\e94d";
+}
+
+.#{$prefix}-icon-crowd:before {
+    content: "\e94e";
+}
+
+.#{$prefix}-icon-fullScreen:before {
+    content: "\e94f";
+}
+
+.#{$prefix}-icon-upload:before {
+    content: "\e950";
+}
+
+.#{$prefix}-icon-card:before {
+    content: "\e951";
+}
+
+.#{$prefix}-icon-save:before {
+    content: "\e952";
+}
+
+.#{$prefix}-icon-video2:before {
+    content: "\e953";
+}
+
+.#{$prefix}-icon-customers2:before {
+    content: "\e954";
+}
+
+.#{$prefix}-icon-file:before {
+    content: "\e955";
+}
+
+.#{$prefix}-icon-process:before {
+    content: "\e956";
+}
+
+.#{$prefix}-icon-news:before {
+    content: "\e957";
+}
+
+.#{$prefix}-icon-collection:before {
+    content: "\e958";
+}
+
+.#{$prefix}-icon-history2:before {
+    content: "\e959";
+}
+
+.#{$prefix}-icon-pic:before {
+    content: "\e95a";
+}
+
+.#{$prefix}-icon-compare:before {
+    content: "\e95b";
+}
+
+.#{$prefix}-icon-arrow:before {
+    content: "\e95c";
+}
+
+.#{$prefix}-icon-open-app:before {
+    content: "\e95d";
+}
+
+.#{$prefix}-icon-product-center:before {
+    content: "\e95e";
+}
+.#{$prefix}-icon-video3:before {
+    content: "\e95f";
+}
+.#{$prefix}-icon-plans:before {
+    content: "\e960";
+}
+.#{$prefix}-icon-screen:before {
+    content: "\e961";
+}
+.#{$prefix}-icon-toolbox:before {
+    content: "\e962";
+}
+.#{$prefix}-icon-forbidden:before {
+    content: "\e963";
+}
+.#{$prefixB}-icon-accesscontrol:before {
+    content: "\e605";
+}
+.#{$prefixB}-icon-encyclopedia:before {
+    content: "\e606";
+}
+.#{$prefixB}-icon-object:before {
+    content: "\e607";
+}
+.#{$prefixB}-icon-quickattention:before {
+    content: "\e608";
+}
+.#{$prefixB}-icon-menucompare:before {
+    content: "\e609";
+}
+.#{$prefixB}-icon-onetoone:before {
+    content: "\e60a";
+}
+.#{$prefixB}-icon-menusave:before {
+    content: "\e60b";
+}
+.#{$prefixB}-icon-menuconnect:before {
+    content: "\e60c";
+}
+.#{$prefixB}-icon-pictureedit:before {
+    content: "\e60d";
+}
+.#{$prefixB}-icon-addpicture:before {
+    content: "\e60e";
+}
+.#{$prefixB}-icon-addencyclopedia:before {
+    content: "\e60f";
+}
+.#{$prefixB}-icon-sendjwy:before {
+    content: "\e610";
+}
+.#{$prefixB}-icon-stopplay:before {
+    content: "\e64d";
+}
+.#{$prefixB}-icon-play:before {
+    content: "\e64e";
+}
+.#{$prefixB}-icon-before:before {
+    content: "\e64f";
+}
+.#{$prefixB}-icon-after:before {
+    content: "\e650";
+}
+.#{$prefixB}-icon-reset:before {
+    content: "\e651";
+}
+.#{$prefixB}-icon-fastspeed:before {
+    content: "\e652";
+}
+.#{$prefixB}-icon-rew:before {
+    content: "\e653";
+}
+.#{$prefixB}-icon-pause:before {
+    content: "\e654";
+}
